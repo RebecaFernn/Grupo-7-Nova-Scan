@@ -1,0 +1,84 @@
+/* SEMPRE COMENTE E USE % */
+
+@import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
+
+.container{
+    display: block;
+    align-items: center;
+}
+
+body{
+    font-family: "Allerta", sans-serif;
+    background-color: #2C2C2C;
+    overflow-y: hidden;
+}
+
+.fundo{
+    position: absolute;
+    /* height: 100vh; */
+}
+
+.card-login{
+    background-color: #212121;
+    border-radius: 50px;
+    width: 40%;
+    height: 80vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10%;
+    position: absolute;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    margin: 0%;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 16%;
+    font-size: 17px;
+}
+
+.input{
+    border-radius: 50px;
+    width: 60%;
+    height: 7%;
+    padding: 1%;
+    background-color: #212121 ;
+    border-color: #474747;
+    font-size: 1.3rem;
+}
+
+.button{
+    background-color: white;
+    border-radius: 120px;
+    width: 20%;
+    height: 12%;
+    font-family: "Allerta", sans-serif;
+    font-size: 20px;
+}
+
+.logo{
+    width: 50%;
+    margin: 0%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 9%;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+    gap: 14% 0;
+    align-items: center;
+    justify-content: center;
+    margin-top: 19%;
+}
