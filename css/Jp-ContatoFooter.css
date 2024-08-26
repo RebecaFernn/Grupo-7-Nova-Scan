@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
+
+.container{
+    position: relative;
+    background-image: url(../img/textura-do-cartao\ 1.svg);
+    display: flex;
+    height: 100%;
+    padding-bottom: 5%;
+    padding-left: 3%;
+}
+
+.leftContato{
+    width: 50%;
+    padding-right: 20%;
+}
+
+.rightContato{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    /* height: 100%; */
+}
+
+.entradas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    gap: 14% 0;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 19%; */
+}
+
+.input{
+    width: 70%;
+    height: 80%;
+    border-radius: 50px;
+    font-size: 100%;
+    background-color: transparent;
+    padding-left: 3%;
+    font-family: "Allerta", sans-serif;
+    border: 2.2px solid #666666;
+
+
+}
+
+b{
+    font-family: "Allerta", sans-serif;
+    font-size: 100%;
+}
+
+h1{
+    font-family: "Allerta", sans-serif;
+    font-size: 300%;
+}
+
+.button{
+    width: 20%;
+    height: 75%;
+    border-radius: 30px;
+    font-family: "Allerta", sans-serif;
+    font-size: 100%;
+    border: 2.2px solid #666666;
+
+}
+
+/* FOOTER */
