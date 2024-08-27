@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
 
 .container{
-    position: relative;
+    /* position: relative; */
     background-image: url(../img/textura-do-cartao\ 1.svg);
     display: flex;
     height: 100%;
@@ -10,8 +10,9 @@
 }
 
 .leftContato{
-    width: 50%;
+    width: 30%;
     padding-right: 20%;
+    padding-top: 5%;
 }
 
 .rightContato{
@@ -19,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    /* height: 100%; */
+    height: 70vh;
 }
 
 .entradas{
@@ -27,28 +28,37 @@
     flex-direction: column;
     width: 100%;
     height: 90%;
-    gap: 14% 0;
+    gap: 10% 0;
     align-items: center;
     justify-content: center;
     margin-top: 8%;
 }
 
 .input{
-    width: 70%;
-    height: 80%;
+    width: 60%;
+    height: 90%;
     border-radius: 50px;
     font-size: 100%;
     background-color: transparent;
     padding-left: 3%;
     font-family: "Allerta", sans-serif;
     border: 2.2px solid #666666;
+}
 
-
+textarea{
+    width: 60%;
+    border-radius: 37px;
+    font-size: 100%;
+    background-color: transparent;
+    padding-left: 3%;
+    font-family: "Allerta", sans-serif;
+    border: 2.2px solid #666666;
+    padding-top: 2%;
 }
 
 b{
     font-family: "Allerta", sans-serif;
-    font-size: 100%;
+    font-size: 120%;
 }
 
 h1{
@@ -72,7 +82,6 @@ h1{
     background-color: #2C2C2C;
     width: 100%;
     height: 70vh;
-    /* margin: 0%; */
 }
 
 .hr1 {
@@ -88,9 +97,7 @@ h1{
 }
 
 .div-titulo{
-    text-align: center;
-    /* margin-top: 5%; */
-    
+    text-align: center;    
 }
 
 p {
