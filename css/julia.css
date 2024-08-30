@@ -1,1 +1,80 @@
 /* SEMPRE COMENTE E USE % */
+
+@import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
+
+body {
+    background-color: #1E1E1E;
+    font-family: "Allerta";
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    /* line-height: 1.6; */
+}
+
+/* ---- CABEÇALHO ---- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7% 2%;
+    margin-top: 1%;
+    background-color: #111111;
+    width: 85%;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+nav ul li {
+    margin: 0 5%;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.botoes-div {
+    display: flex;
+    gap: 10px;
+    margin-right: 3%;
+}
+.botao-adquira {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer; 
+    font-family: "Allerta";
+    font-size: 18px;
+}
+.botao-login {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer; 
+    font-family: "Allerta";
+    font-size: 18px;
+}
+
+.botao-login:hover {
+    background-color: #8B2EDC;
+}
+.logo {
+    width: 20%;
+    height: auto;
+}
+.agora {
+    text-decoration: underline;
+    text-decoration-color: #8B2EDC ;
+}
