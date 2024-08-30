@@ -29,6 +29,7 @@ header {
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 nav ul {
     list-style: none;
     display: flex;
@@ -36,9 +37,11 @@ nav ul {
     margin: 0;
     font-size: 18px;
 }
+
 nav ul li {
     margin: 0 5%;
 }
+
 nav ul li a {
     color: #fff;
     text-decoration: none;
@@ -50,23 +53,25 @@ nav ul li a {
     gap: 10px;
     margin-right: 3%;
 }
+
 .botao-adquira {
     background-color: #fff;
     color: #000;
     border: none;
     padding: 10px 20px;
     border-radius: 30px;
-    cursor: pointer; 
+    cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
 }
+
 .botao-login {
     background-color: #fff;
     color: #000;
     border: none;
     padding: 10px 20px;
     border-radius: 30px;
-    cursor: pointer; 
+    cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
 }
@@ -74,13 +79,15 @@ nav ul li a {
 .botao-login:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
+
 .logo {
     width: 20%;
     height: auto;
 }
+
 .agora {
     text-decoration: underline;
-    text-decoration-color: #8B2EDC ;
+    text-decoration-color: #8B2EDC;
 }
 
 
@@ -92,6 +99,7 @@ nav ul li a {
     font-family: "JetBrains Mono";
     margin-top: 3%;
 }
+
 /* .conteudo-banner-div {
     display: flex;
     flex-direction: column;
@@ -108,12 +116,14 @@ nav ul li a {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 .banner-div button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
     text-decoration: underline;
-    text-decoration-color: #8B2EDC ;
+    text-decoration-color: #8B2EDC;
 }
-.linha-roxa {
+
+.linha-roxa-banner {
     width: 0.3%;
     background-color: #8B2EDC;
 }
@@ -126,3 +136,60 @@ nav ul li a {
 .banner-div img {
     width: 450px;
 }
+
+/* ---- QUEM SOMOS NÓS ---- */
+.quadrado {
+    width: 75%;
+    margin: 13% 0;
+    background-color: #171717;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.quadrado h1 {
+    font-size: 40px;
+}
+
+.quadrado2 {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quadrado2 img {
+    width: 450px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.texto-quadrado2 {
+    margin: 4% 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+.texto-quadrado2 p {
+    font-family: "JetBrains Mono";
+    text-align: left;
+    font-size: 25px;
+}
+
+.texto-quadrado2 button {
+    border: none;
+    background-color: transparent;
+    font-family: "JetBrains Mono";
+    font-size: 25px;
+    color: #fff;
+}
+
+.texto-quadrado2 button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);   
+    text-decoration: underline;
+    text-decoration-color: #8B2EDC;
+}
+.linha-roxa-quadrado{
+    
+}
+
