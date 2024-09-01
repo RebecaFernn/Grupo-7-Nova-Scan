@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 body {
-    background-color: #1E1E1E;
+    background-color: #2C2C2C;
     font-family: "Allerta";
     color: #fff;
     display: flex;
@@ -38,26 +38,28 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-nav ul {
+
+
+nav .nav-ul {
     list-style: none;
-    display: flex;
     padding: 0;
     margin: 0;
     font-size: 18px;
+    margin-right: 70%;
 }
 
-nav ul li {
-    margin: 0 5%;
+nav .nav-ul .li-nav {
+    margin: 0 9%;
 }
 
-nav ul li a {
+nav .nav-ul .li-nav a {
     color: #fff;
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .botoes-div {
-    display: flex;
+    
     gap: 10px;
     margin-right: 3%;
 }
@@ -245,13 +247,13 @@ nav ul li a {
     align-items: center;
 
     & h1 {
-        font-size: 2rem;
+        font-size: 3rem;
         padding: 3% 0%;
         color: black;
     }
 
     & h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: 400;
         padding: 1% 1%;
         border-left: solid 2px #8b2edc;
@@ -289,10 +291,58 @@ nav ul li a {
 }
 
 .divLiServices {
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.imgservico {
+    width: 100%;
+    height: 100%;
+}
+
+.text-servicos {
+    padding-left: 1%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  ul .aliselection-li {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: .1s;
+  }
+  ul .aliselection-li:hover {
+    color: #fff;
+  }
+  ul .aliselection-li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; 
+    background: #8b2edc; 
+    scale: 0 1;
+    transition: .1s, translate 0s .1s;
+  }
+  ul:hover li:before {
+    scale: 1;
+  }
+  ul .aliselection-li:hover:before {
+    translate: 0;
+    transition: .3s;
+  }
+  ul:hover .aliselection-li:has(~ .aliselection-li:hover):before {
+    translate: 100% 0;
+    transition: .1s .1s,scale 0s .2s;
+  }
+  ul:hover .aliselection-li:hover ~ .aliselection-li:before {
+    translate: -100% 0;
+    transition: .1s .1s,scale 0s .2s;
+  }
+  
 
 .divLiServices {
 
@@ -375,6 +425,10 @@ nav ul li a {
     margin-left: 1%;
 }
 
+.aliselection {
+    font-size: 140%;
+}
+
 
 
 
@@ -383,39 +437,75 @@ nav ul li a {
 
 
 
-
-
+/* Garante que o contêiner principal ocupe a largura total da tela */
 .top {
-    margin: 5%;
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
+/* Container flexível que alinha os itens lado a lado */
 .mid {
     display: flex;
-    padding: 30px;
-    justify-content: center;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
 }
 
+/* Ajusta o conteúdo do texto */
 .textL {
-    width: 33%;
+    flex: 1;
     color: #ffffff;
+    padding: 50px;
+    position: relative; /* Necessário para posicionar o <hr> dentro da div.textL */
 }
 
+/* Ajusta o título */
+.text-vantagens {
+    font-size: 300%;
+    text-align: start;
+    margin: 0; /* Remove margens para evitar deslocamento indesejado */
+}
+
+/* Ajusta o texto abaixo do título */
+.text-vantagens-sub {
+    text-align: start;
+    font-family: monospace;
+    font-size: 130%;
+    color: #c6c2c2;
+}
+
+/* Estilo para o <hr> */
 .textL hr {
     border: 0;
-    height: 2px;
-    width: 20%;
+    height: 3px;
+    width: 20%; /* Ajusta a largura da linha horizontal */
     background: #8b2edc;
+    position: absolute; /* Posiciona o <hr> em relação ao contêiner */
+    left: 10%; /* Alinha à esquerda da div.textL */
+    top: 9%; /* Ajusta a posição vertical conforme necessário */
 }
 
+/* Ajusta a imagem e garante que a div `imgR` fique alinhada à direita da tela */
 .imgR {
+    width: 65%; 
+    height: 60vh; 
+    background-color: #212121;
+    border-top-left-radius: 30px; 
+    border-bottom-left-radius: 30px; 
     display: flex;
     align-items: center;
-    width: 65%;
+    justify-content: center;
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 .imgR img {
-    width: 100%;
+    width: 80%;
+    height: auto; 
 }
+
 
 .table {
     display: flex;
@@ -467,7 +557,7 @@ nav ul li a {
 .leftContato {
     width: 30%;
     padding-right: 20%;
-    padding-top: 5%;
+    padding-top: 6%;
     position: relative;
 }
 
@@ -529,8 +619,10 @@ textarea {
     font-family: "Allerta", sans-serif;
     font-size: 350%;
     width: 150%;
-    margin-bottom: 0%;
+    margin-bottom: 6%;
+    margin-top: 7%;
     margin-left: 2%;
+    text-align: start;
     color: black;
 }
 
@@ -607,12 +699,39 @@ textarea {
 .emails {
     display: flex;
     width: 100%;
+    font-size: 130%;
 }
 
 .email-link {
     color: white;
     text-decoration: none;
 }
+
+.email-link {  
+    padding: 1px 0;
+    position: relative; 
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .email-link:before{
+    content: '';
+    background: #8B2EDC;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .email-link:hover {
+   background-position: 0;
+  }
+  
+  .email-link:hover::before{
+    width: 100%;
+  }
 
 .membros-esquerda,
 .membros-direita {
@@ -688,3 +807,32 @@ textarea {
     margin-left: 8px;
 
 }
+
+.icone-links-link{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -webkit-transition: all 1s ease;
+    }
+    
+    .icone-links-link:hover{
+    filter: grayscale(0%);
+    filter: gray;
+    -webkit-filter: grayscale(0%);
+    filter: none;
+    transition: 1s ease;
+    }
+
+    .icone-links-git{
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        -webkit-transition: all 1s ease;
+        }
+        
+        .icone-links-git:hover{
+        filter: grayscale(0%);
+        filter: gray;
+        -webkit-filter: grayscale(0%);
+        filter: none;
+        transition: 1s ease;
+        }
+
