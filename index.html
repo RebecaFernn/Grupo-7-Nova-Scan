@@ -115,12 +115,13 @@
 
 
     <section class="sectionServices">
+        <div>
         <div class="divLiServices">
             <h1>Quais serviços <br> nós oferecemos?</h1>
             <ul>
-                <li class="aliselection-li"><a class="aliselection" href="#cpu" id="cpuli">CPU</a></li>
-                <li class="aliselection-li"><a class="aliselection" href="#mem" id="memli">Memória</a></li>
-                <li class="aliselection-li"><a class="aliselection" href="#arm" id="armli">Armazenamento</a></li>
+                <li class="aliselection-li"><a class="aliselection"  id="cpuli">CPU</a></li>
+                <li class="aliselection-li"><a class="aliselection"  id="memli">Memória</a></li>
+                <li class="aliselection-li"><a class="aliselection"  id="armli">Armazenamento</a></li>
             </ul>
         </div>
         <div id="cpu" class="cpuService defServicos">
@@ -142,12 +143,13 @@
                     Garanta o melhor desempenho para seus sistemas com o monitoramento da Novascan.
                 </p>
             </div>
+        
             <!-- <div class="img-box-servicos">
                <img src="./img/cpuServicos.png" >
            </div> -->
             <img class="imgservico" src="./img/cpuServicos.png">
         </div>
-        <div id="mem" class="memService defServicos">
+        <div id="mem" style="display: none;" class="memService defServicos">
             <div class="memSText">
                 <h2 class="titulo-memoria">Monitoramento de Memória</h2>
                 <p class="text-servicos">
@@ -170,7 +172,7 @@
             <img class="imgservico" src="./img/memoriaServicos.png" alt="Imagem Memória">
 
         </div>
-        <div id="arm" class="armService defServicos">
+        <div id="arm" style="display: none;" class="armService defServicos">
             <div class="armSText">
                 <h2 class="titulo-armazenamento">Monitoramento de Armazenamento</h2>
                 <p class="text-servicos">
@@ -360,18 +362,36 @@
 </html>
 
 <script>
-    document.querySelectorAll('.divLiServices a').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault(); // Impede o comportamento padrão do link
-            const targetId = this.getAttribute('href').substring(1);
+    // Seleciona os elementos
+    const cpuLi = document.getElementById('cpuli');
+    const memLi = document.getElementById('memli');
+    const armLi = document.getElementById('armli');
+    
+    const cpuService = document.querySelector('.cpuService');
+    const memService = document.querySelector('.memService');
+    const armService = document.querySelector('.armService');
 
-            // Oculta todas as seções
-            document.querySelectorAll('.cpuService, .memService, .armService').forEach(div => {
-                div.style.display = 'none';
-            });
+    // Funções para exibir e ocultar as divs
+    function showCpuService() {
+        cpuService.style.display = 'flex';
+        memService.style.display = 'none';
+        armService.style.display = 'none';
+    }
 
-            // Mostra a seção clicada
-            document.getElementById(targetId).style.display = 'flex';
-        });
-    });
+    function showMemService() {
+        cpuService.style.display = 'none';
+        memService.style.display = 'flex';
+        armService.style.display = 'none';
+    }
+
+    function showArmService() {
+        cpuService.style.display = 'none';
+        memService.style.display = 'none';
+        armService.style.display = 'flex';
+    }
+
+    // Adiciona os eventos de clique
+    cpuLi.addEventListener('click', showCpuService);
+    memLi.addEventListener('click', showMemService);
+    armLi.addEventListener('click', showArmService);
 </script>
