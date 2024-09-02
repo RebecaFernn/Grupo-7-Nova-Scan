@@ -128,12 +128,12 @@ nav .nav-ul .li-nav a {
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    float: left;
+    transition: all 0.5s;
 }
 
 .banner-div button:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
-    text-decoration: underline;
-    text-decoration-color: #8B2EDC;
+    background-color: #8B2EDC;
 }
 
 .linha-roxa-banner {
