@@ -36,6 +36,8 @@ header {
     width: 85%;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
 }
 
 
@@ -45,7 +47,7 @@ nav .nav-ul {
     padding: 0;
     margin: 0;
     font-size: 18px;
-    margin-right: 70%;
+    margin-right: 70%
 }
 
 nav .nav-ul .li-nav {
@@ -115,7 +117,7 @@ nav .nav-ul .li-nav a {
     align-items: center;
     justify-content: center;
     font-family: "JetBrains Mono";
-    margin-top: 3%;
+    margin-top: 12%;
 }
 
 .banner-div button {
