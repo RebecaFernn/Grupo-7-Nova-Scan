@@ -199,6 +199,7 @@ nav .nav-ul .li-nav a {
     font-family: "JetBrains Mono";
     text-align: left;
     font-size: 25px;
+    margin-bottom: 3%;
 }
 
 .texto-quadrado2 button {
@@ -207,12 +208,13 @@ nav .nav-ul .li-nav a {
     font-family: "JetBrains Mono";
     font-size: 25px;
     color: #fff;
+    transition: all 0.5s;
+    border-radius: 30px;
+    padding: 10px 20px;
 }
 
 .texto-quadrado2 button:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-decoration: underline;
-    text-decoration-color: #8B2EDC;
+    background-color:  #8B2EDC;
 }
 
 
