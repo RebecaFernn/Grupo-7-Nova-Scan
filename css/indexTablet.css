@@ -14,8 +14,7 @@
     }
 
     nav .nav-ul {
-        margin-right: 0%;
-        width: 70%;
+        width: auto;
     }
 
     /* Banner */
@@ -61,5 +60,74 @@
     .quadrado h1 {
         font-size: 2rem;
     }
+    
 
+    /* Serviços */
+    .sectionServices {
+        & h1 {
+            font-size: 2rem;
+        }
+        & h2 {
+            font-size: 1.3rem;
+        }
+        & p {
+            font-size: 0.9rem;
+            width: 85%;
+        }
+        & img {
+            width: 40%;
+        }
+    }
+    .aliselection {
+        font-size: 1.3rem;
+    }
+
+    /* Vantagens */
+    .text-vantagens {
+        font-size: 2rem;
+    }
+    .titulo h1{
+        font-size: 2rem;
+    }
+    .card {
+        width: 25%;
+        height: 307px;
+    }
+
+    /* Contate-nos */
+    .linha-roxa {
+        height: 40%;
+    }
+    .container h1 {
+        font-size: 2rem;
+    }
+    .container p {
+        font-size: 0.9rem;
+    }
+    .input {
+        width: 80%;
+    }
+    textarea {
+        width: 80%;
+    }
+    .entradas div {
+        width: 80%;
+    }
+    
+    /* Footer */
+    .contatar {
+        font-size: 1.5rem;
+    }
+    .emails {
+        display: flex;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+    .texto-copyright {
+        font-size: 0.8rem;
+    }
+    .texto-copyright img {
+        margin-left: 8px;
+        width: 18%;
+    }
 }
