@@ -17,6 +17,9 @@ body {
 }
 
 
+html{
+    scroll-behavior: smooth;
+}
 
 
 
@@ -83,6 +86,11 @@ nav .nav-ul .li-nav a {
     font-size: 18px;
 }
 
+.botao-adquira a{
+    text-decoration: none;
+    color: black;
+}
+
 .botao-login {
     background-color: #fff;
     color: #000;
@@ -92,6 +100,11 @@ nav .nav-ul .li-nav a {
     cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
+}
+
+.botao-login a{
+    text-decoration: none;
+    color: black;
 }
 
 .botao-login:hover {

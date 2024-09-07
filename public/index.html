@@ -17,6 +17,7 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
      crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="shortcut icon" href="./img/logoFav.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -44,20 +45,21 @@
 
         <nav>
             <ul class="nav-ul">
-                <li class="li-nav"><a class="aliselection-header" href="">Início</a></li>
-                <li class="li-nav"><a class="aliselection-header" href="">Sobre</a></li>
-                <li class="li-nav"><a class="aliselection-header" href="">Serviços</a></li>
-                <li class="li-nav"><a class="aliselection-header" href="">Vantagens</a></li>
-                <li class="li-nav"><a class="aliselection-header" href="">Contato</a></li>
+                <li class="li-nav"><a class="aliselection-header" href="#banner">Início</a></li>
+                <li class="li-nav"><a class="aliselection-header" href="#sobre">Sobre</a></li>
+                <li class="li-nav"><a class="aliselection-header" href="#servicos">Serviços</a></li>
+                <li class="li-nav"><a class="aliselection-header" href="#vantagens">Vantagens</a></li>
+                <li class="li-nav"><a class="aliselection-header" href="#contato">Contato</a></li>
             </ul>
         </nav>
 
         <div class="botoes-div">
-            <button class="botao-login">Login</button>
-            <button class="botao-adquira">Adquira-já</button>
+            <button class="botao-login"><a href="login.html">Login</a></button>
+            <button class="botao-adquira"><a href="#contato">Adquira-já</a></button>
         </div>
 
     </header>
+    <span id="banner"></span>
 
 
 
@@ -65,7 +67,7 @@
 
 
 
-    <div class="banner-div">
+    <div  class="banner-div">
         <div class="conteudo-banner-div">
 
             <div class="linha-roxa-banner">
@@ -91,14 +93,14 @@
 
 
 
-    <div class="quadrado">
+    <div id="sobre" class="quadrado">
         <div class="linha-roxa-quadrado"></div>
         <h1>Quem Somos Nós</h1>
 
         <div class="quadrado2">
 
             <div class="imagem-quadrado2">
-                <img src="img/image copy 2.png">
+                <img src="./img/grupoFoto1.jpeg">
             </div>
 
             <div class="texto-quadrado2">
@@ -115,7 +117,7 @@
 
 
             <div class="imagem-quadrado2">
-                <img src="img/image copy.png">
+                <img src="./img/grupoFoto2.jpeg">
             </div>
         </div>
 
@@ -127,7 +129,7 @@
 
 
 
-    <section class="sectionServices">
+    <section id="servicos" class="sectionServices">
         <div>
         <div class="divLiServices">
             <h1>Quais serviços <br> nós oferecemos?</h1>
@@ -185,7 +187,7 @@
 
 
 
-    <div class="top">
+    <div id="vantagens" class="top">
         <div class="mid">
             <div class="textL">
                 <hr />
@@ -247,7 +249,7 @@
 
 
 
-    <div class="container">
+    <div id="contato" class="container">
         <div class="leftContato">
             <div class="linha-roxa"></div>
 
