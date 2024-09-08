@@ -14,6 +14,7 @@ body {
 } */
 
 body{
+    overflow-x: hidden;
     background-color: #2C2C2C;
     font-family: "Allerta";
     color: #fff;
@@ -178,6 +179,7 @@ p {
     background-color: #212121;
     border: 2.2px solid #666666;
     font-size: 1.5rem;
+    color: white;
 }
 
 .button {
