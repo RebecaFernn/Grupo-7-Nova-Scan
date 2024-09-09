@@ -104,6 +104,7 @@ nav .nav-ul .li-nav a {
     cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
+    display: none;
 }
 
 .botao-adquira a{

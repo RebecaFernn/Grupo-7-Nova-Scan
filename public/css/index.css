@@ -57,7 +57,9 @@ nav .nav-ul {
     padding: 0;
     margin: 0;
     font-size: 18px;
-    margin-right: 70%
+    margin-right: 70%;
+    display: flex;
+    gap: 10px;
 }
 
 nav .nav-ul .li-nav {
@@ -85,6 +87,7 @@ nav .nav-ul .li-nav a {
     cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
+    display: none;
 }
 
 .botao-adquira a{
@@ -153,7 +156,10 @@ nav .nav-ul .li-nav a {
     float: left;
     transition: all 0.5s;
 }
-
+.banner-div button a{
+    text-decoration: none;
+    color: white;
+}
 .banner-div button:hover {
     background-color: #8B2EDC;
 }

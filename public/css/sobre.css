@@ -61,7 +61,7 @@ nav .nav-ul {
     font-size: 18px;
     margin-right: 70%;
     display: flex;
-
+    gap: 20px;
 }
 
 nav .nav-ul .li-nav {
@@ -89,6 +89,7 @@ nav .nav-ul .li-nav a {
     cursor: pointer;
     font-family: "Allerta";
     font-size: 18px;
+    display: none;
 }
 
 .botao-adquira a {
