@@ -50,7 +50,11 @@ header {
     top: 0;
 }
 
-
+.separador {
+    height: 5px;
+    background-color: #ffffff;
+    margin: 5px 0;
+}
 
 nav .nav-ul {
     list-style: none;
@@ -60,6 +64,7 @@ nav .nav-ul {
     margin-right: 70%;
     display: flex;
     gap: 10px;
+    position: relative;
 }
 
 nav .nav-ul .li-nav {
@@ -587,21 +592,18 @@ ul {
 
 
 .container {
-    /* position: relative; */
     background-image: url(../img/textura-do-cartao\ 1.svg);
     display: flex;
     height: 100%;
     padding-bottom: 2%;
     padding-left: 3%;
-
-
 }
 
 .leftContato {
     width: 30%;
     padding-right: 20%;
     padding-top: 6%;
-    position: relative;
+    display: flex;
 }
 
 .rightContato {
@@ -679,13 +681,12 @@ textarea {
 }
 
 .linha-roxa {
-    width: 0.5%;
+    width: 4%;
     /* Largura da linha */
-    height: 50%;
+    height: 65%;
     /* Altura da linha, pode ser ajustada */
     background-color: #8B2EDC;
     /* Cor da linha */
-    position: absolute;
     margin-top: 7%;
 }
 
@@ -879,4 +880,3 @@ textarea {
         filter: none;
         transition: 1s ease;
         }
-
