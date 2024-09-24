@@ -1,131 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Parte_superior.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/Parte_superior.css">
+  <title>Document</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
-    <!--NAV-->
-      <div class="NAV">
-          <img src="img/Logo NovaScan.svg" alt="">
-          <div class="infos">
-              <a href="">Inicio</a>
-              <a href="">Sobre</a>
-              <a href="">Serviços</a>
-              <a href="">Contato</a>
-          </div>
-          <button onclick="window.location.href='login.html'">
-              Login
-          </button>
-      </div>
-      <!--Sessão 1-->
-      <div class="Sessao1">
-          <img src="img/f7aa6ce38ee195708db90ba2ab2e444a.png" alt="">
-          <div class="up">
-              <h1>Monitoramento <br> Adequado</h1>
-              <h1>Para Self- <br> Checkout com </h1>
-          </div>
-          <div class="down">
-              <h1>NOVASCAN</h1>
-          </div>
-      </div>
-<<<<<<< HEAD
-</html>
-=======
-      <!--Sessão 2-->
-      <div class="Sessao2">
-        <div class="up">
-            <b>Sobre a NovaScan</b>
-            <h1>Quem somos?</h1>
-            <p>“Nosso compromisso vai além do <br> monitoramento”</p>
-        </div>
-        <div class="down">
-            <img src="img/unsplash_w_zE6qlkQKA.png" alt="">
-            <div class="text"></div>
-        </div>
-      </div>
-
-    <div class="campo">
-        <span>Codigo Empresa:</span>
-        <input id="empresa_input" type="number" placeholder="9999" />
-      </div>
-    <div class="campo">
-        <span>E-mail:</span>
-        <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-      </div>
-  <div class="campo">
-    <span>Senha:</span>
-    <input id="senha_input" type="password" placeholder="******" />
+  <!--NAV-->
+  <div class="NAV">
+    <img src="img/Logo NovaScan.svg" alt="">
+    <div class="infos">
+      <a href="">Inicio</a>
+      <a href="">Sobre</a>
+      <a href="">Serviços</a>
+      <a href="">Contato</a>
+    </div>
+    <button onclick="window.location.href='login.html'">
+      Login
+    </button>
   </div>
-  <div class="campo">
-    <span>Confirmação da Senha:</span>
-    <input id="confirmacao_senha_input" type="password" placeholder="******" />
+  <!--Sessão 1-->
+  <div class="Sessao1">
+    <img src="img/f7aa6ce38ee195708db90ba2ab2e444a.png" alt="">
+    <div class="up">
+      <h1>Monitoramento <br> Adequado</h1>
+      <h1>Para Self- <br> Checkout com </h1>
+    </div>
+    <div class="down">
+      <h1>NOVASCAN</h1>
+    </div>
   </div>
-  <button class="botao" onclick="cadastrar()">Cadastrar</button>
-</body>
-</html>
-<script>
-
-function cadastrar() {
-
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
-  var empresaVar = Number(empresa_input.value);
-  var emailVar = email_input.value;
-  var senhaVar = senha_input.value;
-  var confirmacaoSenhaVar = confirmacao_senha_input.value;
-
-  // Verificando se há algum campo em branco
-  if (
-    empresaVar == "" ||
-    emailVar == "" ||
-    senhaVar == "" ||
-    confirmacaoSenhaVar == "" 
-  ) {
-    return false;
-  }
-
-  // Verificando se o código de ativação é de alguma empresa cadastrada
-
-
-  // Enviando o valor da nova input
-
-  console.log(empresaVar)
-  fetch("/usuarios/cadastrar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
-      empresaServer: empresaVar,
-      emailServer: emailVar,
-      senhaServer: senhaVar,
-    }),
-  })
-    .then(function (resposta) {
-      console.log("resposta: ", resposta);
-      if (resposta.ok) {
-          console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-      } else {
-        throw "Houve um erro ao tentar realizar o cadastro!";
-      }
-    })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-    });
-  return false;
-}
-
-// Listando empresas cadastradas 
-
-</script>
->>>>>>> 3eb0ff98ecd16dbc8cad68b49128fa7f7ac83c4d
+  <!--Sessão 2-->
+  <div class="Sessao2">
+    <div class="up">
+      <b>Sobre a NovaScan</b>
+      <h1>Quem somos?</h1>
+      <p>“Nosso compromisso vai além do <br> monitoramento”</p>
+    </div>
+    <div class="down">
+      <img src="img/unsplash_w_zE6qlkQKA.png" alt="">
+      <div class="text"></div>
+    </div>
+  </div>
