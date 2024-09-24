@@ -280,6 +280,9 @@ p .conteudoCard {
     font-size: 0.8rem;
     
 }
+.tituloSuporte .green{
+    margin-bottom: 2%;
+}
 
 .boxSuporte{
  height: 60%;
