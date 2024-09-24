@@ -56,8 +56,6 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    console.log("Empresa no Controller:", empresa);
-
     // Faça as validações dos valores
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
