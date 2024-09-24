@@ -14,6 +14,10 @@
     <input id="empresa_input" type="number" placeholder="9999" />
     </div>
     <div class="campo">
+        <span>Nome do usuário</span>
+        <input id="nome_input" type="text" placeholder="meuemail@provedor.com" />
+    </div>
+    <div class="campo">
         <span>E-mail:</span>
         <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
     </div>
@@ -37,26 +41,29 @@
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var empresaVar = Number(empresa_input.value);
+        var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var fkUsuario = sessionStorage.getItem('ID_USUARIO')
+    
 
         // Verificando se há algum campo em branco
         if (
             empresaVar == "" ||
+            nomeVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
             confirmacaoSenhaVar == ""
         ) {
+            alert("Campos em brancos")
             return false;
         }
-
-        // Verificando se o código de ativação é de alguma empresa cadastrada
-
-
+        else{
+            alert("Campos validos")
+        }
         // Enviando o valor da nova input
 
-        console.log(empresaVar)
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -66,14 +73,16 @@
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
                 empresaServer: empresaVar,
+                nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
+                fkUsuarioServer: fkUsuario
             }),
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
