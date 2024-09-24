@@ -97,12 +97,10 @@ html{
 }
 .Sessao1 .up H1{
     font-family: Montserrat;
-    font-size: 90px;
+    font-size: 80px;
     font-weight: 700;
     line-height: 109.71px;
     text-align: left;
-
-
 }
 .Sessao1 .down{
     background-color: #F84455;
@@ -122,4 +120,19 @@ html{
     line-height: 453.6px;
     text-align: left;
     color: white;
+}
+
+/*Sessão 2*/
+.Sessao2{
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+.Sessao2 .up{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
