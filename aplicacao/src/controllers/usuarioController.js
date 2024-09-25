@@ -1,19 +1,15 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var codigoEmpresa = req.body.codigoServer
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    } else if (codigoEmpresa == undefined){
-        res.status(400).send("O código da empresa está indefinido")
     } else {
-        usuarioModel.autenticar(email, senha, codigoEmpresa)
+        usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);

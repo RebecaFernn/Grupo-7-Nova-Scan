@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 
-<body onload="listarEmpresa()">
-    <div class="campo">
-        <span>Código da empresa</span>
-        <input id="cod_input" type="text" placeholder="" />
-    </div>
+<body>
     <div class="campo">
         <span>E-mail:</span>
         <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
@@ -27,11 +23,8 @@
 </html>
 <script>
 
-    var listaEmpresas = []
-
     function entrar() {
 
-        var codigoVar = Number(cod_input.value);
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
@@ -43,21 +36,8 @@
             alert("Campos validados")
         }
 
-        // verificando se o codigo da empresa é valido com o que foi buscada no banco
-        for (let i = 0; i < listaEmpresas.length; i++) {
-            if (listaEmpresas[i].id == codigoVar) {
-                empresaVar = listaEmpresas[i].id
-                console.log("Código de empresa válido.");
-                break;
-            }
-            else {
-                alert("Código de empresa inválido")
-            }
-        }
-
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
-        console.log("FORM CÓDIGO EMPRESA: ", empresaVar)
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -67,7 +47,6 @@
             body: JSON.stringify({
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                codigoServer: empresaVar,
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -100,23 +79,4 @@
         return false;
     }
 
-    // listando as empresas para ver se o código empresa é valido
-    function listarEmpresa() {
-        fetch("/empresas/listar", {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((empresas) => {
-                    empresas.forEach((empresa) => {
-                        listaEmpresas.push(empresa);
-
-                        console.log("Lista de empresas cadastradas")
-                        console.log(listaEmpresas[0].id)
-                    });
-                });
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-    }
 </script>
