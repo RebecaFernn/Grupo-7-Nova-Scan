@@ -14,6 +14,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+
+    <link rel="stylesheet" href="css/sessao3.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -64,3 +68,201 @@
       </div>
     </div>
   </div>
+    <section class="Sessao3">
+      <div class="titulos">
+  <div class="Titulo1">
+  Serviços Oferecidos Pela
+  </div>
+  <div class="Titulo2">
+  NOVASCAN
+  </div>
+      </div>
+      <div class="boxCards">
+          <div class="cards">
+              <div class="ilustracaoCardGrafico">
+                  <div class="tituloGraficoCard">
+                      <h2>Self-checkout 1</h2>
+                  </div>
+                  <div class="boxGrafico">
+                      <canvas id="myChart"></canvas>
+                  </div>
+
+              </div>
+              <div class="conteudoCard">
+                  <h2>Gráficos Intuitivos e Precisos</h2>
+                  <p>Nossos gráficos são construídos de forma única
+                      para nossos usuários, oferencendo métricas intuitivas e alinhadas
+                      sobre processador, memória ram e armazenamento das máquinas
+                      de Self-Checkout para que se possa tomar rápidas decisões, tudo isso dentro de uma Dashboard
+                      dedicada</p>
+              </div>
+          </div>
+          <div class="cards">
+              <div class="ilustracaoCardAlerta">
+                      <div class="boxCardAlerta">
+                          <img src="img/alert.svg" alt="">
+                          <h2> Armazenamento cheio! </h2>
+                      </div>
+                      <div class="entendidoCardAlerta">
+                          Entendido
+                      </div>
+              </div>
+              <div class="conteudoCard">
+                  <h2>Alertas de Variação</h2>
+                  <p>Nosso sistema de monitoramento de self-checkouts oferece alertas inteligentes que notificam
+                      imediatamente quando qualquer métrica operacional sai do intervalo padrão. Com uma dashboard
+                      intuitiva, é possível acompanhar o desempenho em tempo real, garantindo respostas rápidas a
+                      problemas e maior eficiência no gerenciamento dos dispositivos.</p>
+              </div>
+          </div>
+          <div class="cards">
+              <div class="ilustracaoCardCadastro">
+                  <div class="cadastrarUsuarioCard">
+                      Cadastrar Usuário
+                  </div>
+                  <div class="BoxcardCadastro">
+                  
+                      <div class="leftCardCadastro">
+                          <div class="bolinhaCadastro">
+                              
+                          </div>
+                          Marcelo - <strong>ID 1</strong> 
+                      </div>
+                      <div class="rightCardCadastro">
+                          <div class="green"></div>
+                          Online
+                      </div>
+                  </div>
+
+                  <div class="BoxcardCadastro">
+                      <div class="leftCardCadastro">
+                          <div class="bolinhaCadastro">
+                              
+                          </div>
+                          Pedro - <strong>ID 2</strong> 
+                      </div>
+                      <div class="rightCardCadastro">
+                          <div class="red"></div>
+                          Offline
+                      </div>
+                  </div>
+
+                  <div class="BoxcardCadastro">
+                      <div class="leftCardCadastro">
+                          <div class="bolinhaCadastro">
+                              
+                          </div>
+                          Cristiane - <strong>ID 3</strong> 
+                      </div>
+                      <div class="rightCardCadastro">
+                          <div class="green">
+
+                          </div>
+                          Online
+                      </div>
+                  </div>
+              </div>
+              <div class="conteudoCard">
+                  <h2>Cadastro de Equipe</h2>
+                  <p>Nosso sistema de monitoramento de self-checkouts permite o cadastro de equipes de forma simples e
+                      centralizada. O administrador é responsável por adicionar todos os membros, garantindo uma
+                      organização eficiente do time e facilitando o gerenciamento das atividades</p>
+              </div>
+          </div>
+          <div class="cards">
+              <div class="ilustracaoCard">
+                  <div class="tituloSuporte">
+                      <h2>Chat Cliente</h2>
+                      <div class="green"></div>
+                  </div>
+                  <div class="boxSuporte">
+                      <div class="boxMensagem1">
+                        <p>Cliente - 12:05</p> 
+                          <div class="mensagem1">
+                              Preciso de ajuda!
+                          </div>
+                      </div>
+                      <div class="boxMensagem2">
+                          <p>Suporte - 12:05</p>
+                    
+                          <div class="mensagem2">
+                              Claro! Qual seria o problema?
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="conteudoCard">
+                  <h2>Suporte dedicado 24 horas</h2>
+                  <p>Oferecemos um suporte 24 horas para os nosso clientes, com a integração das ferramentas Slack e
+                      Jira, criamos uma ponte entre
+                      a NovaScan e nossos adquirentes para qualquer ajuda e apoio em qualquer ocasião</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+</body>
+</html>
+
+<script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+  
+
+  const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6', 'Label 7'],
+          datasets: [{
+              label: '# of Votes',
+              data: [0, 0, 0, 0, 0, 0, 0],
+              backgroundColor: [
+                  '#A40E35',
+                  '#F15B82',
+                  '#A40E35',
+                  '#F15B82',
+                  '#A40E35',
+                  '#F15B82',
+                  '#A40E35'
+              ],
+              borderWidth: 1,
+              borderRadius: 5
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          },
+          plugins: {
+              legend: {
+                  display: false
+              }
+          },
+          scales: {
+              x: {
+                  ticks: {
+                      color: 'rgba(0, 0, 0, 0)' 
+                  }
+              },
+              y: {
+                  ticks: {
+                      color: 'rgba(0, 0, 0, 0)' 
+                  }
+              }
+          }
+      }
+  });
+  
+// Essa funcao cria um array com 7 elementos aleatorios e vai atualizando o grafico com eles atraves do update
+  for (let i = 1; i < 2000; i++) {
+      setTimeout(function () {
+         
+          const aleatorio = Array.from({ length: 7 }, () => Math.random() * 10);
+
+        
+          myChart.data.datasets[0].data = aleatorio;
+          myChart.update();
+      }, i * 1000);  
+  }
+</script>
