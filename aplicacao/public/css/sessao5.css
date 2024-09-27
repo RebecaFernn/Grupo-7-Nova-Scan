@@ -1,0 +1,98 @@
+.Sessao5 {
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.topFooter {
+    height: 5%;
+    width: 95%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+.logoFooter{
+    position: relative;
+    top: 90%;
+
+}
+
+.midFooter {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.boxNavegacao {
+  
+    width: 15%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+
+}
+.boxNavegacao p, .boxTelefone p, .boxEndereco p{
+    font-family: Montserrat;
+    font-weight: 600;
+  font-size: 1.875rem;
+}
+
+.boxNavegacao a, .boxTelefone a, .boxEndereco a {
+    font-family: Montserrat;
+    font-weight: 350;
+    text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+
+
+
+.boxEndereco {   
+ 
+   
+    width: 15%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+   
+}
+
+
+.boxTelefone {
+   
+    width: 15%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 1%;
+    gap: 10%;
+    align-items: start;
+}
+
+.lowFooter {
+    
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+    align-items: center;
+    width: 105%;
+    font-size: 24rem;
+    color: #F84455;
+    font-family: Prompt;
+    font-weight: 500;
+}
