@@ -179,6 +179,7 @@ html{
     flex-direction: column;
     justify-content: space-evenly;
     padding: 20px;
+    padding-left: 40px;
 
     font-family: Montserrat;
     font-size: 18px;
@@ -199,6 +200,7 @@ html{
     font-size: 18px;
     text-align: center;
     color: #F84455;
+    font-weight: 550;
 }
 .Sessao2 .down .text button:hover{
     transition: all 0.4s ease-out;
