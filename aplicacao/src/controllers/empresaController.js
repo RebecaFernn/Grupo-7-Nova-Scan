@@ -1,38 +1,35 @@
 var empresaModel = require("../models/empresaModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
-
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
+function listarCnpj(req, res) {
+  empresaModel.listarCnpj(cnpj).then((resultado) => {
     res.status(200).json(resultado);
   });
 }
 
-function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
-
-function buscarPorId(req, res) {
-  var id = req.params.id;
-
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
+function ultimaEmpresa(req, res) {
+  empresaModel.ultimaEmpresa().then((resultado) => {
+      if (resultado.length === 0) {
+          res.status(404).json({ mensagem: "Nenhuma empresa encontrada." });
+      } else {
+          res.status(200).json(resultado);
+      }
+  }).catch((erro) => {
+      console.log("Erro ao buscar a última empresa: ", erro);
+      res.status(500).json({ mensagem: "Erro interno do servidor" });
   });
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+  var cnpj = req.body.cnpjServer;
+  var nomeEmpresa = req.body.nomeEmpresaServer;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
+  empresaModel.listarCnpj(cnpj).then((resultado) => {
     if (resultado.length > 0) {
       res
         .status(401)
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
+      empresaModel.cadastrar(nomeEmpresa, cnpj).then((resultado) => {
         res.status(201).json(resultado);
       });
     }
@@ -40,8 +37,7 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
+  listarCnpj,
   cadastrar,
-  listar,
+  ultimaEmpresa,
 };
