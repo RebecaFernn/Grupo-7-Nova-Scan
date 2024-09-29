@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+  
+}
+.pgMaquinas{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.conteudoMaquinas{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.topmaquinas{
+    width: 80%;
+    height: 10%;
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn-cadastrarSelf{
+    width: 20%;
+    height: 45%;
+    background-color: #F84455;
+    border-radius: 0;
+    border: none;
+    font-size: 1.125rem;
+    font-family: Montserrat;
+    color: white;
+}
+
+
+.topmaquinas h2{
+    font-size: 3.125rem;
+    font-family: Montserrat;
+    font-weight: 500;
+}
+.boxmaquinas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de tamanho igual */
+    grid-template-rows: repeat(3, 1fr); /* 3 linhas de tamanho igual */
+    gap: 2%; 
+    width: 80%;
+    height: 80%;
+}
+.maquinas{
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-direction: column;
+    font-family: Prompt;
+}
+
+
