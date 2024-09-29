@@ -41,7 +41,7 @@ function autenticar(req, res) {
 
 }
 
-function cadastrarAdmin(req, res) {
+function cadastrarFunc(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var empresa = req.body.empresaServer;
     var nome = req.body.nomeServer;
@@ -60,7 +60,7 @@ function cadastrarAdmin(req, res) {
         res.status(400).send("O nome esta undefined");
     } else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarAdmin(nome, email, senha, fkUsuario, empresa)
+        usuarioModel.cadastrarFunc(nome, email, senha, fkUsuario, empresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -109,8 +109,22 @@ function primeiroAcesso(req, res) {
     }
 }
 
+function listarPainel(req,res){
+    var fkEmpresa = req.params.fkEmpresa
+    
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fkEmpresa esta undefined")
+    }
+    else{
+        usuarioModel.listarPainel(fkEmpresa).then((resultado) => {
+            res.status(200).json(resultado)
+        })
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrarAdmin,
-    primeiroAcesso
+    cadastrarFunc,
+    primeiroAcesso,
+    listarPainel
 }
