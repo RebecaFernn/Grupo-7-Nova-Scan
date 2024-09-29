@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+
+.login{
+    display: flex;
+    background-color: rgb(167, 165, 165);
+    width: 100%;
+    height: 100%;
+
+}
+.login .left{
+    background-color: white;
+    width: 47.8%;
+    height: 100%;
+    border-radius: 0px 50px 50px 0px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login .left .up{
+    width: 98%;
+    height: 6.5%;
+    font-family: Montserrat;
+    font-size: 29px;
+    font-weight: 600;
+    line-height: 36.57px;
+    text-align: right;
+    color: #F84455;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-right: 22px;
+}
+.login .left .down{
+    width: 57%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+}
+.login .left .down .topo{
+    font-family: Montserrat;
+    text-align: left;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 14.63px;
+    width: 100%;
+    height: 30% ;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.topo h1{
+    font-size: 47px;
+    font-weight: 600;
+    line-height: 57px;
+    margin-bottom: 13px;
+}
+.login .left .down .meio{
+    width: 100%;
+    height: 39%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+.down .meio .caixas{
+    width: 100%;
+    height: 30%;
+    border-bottom: 2px black solid;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    padding-bottom: 15px;
+    padding-left: 11px;
+}
+.down .meio .caixas input{
+    width: 95%;
+    height: 20px;
+    margin-left: 10px;
+    font-family: Montserrat;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.down .meio .options{
+    width: 100%;
+    height: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+}
+.down .meio .options button{
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: #F84455;
+    border: none;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.94px;
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+.down .meio .options a{
+    text-decoration: none;
+    color: black;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.63px;
+    text-align: right;
+
+}
+.login .left .down .baixo{
+    width: 100%;
+    height: 31%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+}
+.down .baixo .text{
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+}
+.down .baixo .text p{
+       font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    text-align: center;
+}
+.down .baixo .text a{
+    color: #1C7DD7;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 21.94px;
+    text-align: center;
+    text-decoration: none;
+}
+.down .baixo img{
+    margin-top: 50px;
+    height: 35%;
+}
+.login .right img, .color{
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+}
+.login .right img{
+    height: 99.5%;
+    width: 100%;
+    z-index: 1; 
+}
+.login .right .color{
+    z-index: 2;
+    background: #00000033;
+}
