@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+.Overview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.NavBar {
+    width: 20%;
+    height: 100%;
+    background-color: #F84455;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    /* position: fixed;
+    left: 0; */
+}
+
+.topNavBar {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    color: white;
+    font-family: Prompt;
+    font-weight: 600;
+    padding-right: 5%;
+    font-size: 1.5rem;
+}
+.links{
+    width: 80%;
+    height: 10%;
+    display: flex ;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    gap: 5%;
+   transition: 1s ease;
+   padding-left: 5%;
+    color: white;
+    font-size: 1.5rem;
+    font-family: Prompt;
+    border-radius: 15px;
+ 
+}
+.links a{
+    text-decoration: none !important;
+    color: white;
+    font-size: 1.5rem;
+}
+.links img{
+    width: 10%;
+}
+
+.links:hover{
+    background-color: rgba(0, 0, 0, 0.5) ;
+    transition: 1s;
+ 
+}
+.midNavBar {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:5%;
+ 
+}
+
+.lowNavBar {
+    height: 45%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+
+}
+
+.lowNavBar .links{
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    top: 20%;
+}
+.lowNavBar .links:hover{
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: #F84455;
+}
+.imgLow{
+    position: relative;
+    top: 20%;
+}
+
+/* FIM NAV */
+
+.conteudoOverview{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  
+    gap: 2%;
+
+}
+.topOverview{
+    width: 80%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+.topOverview h2{
+font-size: 3.125rem;
+font-family: Montserrat;
+}
+
+.selectComponente{
+    font-size: 1rem;
+    width: 20%;
+    height: 35%;
+    border: 2px solid black;
+    font-weight: 600;
+    border-radius: 0;
+
+
+
+}
+
+.selectComponente option{
+    height: 35%;
+    border: 2px solid black;
+    font-weight: 600;
+    border-radius: 0;
+
+
+}
+.selectComponente option:focus {
+    background-color: red !important;
+}
+.boxData{
+    font-size: 1.125rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 50%;
+    gap: 5%;
+    background-color: #F84455;
+    font-family: Prompt;
+
+}
+.midOverview{
+    width: 80%;
+    height: 55%;
+    background-color: #D9D9D9;
+}
+
+.lowOverview{
+    height: 25%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.boxleftLow{
+width: 35%;
+height: 100%;
+background-color: #D9D9D9;
+}
+.boxrightLow{
+width: 35%;
+height: 100%;
+background-color: #D9D9D9;
+}
+.boxcenterLow{
+width: 25%;
+height: 100%;
+background-color: #D9D9D9;
+}
+
