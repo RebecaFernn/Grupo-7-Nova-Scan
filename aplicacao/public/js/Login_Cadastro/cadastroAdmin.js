@@ -54,3 +54,27 @@
             });
         return false;
     }  
+
+    //Função para listar os usuários no painel do administrador
+    function listarFuncionarios(){
+        var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+        fetch(`/usuarios/listarPainel/${fkEmpresa}`,{
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            }
+            .then(function(resposta){
+                if(resposta.ok){
+                    resposta.json()
+                    console.log("Usuários encontrados: ", resposta)
+                }
+                else{
+                    console.log("Houve um problema ao buscar os usuários")
+                }
+            })
+        })
+        .catch(function(error){
+            console.log("Erro!: ", error)
+        })
+    }
