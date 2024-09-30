@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="./css/maquinas.css">
     <link rel="stylesheet" href="./css/navBarDash.css">
 
-
-
     <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +21,6 @@
 
 <body>
     <div class="pgMaquinas">
-
 
         <div class="NavBar">
             <div class="topNavBar">
@@ -52,8 +49,6 @@
                     <a href="">Mural</a>
                 </div>
 
-
-
             </div>
             <div class="lowNavBar">
                 <img src="./img/LogoBranca.svg" class="imgLow">
@@ -68,56 +63,101 @@
 
             <div class="topmaquinas">
                 <h2>Máquinas Self-Checkout</h2>
-                <button class="btn-cadastrarSelf">Cadastrar Self-Checkout</button>
+                <button onclick="cadastrar()" class="btn-cadastrarSelf">Cadastrar Self-Checkout</button>
             </div>
             <div class="boxmaquinas">
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
+                    <p>Maquinas 1</p>
+                    <p>(Quando cadastrar aparece automatico)</p>
+                </div>
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
+                <div class="maquinas" onclick="maquina()">
                     <p>Maquinas</p>
                     <p>(Quando cadastrar aparece automatico)</p>
                 </div>
-                <div class="maquinas">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
-                </div>
-
-
             </div>
 
         </div>
 
+        <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundoInfomaquina">
+            <div class="infomaquina" onclick="pararPropagacao()">
+            </div>
+        </div>
 
 
+        <div onclick="fecharCadastrar()" class="fundoCadastrar" id="fundoCadastrar">
+            <div class="boxCadastroMaquina" onclick="pararPropagacao()">
 
+            </div>
+        </div>
 
     </div>
+
+    <script>
+        // Função para exibir a div fundoInfomaquina
+        function maquina() {
+            const fundoInfomaquina = document.getElementById('fundoInfomaquina');
+            fundoInfomaquina.style.display = 'flex';
+        }
+
+        // Função para fechar a div fundoInfomaquina
+        function fecharInfomaquina() {
+            const fundoInfomaquina = document.getElementById('fundoInfomaquina');
+
+            fundoInfomaquina.style.display = 'none';
+            
+        }
+
+        function cadastrar() {
+            const fundoCadastrar = document.getElementById('fundoCadastrar');
+
+            fundoCadastrar.style.display = 'flex';
+            
+        }
+        
+        function fecharCadastrar() {
+            const fundoCadastrar = document.getElementById('fundoCadastrar');
+
+            fundoCadastrar.style.display = 'none';
+            
+        }
+        
+
+        function pararPropagacao(fecharInfomaquina) {
+            event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
+
+        }
+
+
+    </script>
+
 </body>
 
 </html>

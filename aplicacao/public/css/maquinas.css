@@ -79,3 +79,36 @@ body {
 }
 
 
+.fundoInfomaquina{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+   
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.infomaquina{
+    width: 80%;
+    height: 90%;
+    background-color: #D9D9D9;
+
+}
+.fundoCadastrar{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.boxCadastroMaquina{
+    width: 40%;
+    height: 90%;
+    background-color: #D9D9D9;
+}
