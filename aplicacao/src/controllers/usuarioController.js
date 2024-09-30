@@ -111,7 +111,7 @@ function primeiroAcesso(req, res) {
 
 function listarPainel(req,res){
     var fkEmpresa = req.params.fkEmpresa
-    
+
     if(fkEmpresa == undefined){
         res.status(400).send("A fkEmpresa esta undefined")
     }
@@ -119,12 +119,57 @@ function listarPainel(req,res){
         usuarioModel.listarPainel(fkEmpresa).then((resultado) => {
             res.status(200).json(resultado)
         })
+        .catch(function(error){
+            console.log(error)
+        })
     }
+}
+
+function atualizarDados(req,res){
+    var idUsuario = req.params.idUsuario
+    var fkEmpresa = req.query.fkEmpresa
+    
+    var novoEmail = req.body.novoEmailServer
+    var novoNome = req.body.novoNomeServer
+    var novaSenha = req.body.novoSenhaServer
+
+    console.log("Email: ", novoEmail)
+    console.log("Nome: ", novoNome)
+    console.log("Senha: ", novaSenha)
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fkEmpresa esta undefined")
+    }
+    else if(idUsuario == undefined){
+        res.status(400).send("O idUsuario está undefined")
+    }
+    else{
+
+        if(novoEmail == ""){
+            novoEmail = null
+        }
+        if(novoNome == ""){
+            novoNome = null
+        }
+        if(novaSenha == ""){
+            novaSenha = null
+        }
+
+        usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa)
+        .then(function(resposta){
+            console.log("Informações atualizada dentro do banco: ", resposta)
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao tentar atualizar as informações: ", error)
+        })
+    }
+    
 }
 
 module.exports = {
     autenticar,
     cadastrarFunc,
     primeiroAcesso,
-    listarPainel
+    listarPainel,
+    atualizarDados
 }

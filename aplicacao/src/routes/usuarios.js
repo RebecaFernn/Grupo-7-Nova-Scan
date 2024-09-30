@@ -20,4 +20,9 @@ router.get("/listarPainel/:fkEmpresa", function (req, res) {
     usuarioController.listarPainel(req, res);
 });
 
+router.patch("/atualizarDados/:idUsuario", function (req, res) {
+    usuarioController.atualizarDados(req, res);
+});
+
+
 module.exports = router;
