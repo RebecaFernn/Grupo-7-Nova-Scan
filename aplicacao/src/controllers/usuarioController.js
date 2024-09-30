@@ -129,13 +129,11 @@ function atualizarDados(req,res){
     var idUsuario = req.params.idUsuario
     var fkEmpresa = req.query.fkEmpresa
     
-    var novoEmail = req.body.novoEmailServer
-    var novoNome = req.body.novoNomeServer
-    var novaSenha = req.body.novoSenhaServer
-
-    console.log("Email: ", novoEmail)
-    console.log("Nome: ", novoNome)
-    console.log("Senha: ", novaSenha)
+    var novoEmail = req.body.novoEmailServer !== "" ? req.body.novoEmailServer : null
+    var novoNome = req.body.novoNomeServer !== "" ? req.body.novoNomeServer : null
+    var novaSenha = req.body.novoSenhaServer !== "" ? req.body.novoSenhaServer : null
+    var novoCargo = req.body.novoCargoServer !== "" ? req.body.novoCargoServer : null
+    var novoStatus = req.body.novoStatusServer !== "" ? req.body.novoStatusServer : null
 
     if(fkEmpresa == undefined){
         res.status(400).send("A fkEmpresa esta undefined")
@@ -144,18 +142,7 @@ function atualizarDados(req,res){
         res.status(400).send("O idUsuario está undefined")
     }
     else{
-
-        if(novoEmail == ""){
-            novoEmail = null
-        }
-        if(novoNome == ""){
-            novoNome = null
-        }
-        if(novaSenha == ""){
-            novaSenha = null
-        }
-
-        usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa)
+        usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, novoCargo, novoStatus, idUsuario, fkEmpresa)
         .then(function(resposta){
             console.log("Informações atualizada dentro do banco: ", resposta)
         })

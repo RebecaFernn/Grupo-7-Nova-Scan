@@ -59,9 +59,9 @@ function listarPainel(fkEmpresa) {
 }
 
 
-function atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa) {
+function atualizarDados(novoNome, novoEmail, novaSenha, novoCargo, novoStatus, idUsuario, fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarDados():");
-    console.log("Inserindo na tabela usuario:", novoNome, novoEmail, novaSenha);
+    console.log("Inserindo na tabela usuario:", novoNome, novoEmail, novaSenha, novoCargo, novoStatus);
 
     /*
      usando operador ternário para poder fazer uma estrutura de if-else, onde ele verifica se diferente de nulo, 
@@ -71,7 +71,9 @@ function atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa) {
     SET
         nome = COALESCE(${novoNome !== null ? `'${novoNome}'` : null}, nome),
         email = COALESCE(${novoEmail !== null ? `'${novoEmail}'` : null}, email),
-        senha = COALESCE(${novaSenha !== null ? `'${novaSenha}'` : null}, senha)   
+        senha = COALESCE(${novaSenha !== null ? `'${novaSenha}'` : null}, senha),
+        fkTipoUsuario = COALESCE(${novoCargo !== null ? `${novoCargo}` : null}, fkTipoUsuario),
+        fkStatusUsuario = COALESCE(${novoStatus !== null ? `${novoStatus}` : null}, fkStatusUsuario)
     WHERE id = ${idUsuario} AND fkEmpresa = ${fkEmpresa};
 `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

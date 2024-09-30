@@ -79,7 +79,6 @@
     }
 
     function atualizarDados(){
-
         var params = {
             idUsuario: sessionStorage.getItem('ID_USUARIO'),
             fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
@@ -88,6 +87,8 @@
         var novoEmail = email_input.value
         var novoNome = nome_input.value
         var novaSenha = senha_input.value
+        var novoCargo = cargo_input.value
+        var novoStatus = status_input.value
         var confirmarSenha = confirmar_input.value
 
         /*
@@ -103,6 +104,8 @@
               novoEmailServer: novoEmail,
               novoNomeServer: novoNome,
               novoSenhaServer: novaSenha,
+              novoCargoServer: novoCargo,
+              novoStatusServer: novoStatus
             }),
         })
         .then(function(resposta){
