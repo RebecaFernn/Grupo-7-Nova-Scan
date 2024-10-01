@@ -30,15 +30,15 @@
 
                 <div class="links">
                     <img src="./img/overview.svg" alt="">
-                    <a href="">Overview</a>
+                    <a href="overview.html">Overview</a>
                 </div>
                 <div class="links">
                     <img src="./img/selfchekout.svg" alt="">
-                    <a href="">Self-Checkouts</a>
+                    <a href="maquinas.html">Self-Checkouts</a>
                 </div>
                 <div class="links">
                     <img src="./img/colaboradores.svg" alt="">
-                    <a href="">Colaboradores</a>
+                    <a href="colaboradores.html">Colaboradores</a>
                 </div>
                 <div class="links">
                     <img src="./img/editPerfil.svg" alt="">
@@ -66,7 +66,7 @@
         <div class="conteudoColadores">
             <div class="topColaboradores">
                 <h2>Colaboradores da “Nome da empresa”</h2>
-                <button class="btn-novoColaborador">Cadrastrar novo colaborador</button>
+                <button class="btn-novoColaborador" onclick="cadastrar()">Cadrastrar novo colaborador</button>
             </div>
             <div class="box-colunas">
                 <div class="nome">Nome</div>
@@ -81,8 +81,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -90,8 +90,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -99,8 +99,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -108,8 +108,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -117,8 +117,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -126,8 +126,8 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -135,15 +135,72 @@
                 <div class="cargo" id="cargo">Desenvolvedor</div>
                 <div class="administrador" id="administrador">Nenhum</div>
                 <div class="status" id="status">Ativo</div>
-                <button id="editar"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
            
 
         </div>
+        <!-- ------ Cadastrar ----------------- -->
+        <div onclick="fechar()" class="fundoCadastrar" id="fundoCadastrar">
+            <div class="boxCadastro" onclick="pararPropagacao()">
+
+            </div>
+        </div>
 
 
+        <!-- ------------Editar------------------- -->
+        <div onclick="fechar()" class="fundoEditar" id="fundoEditar">
+            <div class="boxEditar" onclick="pararPropagacao()">
+
+            </div>
+        </div>
+
+
+
+            <!-- ------------excluir------------------- -->
+            <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
+                <div class="boxExcluir" onclick="pararPropagacao()">
+    
+                </div>
+            </div>
     </section>
 </body>
 
 </html>
+
+<script>
+       function cadastrar() {
+            const fundoCadastrar = document.getElementById('fundoCadastrar');
+
+            fundoCadastrar.style.display = 'flex';
+            
+        }
+        function pararPropagacao(fecharInfomaquina) {
+            event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
+
+        }
+        function fechar() {
+            const fundoInfomaquina = document.getElementById('fundoCadastrar');
+            const fundoEditar = document.getElementById('fundoEditar')
+            const fundoExcluir = document.getElementById('fundoExcluir')
+            fundoCadastrar.style.display = 'none';
+            fundoEditar.style.display = 'none'
+            fundoExcluir.style.display = 'none'
+            
+        }
+        //---------------------------------------- Editar e deletar --------------------------------
+
+        function editar(){
+            fundoEditar.style.display = 'flex';
+
+        }
+
+        function excluir(){
+            fundoExcluir.style.display = 'flex';
+        }
+
+
+
+
+</script>

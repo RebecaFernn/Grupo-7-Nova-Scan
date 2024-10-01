@@ -47,7 +47,9 @@ html{
     color: black;
 }
 .NAV .infos a:hover{
-    text-decoration: underline #F84455 2px;
+
+    border-bottom: #F84455 1px solid;
+    /* text-decoration: underline #F84455 2px; */
 }
 .NAV button{
     width: 134px;
@@ -208,3 +210,9 @@ html{
     height: 60px;
     margin-top: -3px;
 }
+
+/* @media screen and (max-width: 1000px) {
+    .Sessao1 .up H1{
+        font-size: 2rem;
+    }
+} */

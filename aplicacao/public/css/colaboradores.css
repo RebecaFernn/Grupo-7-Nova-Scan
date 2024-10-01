@@ -131,3 +131,63 @@ body {
     display: flex;
   
 }
+
+
+/* São essas duas divs do pop up */
+
+.fundoCadastrar{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.boxCadastro{
+    width: 40%;
+    height: 90%;
+    background-color: white;
+}
+
+
+
+/* Editar */
+.fundoEditar{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.boxEditar{
+    width: 35%;
+    height: 40%;
+    background-color: white;
+}
+
+/* Excluir */
+.fundoExcluir{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.boxExcluir{
+    width: 40%;
+    height: 50%;
+    background-color: white;
+}

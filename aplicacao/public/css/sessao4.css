@@ -166,3 +166,38 @@
     line-height: 1.2;
     text-align: left;
 }
+
+
+/* @media screen and (max-width: 1000px) {
+    .backgroudSessao4{
+        display: none;
+
+    }
+    
+    .boxForm{
+        width: 90%;
+    }
+    .titulo1 {
+    
+        font-size: 2rem;
+      
+    }
+    
+    .titulo2 {
+  
+        font-size: 1rem;
+    }
+    .buttonEnviar {
+        height: 7%;
+    }
+    .inputNome {
+        height: 70%;
+    }
+    .inputSobrenome{
+        height: 70%;
+    }
+    .inputEmail{
+        height: 8%;
+    }
+
+} */
