@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="./css/colaboradores.css">
 
 
-     <!-- FONTES -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-         rel="stylesheet">
-     <link
-         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-         rel="stylesheet">
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
                     <a href="#">Logout</a>
                 </div>
             </div>
-    
+
         </div>
 
 
@@ -138,69 +138,119 @@
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
-           
+
 
         </div>
         <!-- ------ Cadastrar ----------------- -->
         <div onclick="fechar()" class="fundoCadastrar" id="fundoCadastrar">
             <div class="boxCadastro" onclick="pararPropagacao()">
-
+                <button onclick="ChamarPopupCadastrar()">Cadastrar novo colaborador</button>
+                
             </div>
         </div>
+        <div class="popup" id="popupCadastrar">
+            <img src="img/ok.svg" alt="">
+            <h2>Cadastro realizado <br> com sucesso!</h2>
+        </div>
+
 
 
         <!-- ------------Editar------------------- -->
         <div onclick="fechar()" class="fundoEditar" id="fundoEditar">
             <div class="boxEditar" onclick="pararPropagacao()">
+                <button onclick="ChamarPopupEditar()">Confirmar</button>
+
 
             </div>
+        </div>
+        <div class="popup" id="popupEditar">
+            <img src="img/ok.svg" alt="">
+            <h2>Cargo Atualizado <br> com sucesso!</h2>
         </div>
 
 
 
-            <!-- ------------excluir------------------- -->
-            <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
-                <div class="boxExcluir" onclick="pararPropagacao()">
-    
-                </div>
+        <!-- ------------excluir------------------- -->
+        <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
+            <div class="boxExcluir" onclick="pararPropagacao()">
+                <button onclick="ChamarPopupDeletar()">Confirmar</button>
+
             </div>
+        </div>
+        <div class="popup" id="popupDeletar">
+            <img src="img/ok.svg" alt="">
+            <h2>Usuário removido <br> com sucesso!</h2>
+        </div>
+        </div>
     </section>
 </body>
 
 </html>
 
 <script>
-       function cadastrar() {
-            const fundoCadastrar = document.getElementById('fundoCadastrar');
+    function cadastrar() {
+        const fundoCadastrar = document.getElementById('fundoCadastrar');
 
-            fundoCadastrar.style.display = 'flex';
-            
-        }
-        function pararPropagacao(fecharInfomaquina) {
-            event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
+        fundoCadastrar.style.display = 'flex';
 
-        }
-        function fechar() {
-            const fundoInfomaquina = document.getElementById('fundoCadastrar');
-            const fundoEditar = document.getElementById('fundoEditar')
-            const fundoExcluir = document.getElementById('fundoExcluir')
-            fundoCadastrar.style.display = 'none';
-            fundoEditar.style.display = 'none'
-            fundoExcluir.style.display = 'none'
-            
-        }
-        //---------------------------------------- Editar e deletar --------------------------------
+    }
+    function pararPropagacao(fecharInfomaquina) {
+        event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
 
-        function editar(){
-            fundoEditar.style.display = 'flex';
+    }
+    function fechar() {
+        const fundoInfomaquina = document.getElementById('fundoCadastrar');
+        const fundoEditar = document.getElementById('fundoEditar')
+        const fundoExcluir = document.getElementById('fundoExcluir')
+        fundoCadastrar.style.display = 'none';
+        fundoEditar.style.display = 'none'
+        fundoExcluir.style.display = 'none'
 
-        }
+    }
+    //---------------------------------------- Editar e deletar --------------------------------
 
-        function excluir(){
-            fundoExcluir.style.display = 'flex';
-        }
+    function editar() {
+        fundoEditar.style.display = 'flex';
 
+    }
 
+    function excluir() {
+        fundoExcluir.style.display = 'flex';
+    }
+    //-----------------pop up cadastrar -----------------
+
+    function ChamarPopupCadastrar() {
+        fechar()
+        var div = document.getElementById("popupCadastrar");
+        div.style.display = "flex"; 
+
+        setTimeout(function () {
+            div.style.display = "none"; 
+        }, 2000);
+    }
+
+    // ---------------pup up editar----------------
+    function ChamarPopupEditar() {
+        fechar()
+        var div = document.getElementById("popupEditar");
+        div.style.display = "flex"; 
+
+        setTimeout(function () {
+            div.style.display = "none"; 
+        }, 2000);
+    }
+
+    //--------------popup deletar---------------
+
+    function ChamarPopupDeletar() {
+        fechar()
+        var div = document.getElementById("popupDeletar");
+        div.style.display = "flex";
+
+        setTimeout(function () {
+            div.style.display = "none"; 
+        }, 2000);
+    }
 
 
 </script>

@@ -168,7 +168,7 @@
 }
 
 
-/* @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .backgroudSessao4{
         display: none;
 
@@ -200,4 +200,4 @@
         height: 8%;
     }
 
-} */
+} 
