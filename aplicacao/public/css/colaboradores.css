@@ -169,8 +169,48 @@ body {
 
 .boxEditar{
     width: 35%;
-    height: 40%;
+    height: 35%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.boxEditar select{
+    width: 47%;
+    border: #F84455 solid 7px;
+    height: 70px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 70px;
+}
+option{
+    width: 47%;
+    height: 70px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+}
+.boxEditar button{
+    width: 50%;
+    height: 50px;
+    background-color: #F84455;
+    border: none;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 10px;
+    margin-bottom: 40px;
 }
 
 /* Excluir */

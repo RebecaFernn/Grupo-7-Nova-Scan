@@ -158,14 +158,19 @@
         <!-- ------------Editar------------------- -->
         <div onclick="fechar()" class="fundoEditar" id="fundoEditar">
             <div class="boxEditar" onclick="pararPropagacao()">
+                <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                <select name="" id="">
+                    <option disabled selected>Escolha um cargo</option>
+                    <option value="">Administrador</option>
+                    <option value="">Funcionário</option>
+                </select>
                 <button onclick="ChamarPopupEditar()">Confirmar</button>
-
 
             </div>
         </div>
         <div class="popup" id="popupEditar">
             <img src="img/ok.svg" alt="">
-            <h2>Cargo Atualizado <br> com sucesso!</h2>
+            <h2>Cargo atualizado <br> com sucesso!</h2>
         </div>
 
 
