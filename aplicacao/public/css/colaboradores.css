@@ -186,7 +186,8 @@ body {
     font-weight: 600;
     line-height: normal;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 90px;
+    border-radius: 5px;
 }
 option{
     width: 47%;
@@ -199,7 +200,7 @@ option{
     text-align: center;
 }
 .boxEditar button{
-    width: 50%;
+    width: 55%;
     height: 50px;
     background-color: #F84455;
     border: none;
@@ -210,7 +211,7 @@ option{
     font-weight: 700;
     line-height: normal;
     border-radius: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 /* Excluir */
