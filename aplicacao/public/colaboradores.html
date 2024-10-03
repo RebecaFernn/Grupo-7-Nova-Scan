@@ -173,7 +173,15 @@
         <!-- ------------excluir------------------- -->
         <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
             <div class="boxExcluir" onclick="pararPropagacao()">
-                <button onclick="ChamarPopupDeletar()">Confirmar</button>
+                <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                <div class="titulosExcluir">
+                    <h2>Deseja excluir este usuário?</h2>
+                    <p>Repita a frase do campo</p>
+    
+                </div>
+              
+                <input type="text" id="inputExcluir" placeholder="excluir usuário">
+                <button onclick="validarExclusao()">Confirmar</button>
 
             </div>
         </div>
@@ -241,6 +249,17 @@
     }
 
     //--------------popup deletar---------------
+    function validarExclusao(){
+        var input = document.getElementById("inputExcluir").value;
+
+
+        if(input == "excluir usuário"){
+            ChamarPopupDeletar()
+        }else{
+            alert("Verifique se a frese está correta!")
+        }
+    }
+
 
     function ChamarPopupDeletar() {
         fechar()
