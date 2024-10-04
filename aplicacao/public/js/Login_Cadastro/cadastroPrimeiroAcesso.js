@@ -46,7 +46,6 @@ function cadastrarUserAdmin() {
    Aqui terá validações das inputs
     */
    
-    
         // Fetch para o caminho do usuário ADMIN
         fetch("/usuarios/primeiroAcesso", {
             method: "POST",
