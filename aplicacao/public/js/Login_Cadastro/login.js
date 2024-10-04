@@ -40,6 +40,10 @@
 
                 alert("Login realizado com sucesso")
 
+                setTimeout(function () {
+                    window.location = "overview.html";
+                }, 1000);
+
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {

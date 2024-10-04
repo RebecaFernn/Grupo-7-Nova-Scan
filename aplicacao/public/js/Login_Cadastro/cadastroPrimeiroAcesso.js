@@ -16,35 +16,24 @@ function cadastrarEmpresa() {
         }),
     })
         .then(function (resposta) {
-            console("resposta: ", resposta)
+            console.log("resposta: ", resposta)
             if (resposta.ok) {
                 // Aqui terá um Sweet alert
                 console.log("Cadastro da empresa realizado")
+                setTimeout(() => {
+                    window.location = "cadastro_02.html";
+                  }, "2000");
+            
             }
             else {
                 throw "Houve um erro ao tentar realizar o cadastro da empresa"
             }
         })
         .catch(function (resposta) {
-            console(`Erro: ${resposta}`)
+            console.log(`Erro: ${resposta}`)
         })
 }
 
-function buscarUltimaEmpresa() {
-    fetch("/empresas/ultimaEmpresa", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-        .then(function (resposta) {
-            console.log("Ultima empresa listada: ", resposta)
-            return resposta
-        })
-        .catch(function (erro) {
-            console.log("Erro ao tentar buscar a empresa Erro: ", erro)
-        })
-}
 
 //Segunda parte do cadastro onde é o primeiro login feito para aquela empresa, no caso o administrador
 function cadastrarUserAdmin() {
@@ -52,16 +41,12 @@ function cadastrarUserAdmin() {
     var email = email_input.value
     var senha = senha_input.value
     var confirmarSenha = confirmar_input.value
-    var ultimaEmpresa = buscarUltimaEmpresa()
 
     /*
    Aqui terá validações das inputs
     */
    
-    if (ultimaEmpresa.length < 0) {
-        console.log("Houve um erro no cadastro da empresa")
-    }
-    else {
+    
         // Fetch para o caminho do usuário ADMIN
         fetch("/usuarios/primeiroAcesso", {
             method: "POST",
@@ -71,8 +56,7 @@ function cadastrarUserAdmin() {
             body: JSON.stringify({
                 nomeServer: nome,
                 emailServer: email,
-                senhaServer: senha,
-                fkEmpresaServer: ultimaEmpresa
+                senhaServer: senha
             }),
         })
 
@@ -81,6 +65,10 @@ function cadastrarUserAdmin() {
                 if (resposta.ok) {
                     // Aqui terá um Sweet alert
                     console.log("Cadastro do usuário admin realizado")
+                    setTimeout(() => {
+                        window.location = "login.html";
+                      }, "2000");
+
                 }
                 else {
                     throw "Houve um erro ao tentar realizar o cadastro do usuário admin"
@@ -89,5 +77,5 @@ function cadastrarUserAdmin() {
             .catch(function (resposta) {
                 console.log(`Erro: ${resposta}`)
             })
-    }
+    
 }

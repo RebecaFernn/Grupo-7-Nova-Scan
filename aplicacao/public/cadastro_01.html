@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
     <link rel="stylesheet" href="css/cadastro.css">
+
 </head>
 <body>
     <div class="login">
@@ -23,14 +24,14 @@
                 <div class="meio">
                     <div class="caixas_1">
                         <img src="img/Vector.svg" alt="">
-                        <input type="text" placeholder="Nome da Empresa">
+                        <input type="text" id="nomeEmpresa_input" placeholder="Nome da Empresa">
                     </div>
                     <div class="caixas_1">
                         <img src="img/Vector.png" alt="">
-                        <input type="number" placeholder="CNPJ">
+                        <input type="number" id="cnpj_input" placeholder="CNPJ">
                     </div>
                     <div class="options">
-                        <button>Próximo...</button>
+                        <button onclick="cadastrarEmpresa()">Próximo...</button>
                     </div>
                 </div>
                 <div class="baixo">
@@ -43,5 +44,7 @@
             <img src="img/402.png" alt="">
         </div>
     </div>
+
+    <script src="js/Login_Cadastro/cadastroPrimeiroAcesso.js"></script>
 </body>
 </html>

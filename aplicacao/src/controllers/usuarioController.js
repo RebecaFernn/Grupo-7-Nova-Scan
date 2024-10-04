@@ -82,18 +82,15 @@ function primeiroAcesso(req, res) {
     var nome = req.body.nomeServer
     var email = req.body.emailServer
     var senha = req.body.senhaServer
-    var fkEmpresa = req.body.fkEmpresaServer
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (nome == undefined) {
-        res.status(400).send("O nome esta undefined");
-    } else if(fkEmpresa == undefined){
-        res.status(400).send("A fkEmpresa esta undefined")
+        res.status(400).send("O nome esta undefined")
     } else {
-        usuarioModel.primeiroAcesso(nome, email, senha, fkEmpresa)
+        usuarioModel.primeiroAcesso(nome, email, senha)
             .then(
                 function (resposta) {
                     res.json(resposta)

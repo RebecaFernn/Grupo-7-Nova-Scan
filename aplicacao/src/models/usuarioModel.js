@@ -23,12 +23,12 @@ function cadastrarFunc(nome, email, senha, fkUsuario, empresa) {
     return database.executar(instrucaoSql);
 }
 
-function primeiroAcesso(nome, email, senha, fkEmpresa) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function primeiroAcesso():", nome, email, senha, fkEmpresa);
-    console.log("Inserindo na tabela usuario:", nome, email, senha, fkEmpresa);
+function primeiroAcesso(nome, email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function primeiroAcesso():", nome, email, senha);
+    console.log("Inserindo na tabela usuario:", nome, email, senha);
 
     var instrucaoSql = `
-           INSERT INTO usuario (nome, email, senha, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES ('${nome}', '${email}', '${senha}', ${fkEmpresa}, 1, 1); 
+           INSERT INTO usuario (nome, email, senha, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES ('${nome}', '${email}', '${senha}', (SELECT MAX(id) AS 'Último ID' FROM empresa), 1, 1); 
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
