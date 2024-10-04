@@ -1,0 +1,11 @@
+FROM node:latest
+
+git clone https://github.com/RebecaFernn/Grupo-7-Nova-Scan.git
+
+WORKDIR /Grupo-7-Nova-Scan.git/aplicacao
+
+RUN npm install
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
