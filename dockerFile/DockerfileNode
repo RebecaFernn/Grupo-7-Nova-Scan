@@ -1,8 +1,8 @@
 FROM node:latest
 
-git clone https://github.com/RebecaFernn/Grupo-7-Nova-Scan.git
+WORKDIR /novaScan
 
-WORKDIR /Grupo-7-Nova-Scan.git/aplicacao
+COPY /Grupo-4-Nova-Scan/aplicacao /novaScan/
 
 RUN npm install
 
