@@ -90,11 +90,29 @@
                                 <input class="ip_4" type="text" placeholder="Confirme sua nova senha">
                             </div>
                         </div>
-                        <button>Confirmar</button>
+                        <button onclick="ChamarPopupPerfil()">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="popup" id="popupPerfil">
+            <img src="img/ok.svg" alt="">
+            <h2>Perfil atualizado!</h2>
+        </div>
+        </div>
 </section>
 </body>
 </html>
+<script>
+
+
+function ChamarPopupPerfil() {
+        var div = document.getElementById("popupPerfil");
+        div.style.display = "flex"; 
+
+        setTimeout(function () {
+            div.style.display = "none"; 
+        }, 2000);
+    }
+
+</script>
