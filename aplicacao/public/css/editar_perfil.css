@@ -130,3 +130,20 @@ body {
 .infos .objects .caixas .ip_4{
     width: 100%;
 }
+
+.popup{
+    width: 35%;
+    height: 40%;
+    z-index: 100;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 2.125rem;
+    gap: 5%;
+    border-radius: 15px;
+}
