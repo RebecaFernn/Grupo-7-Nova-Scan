@@ -15,4 +15,11 @@ function atualizarNome(novoNome, fkEmpresa, idDispositivo) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { lista, atualizarNome };
+function atualizarStatus(status, fkEmpresa, idDispositivo) {
+  var instrucaoSql = `UPDATE historicodipositivo SET fkAtividade = ${status} WHERE fkDispositivo = ${idDispositivo}`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { lista, atualizarNome, atualizarStatus };

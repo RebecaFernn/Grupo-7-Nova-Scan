@@ -30,6 +30,28 @@ function atualizarNome(req,res){
   }
 }
 
+
+function atualizarStatus(req,res){
+  var fkEmpresa = req.params.fkEmpresa;
+  var idDispositivo = req.query.idDispositivo
+  var status = req.body.statusServer;
+
+  if(status == undefined){
+    res.status(400).send("O status esta undefined")
+  }
+  else{
+    maquinasModel.atualizarStatus(status, fkEmpresa, idDispositivo)
+    .then(function(resultado){
+        console.log("Status atualizado com sucesso")
+        res.json(resultado)
+    })
+    .catch(function(erro){
+      console.log(erro)
+      console.log(`Houve um erro ao atualizar o status! Erro: ${erro.sqlMessage}`)
+      res.status(500).json(erro.sqlMessage)
+    })
+  }
+}
 module.exports = {
     lista,
     atualizarNome

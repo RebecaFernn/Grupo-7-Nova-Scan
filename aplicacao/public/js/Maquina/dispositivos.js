@@ -40,4 +40,27 @@ function atualizarNomeDispositivo(){
         console.log("Erro!: ", error)
     })
 }
+
+function atualizarStatus(){
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    var idDispositivo = sessionStorage.getItem('ID_DISPOSITIVO')
+    var status = status_dispositivo.value
+
+    fetch(`/maquinas/atualizarStatus/${fkEmpresa}?idDispositivo=${idDispositivo}`,{
+        method: 'POST',
+        headers: {contentType: 'application/json'},
+        body: JSON.stringify({
+            statusServer: status
+        })
+    })
+    .then(function(resposta){
+        if(resposta.ok){
+            resposta.json()
+            console.log("Status atualizado com sucesso")
+        }
+    })
+    .catch(function(error){
+        console.log("Erro!: ", error)
+    })
+}
     
