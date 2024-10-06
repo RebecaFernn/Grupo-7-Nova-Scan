@@ -1,5 +1,5 @@
 
-    function cadastrar() {
+    function cadastrarColaborador() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var empresaVar = sessionStorage.getItem('FK_EMPRESA')
@@ -44,6 +44,7 @@
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
                     console.log("CADASTRO DE COLABORADOR REALIZADO")
+                    ChamarPopupCadastrar()
                 } else {
                     throw console.log("Houve um erro ao tentar realizar o cadastro!");
                 }
