@@ -144,8 +144,39 @@
         <!-- ------ Cadastrar ----------------- -->
         <div onclick="fechar()" class="fundoCadastrar" id="fundoCadastrar">
             <div class="boxCadastro" onclick="pararPropagacao()">
-                <button onclick="ChamarPopupCadastrar()">Cadastrar novo colaborador</button>
-                
+                    <div class="up">
+                        NOVASCAN
+                        <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                    </div>  
+                <div class="down">
+                    <div class="topo">
+                        <h1>Cadastre um novo<br>colaborador</h1>
+                    </div>
+                    <div class="meio">
+                        <div class="caixas">
+                            <img src="img/Vector (3).svg" alt="">
+                            <input type="text" id="email_input" placeholder="Nome do colaborador">
+                        </div>
+                        <div class="caixas">
+                            <img src="img/Vector (1).svg" alt="">
+                            <input type="text" id="email_input" placeholder="Email do colaborador">
+                        </div>
+                        <div class="caixas">
+                            <img src="img/Vector (2).svg" alt="">
+                            <input type="text" id="email_input" placeholder="Digite a primeira senha de acesso">
+                        </div>
+                        <div class="caixas">
+                            <img src="img/Vector (2).svg" alt="">
+                            <input type="password" id="senha_input" placeholder="Confirma a primeira senha de acesso">
+                        </div>
+                        <div class="options">
+                            <button onclick="ChamarPopupCadastrar()">Cadastrar novo colaborador</button>
+                        </div>
+                    </div>
+                    <div class="baixo">
+                        <img src="img/Logo NovaScan.svg" alt="">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="popup" id="popupCadastrar">
