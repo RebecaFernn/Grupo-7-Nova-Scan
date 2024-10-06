@@ -155,7 +155,7 @@
                     <div class="meio">
                         <div class="caixas">
                             <img src="img/Vector (3).svg" alt="">
-                            <input type="text" id="email_input" placeholder="Nome do colaborador">
+                            <input type="text" id="nome_input" placeholder="Nome do colaborador">
                         </div>
                         <div class="caixas">
                             <img src="img/Vector (1).svg" alt="">
@@ -163,14 +163,14 @@
                         </div>
                         <div class="caixas">
                             <img src="img/Vector (2).svg" alt="">
-                            <input type="text" id="email_input" placeholder="Digite a primeira senha de acesso">
+                            <input type="text" id="senha_input" placeholder="Digite a primeira senha de acesso">
                         </div>
                         <div class="caixas">
                             <img src="img/Vector (2).svg" alt="">
-                            <input type="password" id="senha_input" placeholder="Confirma a primeira senha de acesso">
+                            <input type="password" id="confirmacao_senha_input" placeholder="Confirma a primeira senha de acesso">
                         </div>
                         <div class="options">
-                            <button onclick="ChamarPopupCadastrar()">Cadastrar novo colaborador</button>
+                            <button onclick="cadastrar(), ChamarPopupCadastrar()">Cadastrar novo colaborador</button>
                         </div>
                     </div>
                     <div class="baixo">
@@ -179,6 +179,11 @@
                 </div>
             </div>
         </div>
+
+        <!--Por algum motivo não vai..-->
+        <script src="js/Login_Cadastro/Dashboard.js"></script>
+
+
         <div class="popup" id="popupCadastrar">
             <img src="img/ok.svg" alt="">
             <h2>Cadastro realizado <br> com sucesso!</h2>

@@ -43,9 +43,9 @@
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                    console.log("CADASTRO DE COLABORADOR REALIZADO")
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    throw console.log("Houve um erro ao tentar realizar o cadastro!");
                 }
             })
             .catch(function (resposta) {
