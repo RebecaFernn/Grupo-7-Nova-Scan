@@ -16,17 +16,6 @@ if [ $? = 0 ]; #se retorno for igual a 0
     fi #fecha o 2º if
 fi #fecha o 1º if
 
-curl --silent -L https://github.com/docker/buildx/releases/download/v0.12.0/buildx-v0.12.0.linux-amd64 -o buildx-v0.12.0.linux-amd64
-chmod a+x buildx-v0.12.0.linux-amd64
-
-chmod +x ~/.docker/cli-plugins/
-mv buildx-v0.12.0.linux-amd64 ~/.docker/cli-plugins/
-cd ~/.docker/cli-plugins/
-apt install docker-buildx
-
-cd
-cd Grupo-7-Nova-Scan
-
 echo "inicializando o docker..."
 
 sudo systemctl start docker
