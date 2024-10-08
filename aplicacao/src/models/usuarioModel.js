@@ -38,21 +38,7 @@ function listarPainel(fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPainel():");
 
     var instrucaoSql = `
-          SELECT u.nome, 
-                u.email,  
-                adm.nome as 'Administrador Por:', 
-                tu.tipo, 
-                su.situacao 
-                FROM usuario as u 
-                LEFT JOIN usuario as adm
-                ON adm.id = u.fkAdmin
-                JOIN empresa as e 
-                ON e.id = u.fkEmpresa
-                JOIN tipoUsuario as tu
-                ON tu.id = u.fkTipoUsuario
-                JOIN statusUsuario as su
-                ON su.id = u.fkStatusUsuario
-                    WHERE u.fkEmpresa = ${fkEmpresa}; 
+          SELECT * FROM listaFuncionarios WHERE fkEmpresa = ${fkEmpresa}; 
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
