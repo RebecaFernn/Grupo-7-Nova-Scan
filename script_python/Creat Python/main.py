@@ -1,6 +1,6 @@
 import banco as bd
 import capturasComponente as cp
-import capturaDados as cd
+import dadosComponente as cd
 import time as t
 from textwrap import dedent
 
@@ -29,7 +29,6 @@ def main():
                 """))
                 
                 opcao = input()
-                # TESTAR AS OPÇÕES DO MENU
                 if opcao == "1":
                     print(f"Fazendo a listagem de máquinas da empresa do código: {codigoEmpresa}")
                     t.sleep(3)
@@ -115,10 +114,12 @@ def cadastrarComponentes():
     
     print("Iniciando a captura de dados dos componentes...")
     print("Caso deseje encerrar a captura pressione CTRL + C")
+    t.sleep(3)
+    
     print(f"Selecionando componentes do dispositivo {nomeMaquina}") 
     print("Começando a captura dos dados...")
     
-    t.sleep(3)
+    t.sleep(2)
     print("Iniciando Captura de dados do armazenamento...")
     cd.capturaArmazenamento(idMaquina)
     t.sleep(2)
