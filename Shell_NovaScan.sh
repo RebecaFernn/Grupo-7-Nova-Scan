@@ -33,9 +33,9 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 sudo docker build -t node .
-sudo docker run -d --name novascan_web -p 8080:8080 node
+sudo docker run -d --name novascan -p 8080:8080 node
 
-sudo docker exec -it novascan_web bash
+sudo docker exec -it novascan bash
 
 sudo apt-get update && apt-get install nano
 
