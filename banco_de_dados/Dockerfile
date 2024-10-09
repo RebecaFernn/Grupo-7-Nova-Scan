@@ -6,6 +6,4 @@ ENV MYSQL_USER=root
 
 COPY ./Script_Novascan.sql/ /docker-entrypoint-initdb.d/
 
-RUN mysql -u root -purubu100
-
 EXPOSE 3306

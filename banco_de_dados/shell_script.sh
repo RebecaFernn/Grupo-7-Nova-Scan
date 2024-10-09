@@ -22,11 +22,6 @@ sudo systemctl enable docker
 sudo docker build -t banco_novascan .
 sudo docker run -d --name bd-novascan -p 3306:3306 banco_novascan
 
-sudo docker exec -it bd-novascan bash
-
 echo "configurando o mysql..."
 
-mysql -u root -purubu100
-USE novaScan;
-
-echo "Bem Vindo ao seu banco!"
+sudo docker exec -it bd-novascan bash
