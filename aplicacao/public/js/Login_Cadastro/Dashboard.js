@@ -1,29 +1,26 @@
 
-    function cadastrarColaborador() {
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var empresaVar = sessionStorage.getItem('FK_EMPRESA')
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        var fkUsuario = sessionStorage.getItem('ID_USUARIO')
-    
-        // Verificando se há algum campo em branco
-        if (
-            empresaVar == "" ||
-            nomeVar == "" ||
-            emailVar == "" ||
-            senhaVar == "" ||
-            confirmacaoSenhaVar == ""
-        ) {
-            alert("Campos em brancos")
-            return false;
-        }
-        else{
-            alert("Campos validos")
-        }
-        // Enviando o valor da nova input
+function cadastrarColaborador() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var empresaVar = sessionStorage.getItem('FK_EMPRESA')
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var fkUsuario = sessionStorage.getItem('ID_USUARIO')
+
+    // Verificando se há algum campo em branco
+    if (
+        empresaVar == "" ||
+        nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+    ) {
+        alert("Campos em brancos")
+        return false;
+    }
+    else {
 
         fetch("/usuarios/cadastrarFunc", {
             method: "POST",
@@ -53,72 +50,73 @@
                 console.log(`#ERRO: ${resposta}`);
             });
         return false;
-    }  
+    }
+}
 
-    //Função para listar os usuários no painel de colaboradores
-    function listarFuncionarios(){
-        // var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+//Função para listar os usuários no painel de colaboradores
+function listarFuncionarios() {
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
-        fetch(`/usuarios/listarPainel/${fkEmpresa}`,{
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-            }
-            .then(function(resposta){
-                if(resposta.ok){
+    fetch(`/usuarios/listarPainel/${fkEmpresa}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+        }
+            .then(function (resposta) {
+                if (resposta.ok) {
                     resposta.json()
                     console.log("Usuários encontrados: ", resposta)
                 }
-                else{
+                else {
                     console.log("Houve um problema ao buscar os usuários")
                 }
             })
-        })
-        .catch(function(error){
+    })
+        .catch(function (error) {
             console.log("Erro!: ", error)
         })
+}
+
+function atualizarDados() {
+    var params = {
+        idUsuario: sessionStorage.getItem('ID_USUARIO'),
+        fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
     }
 
-    function atualizarDados(){
-        var params = {
-            idUsuario: sessionStorage.getItem('ID_USUARIO'),
-            fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
-        }
-        
-        var novoEmail = email_input.value
-        var novoNome = nome_input.value
-        var novaSenha = senha_input.value
-        var novoCargo = cargo_input.value
-        var novoStatus = status_input.value
-        var confirmarSenha = confirmar_input.value
+    var novoEmail = email_input.value
+    var novoNome = nome_input.value
+    var novaSenha = senha_input.value
+    var novoCargo = cargo_input.value
+    var novoStatus = status_input.value
+    var confirmarSenha = confirmar_input.value
 
-        /*
-        aqui terá validações de input
-        */
+    /*
+    aqui terá validações de input
+    */
 
-        fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`,{
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              novoEmailServer: novoEmail,
-              novoNomeServer: novoNome,
-              novoSenhaServer: novaSenha,
-              novoCargoServer: novoCargo,
-              novoStatusServer: novoStatus
-            }),
-        })
-        .then(function(resposta){
-            if(resposta.ok){
+    fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            novoEmailServer: novoEmail,
+            novoNomeServer: novoNome,
+            novoSenhaServer: novaSenha,
+            novoCargoServer: novoCargo,
+            novoStatusServer: novoStatus
+        }),
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
                 resposta.json()
                 console.log("Informações atualizadas no banco com sucesso: ", resposta)
             }
-            else{
+            else {
                 console.log("Houve um problema ao atualizar as informações")
             }
         })
-        .catch(function(error){
+        .catch(function (error) {
             console.log("Erro ao atualizar os dados: ", error)
         })
-    }
+}

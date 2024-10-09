@@ -1,15 +1,19 @@
-    function entrar() {
+function entrar() {
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-        // validando se as inputs estão vazias
-        if (emailVar == "" || senhaVar == "") {
-            alert("todos os campos estão em branco")
-        }
-        else {
-            alert("Campos validados")
-        }
+    // validando se as inputs estão vazias
+    if (emailVar == "" || senhaVar == "") {
+        Swal.fire({
+            title: 'Preencha todos os campos!',
+            icon: 'warning',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 2000
+        })
+    }
+    else {
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -38,22 +42,34 @@
                     sessionStorage.FK_EMPRESA = json.fkEmpresa;
                 });
 
-                alert("Login realizado com sucesso")
-
+                Swal.fire({
+                    title: 'Sucesso ao fazer o login!',
+                    text: 'Redirecionando para a tela de Dashboard!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                console.log("Login realizado com sucesso");
                 setTimeout(function () {
                     window.location = "overview.html";
-                }, 1000);
+                }, 2000);
 
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {
                     console.error(texto);
+                    Swal.fire({
+                        title: 'Houve um erro ao tentar realizar o login!',
+                        text: 'Tente novamente',
+                        icon: 'error',
+                        showConfirmButton: false,
+                    })
                 });
             }
 
         }).catch(function (erro) {
             console.log(erro);
         })
-
         return false;
     }
+}

@@ -176,3 +176,12 @@ html{
     z-index: 2;
     background: #00000033;
 }
+
+/* Customização da fonte do Sweet Alert */
+.swal2-title{
+    font-family: Montserrat;
+}
+.swal2-text{
+    font-family: Montserrat;
+    font-size: 14px;
+}
