@@ -1,6 +1,7 @@
 import psutil as ps 
 import cpuinfo as cp
 import time as t
+import datetime as dt
 
 
 # Capturas de processador
@@ -79,15 +80,19 @@ def pacotesPerdidos():
         pacotesPerdidos += errin + errout
      
         i += 1
-        t.sleep(3)
      
     if pacotesPerdidos > 0:    
         perdaPorcentagem = (pacotesPerdidos / pacotesTotal) * 100 
     else:
         perdaPorcentagem = 0
 
-    return "Porcentagem de Perda: {:.2f}%".format(perdaPorcentagem)
+    return "{:.2f}".format(perdaPorcentagem)
 
-
+# Capturando o tempo de boot 
+def bootTime():
+    boot = ps.boot_time()
+    tempoConvertido = dt.datetime.fromtimestamp(boot)
+    formatado = tempoConvertido.strftime("%Y/%m/%d %H:%M:%S")
+    return formatado
 
 

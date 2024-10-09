@@ -24,7 +24,7 @@ def insert(query):
             sql_query = query
             mycursor.execute(sql_query)
             mydb.commit()
-            return "Quantidade de registros inseridos no banco: ", mycursor.rowcount 
+            return mycursor.rowcount 
             
     except Error as e:
         print("Erro ao conectar com o MySQL", e)
