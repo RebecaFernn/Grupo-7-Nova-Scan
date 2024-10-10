@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/Parte_superior.css">
-  <title>NovaScan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Parte_superior.css">
+    <title>NovaScan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="css/sessao3.css">
     <link rel="stylesheet" href="css/sessao4.css">
@@ -23,312 +23,350 @@
 </head>
 
 <body>
-  <!--NAV-->
-  <div class="NAV">
-    <img src="img/Logo NovaScan.svg" alt="">
-    <div class="infos">
-      <a href="#Sessao1">Inicio</a>
-      <a href="#Sessao2">Sobre</a>
-      <a href="#Sessao3">Serviços</a>
-      <a href="#Sessao4">Contato</a>
+    <!--Nav Mobile -->
+    <div class="hamburguer" id="hamburguer">
+        <div class="topHamburguer">
+            <img src="./img/menuHamburguer.svg" alt="">
+        </div>
+        <div class="midHamburguer">
+            <div class="links" id="links">
+                <a href="#Sessao1">Inicio</a>
+                <a href="#Sessao2">Sobre</a>
+                <a href="#Sessao3">Serviços</a>
+                <a href="#Sessao4">Contato</a>
+            </div>
+            <button class="btnHamburguer" onclick="window.location.href='login.html'">
+                Login
+            </button>
+        </div>
     </div>
-    <button onclick="window.location.href='login.html'">
-      Login
-    </button>
-  </div>
-  <!--Sessão 1-->
-  <div class="Sessao1" id="Sessao1">
-    <img src="img/f7aa6ce38ee195708db90ba2ab2e444a.png" alt="">
-    <div class="up">
-      <h1>Monitoramento <br> Adequado</h1>
-      <h1>Para Self- <br> Checkout com </h1>
-    </div>
-    <div class="down">
-      <h1>NOVASCAN</h1>
-    </div>
-  </div>
-  <!--Sessão 2-->
-  <div class="Sessao2" id="Sessao2">
-    <div class="up">
-      <b>Sobre a NovaScan</b>
-      <h1>Quem somos?</h1>
-      <p>“Nosso compromisso vai além do <br> monitoramento”</p>
-    </div>
-    <div class="down">
-      <img src="img/unsplash_w_zE6qlkQKA.png" alt="">
-      <div class="text">
-        NOVASCAN
-        <h3>
-          Somos uma empresa que <br> prioriza o <br>
-          desempenho e cuidado que <br> você merece,<br>
-          através da nossa tecnológia <br> avançada de monitoramento
-        </h3>
-        Conheça nosso serviço de monitoramento
-        <button>
-          Conhecer
+
+
+
+    <!--NAV-->
+    <div class="NAV">
+        <img src="img/Logo NovaScan.svg" alt="">
+        <div class="infos">
+            <a href="#Sessao1">Inicio</a>
+            <a href="#Sessao2">Sobre</a>
+            <a href="#Sessao3">Serviços</a>
+            <a href="#Sessao4">Contato</a>
+        </div>
+        <button onclick="window.location.href='login.html'">
+            Login
         </button>
-      </div>
     </div>
-  </div>
-  <!-- Sessao 3 -->
+    <!--Sessão 1-->
+    <div class="Sessao1" id="Sessao1">
+        <img src="img/f7aa6ce38ee195708db90ba2ab2e444a.png" alt="">
+        <div class="up">
+            <h1>Monitoramento <br> Adequado</h1>
+            <h1>Para Self- <br> Checkout com </h1>
+        </div>
+        <div class="down">
+            <h1>NOVASCAN</h1>
+        </div>
+    </div>
+    <!--Sessão 2-->
+    <div class="Sessao2" id="Sessao2">
+        <div class="up">
+            <b>Sobre a NovaScan</b>
+            <h1>Quem somos?</h1>
+            <p>“Nosso compromisso vai além do <br> monitoramento”</p>
+        </div>
+        <div class="down">
+            <img src="img/unsplash_w_zE6qlkQKA.png" alt="">
+            <div class="text">
+                NOVASCAN
+                <h3>
+                    Somos uma empresa que <br> prioriza o <br>
+                    desempenho e cuidado que <br> você merece,<br>
+                    através da nossa tecnológia <br> avançada de monitoramento
+                </h3>
+                Conheça nosso serviço de monitoramento
+                <button>
+                    Conhecer
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Sessao 3 -->
     <section class="Sessao3" id="Sessao3">
-      <div class="titulos">
-  <div class="Titulo1">
-  Serviços Oferecidos Pela
-  </div>
-  <div class="Titulo2">
-  NOVASCAN
-  </div>
-      </div>
-      <div class="boxCards">
-          <div class="cards">
-              <div class="ilustracaoCardGrafico">
-                  <div class="tituloGraficoCard">
-                      <h2>Self-checkout 1</h2>
-                  </div>
-                  <div class="boxGrafico">
-                      <canvas id="myChart"></canvas>
-                  </div>
-
-              </div>
-              <div class="conteudoCard">
-                  <h2>Gráficos Intuitivos e Precisos</h2>
-                  <p>Nossos gráficos são construídos de forma única
-                      para nossos usuários, oferencendo métricas intuitivas e alinhadas
-                      sobre processador, memória ram e armazenamento das máquinas
-                      de Self-Checkout para que se possa tomar rápidas decisões, tudo isso dentro de uma Dashboard
-                      dedicada</p>
-              </div>
-          </div>
-          <div class="cards">
-              <div class="ilustracaoCardAlerta">
-                      <div class="boxCardAlerta">
-                          <img src="img/alert.svg" alt="">
-                          <h2> Armazenamento cheio! </h2>
-                      </div>
-                      <div class="entendidoCardAlerta">
-                          Entendido
-                      </div>
-              </div>
-              <div class="conteudoCard">
-                  <h2>Alertas de Variação</h2>
-                  <p>Nosso sistema de monitoramento de self-checkouts oferece alertas inteligentes que notificam
-                      imediatamente quando qualquer métrica operacional sai do intervalo padrão. Com uma dashboard
-                      intuitiva, é possível acompanhar o desempenho em tempo real, garantindo respostas rápidas a
-                      problemas e maior eficiência no gerenciamento dos dispositivos.</p>
-              </div>
-          </div>
-          <div class="cards">
-              <div class="ilustracaoCardCadastro">
-                  <div class="cadastrarUsuarioCard">
-                      Cadastrar Usuário
-                  </div>
-                  <div class="BoxcardCadastro">
-                  
-                      <div class="leftCardCadastro">
-                          <div class="bolinhaCadastro">
-                              
-                          </div>
-                          Marcelo - <strong>ID 1</strong> 
-                      </div>
-                      <div class="rightCardCadastro">
-                          <div class="green"></div>
-                          Online
-                      </div>
-                  </div>
-
-                  <div class="BoxcardCadastro">
-                      <div class="leftCardCadastro">
-                          <div class="bolinhaCadastro">
-                              
-                          </div>
-                          Pedro - <strong>ID 2</strong> 
-                      </div>
-                      <div class="rightCardCadastro">
-                          <div class="red"></div>
-                          Offline
-                      </div>
-                  </div>
-
-                  <div class="BoxcardCadastro">
-                      <div class="leftCardCadastro">
-                          <div class="bolinhaCadastro">
-                              
-                          </div>
-                          Cristiane - <strong>ID 3</strong> 
-                      </div>
-                      <div class="rightCardCadastro">
-                          <div class="green">
-
-                          </div>
-                          Online
-                      </div>
-                  </div>
-              </div>
-              <div class="conteudoCard">
-                  <h2>Cadastro de Equipe</h2>
-                  <p>Nosso sistema de monitoramento de self-checkouts permite o cadastro de equipes de forma simples e
-                      centralizada. O administrador é responsável por adicionar todos os membros, garantindo uma
-                      organização eficiente do time e facilitando o gerenciamento das atividades</p>
-              </div>
-          </div>
-          <div class="cards">
-              <div class="ilustracaoCard">
-                  <div class="tituloSuporte">
-                      <h2>Chat Cliente</h2>
-                      <div class="green"></div>
-                  </div>
-                  <div class="boxSuporte">
-                      <div class="boxMensagem1">
-                        <p>Cliente - 12:05</p> 
-                          <div class="mensagem1">
-                              Preciso de ajuda!
-                          </div>
-                      </div>
-                      <div class="boxMensagem2">
-                          <p>Suporte - 12:05</p>
-                    
-                          <div class="mensagem2">
-                              Claro! Qual seria o problema?
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="conteudoCard">
-                  <h2>Suporte dedicado 24 horas</h2>
-                  <p>Oferecemos um suporte 24 horas para os nosso clientes, com a integração das ferramentas Slack e
-                      Jira, criamos uma ponte entre
-                      a NovaScan e nossos adquirentes para qualquer ajuda e apoio em qualquer ocasião</p>
-              </div>
-          </div>
-      </div>
-  </section>
-  <!-- Sessao 4 -->
-  <section class="Sessao4" id="Sessao4">
-    <div class="boxForm">
-        <div class="titulosForm">
-            <div class="titulo1">
-                Entre em contato com a gente
+        <div class="titulos">
+            <div class="Titulo1">
+                Serviços Oferecidos Pela
             </div>
-            <div class="titulo2">
-                Como podemos te ajudar?
+            <div class="Titulo2">
+                NOVASCAN
+            </div>
+        </div>
+        <div class="boxCards">
+            <div class="cards">
+                <div class="ilustracaoCardGrafico">
+                    <div class="tituloGraficoCard">
+                        <h2>Self-checkout 1</h2>
+                    </div>
+                    <div class="boxGrafico">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                </div>
+                <div class="conteudoCard">
+                    <h2>Gráficos Intuitivos e Precisos</h2>
+                    <p>Nossos gráficos são construídos de forma única
+                        para nossos usuários, oferencendo métricas intuitivas e alinhadas
+                        sobre processador, memória ram e armazenamento das máquinas
+                        de Self-Checkout para que se possa tomar rápidas decisões, tudo isso dentro de uma Dashboard
+                        dedicada</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="ilustracaoCardAlerta">
+                    <div class="boxCardAlerta">
+                        <img src="img/alert.svg" alt="">
+                        <h2> Armazenamento cheio! </h2>
+                    </div>
+                    <div class="entendidoCardAlerta">
+                        Entendido
+                    </div>
+                </div>
+                <div class="conteudoCard">
+                    <h2>Alertas de Variação</h2>
+                    <p>Nosso sistema de monitoramento de self-checkouts oferece alertas inteligentes que notificam
+                        imediatamente quando qualquer métrica operacional sai do intervalo padrão. Com uma dashboard
+                        intuitiva, é possível acompanhar o desempenho em tempo real, garantindo respostas rápidas a
+                        problemas e maior eficiência no gerenciamento dos dispositivos.</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="ilustracaoCardCadastro">
+                    <div class="cadastrarUsuarioCard">
+                        Cadastrar Usuário
+                    </div>
+                    <div class="BoxcardCadastro">
+
+                        <div class="leftCardCadastro">
+                            <div class="bolinhaCadastro">
+
+                            </div>
+                            Marcelo - <strong>ID 1</strong>
+                        </div>
+                        <div class="rightCardCadastro">
+                            <div class="green"></div>
+                            Online
+                        </div>
+                    </div>
+
+                    <div class="BoxcardCadastro">
+                        <div class="leftCardCadastro">
+                            <div class="bolinhaCadastro">
+
+                            </div>
+                            Pedro - <strong>ID 2</strong>
+                        </div>
+                        <div class="rightCardCadastro">
+                            <div class="red"></div>
+                            Offline
+                        </div>
+                    </div>
+
+                    <div class="BoxcardCadastro">
+                        <div class="leftCardCadastro">
+                            <div class="bolinhaCadastro">
+
+                            </div>
+                            Cristiane - <strong>ID 3</strong>
+                        </div>
+                        <div class="rightCardCadastro">
+                            <div class="green">
+
+                            </div>
+                            Online
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoCard">
+                    <h2>Cadastro de Equipe</h2>
+                    <p>Nosso sistema de monitoramento de self-checkouts permite o cadastro de equipes de forma simples e
+                        centralizada. O administrador é responsável por adicionar todos os membros, garantindo uma
+                        organização eficiente do time e facilitando o gerenciamento das atividades</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="ilustracaoCard">
+                    <div class="tituloSuporte">
+                        <h2>Chat Cliente</h2>
+                        <div class="green"></div>
+                    </div>
+                    <div class="boxSuporte">
+                        <div class="boxMensagem1">
+                            <p>Cliente - 12:05</p>
+                            <div class="mensagem1">
+                                Preciso de ajuda!
+                            </div>
+                        </div>
+                        <div class="boxMensagem2">
+                            <p>Suporte - 12:05</p>
+
+                            <div class="mensagem2">
+                                Claro! Qual seria o problema?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoCard">
+                    <h2>Suporte dedicado 24 horas</h2>
+                    <p>Oferecemos um suporte 24 horas para os nosso clientes, com a integração das ferramentas Slack e
+                        Jira, criamos uma ponte entre
+                        a NovaScan e nossos adquirentes para qualquer ajuda e apoio em qualquer ocasião</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sessao 4 -->
+    <section class="Sessao4" id="Sessao4">
+        <div class="boxForm">
+            <div class="titulosForm">
+                <div class="titulo1">
+                    Entre em contato com a gente
+                </div>
+                <div class="titulo2">
+                    Como podemos te ajudar?
+                </div>
+
+            </div>
+            <div class="form">
+                <div class="informacoesPessoais">
+                    <input type="text" placeholder=" Nome: " class="inputNome">
+                    <input type="text" placeholder=" Sobrenome: " class="inputSobrenome">
+                </div>
+                <input type="text" class="inputEmail" placeholder=" Email: ">
+                <textarea name="" id="" placeholder="Digite sua mensagem: " class="textareaMensagem"></textarea>
+                <button class="buttonEnviar">Enviar Mensagem</button>
+            </div>
+        </div>
+        <div class="backgroudSessao4">
+
+            <div class="tituloNovaScan">
+                NOVASCAN
+            </div>
+            <div class="fraseDeEfeito">
+                “Monitoramento adequado com <br>
+                o cuidado que você merece”
             </div>
 
         </div>
-        <div class="form">
-            <div class="informacoesPessoais">
-                <input type="text" placeholder=" Nome: " class="inputNome">
-                <input type="text" placeholder=" Sobrenome: " class="inputSobrenome">
-            </div>
-            <input type="text" class="inputEmail" placeholder=" Email: ">
-            <textarea name="" id="" placeholder="Digite sua mensagem: " class="textareaMensagem"></textarea>
-            <button class="buttonEnviar">Enviar Mensagem</button>
+    </section>
+    <!-- Sessao 5 -->
+    <section class="Sessao5" id="Sessao5">
+        <div class="topFooter">
+            <img src="img/Logo NovaScan.svg" class="logoFooter">
         </div>
-    </div>
-    <div class="backgroudSessao4">
-
-        <div class="tituloNovaScan">
+        <div class="midFooter">
+            <div class="boxNavegacao">
+                <p>Navegação</p>
+                <a href=".Sessao1">Home</a>
+                <a href=".Sessao2">Sobre</a>
+                <a href=".Sessao3">Serviços</a>
+                <a href=".Sessao4">Contatos</a>
+            </div>
+            <div class="boxEndereco">
+                <p>Endereço</p>
+                <a>Rua Doutor Vaz do Amaral
+                    - Parque Monteiro Soares</a>
+                <a>02736-030</a>
+                <a>São Paulo - SP</a>
+            </div>
+            <div class="boxTelefone">
+                <p>Telefone</p>
+                <a> (11) 2205-7058 </a>
+            </div>
+        </div>
+        <div class="lowFooter">
             NOVASCAN
         </div>
-        <div class="fraseDeEfeito">
-            “Monitoramento adequado com <br>
-            o cuidado que você merece”
-        </div>
-
-    </div>
-</section>
-  <!-- Sessao 5 -->
-  <section class="Sessao5" id="Sessao5">
-    <div class="topFooter">
-        <img src="img/Logo NovaScan.svg" class="logoFooter">
-    </div>
-    <div class="midFooter">
-        <div class="boxNavegacao">
-            <p>Navegação</p>
-            <a href=".Sessao1">Home</a>
-            <a href=".Sessao2">Sobre</a>
-            <a href=".Sessao3">Serviços</a>
-            <a href=".Sessao4">Contatos</a>
-        </div>
-        <div class="boxEndereco">
-            <p>Endereço</p>
-            <a>Rua Doutor Vaz do Amaral
-                - Parque Monteiro Soares</a>
-            <a>02736-030</a>
-            <a>São Paulo - SP</a>
-        </div>
-        <div class="boxTelefone">
-            <p>Telefone</p>
-            <a> (11) 2205-7058 </a>
-        </div>
-    </div>
-    <div class="lowFooter">
-        NOVASCAN
-    </div>
-</section>
+    </section>
 
 </body>
+
 </html>
 
 <script>
-  const ctx = document.getElementById('myChart').getContext('2d');
-  
+    const ctx = document.getElementById('myChart').getContext('2d');
 
-  const myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6', 'Label 7'],
-          datasets: [{
-              label: '# of Votes',
-              data: [0, 0, 0, 0, 0, 0, 0],
-              backgroundColor: [
-                  '#A40E35',
-                  '#F15B82',
-                  '#A40E35',
-                  '#F15B82',
-                  '#A40E35',
-                  '#F15B82',
-                  '#A40E35'
-              ],
-              borderWidth: 1,
-              borderRadius: 5
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          },
-          plugins: {
-              legend: {
-                  display: false
-              }
-          },
-          scales: {
-              x: {
-                  ticks: {
-                      color: 'rgba(0, 0, 0, 0)' 
-                  }
-              },
-              y: {
-                  ticks: {
-                      color: 'rgba(0, 0, 0, 0)' 
-                  }
-              }
-          }
-      }
-  });
-  
-// Essa funcao cria um array com 7 elementos aleatorios e vai atualizando o grafico com eles atraves do update
-  for (let i = 1; i < 2000; i++) {
-      setTimeout(function () {
-         
-          const aleatorio = Array.from({ length: 7 }, () => Math.random() * 10);
 
-        
-          myChart.data.datasets[0].data = aleatorio;
-          myChart.update();
-      }, i * 1000);  
-  }
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6', 'Label 7'],
+            datasets: [{
+                label: '# of Votes',
+                data: [0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: [
+                    '#A40E35',
+                    '#F15B82',
+                    '#A40E35',
+                    '#F15B82',
+                    '#A40E35',
+                    '#F15B82',
+                    '#A40E35'
+                ],
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'rgba(0, 0, 0, 0)'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'rgba(0, 0, 0, 0)'
+                    }
+                }
+            }
+        }
+    });
+
+    // Essa funcao cria um array com 7 elementos aleatorios e vai atualizando o grafico com eles atraves do update
+    for (let i = 1; i < 2000; i++) {
+        setTimeout(function () {
+
+            const aleatorio = Array.from({ length: 7 }, () => Math.random() * 10);
+
+
+            myChart.data.datasets[0].data = aleatorio;
+            myChart.update();
+        }, i * 1000);
+    }
+    const hamburguer = document.getElementById('hamburguer');
+    const links = document.querySelectorAll('.links a');
+
+    // Clique na div hamburguer para abrir/fechar
+    hamburguer.addEventListener('click', () => {
+        hamburguer.classList.toggle('open'); // Alterna a classe open
+    });
+
+    // Adiciona evento de clique aos links para remover a classe open
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            links.classList.remove('open'); // Remove a classe open ao clicar em um link
+        });
+    });
+
+
+
 </script>

@@ -273,7 +273,7 @@
             <div class="boxCadastroMaquina" onclick="pararPropagacao()">
                 <div class="up">
                     NOVASCAN
-                    <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                    <div class="topExcluir"><img onclick="fecharCadastrar()" src="img/fechar.svg" alt=""></div>
                 </div>  
             <div class="down">
                 <div class="topo">
@@ -435,7 +435,7 @@
         var lista2 = [];
         var labels2 = [];
 
-        const ctx2 = document.getElementById('meuGrafico2').getContext('2d');  
+       const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
 const meuGrafico2 = new Chart(ctx2, { 
     type: 'line',
     data: {
@@ -451,45 +451,45 @@ const meuGrafico2 = new Chart(ctx2, {
         }]
     },
     options: {
-            responsive: true,  
-            maintainAspectRatio: false, 
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    min: 0,  
-                    max: 100, 
-                    ticks: {
-                        font: {
-                            size: 14,  
-                            weight: 'bold', 
-                            family: 'Montserrat'  
-                        }
-                    }
-                },
-                x: {
-                    ticks: {
-                        font: {
-                            size: 14,  
-                            weight: 'bold',  
-                            family: 'Montserrat'  
-                        }
+        responsive: true,  
+        maintainAspectRatio: false, 
+        scales: {
+            y: {
+                beginAtZero: true,
+                min: 0,
+                max: 100,
+                ticks: {
+                    font: {
+                        size: 14,  
+                        weight: 'bold', 
+                        family: 'Montserrat'  
                     }
                 }
             },
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        font: {
-                            size: 16,  
-                            weight: 'bold', 
-                            family: 'Montserrat'  
-                        }
+            x: {
+                ticks: {
+                    font: {
+                        size: 14,  
+                        weight: 'bold',  
+                        family: 'Montserrat'  
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false,
+                labels: {
+                    font: {
+                        size: 16,  
+                        weight: 'bold', 
+                        family: 'Montserrat'  
                     }
                 }
             }
         }
-    });
+    }
+});
 
 // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
 for (var c = 0; c < 100; c++) {
