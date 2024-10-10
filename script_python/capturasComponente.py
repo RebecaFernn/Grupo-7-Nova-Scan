@@ -24,7 +24,7 @@ def mediaUsoCpu():
     return f"{(tempoAtivo / tempoTotal) * 100:.2f}"
 
 def freqCpu():
-    frequencia = ps.cpu_freq()
+    frequencia = ps.cpu_freq().current
     return frequencia
 
 def qtdNucleos():
