@@ -363,13 +363,18 @@ font-size: 0.8rem;
     
     }
 
+    .cardsMobile{
+        display: none;
+            }
+
     @media screen and (max-width: 1000px) {
         .Sessao3{
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #8D51F5;
+         
+          
         }
         .boxCards {
             flex-direction: column;
@@ -384,13 +389,13 @@ font-size: 0.8rem;
             font-size: 0.8rem;
         }
         .Titulo1{
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-family: Montserrat;
-            font-weight: 600;
+            font-weight: bold;
             
             }
             .Titulo2{
-                font-size: 1.5rem;
+                font-size: 2rem;
                 font-family: Montserrat;
                 color: rgba(248, 68, 85, 1);
                 font-weight: bold;
@@ -399,17 +404,111 @@ font-size: 0.8rem;
 
             .titulos{
                 width: 100%;
-                background-color: #3CD06E;
+              
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 5%;
+                gap: 5%;
+                height: 15%;
 
             }
             .boxCards{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr); /* 3 colunas de tamanho igual */
-                grid-template-rows: repeat(2, 1fr); /* 3 linhas de tamanho igual */
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+              
+               height: 80%;
+            
+            }
+            .bTop{
+                height: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .bLow{
+                height: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: start;
+            }
+
+            .cardsMobile {
+                width: 40%;
+                height: 50%;
+                background-color: #F84455;
+                display: flex;
+                border-radius: 15px;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve na cor preta */
+                transition: ease-in-out 0.5s;
+                
+                & h2 {
+                    font-family: Montserrat;
+                    color: white;
+                    font-size: 0.9rem;
+                }
+            }
+            
+            .topCardMobile{
+                height: 50%;
+                width: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 5%;
+                text-align: center;
+            
+            }
+            .cardsMobile p{
+                display: none;
+                font-family: montserrat;
+            }
+            .imgMobile{
+                width: 50%;
+            }
+            .cardsMobile:hover{
+         
+                flex-direction: column;
+                justify-content: start;
+                gap: 5%;
+                padding-top: 5%;
+                width: 45%;
+                height: 100%;
+                transition: 0.5s;
+                & .boxTextoMobile{
+                    width: 90%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                }
+                
+                & p{
+                    display: flex;
+                    color: white;
+                    font-size: 0.85rem;
+                }
+                & .topCardMobile{
+                    width: 27.5%;
+                    border-radius: 50%;
+                    height: 15%;
+                    background-color: #000000;
+                    & h2{
+                        display: none;
+                    }
+                }
+                & .imgMobile{
+                    height: 50%;
+                    width: auto;
+                }
+                
             }
         
     }
