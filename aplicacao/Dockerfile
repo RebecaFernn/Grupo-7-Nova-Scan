@@ -9,6 +9,8 @@ COPY package*.json ./
 # Instale as dependências
 RUN npm install
 
+RUN apt-get update && apt-get install -y nano
+
 # Copie o restante dos arquivos da aplicação
 COPY . .
 
