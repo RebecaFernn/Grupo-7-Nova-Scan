@@ -24,9 +24,23 @@ echo "criando a rede..."
 sudo docker network create rede-novascan
 echo "------------------------------------------"
 
+# criando o container do banco de dados
+cd banco_de_dados/
+
 echo "configurando o mysql..."
 sudo docker build -t banco_novascan .
 sudo docker run -d --name bd-novascan --network rede-novascan -p 3306:3306 banco_novascan
 echo "------------------------------------------"
 
 sudo docker exec -it bd-novascan bash
+
+# crriando o container do node/site
+cd ..
+cd aplicacao/
+
+echo "iniciando a aplicação..."
+sudo docker build -t node . || { echo "Falha ao construir a imagem."; exit 1; }
+sudo docker run -d --name novascan --network rede-novascan -p 8080:8080 node
+echo "------------------------------------------"
+
+sudo docker exec -it novascan bash
