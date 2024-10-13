@@ -11,6 +11,7 @@ config = {
     "user": os.getenv("USER_LOGIN"),
     "password": os.getenv("DB_PASSWORD"),
     "host": os.getenv("HOST"),
+    "port": os.getenv("PORT"),
     "database": os.getenv("DATABASE")
 }
 
