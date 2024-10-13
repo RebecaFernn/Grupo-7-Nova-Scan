@@ -19,9 +19,11 @@ echo "inicializando o docker..."
 sudo systemctl start docker
 sudo systemctl enable docker
 
-sudo docker build -t banco_novascan .
-sudo docker run -d --name bd-novascan -p 3306:3306 banco_novascan
+echo "criando a rede..."
+sudo docker network create rede_novascan
 
 echo "configurando o mysql..."
+sudo docker build -t banco_novascan .
+sudo docker run -d --name bd-novascan --network rede_novascan -p 3306:3306 banco_novascan
 
 sudo docker exec -it bd-novascan bash
