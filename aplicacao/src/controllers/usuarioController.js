@@ -148,10 +148,36 @@ function atualizarDados(req,res){
     
 }
 
+function atualizarCargo(req,res){
+    var fkEmpresa = req.query.fkEmpresa
+    var novoCargo = req.body.cargoServer
+    var idUsuario = req.body.idUsuarioServer
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fkEmpresa esta undefined")
+    }
+    else if(novoCargo == undefined){
+        res.status(400).send("O novoCargo está undefined")
+    }
+    else if(idUsuario == undefined){
+        res.status(400).send("O idUsuario está undefined")
+    }
+    else{
+        usuarioModel.atualizarCargo(novoCargo, idUsuario, fkEmpresa)
+        .then(function(resposta){
+            console.log("Informações atualizada dentro do banco: ", resposta)
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao tentar atualizar as informações: ", error)
+        })
+    }
+}
+
 module.exports = {
     autenticar,
     cadastrarFunc,
     primeiroAcesso,
     listarPainel,
-    atualizarDados
+    atualizarDados,
+    atualizarCargo
 }

@@ -17,8 +17,28 @@ function cadastrarColaborador() {
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
     ) {
-        alert("Campos em brancos")
-        return false;
+        Swal.fire({
+            title: 'Preencha todos os campos!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(senhaVar !== confirmacaoSenhaVar){
+        Swal.fire({
+            title: 'As senhas não coincidem!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1){
+        Swal.fire({
+            title: 'Insira um email válido!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
     }
     else {
 
@@ -139,3 +159,46 @@ function editarDados() {
         })
     }
 }
+
+function editarCargo() {
+    var params = {
+        fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
+    }
+
+    var novoCargo = cargo_input.value
+    var idUsuario = id_input.value
+
+    if (novoCargo == "") {
+        Swal.fire({
+            title: 'Preencha o campo!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else{
+    fetch(`/usuarios/atualizarCargo/${params.fkEmpresa}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            novoCargoServer: novoCargo,
+            idUsuarioServer: idUsuario
+        }),
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                console.log("Informações atualizadas no banco com sucesso: ", resposta)
+            }
+            else {
+                console.log("Houve um problema ao atualizar as informações")
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro ao atualizar os dados: ", error)
+        })
+    }
+}
+// Fazer a função para desativar o usuario
