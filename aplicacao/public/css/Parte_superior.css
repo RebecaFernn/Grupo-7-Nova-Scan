@@ -222,7 +222,7 @@ html{
     font-weight: 550;
 }
 .Sessao2 .down .text button:hover{
-    transition: all 0.4s ease-out;
+    transition: all 0.7s ease-out;
     width: 203px;
     height: 60px;
     margin-top: -3px;
@@ -309,17 +309,6 @@ html{
         border-radius: 10px;
         pointer-events: auto;
     }
-
-
-
-
-
-
-
-
-
-
-
 
     
     .hamburguer .midHamburguer,
@@ -486,7 +475,7 @@ html{
     /* ---------------------------------------- Sessao 2 --------------- */
     .Sessao2{
         width: 100%;
-        height: 100%;
+        height: 90%;
     
         flex-direction: column;
         display: flex;
@@ -496,12 +485,11 @@ html{
     .Sessao2 .up h1{
         font-size: 2rem;
     }
+
     .Sessao2 .down .text {
         width: 100%;
-        height: 70%;
+        height: 90%;
         background-color: #F84455;
-        top: 0;
-        left: 0;
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -514,7 +502,7 @@ html{
         text-align: left;
         color: white;
         position: relative;
-        top: 0;
+        top: 10%;
         left: 0;
         right: 0;
         bottom: 0;

@@ -18,6 +18,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -71,17 +73,27 @@
                     <option value="">ARMAZENAMENTO</option>
                     <option value="">REDE</option>
                 </select>
-                <div class="boxData" id="boxData">
-                        <img src="./img/calendario.svg" alt="">
-                </div>
+           
             </div>
             <div class="midOverview">
-
+                <canvas id="meuHistograma"></canvas>
             </div>
             <div class="lowOverview">
-                    <div class="boxleftLow"></div>
-                    <div class="boxcenterLow"></div>
-                    <div class="boxrightLow"></div>
+                    <div class="boxleftLow">
+                        <img src="./img/alertwhite.svg" alt="">
+                        <h3>Maquinas em estado crítico</h3>
+                        <h1> 5 </h1>
+                    </div>
+                    <div class="boxcenterLow">
+                        <img src="./img/totalMaquinas.svg" alt="">
+                        <h3>Total de maquinas</h3>
+                        <h1>7</h1>
+                    </div>
+                    <div class="boxrightLow">
+                        <img src="./img/maquinasEstaveis.svg" alt="">
+                        <h3>Maquinas estaveis</h3>
+                        <h1>2</h1>
+                    </div>
             </div>
         </div>
 
@@ -93,19 +105,138 @@
 </html>
 
 <script>
-// Obtém a data atual
-const dataAtual = new Date();
-const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
-const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
+// // Obtém a data atual
+// const dataAtual = new Date();
+// const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+// const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
 
-// Subtrai 20 dias
-const dataMenos20Dias = new Date(dataAtual);
-dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 20);
-const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
+// // Subtrai 20 dias
+// const dataMenos20Dias = new Date(dataAtual);
+// dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 20);
+// const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
 
-console.log('Data atual:', dataFormatada);
-console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
+// console.log('Data atual:', dataFormatada);
+// console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
 
 
-boxData.innerHTML += `<p>${dataFormatada}</p> // <p>${dataMenos20DiasFormatada}</p>`;
+// boxData.innerHTML += `<p>${dataFormatada}</p> // <p>${dataMenos20DiasFormatada}</p>`;
+
+//
+
+var l20 = [];
+var l40 = [];
+var l60 = [];
+var l80 = [];
+var l100 = [];
+
+
+var labelsFreq = ['0-20', '21-40', '41-60', '61-80', '81-100'];
+
+for (var cont = 0; cont < 2000; cont++) {
+    var aleatorio = Math.random(); // Gera um número aleatório entre 0 e 1
+
+    if (aleatorio < 0.15) { // 15% de chance de ir para a categoria próxima a 60
+        // Gera um número aleatório entre 51 e 69
+        l60.push(Math.floor(Math.random() * 19) + 51); 
+    } else if (aleatorio < 0.45) { // 30% de chance de ir para a categoria próxima a 80
+        // Gera um número aleatório entre 76 e 84
+        l80.push(Math.floor(Math.random() * 9) + 76); 
+    } else if (aleatorio < 0.95) { // 50% de chance de ir para a categoria l100
+        // Gera um número aleatório entre 81 e 100
+        l100.push(Math.floor(Math.random() * 20) + 81); 
+    } else {
+        // Caso contrário, gera um número entre 0 e 80 para as outras categorias
+        var numero = Math.floor(Math.random() * 81); // Gera um número entre 0 e 80
+
+        if (numero >= 0 && numero <= 20) {
+            l20.push(numero);
+        } else if (numero > 20 && numero <= 40) {
+            l40.push(numero);
+        } else if (numero > 40 && numero <= 60) {
+            l60.push(numero);
+        } else if (numero > 60 && numero <= 80) {
+            l80.push(numero);
+        }
+    }
+}
+
+
+
+
+var ate20 = l20.length;
+var ate40 = l40.length;
+var ate60 = l60.length;
+var ate80 = l80.length;
+var ate100 = l100.length;
+const histograma = document.getElementById('meuHistograma').getContext('2d');
+const meuHistograma = new Chart(histograma, {
+    type: 'bar',
+    data: {
+        labels: labelsFreq,
+        datasets: [{
+            label: 'Frequência',
+            data: [ate20, ate40, ate60, ate80, ate100],
+            borderColor: 'black',
+            backgroundColor: 'gray',
+            borderWidth: 1,
+            barThickness: 'flex', // Usa 'flex' para ocupar todo o espaço disponível
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Frequência',
+                    font: {
+                        size: 25,
+                        weight: 'bold',
+                        family: 'Montserrat',
+                        color: 'black'
+                    }
+                },
+                ticks: {
+                    font: {
+                        size: 14,
+                        weight: 'bold',
+                        family: 'Montserrat'
+                    }
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Porcentagem de uso da CPU',
+                    font: {
+                        size: 25,
+                        weight: 'bold',
+                        family: 'Montserrat',
+                        color: 'black'
+                    }
+                },
+                ticks: {
+                    font: {
+                        size: 14,
+                        weight: 'bold',
+                        family: 'Montserrat'
+                    }
+                },
+                // Ajustes para garantir que as barras fiquem coladas
+                categoryPercentage: 1.0, // Para usar 100% da largura
+                barPercentage: 1.0, // Para barras coladas
+            }
+        },
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
+    }
+});
+
+
+
 </script>

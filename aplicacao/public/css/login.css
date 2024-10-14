@@ -190,3 +190,35 @@ html{
     color: red;
 }
 
+/* Responsividade Login */
+@media screen and (max-width: 1000px) {
+
+ .left{
+    width: 100%;
+ }
+ .right{
+    display: none;
+ }
+
+ .login .left{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.topo h1{
+    font-size: 2rem;
+
+}
+.login .left .down{
+    width: 70%;
+ 
+}
+
+}
+

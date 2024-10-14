@@ -66,7 +66,7 @@
 
             <div class="topmaquinas">
                 <h2>Máquinas Self-Checkout</h2>
-                <button onclick="cadastrar()" class="btn-cadastrarSelf">Cadastrar Self-Checkout</button>
+
             </div>
             <div class="boxmaquinas">
                 <div class="maquinas" onclick="maquina()">
@@ -111,7 +111,10 @@
 
         <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundoInfomaquina">
             <div class="infomaquina" onclick="pararPropagacao()">
+                <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img src="./img/rename.svg"
+                        alt=""></button>
                 <!-- ------ cpu -------- -->
+
                 <div class="boxInfoCPU">
                     <div class="boxFichaCPU">
 
@@ -173,10 +176,10 @@
                         </div>
                         <div class="boxNucleos">
                             <div class="titulosNucleos">
-                              Total
+                                Total
                             </div>
                             <div class="qtdNucleos">
-                              16
+                                16
                             </div>
                         </div>
                     </div>
@@ -186,7 +189,7 @@
                     </div>
 
                 </div>
-                
+
                 <!-- ARMAZENAMENTO -->
                 <!-- <div class="boxInfoCPU">
                     <div class="boxFichaCPU">
@@ -260,7 +263,7 @@
                     </div>
 
                 </div> -->
-            
+
                 <!-- --------- rede --------- -->
 
 
@@ -274,24 +277,24 @@
                 <div class="up">
                     NOVASCAN
                     <div class="topExcluir"><img onclick="fecharCadastrar()" src="img/fechar.svg" alt=""></div>
-                </div>  
-            <div class="down">
-                <div class="topo">
-                    <h1>Renomear<br>maquina</h1>
                 </div>
-                <div class="meio">
-                    <div class="caixas">
-                        <img src="img/Vector (3).svg" alt="">
-                        <input type="text" id="nome_input" placeholder="Nome da maquina">
+                <div class="down">
+                    <div class="topo">
+                        <h1>Renomear<br>maquina</h1>
                     </div>
-                    <div class="options">
-                        <button>Renomear</button>
+                    <div class="meio">
+                        <div class="caixas">
+                            <img src="img/Vector (3).svg" alt="">
+                            <input type="text" id="nome_input" placeholder="Nome da maquina">
+                        </div>
+                        <div class="options">
+                            <button>Renomear</button>
+                        </div>
+                    </div>
+                    <div class="baixo">
+                        <img src="img/Logo NovaScan.svg" alt="">
                     </div>
                 </div>
-                <div class="baixo">
-                    <img src="img/Logo NovaScan.svg" alt="">
-                </div>
-            </div>
             </div>
         </div>
 
@@ -312,7 +315,7 @@
 
         }
 
-        function cadastrar() {
+        function renomear() {
             const fundoCadastrar = document.getElementById('fundoCadastrar');
 
             fundoCadastrar.style.display = 'flex';
@@ -336,61 +339,61 @@
         var lista = [];
         var labels = [];
 
-    const ctx = document.getElementById('meuGrafico').getContext('2d');
-    const meuGrafico = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels, 
-            datasets: [{
-                label: 'CPU',
-                data: lista,  
-                borderColor: 'rgb(96, 231, 231)',  
-                backgroundColor: 'rgba(75, 192, 192, 0.5)', 
-                borderWidth: 4,  
-                fill: true, 
-                pointRadius: 0,  
-            }]
-        },
-        options: {
-            responsive: true,  
-            maintainAspectRatio: false,  
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    min: 0,  
-                    max: 100, 
-                    ticks: {
-                        font: {
-                            size: 14,  
-                            weight: 'bold',  
-                            family: 'Montserrat'
+        const ctx = document.getElementById('meuGrafico').getContext('2d');
+        const meuGrafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'CPU',
+                    data: lista,
+                    borderColor: 'rgb(96, 231, 231)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
                         }
                     }
                 },
-                x: {
-                    ticks: {
-                        font: {
-                            size: 14, 
-                            weight: 'bold', 
-                            family: 'Montserrat'  
-                        }
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        font: {
-                            size: 16,  
-                            weight: 'bold',  
-                            family: 'Montserrat' 
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
                         }
                     }
                 }
             }
-        }
-    });
+        });
 
         // Loop para atualizar os dados
         for (var i = 0; i < 100; i++) {
@@ -435,93 +438,94 @@
         var lista2 = [];
         var labels2 = [];
 
-       const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
-const meuGrafico2 = new Chart(ctx2, { 
-    type: 'line',
-    data: {
-        labels: labels2,
-        datasets: [{
-            label: 'RAM', 
-            data: lista2,  
-            borderColor: 'rgb(108, 126, 212)',
-            backgroundColor: 'rgba(92, 107, 179, 0.5)',
-            borderWidth: 4,
-            fill: true,
-            pointRadius: 0,
-        }]
-    },
-    options: {
-        responsive: true,  
-        maintainAspectRatio: false, 
-        scales: {
-            y: {
-                beginAtZero: true,
-                min: 0,
-                max: 100,
-                ticks: {
-                    font: {
-                        size: 14,  
-                        weight: 'bold', 
-                        family: 'Montserrat'  
-                    }
-                }
+        const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
+        const meuGrafico2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: labels2,
+                datasets: [{
+                    label: 'RAM',
+                    data: lista2,
+                    borderColor: 'rgb(108, 126, 212)',
+                    backgroundColor: 'rgba(92, 107, 179, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
             },
-            x: {
-                ticks: {
-                    font: {
-                        size: 14,  
-                        weight: 'bold',  
-                        family: 'Montserrat'  
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
                     }
                 }
             }
-        },
-        plugins: {
-            legend: {
-                display: false,
-                labels: {
-                    font: {
-                        size: 16,  
-                        weight: 'bold', 
-                        family: 'Montserrat'  
+        });
+
+        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        for (var c = 0; c < 100; c++) {
+            (function (c) {
+                setTimeout(function () {
+                    const now = new Date();
+                    const time = now.toLocaleTimeString();
+
+                    var uso = Math.random() * 10 + 70;
+                    var velocidade = Math.random() + 1;
+                    lista2.push(uso.toFixed(0));
+                    labels2.push(`Hora: ${time}`);
+
+
+
+                    var usoRam = (uso.toFixed(0) / 100) * 16;
+                    // Mantém apenas os últimos 7 pontos no gráfico
+                    if (lista2.length >= 7) {
+                        lista2.shift();
+                        labels2.shift();
                     }
-                }
-            }
+
+                    meuGrafico2.data.datasets[0].data = lista2;
+                    meuGrafico2.data.labels = labels2;
+                    meuGrafico2.update();
+
+                    document.getElementById("usoRAM").innerHTML = uso.toFixed(0) + "%";
+                    document.getElementById("RAMemuso").innerHTML = usoRam.toFixed(2) + "GB"
+
+                    RAMemuso
+                }, c * 2000);
+            })(c);
         }
-    }
-});
-
-// Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
-for (var c = 0; c < 100; c++) {
-    (function (c) {
-        setTimeout(function () {
-            const now = new Date();
-            const time = now.toLocaleTimeString();
-
-            var uso = Math.random() * 10 + 70;
-            var velocidade = Math.random() + 1;
-            lista2.push(uso.toFixed(0));  
-            labels2.push(`Hora: ${time}`); 
-
-
-
-            var usoRam = (uso.toFixed(0)/100)*16;
-            // Mantém apenas os últimos 7 pontos no gráfico
-            if (lista2.length >= 7) { 
-                lista2.shift();
-                labels2.shift();
-            }
-
-            meuGrafico2.data.datasets[0].data = lista2; 
-            meuGrafico2.data.labels = labels2;  
-            meuGrafico2.update();  
-
-            document.getElementById("usoRAM").innerHTML = uso.toFixed(0) + "%";
-            document.getElementById("RAMemuso").innerHTML = usoRam.toFixed(2) +"GB"
-
-            RAMemuso
-        }, c * 2000); 
-    })(c);}
 
 
     </script>

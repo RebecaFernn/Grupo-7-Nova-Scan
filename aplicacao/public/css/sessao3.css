@@ -447,7 +447,7 @@ font-size: 0.8rem;
                 overflow: hidden;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve na cor preta */
                 transition: ease-in-out 0.5s;
-                animation: animacaoCards 10s ease-in-out infinite;
+                animation: animacaoCards 8s ease-in-out infinite;
                 
                 & h2 {
                     font-family: Montserrat;
@@ -458,6 +458,7 @@ font-size: 0.8rem;
             @keyframes animacaoCards {
                 25% {
                     border-radius: 35px 0 0 0;
+                    
                 }
                 50% {
                     border-radius: 0 35px 0 0;
