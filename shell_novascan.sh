@@ -24,6 +24,13 @@ echo "criando a rede..."
 sudo docker network create rede-novascan
 echo "------------------------------------------"
 
+# clonando o repositório
+echo "clonando o repositório da equipe..."
+git clone https://github.com/RebecaFernn/Grupo-7-Nova-Scan.git
+echo "------------------------------------------"
+
+cd Grupo-7-Nova-Scan/
+
 # criando o container do banco de dados
 cd banco_de_dados/
 
