@@ -77,7 +77,7 @@ function listarFuncionarios() {
         })
 }
 
-function atualizarDados() {
+function editarDados() {
     var params = {
         idUsuario: sessionStorage.getItem('ID_USUARIO'),
         fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
@@ -86,13 +86,33 @@ function atualizarDados() {
     var novoEmail = email_input.value
     var novoNome = nome_input.value
     var novaSenha = senha_input.value
-    var novoCargo = cargo_input.value
-    var novoStatus = status_input.value
     var confirmarSenha = confirmar_input.value
 
-    /*
-    aqui terá validações de input
-    */
+    if (novoEmail == "" || novoNome == "" || novaSenha == "" || confirmarSenha == "") {
+        Swal.fire({
+            title: 'Preencha todos os campos!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if (novaSenha !== confirmarSenha) {
+        Swal.fire({
+            title: 'As senhas não coincidem!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(novoEmail.indexOf("@") == -1 || novoEmail.indexOf(".") == -1){
+        Swal.fire({
+            title: 'Insira um email válido!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else{
 
     fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
         method: "PATCH",
@@ -103,8 +123,6 @@ function atualizarDados() {
             novoEmailServer: novoEmail,
             novoNomeServer: novoNome,
             novoSenhaServer: novaSenha,
-            novoCargoServer: novoCargo,
-            novoStatusServer: novoStatus
         }),
     })
         .then(function (resposta) {
@@ -119,4 +137,5 @@ function atualizarDados() {
         .catch(function (error) {
             console.log("Erro ao atualizar os dados: ", error)
         })
+    }
 }

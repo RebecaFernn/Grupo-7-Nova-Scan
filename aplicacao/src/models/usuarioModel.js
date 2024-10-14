@@ -58,8 +58,6 @@ function atualizarDados(novoNome, novoEmail, novaSenha, novoCargo, novoStatus, i
         nome = COALESCE(${novoNome !== null ? `'${novoNome}'` : null}, nome),
         email = COALESCE(${novoEmail !== null ? `'${novoEmail}'` : null}, email),
         senha = COALESCE(${novaSenha !== null ? `'${novaSenha}'` : null}, senha),
-        fkTipoUsuario = COALESCE(${novoCargo !== null ? `${novoCargo}` : null}, fkTipoUsuario),
-        fkStatusUsuario = COALESCE(${novoStatus !== null ? `${novoStatus}` : null}, fkStatusUsuario)
     WHERE id = ${idUsuario} AND fkEmpresa = ${fkEmpresa};
 `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
