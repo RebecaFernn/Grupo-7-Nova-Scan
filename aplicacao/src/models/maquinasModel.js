@@ -16,7 +16,7 @@ function atualizarNome(novoNome, fkEmpresa, idDispositivo) {
 }
 
 function atualizarStatus(status, fkEmpresa, idDispositivo) {
-  var instrucaoSql = `UPDATE historicodipositivo SET fkAtividade = ${status} WHERE fkDispositivo = ${idDispositivo}`;
+  var instrucaoSql = `UPDATE historicodipositivo SET fkAtividade = ${status} WHERE fkDispositivo = ${idDispositivo} AND fkEmpresa = ${fkEmpresa}`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

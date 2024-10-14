@@ -129,8 +129,6 @@ function atualizarDados(req,res){
     var novoEmail = req.body.novoEmailServer !== "" ? req.body.novoEmailServer : null
     var novoNome = req.body.novoNomeServer !== "" ? req.body.novoNomeServer : null
     var novaSenha = req.body.novoSenhaServer !== "" ? req.body.novoSenhaServer : null
-    var novoCargo = req.body.novoCargoServer !== "" ? req.body.novoCargoServer : null
-    var novoStatus = req.body.novoStatusServer !== "" ? req.body.novoStatusServer : null
 
     if(fkEmpresa == undefined){
         res.status(400).send("A fkEmpresa esta undefined")
@@ -139,7 +137,7 @@ function atualizarDados(req,res){
         res.status(400).send("O idUsuario está undefined")
     }
     else{
-        usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, novoCargo, novoStatus, idUsuario, fkEmpresa)
+        usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa)
         .then(function(resposta){
             console.log("Informações atualizada dentro do banco: ", resposta)
         })
@@ -150,10 +148,36 @@ function atualizarDados(req,res){
     
 }
 
+function atualizarCargo(req,res){
+    var fkEmpresa = req.query.fkEmpresa
+    var novoCargo = req.body.cargoServer
+    var idUsuario = req.body.idUsuarioServer
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fkEmpresa esta undefined")
+    }
+    else if(novoCargo == undefined){
+        res.status(400).send("O novoCargo está undefined")
+    }
+    else if(idUsuario == undefined){
+        res.status(400).send("O idUsuario está undefined")
+    }
+    else{
+        usuarioModel.atualizarCargo(novoCargo, idUsuario, fkEmpresa)
+        .then(function(resposta){
+            console.log("Informações atualizada dentro do banco: ", resposta)
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao tentar atualizar as informações: ", error)
+        })
+    }
+}
+
 module.exports = {
     autenticar,
     cadastrarFunc,
     primeiroAcesso,
     listarPainel,
-    atualizarDados
+    atualizarDados,
+    atualizarCargo
 }

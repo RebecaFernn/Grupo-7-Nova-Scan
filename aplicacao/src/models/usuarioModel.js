@@ -58,10 +58,21 @@ function atualizarDados(novoNome, novoEmail, novaSenha, novoCargo, novoStatus, i
         nome = COALESCE(${novoNome !== null ? `'${novoNome}'` : null}, nome),
         email = COALESCE(${novoEmail !== null ? `'${novoEmail}'` : null}, email),
         senha = COALESCE(${novaSenha !== null ? `'${novaSenha}'` : null}, senha),
-        fkTipoUsuario = COALESCE(${novoCargo !== null ? `${novoCargo}` : null}, fkTipoUsuario),
-        fkStatusUsuario = COALESCE(${novoStatus !== null ? `${novoStatus}` : null}, fkStatusUsuario)
     WHERE id = ${idUsuario} AND fkEmpresa = ${fkEmpresa};
 `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function atualizarCargo(novoCargo, idUsuario, fkEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarDados():");
+    console.log("Inserindo na tabela usuario:", novoNome, novoEmail, novaSenha, novoCargo, novoStatus);
+
+    /*
+     usando operador ternário para poder fazer uma estrutura de if-else, onde ele verifica se diferente de nulo, 
+     se for nulo ele mantém o novoNome em aspas simples
+     */
+    var instrucaoSql = `UPDATE usuario SET fkTipoUsuario = ${novoCargo} WHERE fkEmpresa = ${fkEmpresa} AND id = ${idUsuario};`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -71,5 +82,6 @@ module.exports = {
     cadastrarFunc,
     primeiroAcesso,
     listarPainel,
-    atualizarDados
+    atualizarDados,
+    atualizarCargo
 };

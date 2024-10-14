@@ -17,8 +17,28 @@ function cadastrarColaborador() {
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
     ) {
-        alert("Campos em brancos")
-        return false;
+        Swal.fire({
+            title: 'Preencha todos os campos!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(senhaVar !== confirmacaoSenhaVar){
+        Swal.fire({
+            title: 'As senhas não coincidem!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1){
+        Swal.fire({
+            title: 'Insira um email válido!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
     }
     else {
 
@@ -77,7 +97,7 @@ function listarFuncionarios() {
         })
 }
 
-function atualizarDados() {
+function editarDados() {
     var params = {
         idUsuario: sessionStorage.getItem('ID_USUARIO'),
         fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
@@ -86,13 +106,33 @@ function atualizarDados() {
     var novoEmail = email_input.value
     var novoNome = nome_input.value
     var novaSenha = senha_input.value
-    var novoCargo = cargo_input.value
-    var novoStatus = status_input.value
     var confirmarSenha = confirmar_input.value
 
-    /*
-    aqui terá validações de input
-    */
+    if (novoEmail == "" || novoNome == "" || novaSenha == "" || confirmarSenha == "") {
+        Swal.fire({
+            title: 'Preencha todos os campos!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if (novaSenha !== confirmarSenha) {
+        Swal.fire({
+            title: 'As senhas não coincidem!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else if(novoEmail.indexOf("@") == -1 || novoEmail.indexOf(".") == -1){
+        Swal.fire({
+            title: 'Insira um email válido!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else{
 
     fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
         method: "PATCH",
@@ -103,8 +143,6 @@ function atualizarDados() {
             novoEmailServer: novoEmail,
             novoNomeServer: novoNome,
             novoSenhaServer: novaSenha,
-            novoCargoServer: novoCargo,
-            novoStatusServer: novoStatus
         }),
     })
         .then(function (resposta) {
@@ -119,4 +157,48 @@ function atualizarDados() {
         .catch(function (error) {
             console.log("Erro ao atualizar os dados: ", error)
         })
+    }
 }
+
+function editarCargo() {
+    var params = {
+        fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
+    }
+
+    var novoCargo = cargo_input.value
+    var idUsuario = id_input.value
+
+    if (novoCargo == "") {
+        Swal.fire({
+            title: 'Preencha o campo!', 
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else{
+    fetch(`/usuarios/atualizarCargo/${params.fkEmpresa}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            novoCargoServer: novoCargo,
+            idUsuarioServer: idUsuario
+        }),
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                console.log("Informações atualizadas no banco com sucesso: ", resposta)
+            }
+            else {
+                console.log("Houve um problema ao atualizar as informações")
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro ao atualizar os dados: ", error)
+        })
+    }
+}
+// Fazer a função para desativar o usuario

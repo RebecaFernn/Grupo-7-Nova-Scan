@@ -24,5 +24,9 @@ router.patch("/atualizarDados/:idUsuario", function (req, res) {
     usuarioController.atualizarDados(req, res);
 });
 
+router.patch("/atualizarCargo/:fkEmpresa", function (req, res) {
+    usuarioController.atualizarDados(req, res);
+});
+
 
 module.exports = router;
