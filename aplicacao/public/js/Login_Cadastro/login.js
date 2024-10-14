@@ -13,6 +13,15 @@ function entrar() {
             timer: 2000
         })
     }
+    else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+        Swal.fire({
+            title: 'Insira um email válido!',
+            icon: 'warning',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 2000
+        })
+    }
     else {
 
         console.log("FORM LOGIN: ", emailVar);
