@@ -107,10 +107,12 @@ INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
     
+
+-- Views necessarias para o sistema
 CREATE VIEW listaFuncionarios as
 SELECT u.nome, 
 u.email,  
-adm.nome as 'Administrado Por:', 
+adm.nome as 'Administrador Por:', 
 tu.tipo, 
 su.situacao 
 FROM usuario as u 
@@ -123,18 +125,13 @@ ON tu.id = u.fkTipoUsuario
 JOIN statusUsuario as su
 ON su.id = u.fkStatusUsuario;
 
-CREATE VIEW dadosProcessadorMercadoMix as 
-SELECT e.razaoSocial, 
-d.nome as nomeDispositivo, 
-c.nome as nomeComponente, 
-c.tipo, 
-l.valor, 
-l.dataHora 
-FROM dispositivo as d
-JOIN empresa as e 
-ON d.fkEmpresa = e.id
-JOIN componentes as c 
-ON d.id = c.fkDispositivo
-JOIN log as l
-ON c.id = l.fkComponente
-WHERE c.tipo = 'Processador';
+CREATE VIEW ultimoComponente AS
+ SELECT 
+        MAX(componentes.id) AS id,
+        componentes.nome AS nome,
+        componentes.tipo AS tipo
+    FROM
+        componentes
+    GROUP BY componentes.nome , componentes.tipo;
+    
+
