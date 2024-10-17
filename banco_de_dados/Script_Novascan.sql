@@ -72,8 +72,10 @@ CREATE TABLE log (
     descricao VARCHAR(255) NOT NULL,
     fkComponente INT NOT NULL,
     fkDispositivo INT NOT NULL,
+    fkAlertas INT,
     FOREIGN KEY (fkComponente) REFERENCES componentes(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
+    FOREIGN KEY (fkAlertas) REFERENCES alertas(id)
 );
 
 CREATE TABLE alertas (
@@ -107,8 +109,6 @@ INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
     
-
--- Views necessarias para o sistema
 CREATE VIEW listaFuncionarios as
 SELECT u.nome, 
 u.email,  
@@ -133,4 +133,3 @@ CREATE VIEW ultimoComponente AS
     FROM
         componentes
     GROUP BY componentes.nome , componentes.tipo;
-    
