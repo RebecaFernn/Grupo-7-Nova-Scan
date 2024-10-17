@@ -47,6 +47,5 @@ python3 -m venv nova_scan
 source nova_scan/bin/activate
 
 pip install -r modulos.txt
-pip install py_cpuinfo
 echo "------------------------------------------"
 deactivate
