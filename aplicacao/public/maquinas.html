@@ -104,15 +104,65 @@
         </div>
 
 
-        <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundoInfomaquina">
-            <div class="infomaquina" onclick="pararPropagacao()">
-
+        <div onclick="fecharInfomaquina()" class="fundoInformacoesmaquina" id="fundoInformacoesmaquina">
+            <div class="informacoesdaMaquina" onclick="pararPropagacao()">
                 <div class="box-btn">
                     <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
                             src="./img/rename.svg" alt=""></button>
-                    <button class="btn-renomearSelf"> Ativar maquina </button>
-                    <button class="btn-renomearSelf"> Desativar maquina </button>
+                    <button class="btn-ativar"> Ativar máquina </button>
+                    <button class="btn-desativar"> Desativar máquina </button>
+                    <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
                 </div>
+                <div class="box-informacoes">
+                    <div class="left-informacoes">
+                        <h2>Informações máquina</h2>
+                        <div class="top-info">
+                            <p> <strong>Nome da máquina:</strong> Self-Checkout 1</p>
+                            <p> <strong>Processador</strong> Intel i5 - 3470</p>
+                            <p> <strong>Total Núcleos:</strong> 4 Núcleos</p>
+                            <p> <strong>Total Mémoria Ram:</strong> 16 GB</p>
+                            <p> <strong>Total Armazenamento:</strong> 1024 GB</p>
+                        </div>
+                        <h2>Alertas associados</h2>
+                        <div class="low-info">
+                            <div class="top-low">
+
+                                <p><strong>Intervalo Máximo:</strong> 50</p>
+                                <p><strong>Intervalo Minimo:</strong> 20</p>
+                                <p><strong>Descrição:</strong> Alerta para o uso de CPU</p>
+
+                            </div>
+                            <div class="mid-low">
+
+
+                                <p><strong>Intervalo Máximo:</strong> 6</p>
+                                <p><strong>Intervalo Minimo:</strong> 1</p>
+                                <p><strong>Descrição:</strong> Alerta para o uso de RAM</p>
+
+
+                            </div>
+                            <div class="low-low">
+                                <p><strong>Intervalo Máximo:</strong> 1</p>
+                                <p><strong>Intervalo Minimo:</strong> 0</p>
+                                <p><strong>Descrição:</strong> Alerta para perda de pacotes na rede</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-informacoes">
+                        <h2>Informações máquina</h2>
+                        <div class="alertas-right">
+                            <p><strong>Alto uso de CPU: 90% - 17/10/2024 13:46:20</strong></p>
+                            <p><strong>Alto uso de RAM: 95% - 19/10/2024 17:46:20</strong></p>
+                            <p><strong>Alta Perda de Pacote: 3% - 20/12/2024 10:46:20</strong></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundoInfomaquina">
+            <div class="infomaquina" onclick="pararPropagacao()">
 
                 <!-- ------ cpu -------- -->
 
@@ -332,38 +382,45 @@
             window.location.href = "index.html"
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
+        function informacoesMaquinas() {
+            const fundoInfomaquina = document.getElementById('informacoesdaMaquina');
+            informacoesdaMaquina.style.display = 'flex';
+        }
 
 
 
         // Função para exibir a div fundoInfomaquina
         function maquina() {
-            const fundoInfomaquina = document.getElementById('fundoInfomaquina');
-            fundoInfomaquina.style.display = 'flex';
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+            fundoInformacoesmaquina.style.display = 'flex';
         }
+
+        function grafico() {
+            const fundoInfomaquina = document.getElementById('fundoInfomaquina');
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+
+            // Verifica o estado atual do display e alterna
+            if (fundoInfomaquina.style.display === 'none' || fundoInfomaquina.style.display === '') {
+                fundoInfomaquina.style.display = 'flex';
+                fundoInformacoesmaquina.style.display = 'none';
+            } else {
+                fundoInfomaquina.style.display = 'none';
+                fundoInformacoesmaquina.style.display = 'flex';
+            }
+        }
+
 
         // Função para fechar a div fundoInfomaquina
         function fecharInfomaquina() {
             const fundoInfomaquina = document.getElementById('fundoInfomaquina');
-
             fundoInfomaquina.style.display = 'none';
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+            fundoInformacoesmaquina.style.display = 'none';
 
         }
 
         function renomear() {
             const fundoCadastrar = document.getElementById('fundoCadastrar');
-
             fundoCadastrar.style.display = 'flex';
 
         }
@@ -377,7 +434,7 @@
 
 
         function pararPropagacao(fecharInfomaquina) {
-            event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
+            event.stopPropagation();
 
         }
 
@@ -789,7 +846,7 @@
                 }, c * 2000);
             })(c);
         }
-        s
+
 
 
     </script>
