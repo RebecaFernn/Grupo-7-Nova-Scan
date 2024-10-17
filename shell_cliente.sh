@@ -2,7 +2,7 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-java -version # verifica a versão do Java
+java --version # verifica a versão do Java
 if [ $? -eq 0 ]; then # se o retorno for igual a 0
     echo "Java instalado" # print no terminal
 else # se não,
@@ -47,5 +47,7 @@ python3 -m venv nova_scan
 source nova_scan/bin/activate
 
 pip install -r modulos.txt
+pip install py_cpuinfo
+import py_cpuinfo
 echo "------------------------------------------"
 deactivate
