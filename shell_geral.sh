@@ -50,7 +50,6 @@ echo "Você está querendo utilizar os serviços da NovaScan?(s/n)" # print no t
 
         pip install -r modulos.txt
         pip install py_cpuinfo
-        import py_cpuinfo
         echo "------------------------------------------"
         deactivate
     else
