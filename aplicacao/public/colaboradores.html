@@ -22,44 +22,40 @@
 
 <body>
     <section class="pgColaboradores">
+        
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
             </div>
             <div class="midNavBar">
-
-                <div class="links">
+                <div class="links" onclick="overview()">
                     <img src="./img/overview.svg" alt="">
                     <a href="overview.html">Overview</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="maquinas()" >
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="colaboradores()">
                     <img src="./img/colaboradores.svg" alt="">
                     <a href="colaboradores.html">Colaboradores</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="editarPerfil()">
                     <img src="./img/editPerfil.svg" alt="">
-                    <a href="">Editar Perfil</a>
+                    <a href="editar_perfil.html">Editar Perfil</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="metricas()">
                     <img src="./img/metricas.svg" alt="">
-                    <a href="">Editar métricas</a>
+                    <a href="#">Editar métricas</a>
                 </div>
-
-
-
             </div>
             <div class="lowNavBar">
                 <img src="./img/LogoBranca.svg" class="imgLow">
-                <div class="links">
+                <div class="links" onclick="index()" >
                     <img src="./img/sair.svg" alt="">
                     <a href="#">Logout</a>
                 </div>
             </div>
-
         </div>
 
 
@@ -144,10 +140,10 @@
         <!-- ------ Cadastrar ----------------- -->
         <div onclick="fechar()" class="fundoCadastrar" id="fundoCadastrar">
             <div class="boxCadastro" onclick="pararPropagacao()">
-                    <div class="up">
-                        NOVASCAN
-                        <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
-                    </div>  
+                <div class="up">
+                    NOVASCAN
+                    <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                </div>
                 <div class="down">
                     <div class="topo">
                         <h1>Cadastre um novo<br>colaborador</h1>
@@ -167,7 +163,8 @@
                         </div>
                         <div class="caixas">
                             <img src="img/Vector (2).svg" alt="">
-                            <input type="password" id="confirmacao_senha_input" placeholder="Confirma a primeira senha de acesso">
+                            <input type="password" id="confirmacao_senha_input"
+                                placeholder="Confirma a primeira senha de acesso">
                         </div>
                         <div class="options">
                             <button onclick="cadastrarColaborador()">Cadastrar novo colaborador</button>
@@ -218,9 +215,9 @@
                 <div class="titulosExcluir">
                     <h2>Deseja excluir este usuário?</h2>
                     <p>Repita a frase do campo</p>
-    
+
                 </div>
-              
+
                 <input type="text" id="inputExcluir" placeholder="excluir usuário">
                 <button onclick="validarExclusao()">Confirmar</button>
 
@@ -237,6 +234,35 @@
 </html>
 
 <script>
+
+    function overview() {
+        window.location.href = "overview.html"
+    }
+    function maquinas() {
+        window.location.href = "maquinas.html"
+    }
+    function editarPerfil() {
+        window.location.href = "editar_perfil.html"
+    }
+    function colaboradores() {
+        window.location.href = "colaboradores.html"
+    }
+    function metricas() {
+        window.location.href = "metricas.html"
+    }
+    function metricas() {
+        window.location.href = "metricas.html"
+    }
+    function index(){
+        window.location.href = "index.html"
+    }
+
+
+
+
+
+
+
     function cadastrar() {
         const fundoCadastrar = document.getElementById('fundoCadastrar');
 
@@ -271,10 +297,10 @@
     function ChamarPopupCadastrar() {
         fechar()
         var div = document.getElementById("popupCadastrar");
-        div.style.display = "flex"; 
+        div.style.display = "flex";
 
         setTimeout(function () {
-            div.style.display = "none"; 
+            div.style.display = "none";
         }, 2000);
     }
 
@@ -282,21 +308,21 @@
     function ChamarPopupEditar() {
         fechar()
         var div = document.getElementById("popupEditar");
-        div.style.display = "flex"; 
+        div.style.display = "flex";
 
         setTimeout(function () {
-            div.style.display = "none"; 
+            div.style.display = "none";
         }, 2000);
     }
 
     //--------------popup deletar---------------
-    function validarExclusao(){
+    function validarExclusao() {
         var input = document.getElementById("inputExcluir").value;
 
 
-        if(input == "excluir usuário"){
+        if (input == "excluir usuário") {
             ChamarPopupDeletar()
-        }else{
+        } else {
             alert("Verifique se a frese está correta!")
         }
     }
@@ -308,7 +334,7 @@
         div.style.display = "flex";
 
         setTimeout(function () {
-            div.style.display = "none"; 
+            div.style.display = "none";
         }, 2000);
     }
 

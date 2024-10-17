@@ -24,70 +24,66 @@
 
 <body>
     <section class="Overview">
+        
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
             </div>
             <div class="midNavBar">
-
-                <div class="links">
+                <div class="links" onclick="overview()">
                     <img src="./img/overview.svg" alt="">
-                    <a href="#">Overview</a>
+                    <a href="overview.html">Overview</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="maquinas()" >
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="colaboradores()">
                     <img src="./img/colaboradores.svg" alt="">
                     <a href="colaboradores.html">Colaboradores</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="editarPerfil()">
                     <img src="./img/editPerfil.svg" alt="">
-                    <a href="">Editar Perfil</a>
+                    <a href="editar_perfil.html">Editar Perfil</a>
                 </div>
-                <div class="links">
+                <div class="links" onclick="metricas()">
                     <img src="./img/metricas.svg" alt="">
-                    <a href="">Editar métricas</a>
+                    <a href="#">Editar métricas</a>
                 </div>
-             
-
-
             </div>
             <div class="lowNavBar">
-                    <img src="./img/LogoBranca.svg" class="imgLow">
-                    <div class="links">
-                        <img src="./img/sair.svg" alt="">
-                        <a href="#">Logout</a>
-                    </div>
+                <img src="./img/LogoBranca.svg" class="imgLow">
+                <div class="links" onclick="index()">
+                    <img src="./img/sair.svg" alt="">
+                    <a href="#">Logout</a>
+                </div>
             </div>
-
         </div>
         <div class="conteudoOverview">
             <div class="topOverview">
                 <h2>Overview</h2>
-           
-           
+
+
             </div>
             <div class="midOverview">
                 <canvas id="meuHistograma"></canvas>
             </div>
             <div class="lowOverview">
-                    <div class="boxleftLow" onclick="paginaMaquinas()">
-                        <img src="./img/alertwhite.svg" alt="">
-                        <h3>Maquinas em estado crítico</h3>
-                        <h1> 5 </h1>
-                    </div>
-                    <div class="boxcenterLow" onclick="paginaMaquinas()">
-                        <img src="./img/totalMaquinas.svg" alt="">
-                        <h3>Total de maquinas</h3>
-                        <h1>9</h1>
-                    </div>
-                    <div class="boxrightLow" onclick="paginaMaquinas()">
-                        <img src="./img/maquinasEstaveis.svg" alt="">
-                        <h3>Maquinas estaveis</h3>
-                        <h1>4</h1>
-                    </div>
+                <div class="boxleftLow" onclick="maquinas()">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <h3>Maquinas em estado crítico</h3>
+                    <h1> 5 </h1>
+                </div>
+                <div class="boxcenterLow" onclick="maquinas()">
+                    <img src="./img/totalMaquinas.svg" alt="">
+                    <h3>Total de maquinas</h3>
+                    <h1>9</h1>
+                </div>
+                <div class="boxrightLow" onclick="maquinas()">
+                    <img src="./img/maquinasEstaveis.svg" alt="">
+                    <h3>Maquinas estaveis</h3>
+                    <h1>4</h1>
+                </div>
             </div>
         </div>
 
@@ -101,157 +97,176 @@
 <script>
 
 
-function paginaMaquinas(){
-    window.location.href = "maquinas.html";
-}
-// // Obtém a data atual
-// const dataAtual = new Date();
-// const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
-// const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
-
-// // Subtrai 20 dias
-// const dataMenos20Dias = new Date(dataAtual);
-// dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 20);
-// const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
-
-// console.log('Data atual:', dataFormatada);
-// console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
-
-
-// boxData.innerHTML += `<p>${dataFormatada}</p> // <p>${dataMenos20DiasFormatada}</p>`;
-
-//
-
-// var l20 = [];
-// var l40 = [];
-// var l60 = [];
-// var l80 = [];
-// var l100 = [];
-
-
-var labelsFreq = ['', '', '', '2.7', '','', '', '', '', '','2.8', '', '', '', '','', '', '2.9', '', '','', '', '', '', '','3.0', '', ''];
-
-// for (var cont = 0; cont < 2000; cont++) {
-//     var aleatorio = Math.random(); 
-
-//     if (aleatorio < 0.15) { 
-        
-//         l60.push(Math.floor(Math.random() * 19) + 51); 
-//     } else if (aleatorio < 0.45) { 
-   
-//         l80.push(Math.floor(Math.random() * 9) + 76); 
-//     } else if (aleatorio < 0.95) { 
-       
-//         l100.push(Math.floor(Math.random() * 20) + 81); 
-//     } else {
-        
-//         var numero = Math.floor(Math.random() * 81); 
-
-//         if (numero >= 0 && numero <= 20) {
-//             l20.push(numero);
-//         } else if (numero > 20 && numero <= 40) {
-//             l40.push(numero);
-//         } else if (numero > 40 && numero <= 60) {
-//             l60.push(numero);
-//         } else if (numero > 60 && numero <= 80) {
-//             l80.push(numero);
-//         }
-//     }
-// }
+    function overview() {
+        window.location.href = "overview.html"
+    }
+    function maquinas() {
+        window.location.href = "maquinas.html"
+    }
+    function editarPerfil() {
+        window.location.href = "editar_perfil.html"
+    }
+    function colaboradores() {
+        window.location.href = "colaboradores.html"
+    }
+    function metricas() {
+        window.location.href = "metricas.html"
+    }
+    function index(){
+        window.location.href = "index.html"
+    }
 
 
 
 
-// var ate20 = l20.length;
-// var ate40 = l40.length;
-// var ate60 = l60.length;
-// var ate80 = l80.length;
-// var ate100 = l100.length;
+    // // Obtém a data atual
+    // const dataAtual = new Date();
+    // const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    // const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
 
-const histograma = document.getElementById('meuHistograma').getContext('2d');
-const meuHistograma = new Chart(histograma, {
-    type: 'bar',
-    data: {
-        labels: labelsFreq,
-        datasets: [{
-            label: 'Frequência',
-            data: [150, 0, 2, 2, 15, 5, 4, 4, 20, 5, 1, 200, 10, 4, 0, 0, 150, 350, 10, 50, 370, 600, 300, 550, 1100, 800, 900, 700],
-            borderColor: 'black',
-            backgroundColor: 'gray',
-            borderWidth: 1,
-            barThickness: 'flex',
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Frequência',
-                    color: 'black',  // Define a cor do título do eixo y
-                    font: {
-                        size: 25,
-                        weight: 'bold',
-                        family: 'Montserrat',
+    // // Subtrai 20 dias
+    // const dataMenos20Dias = new Date(dataAtual);
+    // dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 20);
+    // const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
+
+    // console.log('Data atual:', dataFormatada);
+    // console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
+
+
+    // boxData.innerHTML += `<p>${dataFormatada}</p> // <p>${dataMenos20DiasFormatada}</p>`;
+
+    //
+
+    // var l20 = [];
+    // var l40 = [];
+    // var l60 = [];
+    // var l80 = [];
+    // var l100 = [];
+
+
+    var labelsFreq = ['', '', '', '2.7', '', '', '', '', '', '', '2.8', '', '', '', '', '', '', '2.9', '', '', '', '', '', '', '', '3.0', '', ''];
+
+    // for (var cont = 0; cont < 2000; cont++) {
+    //     var aleatorio = Math.random(); 
+
+    //     if (aleatorio < 0.15) { 
+
+    //         l60.push(Math.floor(Math.random() * 19) + 51); 
+    //     } else if (aleatorio < 0.45) { 
+
+    //         l80.push(Math.floor(Math.random() * 9) + 76); 
+    //     } else if (aleatorio < 0.95) { 
+
+    //         l100.push(Math.floor(Math.random() * 20) + 81); 
+    //     } else {
+
+    //         var numero = Math.floor(Math.random() * 81); 
+
+    //         if (numero >= 0 && numero <= 20) {
+    //             l20.push(numero);
+    //         } else if (numero > 20 && numero <= 40) {
+    //             l40.push(numero);
+    //         } else if (numero > 40 && numero <= 60) {
+    //             l60.push(numero);
+    //         } else if (numero > 60 && numero <= 80) {
+    //             l80.push(numero);
+    //         }
+    //     }
+    // }
+
+
+
+
+    // var ate20 = l20.length;
+    // var ate40 = l40.length;
+    // var ate60 = l60.length;
+    // var ate80 = l80.length;
+    // var ate100 = l100.length;
+
+    const histograma = document.getElementById('meuHistograma').getContext('2d');
+    const meuHistograma = new Chart(histograma, {
+        type: 'bar',
+        data: {
+            labels: labelsFreq,
+            datasets: [{
+                label: 'Frequência',
+                data: [150, 0, 2, 2, 15, 5, 4, 4, 20, 5, 1, 200, 10, 4, 0, 0, 150, 350, 10, 50, 370, 600, 300, 550, 1100, 800, 900, 700],
+                borderColor: 'black',
+                backgroundColor: 'gray',
+                borderWidth: 1,
+                barThickness: 'flex',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Frequência',
+                        color: 'black',  // Define a cor do título do eixo y
+                        font: {
+                            size: 25,
+                            weight: 'bold',
+                            family: 'Montserrat',
+                        }
+                    },
+                    ticks: {
+                        color: 'black',  // Define a cor dos números no eixo y
+                        font: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Montserrat'
+                        }
                     }
                 },
-                ticks: {
-                    color: 'black',  // Define a cor dos números no eixo y
-                    font: {
-                        size: 14,
-                        weight: 'bold',
-                        family: 'Montserrat'
-                    }
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Uso em %',
+                        color: 'black',  // Define a cor do título do eixo x
+                        font: {
+                            size: 25,
+                            weight: 'bold',
+                            family: 'Montserrat',
+                        }
+                    },
+                    ticks: {
+                        color: 'black',  // Define a cor dos números no eixo x
+                        font: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Montserrat'
+                        }
+                    },
+                    categoryPercentage: 1.0,
+                    barPercentage: 1.0,
                 }
             },
-            x: {
+            plugins: {
                 title: {
                     display: true,
-                    text: 'Uso em %',
-                    color: 'black',  // Define a cor do título do eixo x
+                    text: 'Uso da CPU: AMD Ryzen 5 4600H with Radeon Graphics',
+                    color: 'black',  // Define a cor do título do gráfico
                     font: {
-                        size: 25,
+                        size: 30,
                         weight: 'bold',
                         family: 'Montserrat',
-                    }
+                    },
+                    padding: {
+                        top: 20,
+                        bottom: 30
+                    },
+                    align: 'center'
                 },
-                ticks: {
-                    color: 'black',  // Define a cor dos números no eixo x
-                    font: {
-                        size: 14,
-                        weight: 'bold',
-                        family: 'Montserrat'
-                    }
-                },
-                categoryPercentage: 1.0,
-                barPercentage: 1.0,
-            }
-        },
-        plugins: {
-            title: {
-                display: true,
-                text: 'Uso da CPU: AMD Ryzen 5 4600H with Radeon Graphics',
-                color: 'black',  // Define a cor do título do gráfico
-                font: {
-                    size: 30,
-                    weight: 'bold',
-                    family: 'Montserrat',
-                },
-                padding: {
-                    top: 20,
-                    bottom: 30
-                },
-                align: 'center'
-            },
-            legend: {
-                display: false,
+                legend: {
+                    display: false,
+                }
             }
         }
-    }
-});
+    });
 
 
 
