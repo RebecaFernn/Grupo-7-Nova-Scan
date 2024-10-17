@@ -35,21 +35,21 @@
                     <img src="./img/overview.svg" alt="">
                     <a href="overview.html">Overview</a>
                 </div>
-                <div class="links">
+                <div class="links" href="maquinas.html">
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
-                <div class="links">
+                <div class="links" href="colaboradores.html"></div>>
                     <img src="./img/colaboradores.svg" alt="">
                     <a href="colaboradores.html">Colaboradores</a>
                 </div>
-                <div class="links">
+                <div class="links" href="editar_perfil.html">
                     <img src="./img/editPerfil.svg" alt="">
-                    <a href="">Editar Perfil</a>
+                    <a href="editar_perfil.html">Editar Perfil</a>
                 </div>
                 <div class="links">
-                    <img src="./img/mural.svg" alt="">
-                    <a href="">Mural</a>
+                    <img src="./img/metricas.svg" alt="">
+                    <a href="">Editar métricas</a>
                 </div>
 
             </div>
@@ -69,41 +69,50 @@
 
             </div>
             <div class="boxmaquinas">
-                <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas 1</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                <div class="maquinasOK" onclick="maquina()">
+                    <p>Self-Checkout 1</p>
+                    <img src="./img/ok.svg" class="imgMaquina" alt="">
+                    
+                </div>
+                <div class="maquinasOK" onclick="maquina()">
+                    <p>Self-Checkout 2</p>
+                    <img src="./img/ok.svg" class="imgMaquina" alt="">
+                   
+                </div>
+                <div class="maquinasOK" onclick="maquina()">
+                    <p>Self-Checkout 3</p>
+                    <img src="./img/ok.svg" class="imgMaquina" alt="">
+                   
+                </div>
+                <div class="maquinasOK" onclick="maquina()">
+                    <p>Self-Checkout 4</p>
+                    <img src="./img/ok.svg" class="imgMaquina" alt="">
+                   
                 </div>
                 <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                    <p>Self-Checkout 5</p>
+                    <img src="./img/alert.svg" class="imgMaquina" alt="">
+                    
                 </div>
                 <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                    <p>Self-Checkout 6</p>
+                    <img src="./img/alert.svg" class="imgMaquina" alt="">
+                   
                 </div>
                 <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                    <p>Self-Checkout 7</p>
+                    <img src="./img/alert.svg" class="imgMaquina" alt="">
+                    
                 </div>
                 <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                    <p>Self-Checkout 8</p>
+                    <img src="./img/alert.svg" class="imgMaquina" alt="">
+                    
                 </div>
                 <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
-                </div>
-                <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
-                </div>
-                <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
-                </div>
-                <div class="maquinas" onclick="maquina()">
-                    <p>Maquinas</p>
-                    <p>(Quando cadastrar aparece automatico)</p>
+                    <p>Self-Checkout 9</p>
+                    <img src="./img/alert.svg" class="imgMaquina" alt="">
+                    
                 </div>
             </div>
 
@@ -111,8 +120,14 @@
 
         <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundoInfomaquina">
             <div class="infomaquina" onclick="pararPropagacao()">
-                <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img src="./img/rename.svg"
-                        alt=""></button>
+
+                <div class="box-btn">
+                    <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
+                            src="./img/rename.svg" alt=""></button>
+                    <button class="btn-renomearSelf"> Ativar maquina </button>
+                    <button class="btn-renomearSelf"> Desativar maquina </button>
+                </div>
+
                 <!-- ------ cpu -------- -->
 
                 <div class="boxInfoCPU">
@@ -171,7 +186,7 @@
                                 Em uso
                             </div>
                             <div class="velocidade" id="RAMemuso">
-                                8
+
                             </div>
                         </div>
                         <div class="boxNucleos">
@@ -179,7 +194,7 @@
                                 Total
                             </div>
                             <div class="qtdNucleos">
-                                16
+                                16GB
                             </div>
                         </div>
                     </div>
@@ -191,7 +206,7 @@
                 </div>
 
                 <!-- ARMAZENAMENTO -->
-                <!-- <div class="boxInfoCPU">
+                <div class="boxInfoCPU">
                     <div class="boxFichaCPU">
 
                         <div class="CPU" id="CPU">
@@ -199,40 +214,41 @@
                                 <h2>MEM</h2>
                             </div>
 
-                            <div class="usoCPU" id="usoCPU">
+                            <div class="usoCPU" id="usoMEM">
 
                             </div>
                         </div>
 
                         <div class="boxVelocidade">
                             <div class="tituloVelocidade">
-                                Velocidade
+                                Em uso
                             </div>
-                            <div class="velocidade" id="velocidade">
+                            <div class="velocidade" id="MEMemuso">
 
                             </div>
                         </div>
                         <div class="boxNucleos">
                             <div class="titulosNucleos">
-                                Nucleos lógicos
+                                Total
                             </div>
                             <div class="qtdNucleos">
-                                4
+                                1024GB
                             </div>
                         </div>
                     </div>
 
                     <div class="boxGrafico">
-                        <canvas id="meuGrafico"></canvas>
+                        <canvas id="meuGrafico3"></canvas>
                     </div>
 
                 </div>
+
                 <div class="boxInfoCPU">
                     <div class="boxFichaCPU">
 
-                        <div class="CPU" id="CPU">
-                            <div class="tituloCPU">
-                                <h2>CPU</h2>
+                        <div class="REDE" id="CPU">
+                            <div class="tituloREDE">
+                                <h2>REDE</h2>
                             </div>
 
                             <div class="usoCPU" id="usoCPU">
@@ -242,27 +258,35 @@
 
                         <div class="boxVelocidade">
                             <div class="tituloVelocidade">
-                                Velocidade
+                                Pacotes enviados
                             </div>
-                            <div class="velocidade" id="velocidade">
+                            <div class="velocidade" id="enviados">
 
                             </div>
                         </div>
                         <div class="boxNucleos">
                             <div class="titulosNucleos">
-                                Nucleos lógicos
+                                Pacotes recebidos
                             </div>
-                            <div class="qtdNucleos">
-                                4
+                            <div class="velocidade" id="recebidos">
+
+                            </div>
+                        </div>
+                        <div class="boxVelocidade">
+                            <div class="tituloVelocidade">
+                                Pacotes perdidos
+                            </div>
+                            <div class="velocidade" id="perdidos">
+
                             </div>
                         </div>
                     </div>
 
                     <div class="boxGrafico">
-                        <canvas id="meuGrafico"></canvas>
+                        <canvas id="meuGrafico4"></canvas>
                     </div>
 
-                </div> -->
+                </div>
 
                 <!-- --------- rede --------- -->
 
@@ -526,6 +550,224 @@
                 }, c * 2000);
             })(c);
         }
+
+
+
+
+
+
+
+        var lista3 = [];
+        var labels3 = [];
+
+        const ctx3 = document.getElementById('meuGrafico3').getContext('2d');
+        const meuGrafico3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: labels2,
+                datasets: [{
+                    label: 'RAM',
+                    data: lista2,
+                    borderColor: 'rgb(31, 108, 108)',
+                    backgroundColor: 'rgb(31, 108, 108, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        for (var c = 0; c < 100; c++) {
+            (function (c) {
+                setTimeout(function () {
+                    const now = new Date();
+                    const time = now.toLocaleTimeString();
+
+                    var uso = Math.random() * 10 + 70;
+                    var velocidade = Math.random() + 1;
+                    lista3.push(uso.toFixed(0));
+                    labels3.push(`Hora: ${time}`);
+
+
+
+                    var usoRam = (uso.toFixed(0) / 100) * 1024;
+                    // Mantém apenas os últimos 7 pontos no gráfico
+                    if (lista3.length >= 7) {
+                        lista3.shift();
+                        labels3.shift();
+                    }
+
+                    meuGrafico3.data.datasets[0].data = lista3;
+                    meuGrafico3.data.labels = labels3;
+                    meuGrafico3.update();
+
+                    document.getElementById("usoMEM").innerHTML = uso.toFixed(0) + "%";
+                    document.getElementById("MEMemuso").innerHTML = usoRam.toFixed(2) + "GB"
+
+                    RAMemuso
+                }, c * 5000);
+            })(c);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        var Listaenviados = [];
+var Listarecebidos = [];
+var labels4 = [];
+
+const ctx4 = document.getElementById('meuGrafico4').getContext('2d');
+const meuGrafico4 = new Chart(ctx4, {
+    type: 'line',
+    data: {
+        labels: labels4,
+        datasets: [
+            {
+                label: 'Enviados',
+                data: Listaenviados,
+                borderColor: 'rgb(248, 100, 199)',
+                backgroundColor: 'rgba(31, 108, 108, 0)',
+                borderWidth: 4,
+                fill: true,
+                pointRadius: 0,
+                borderDash: [10, 5]
+            },
+            {
+                label: 'Recebidos',
+                data: Listarecebidos,
+                borderColor: 'rgb(248, 100, 199, 0.7)',
+                backgroundColor: 'rgb(248, 100, 199, 0.3)',
+                borderWidth: 4,
+                fill: true,
+                pointRadius: 0,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                min: 0,
+                max: 50,
+                ticks: {
+                    font: {
+                        size: 14,
+                        weight: 'bold',
+                        family: 'Montserrat'
+                    }
+                }
+            },
+            x: {
+                ticks: {
+                    font: {
+                        size: 14,
+                        weight: 'bold',
+                        family: 'Montserrat'
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    font: {
+                        size: 16,
+                        weight: 'bold',
+                        family: 'Montserrat'
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Loop para atualizar os dados do gráfico REDE
+for (var c = 0; c < 100; c++) {
+    (function (c) {
+        setTimeout(function () {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+
+            var enviados = Math.random() * 10;
+            var recebidos = Math.random() * 10 + 5;
+            var perdidos = Math.random() * 5; // Exemplo: valor aleatório para perdidos
+
+            // Adicionar valores às listas
+            Listaenviados.push(enviados.toFixed(0));
+            Listarecebidos.push(recebidos.toFixed(0));
+            labels4.push(`Hora: ${time}`);
+
+            // Mantém apenas os últimos 7 pontos no gráfico
+            if (Listaenviados.length >= 7) {
+                Listaenviados.shift();
+                Listarecebidos.shift();
+                labels4.shift();
+            }
+
+            // Atualizar os dados do gráfico
+            meuGrafico4.data.datasets[0].data = Listaenviados;
+            meuGrafico4.data.datasets[1].data = Listarecebidos;
+            meuGrafico4.data.labels = labels4;
+            meuGrafico4.update();
+
+            // Atualizar o conteúdo dos elementos HTML
+            document.getElementById("enviados").innerHTML = enviados.toFixed(2) + "Mb";
+            document.getElementById("recebidos").innerHTML = recebidos.toFixed(2) + "Mb";
+            document.getElementById("perdidos").innerHTML = perdidos.toFixed(2) + "%";
+        }, c * 2000);
+    })(c);
+}
+s
 
 
     </script>
