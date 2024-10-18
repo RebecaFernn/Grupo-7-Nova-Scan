@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+.Editar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.conteudoEditar{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+}
+
+.conteudoEditar .right img{
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+    top: 0px;
+    left: 0px;
+}
+.conteudoEditar.right img{
+    height: 99.5%;
+    width: 100%;
+    z-index: 1; 
+}
+
+.conteudoEditar .left{
+    width: 62%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.conteudoEditar .left .infos{
+    height: 70%;
+    width: 62%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+
+}
+.left .infos .objects{
+    height: 80.5%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.left .infos .objects h1{
+    font-family: Montserrat;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 20%;
+}
+.left .infos .objects button{
+    width: 60%;
+    height: 46px;
+    border-radius: 10px;
+    border: none;
+    background-color: #F84455;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.left .infos .objects .two{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.left .infos .objects .caixas{
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.infos .objects .caixas input{
+    height: 40px;
+    border: rgba(82, 82, 82, 0.733) solid 1.5px;
+    margin-top: 5px;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 10px;
+}
+.infos .objects .caixas .ip_1{
+    width: 60%;
+}
+.infos .objects .caixas .ip_2{
+    width: 90%;
+}
+.infos .objects .caixas .ip_3{
+    width: 60%; 
+    height: 200px;
+    padding-top: 5px;
+    border: rgba(82, 82, 82, 0.733) solid 1.5px;
+    margin-top: 5px;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 10px;
+}
+.infos .objects .caixas .ip_4{
+    width: 100%;
+}
+
+.popup{
+    width: 35%;
+    height: 40%;
+    z-index: 100;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 2.125rem;
+    gap: 5%;
+    border-radius: 15px;
+}
+
+.btn-alerta{
+    position: absolute;
+    background-color: #F84455;
+    width: 15%;
+    height: 5%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2%;
+    left: 21%;
+    z-index: 3;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+.btn-voltar{
+    position: absolute;
+    background-color: transparent;
+    width: 10%;
+    height: 5%;
+    color: rgb(0, 0, 0);
+    display: none;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+    top: 2%;
+    left: 21%;
+    z-index: 7;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+
+
+/* ------------------------------------------- */
+
+.conteudoColadores{
+    width: 80%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1%;
+    position: absolute;
+    left: 20%;
+    background-color: white;
+    z-index: 5;
+}
+
+.topColaboradores{
+    width: 90%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.topColaboradores h2{
+    font-size: 1.875rem;
+    font-family: Montserrat;
+    font-weight: 500;
+}
+.btn-novoColaborador{
+    font-size:1.125rem;
+    background-color: #F84455;
+    width: 25%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none ;
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+}
+.box-colunas{
+    width: 90%;
+    height: 10%;
+    background-color: #F84455;
+    display: flex;
+    padding-left: 2.5%;
+    flex-direction: row;
+    font-size: 1.125rem;
+    font-family: Montserrat;
+    color: white;
+    font-weight: 600;
+
+}
+
+.box-colaboradores{
+    width: 90%;
+    height: 7%;
+    background-color: #ffffff;
+    border-bottom: 1px solid black ;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.125rem;
+    font-family: Montserrat;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    padding-left: 2.5%;
+}
+.box-colaboradores button{
+    background-color: transparent;
+    border: none;
+    margin-left: 4%;
+    position: relative;
+    right: 0%;
+  
+}
+.nome{
+    width: 15%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+  
+}
+.email{
+    width: 23%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+  
+}
+.cargo{
+    width: 20%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+   
+}
+.administrador{
+    width: 15%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+  
+}
+.status{
+    width: 10%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+  
+}

@@ -459,6 +459,7 @@ html{
         transform: translateX(-50%);
         height: 55%;
         position: absolute;
+        display: flex;
         top: 22.35%;
        
     }
@@ -572,3 +573,23 @@ html{
         right: 0;
     }
 }
+
+
+@media (min-width: 1000px) and (max-width: 1500px) {
+    .Sessao1 .up H1{
+        font-size: 3.8rem;
+        line-height: 1;
+     
+    }
+    .Sessao1 img{
+        left: 45%;
+        transform: translateX(-50%);
+        height: 60%;
+        position: absolute;
+        display: flex;
+        top: 26%;
+       
+    }
+}
+
+@media screen and (height: 1000px) {}

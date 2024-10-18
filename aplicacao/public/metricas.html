@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alertas Personalizados - Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/navBarDash.css">
-    <link rel="stylesheet" href="css/editar_perfil.css">
+    <link rel="stylesheet" href="css/metricas.css">
 </head>
 
 <body>
@@ -56,7 +56,6 @@
             </div>
         </div>
 
-        <!--EDITAR PERFIL-->
         <div class="conteudoEditar">
             <div class="right">
                 <img src="img/401.png" alt="">
@@ -65,38 +64,80 @@
             <div class="left">
                 <div class="infos">
                     <div class="objects">
-                        <h1>Edite seu perfil</h1>
+                        <h1>Crie o seu alerta personalizado!</h1>
                         <div class="caixas">
-                            Nome
+                      
                             <br>
-                            <input class="ip_1" type="text" placeholder="Digite seu nome">
+                            <input class="ip_1" type="text" placeholder="Intervalo minimo">
                         </div>
                         <div class="caixas">
-                            Email
+                            
                             <br>
-                            <input class="ip_2" type="text" placeholder="Digite seu novo email">
+                            <input class="ip_1" type="text" placeholder="Intervalo máximo">
                         </div>
                         <div class="two">
                             <div class="caixas">
-                                Senha
                                 <br>
-                                <input class="ip_3" type="text" placeholder="Digite sua nova senha">
+                                <textarea class="ip_3" type="text" placeholder="Descreva a função desse alerta"></textarea>
                             </div>
-                            <div class="caixas">
-                                Confirmar senha
-                                <br>
-                                <input class="ip_4" type="text" placeholder="Confirme sua nova senha">
-                            </div>
+
                         </div>
                         <button onclick="ChamarPopupPerfil()">Confirmar</button>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
-        <div class="popup" id="popupPerfil">
+        <div class="conteudoColadores" id="alertas">
+            <div class="topColaboradores">
+                <h2>Alertas Criados do “Nome do usuário”</h2>
+            </div>
+            <div class="box-colunas">
+                <div class="nome">ID</div>
+                <div class="email">Intervalo máximo</div>
+                <div class="cargo">Intervalo minimo</div>
+                <div class="administrador">Descrição</div>
+                <div class="status">Status</div>
+            </div>
+            <div class="box-colaboradores">
+                <div class="nome" id="nome">1</div>
+                <div class="email" id="email">50</div>
+                <div class="cargo" id="cargo">20</div>
+                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
+                <div class="status" id="status">Ativo</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div>
+            <div class="box-colaboradores">
+                <div class="nome" id="nome">1</div>
+                <div class="email" id="email">50</div>
+                <div class="cargo" id="cargo">20</div>
+                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
+                <div class="status" id="status">Ativo</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div>
+            <div class="box-colaboradores">
+                <div class="nome" id="nome">1</div>
+                <div class="email" id="email">50</div>
+                <div class="cargo" id="cargo">20</div>
+                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
+                <div class="status" id="status">Ativo</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div>
+
+
+        </div>
+
+
+        <button onclick="voltar()" class="btn-voltar" id="voltar"><img src="./img/voltar.svg" alt=""> Voltar</button>
+        <button onclick="visualizarAlertas()" class="btn-alerta">Ver alertas criados</button>
+        <!-- <div class="popup" id="popupPerfil">
             <img src="img/ok.svg" alt="">
             <h2>Perfil atualizado!</h2>
-        </div>
+        </div> -->
         </div>
     </section>
 </body>
@@ -123,16 +164,18 @@
     function index(){
         window.location.href = "index.html"
     }
-
-
-
-    function ChamarPopupPerfil() {
-        var div = document.getElementById("popupPerfil");
-        div.style.display = "flex";
-
-        setTimeout(function () {
-            div.style.display = "none";
-        }, 2000);
+    function visualizarAlertas(){
+        const conteudoAlertas = document.getElementById('alertas');
+        conteudoAlertas.style.display = 'flex';
+        const btnVoltar = document.getElementById('voltar');
+        btnVoltar.style.display = 'flex'
     }
+    function voltar(){
+        const conteudoAlertas = document.getElementById('alertas');
+        conteudoAlertas.style.display = 'none';
+         const btnVoltar = document.getElementById('voltar');
+        btnVoltar.style.display = 'none'
+    }
+  
 
 </script>
