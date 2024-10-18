@@ -82,15 +82,15 @@ function listarFuncionarios() {
         headers: {
             "Content-Type": "application/json",
         }
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    resposta.json()
-                    console.log("Usuários encontrados: ", resposta)
-                }
-                else {
-                    console.log("Houve um problema ao buscar os usuários")
-                }
-            })
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            var listaUsuarios = resposta.json()
+            console.log("Usuários encontrados: ", listaUsuarios)
+        }
+        else {
+            console.log("Houve um problema ao buscar os usuários")
+        }
     })
         .catch(function (error) {
             console.log("Erro!: ", error)
