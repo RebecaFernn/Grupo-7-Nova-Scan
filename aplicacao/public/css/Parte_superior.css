@@ -459,6 +459,7 @@ html{
         transform: translateX(-50%);
         height: 55%;
         position: absolute;
+        display: flex;
         top: 22.35%;
        
     }
@@ -572,3 +573,44 @@ html{
         right: 0;
     }
 }
+
+
+@media (min-width: 1000px) and (max-width: 1500px) {
+    .Sessao1 .up H1{
+        font-size: 3.8rem;
+        line-height: 1;
+     
+    }
+    .Sessao1 img{
+        left: 45%;
+        transform: translateX(-50%);
+        height: 60%;
+        position: absolute;
+        display: flex;
+        top: 26%;
+       
+    }
+}
+
+@media screen and (height: 844px) {
+    .Sessao1 img{
+        top: 30.4%;
+    }
+}
+@media screen and (height: 896px) {
+    .Sessao1 img{
+        top: 25.4%;
+    }
+}
+@media screen and (height: 667px) {
+    .Sessao1 img{
+        height: 60%;
+        top: 48%;
+    }
+    .Sessao1 .up H1{
+        font-size: 1.5rem;
+        line-height: 1;
+     
+    }
+}
+
