@@ -28,7 +28,7 @@ router.patch("/atualizarDados/:idUsuario", function (req, res) {
 });
 
 router.patch("/atualizarCargo/:fkEmpresa", function (req, res) {
-    usuarioController.atualizarDados(req, res);
+    usuarioController.atualizarCargo(req, res);
 });
 
 
