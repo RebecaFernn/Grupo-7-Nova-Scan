@@ -30,9 +30,9 @@ function cadastrarEmpresa() {
                 console.log("resposta: ", resposta)
                 if (resposta.ok) {
                     Swal.fire({
-                        title: 'Sucesso ao cadastrar a empresa!',
-                        text: 'Proximo passo: Cadastrar o administrador da empresa!',
-                        icon: 'success',
+                        title: 'Empresa cadastrada!',
+                        text: 'Redirecionando para o cadastro do administrador!',
+                        imageUrl: "img/ok.svg",
                         showConfirmButton: false,
                         timer: 2000
                     })

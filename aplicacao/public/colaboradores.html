@@ -231,6 +231,7 @@
 
 </html>
 <script src="js/Login_Cadastro/Dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     function overview() {
@@ -254,12 +255,9 @@
     function index(){
         window.location.href = "index.html"
     }
-
-
-
-
-
-
+    function atualizarPagina() {
+        location.reload();
+    }
 
     function cadastrar() {
         const fundoCadastrar = document.getElementById('fundoCadastrar');

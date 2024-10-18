@@ -457,6 +457,12 @@ option{
     font-family: Montserrat;
     font-size: 2.125rem;
     gap: 5%;
- 
+}
 
+.swal2-title{
+    font-family: Montserrat;
+}
+.swal2-text{
+    font-family: Montserrat;
+    font-size: 14px;
 }

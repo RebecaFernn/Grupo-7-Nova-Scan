@@ -62,13 +62,27 @@ function cadastrarColaborador() {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
                     console.log("CADASTRO DE COLABORADOR REALIZADO")
-                    ChamarPopupCadastrar()
+                    Swal.fire({
+                        title: 'Colaborador cadastrado!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    setTimeout(function(){
+                        atualizarPagina();
+                    }, 3000)
                 } else {
                     throw console.log("Houve um erro ao tentar realizar o cadastro!");
                 }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
+                Swal.fire({
+                    title: 'Houve um erro ao realizar o cadastro!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             });
         return false;
     }
