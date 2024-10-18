@@ -177,10 +177,6 @@
             </div>
         </div>
 
-        <!-- Agora vai! -->
-        <script src="js/Login_Cadastro/Dashboard.js"></script>
-
-
         <div class="popup" id="popupCadastrar">
             <img src="img/ok.svg" alt="">
             <h2>Cadastro realizado <br> com sucesso!</h2>
@@ -192,12 +188,12 @@
         <div onclick="fechar()" class="fundoEditar" id="fundoEditar">
             <div class="boxEditar" onclick="pararPropagacao()">
                 <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
-                <select name="" id="">
+                <select name="" id="comboBox">
                     <option disabled selected>Escolha um cargo</option>
-                    <option value="">Administrador</option>
-                    <option value="">Funcionário</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Funcionário</option>
                 </select>
-                <button onclick="ChamarPopupEditar()">Confirmar</button>
+                <button onclick="ChamarPopupEditar(), editarCargo()">Confirmar</button>
 
             </div>
         </div>
@@ -232,7 +228,7 @@
 </body>
 
 </html>
-
+ <script src="js/Login_Cadastro/Dashboard.js"></script>
 <script>
 
     function overview() {

@@ -108,6 +108,10 @@ function editarDados() {
     var novaSenha = inp3.value
     var confirmarSenha = inp4.value
 
+    if (novaSenha !== confirmarSenha) {
+        
+    }
+    else {
         fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
             method: "PATCH",
             headers: {
@@ -123,9 +127,8 @@ function editarDados() {
                 if (resposta.ok) {
                     resposta.json()
                     console.log("Informações atualizadas no banco com sucesso: ", resposta)
-                    console.log("Cai dentro do if do perfil atuzliado com sucesso")
                     Swal.fire({
-                        title: 'Perfil Atualizado!',
+                        title: 'Informações atualizadas com sucesso!',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000
@@ -145,6 +148,7 @@ function editarDados() {
                 console.log("Erro ao atualizar os dados: ", error)
             })
     }
+}
 
 
 function editarCargo() {
