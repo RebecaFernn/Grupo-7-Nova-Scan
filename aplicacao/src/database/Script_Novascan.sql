@@ -72,8 +72,10 @@ CREATE TABLE log (
     descricao VARCHAR(255) NOT NULL,
     fkComponente INT NOT NULL,
     fkDispositivo INT NOT NULL,
+    fkAlertas INT,
     FOREIGN KEY (fkComponente) REFERENCES componentes(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
+    FOREIGN KEY (fkAlertas) REFERENCES alertas(id)
 );
 
 CREATE TABLE alertas (
@@ -106,22 +108,23 @@ INSERT INTO atividade (situacao) VALUES
 INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
-
-CREATE VIEW ultimoComponente as
-	SELECT MAX(id) as id, nome, tipo FROM componentes GROUP BY nome, tipo;
     
-CREATE VIEW listaFuncionarios as
-SELECT u.nome, 
-u.email,  
-adm.nome as 'Administrador Por:', 
-tu.tipo, 
-su.situacao 
-FROM usuario as u 
-LEFT JOIN usuario as adm
-ON adm.id = u.fkAdmin
-JOIN empresa as e 
-ON e.id = u.fkEmpresa
-JOIN tipoUsuario as tu
-ON tu.id = u.fkTipoUsuario
+CREATE VIEW ultimoComponente AS
+ SELECT 
+        MAX(componentes.id) AS id,
+        componentes.nome AS nome,
+        componentes.tipo AS tipo
+    FROM
+        componentes
+    GROUP BY componentes.nome , componentes.tipo;
+
+CREATE VIEW listarFuncionario AS 
+SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, tu.tipo as cargo, su.situacao FROM usuario as u JOIN tipoUsuario as tu
+ON u.fkTipoUsuario = tu.id
 JOIN statusUsuario as su
-ON su.id = u.fkStatusUsuario;
+ON u.fkStatusUsuario = su.id
+LEFT JOIN usuario as adm
+ON u.fkAdmin = adm.id;
+
+
+
