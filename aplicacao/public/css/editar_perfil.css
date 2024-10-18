@@ -130,6 +130,14 @@ body {
     width: 100%;
 }
 
+.swal2-title{
+    font-family: Montserrat;
+}
+.swal2-text{
+    font-family: Montserrat;
+    font-size: 14px;
+}
+
 /* .popup{
     width: 35%;
     height: 40%;
