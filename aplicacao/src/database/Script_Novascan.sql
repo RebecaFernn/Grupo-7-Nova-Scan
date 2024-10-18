@@ -119,12 +119,14 @@ CREATE VIEW ultimoComponente AS
     GROUP BY componentes.nome , componentes.tipo;
     
 CREATE VIEW listarfuncionario as
-SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, u.fkEmpresa, tu.tipo as cargo, su.situacao FROM usuario as u JOIN tipoUsuario as tu
+SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, u.fkEmpresa, tu.tipo as cargo, su.situacao, e.razaoSocial FROM usuario as u JOIN tipoUsuario as tu
 ON u.fkTipoUsuario = tu.id
 JOIN statusUsuario as su
 ON u.fkStatusUsuario = su.id
 LEFT JOIN usuario as adm
-ON u.fkAdmin = adm.id;
+ON u.fkAdmin = adm.id
+JOIN empresa as e 
+ON e.id = u.fkEmpresa;
 
 
 

@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function ultimaEmpresa() {
-  var instrucaoSql = `SELECT id FROM empresa ORDER BY id DESC LIMIT 1;`;
+  var instrucaoSql = `SELECT id, razaoSocial FROM empresa ORDER BY id DESC LIMIT 1;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
