@@ -33,16 +33,19 @@ body {
 }
 
 .conteudoEditar .right img{
-    position: relative;
-    left: 6%;
-    width: 100%; 
-    height: 99.6vh; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw; 
+    height: 100vh; 
 
 }
 
 .conteudoEditar .left{
     width: 62%;
-    height: 100%;
+    height: 100vh;
     background-color: white;
     z-index: 0;
     position: absolute;
