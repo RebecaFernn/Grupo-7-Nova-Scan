@@ -1,4 +1,4 @@
-function ListarEmpresa(){
+function listarMaquinas(){
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`,{
         method: 'GET',
@@ -6,8 +6,8 @@ function ListarEmpresa(){
     })
     .then(function(resposta){
         if(resposta.ok){
-            resposta.json()
-            console.log("Maquinas encontradas: ", resposta)
+            var listaMaquinas = resposta.json()
+            console.log("Maquinas encontradas: ", listaMaquinas)
         }
         else{
             console.log("Houve um problema ao buscar as maquinas")
