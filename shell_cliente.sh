@@ -2,36 +2,37 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-java --version # verifica a versão do Java
-if [ $? -eq 0 ]; then # se o retorno for igual a 0
-    echo "Java instalado" # print no terminal
-else # se não,
-    echo "Java não instalado" # print no terminal
-    echo "Gostaria de instalar o Java? [s/n]" # print no terminal
-    read get # variável que guarda resposta do usuário
-    if [ "$get" = "s" ]; then # se a resposta for igual a s
-        sudo apt update # atualiza a lista de pacotes
-        sudo apt install default-jdk -y # executa a instalação do Java
-        echo "Java instalado com sucesso!" # print no terminal
-    fi # fecha o 2º if
-fi # fecha o 1º if
+# fazendo a verificação do que será necessário
+java --version 
+if [ $? -eq 0 ]; then 
+    echo "Java instalado" 
+else 
+    echo "Java não instalado" 
+    echo "Gostaria de instalar o Java? [s/n]" 
+    read get 
+    if [ "$get" = "s" ]; then 
+        sudo apt update 
+        sudo apt install default-jdk -y 
+        echo "Java instalado com sucesso!" 
+    fi 
+fi 
 
-python3 --version # verifica a versão do Python
-if [ $? -eq 0 ]; then # se o retorno for igual a 0
-    echo "Python instalado" # print no terminal
-else # se não,
-    echo "Python não instalado" # print no terminal
-    echo "Gostaria de instalar o Python? [s/n]" # print no terminal
-    read get # variável que guarda resposta do usuário
-    if [ "$get" = "s" ]; then # se a resposta for igual a s
-        sudo apt update # atualiza a lista de pacotes
-        sudo apt install python3 -y # executa a instalação do Python
-        echo "Python instalado com sucesso!" # print no terminal
-    fi # fecha o 2º if
-fi # fecha o 1º if
+python3 --version 
+if [ $? -eq 0 ]; then 
+    echo "Python instalado" 
+else 
+    echo "Python não instalado" 
+    echo "Gostaria de instalar o Python? [s/n]" 
+    read get 
+    if [ "$get" = "s" ]; then 
+        sudo apt update 
+        sudo apt install python3 -y 
+        echo "Python instalado com sucesso!" 
+    fi 
+fi 
 
-# clonando o repositório
-echo "clonando o repositório da equipe..."
+# clonando o repositório do python
+echo "clonando o 1º repositório da equipe..."
 git clone https://github.com/LucasCanuto4874/ScriptPythonCapturas.git
 echo "------------------------------------------"
 
@@ -49,3 +50,12 @@ source nova_scan/bin/activate
 pip install -r modulos.txt
 echo "------------------------------------------"
 deactivate
+
+# clonando o repositório do kotlyn
+cd ..
+echo "clonando o 2º repositório da equipe..."
+git clone https://github.com/LucasCanuto4874/Captura-rede-Kotlin.git
+cd Captura-rede-Kotlin/
+cd captura-rede
+echo "------------------------------------------"
+

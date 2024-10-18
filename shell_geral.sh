@@ -2,35 +2,35 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-echo "Você está querendo utilizar os serviços da NovaScan?(s/n)" # print no terminal
-    read get # variável que guarda resposta do usuário
-    if [ "$get" = "s" ]; then # se a resposta for igual a s
-        java --version # verifica a versão do Java
-            if [ $? -eq 0 ]; then # se o retorno for igual a 0
-                echo "Java instalado" # print no terminal
-            else # se não,
-                echo "Java não instalado" # print no terminal
-                echo "Gostaria de instalar o Java? [s/n]" # print no terminal
-                read get # variável que guarda resposta do usuário
-                if [ "$get" = "s" ]; then # se a resposta for igual a s
-                    sudo apt update # atualiza a lista de pacotes
-                    sudo apt install default-jdk -y # executa a instalação do Java
-                    echo "Java instalado com sucesso!" # print no terminal
-                fi # fecha o 2º if
-            fi # fecha o 1º if
-        python3 --version # verifica a versão do Python
-            if [ $? -eq 0 ]; then # se o retorno for igual a 0
-                echo "Python instalado" # print no terminal
-            else # se não,
-                echo "Python não instalado" # print no terminal
-                echo "Gostaria de instalar o Python? [s/n]" # print no terminal
-                read get # variável que guarda resposta do usuário
-                if [ "$get" = "s" ]; then # se a resposta for igual a s
-                    sudo apt update # atualiza a lista de pacotes
-                    sudo apt install python3 -y # executa a instalação do Python
-                    echo "Python instalado com sucesso!" # print no terminal
-                fi # fecha o 2º if
-            fi # fecha o 1º if
+echo "Você está querendo utilizar os serviços da NovaScan?(s/n)" 
+    read get 
+    if [ "$get" = "s" ]; then 
+        java --version 
+            if [ $? -eq 0 ]; then 
+                echo "Java instalado" 
+            else 
+                echo "Java não instalado" 
+                echo "Gostaria de instalar o Java? [s/n]" 
+                read get 
+                if [ "$get" = "s" ]; then 
+                    sudo apt update 
+                    sudo apt install default-jdk -y 
+                    echo "Java instalado com sucesso!" 
+                fi 
+            fi 
+        python3 --version 
+            if [ $? -eq 0 ]; then 
+                echo "Python instalado" 
+            else 
+                echo "Python não instalado" 
+                echo "Gostaria de instalar o Python? [s/n]" 
+                read get 
+                if [ "$get" = "s" ]; then 
+                    sudo apt update 
+                    sudo apt install python3 -y 
+                    echo "Python instalado com sucesso!" 
+                fi 
+            fi 
 
         # clonando o repositório
         echo "clonando o repositório da equipe..."
@@ -51,22 +51,30 @@ echo "Você está querendo utilizar os serviços da NovaScan?(s/n)" # print no t
         pip install -r modulos.txt
         echo "------------------------------------------"
         deactivate
+
+        # clonando o repositório do kotlyn
+        cd ..
+        echo "clonando o 2º repositório da equipe..."
+        git clone https://github.com/LucasCanuto4874/Captura-rede-Kotlin.git
+        cd Captura-rede-Kotlin/
+        cd captura-rede
+        echo "------------------------------------------"
     else
         echo "Você deve ser da equipe NovaScan..."
-        echo "Insira a chave de acesso:" # print no terminal
-        read get # variável que guarda resposta do usuário
-        if [ "$get" = "1234" ]; then # se a resposta for igual a s
-            docker --version # verifica versão atual do docker
-                if [ $? -eq 0 ]; then # se retorno for igual a 0
-                    echo "docker instalado" # print no terminal
-                else # se não,
-                    echo "docker não instalado" # print no terminal
-                    echo "gostaria de instalar o docker? [s/n]" # print no terminal
-                    read get # variável que guarda resposta do usuário
-                    if [ "$get" = "s" ]; then # se retorno for igual a s
-                        sudo apt install docker.io -y # executa instalação do docker
-                    fi # fecha o 2º if
-                fi # fecha o 1º if
+        echo "Insira a chave de acesso:" 
+        read get 
+        if [ "$get" = "1234" ]; then 
+            docker --version 
+                if [ $? -eq 0 ]; then 
+                    echo "docker instalado" 
+                else 
+                    echo "docker não instalado" 
+                    echo "gostaria de instalar o docker? [s/n]" 
+                    read get 
+                    if [ "$get" = "s" ]; then 
+                        sudo apt install docker.io -y 
+                    fi 
+                fi 
 
             echo "inicializando o docker..."
 
@@ -105,5 +113,5 @@ echo "Você está querendo utilizar os serviços da NovaScan?(s/n)" # print no t
             echo "------------------------------------------"
 
             sudo docker exec -it novascan bash
-        fi # fecha o 2º if
-    fi # fecha o 2º if
+        fi 
+    fi 

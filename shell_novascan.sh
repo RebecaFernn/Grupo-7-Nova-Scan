@@ -2,17 +2,18 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-docker --version # verifica versão atual do docker
-if [ $? -eq 0 ]; then # se retorno for igual a 0
-    echo "docker instalado" # print no terminal
-else # se não,
-    echo "docker não instalado" # print no terminal
-    echo "gostaria de instalar o docker? [s/n]" # print no terminal
-    read get # variável que guarda resposta do usuário
-    if [ "$get" = "s" ]; then # se retorno for igual a s
-        sudo apt install docker.io -y # executa instalação do docker
-    fi # fecha o 2º if
-fi # fecha o 1º if
+# configurando o docker
+docker --version 
+if [ $? -eq 0 ]; then 
+    echo "docker instalado" 
+else 
+    echo "docker não instalado" 
+    echo "gostaria de instalar o docker? [s/n]" 
+    read get 
+    if [ "$get" = "s" ]; then 
+        sudo apt install docker.io -y 
+    fi 
+fi 
 
 echo "inicializando o docker..."
 
@@ -41,7 +42,7 @@ echo "------------------------------------------"
 
 sudo docker exec -it bd-novascan bash
 
-# crriando o container do node/site
+# criando o container do node/site
 cd ..
 cd aplicacao/
 
