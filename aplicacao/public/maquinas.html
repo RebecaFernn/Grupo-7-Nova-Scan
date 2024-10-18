@@ -165,7 +165,9 @@
             <div class="infomaquina" onclick="pararPropagacao()">
 
                 <!-- ------ cpu -------- -->
-
+                <div class="box-btn-voltar">
+                    <button onclick="voltar()" class="btn-voltar"><img src="./img/voltar.svg" alt=""> Voltar </button>
+                </div>
                 <div class="boxInfoCPU">
                     <div class="boxFichaCPU">
 
@@ -387,6 +389,12 @@
             informacoesdaMaquina.style.display = 'flex';
         }
 
+        function voltar() {
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+            fundoInformacoesmaquina.style.display = 'flex';
+            const fundoInfomaquina = document.getElementById('fundoInfomaquina');
+            fundoInfomaquina.style.display = 'none';
+        }
 
 
         // Função para exibir a div fundoInfomaquina
