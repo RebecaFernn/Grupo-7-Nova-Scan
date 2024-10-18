@@ -43,7 +43,6 @@ function cadastrarColaborador() {
         })
     }
     else {
-
         fetch("/usuarios/cadastrarFunc", {
             method: "POST",
             headers: {
@@ -95,13 +94,17 @@ function listarFuncionarios() {
         console.log("Usuários encontrados: ", listaUsuarios);
         let colaborador
         for (var i = 0; i < listaUsuarios.length; i++) {
+            
+            if(listaUsuarios[i].nomeAdmin == null) {
+                listaUsuarios[i].nomeAdmin = "Nenhum"
+            }
             colaborador = `
             <div class="box-colaboradores">
                 <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
                 <div class="email" id="email">${listaUsuarios[i].email}</div>
-                <div class="cargo" id="cargo">${listaUsuarios[i].fkTipoUsuario}</div>
-                <div class="administrador" id="administrador">${listaUsuarios[i].fkAdmin}</div>
-                <div class="status" id="status">${listaUsuarios[i].fkStatusUsuario}</div>
+                <div class="cargo" id="cargo">${listaUsuarios[i].cargo}</div>
+                <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
+                <div class="status" id="status">${listaUsuarios[i].situacao}</div>
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>`;
