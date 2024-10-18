@@ -33,23 +33,18 @@ body {
 }
 
 .conteudoEditar .right img{
-    position: absolute;
+    position: relative;
+    left: 6%;
     width: 100%; 
-    height: 100%; 
-    top: 0px;
-    left: 0px;
-}
-.conteudoEditar.right img{
-    height: 99.5%;
-    width: 100%;
-    z-index: 1; 
+    height: 99.6vh; 
+
 }
 
 .conteudoEditar .left{
     width: 62%;
     height: 100%;
     background-color: white;
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     left: 0;
 
@@ -132,7 +127,7 @@ body {
     width: 100%;
 }
 
-.popup{
+/* .popup{
     width: 35%;
     height: 40%;
     z-index: 100;
@@ -147,4 +142,4 @@ body {
     font-size: 2.125rem;
     gap: 5%;
     border-radius: 15px;
-}
+} */
