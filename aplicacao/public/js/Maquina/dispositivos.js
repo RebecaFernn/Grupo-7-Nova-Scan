@@ -21,7 +21,7 @@ function listarMaquinas(){
 function atualizarNomeDispositivo(){
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     var idDispositivo = sessionStorage.getItem('ID_DISPOSITIVO')
-    var novoNome = nome_dispositivo.value
+    var novoNome = nome_input.value
 
     fetch(`/maquinas/atualizarNome/${fkEmpresa}?idDispositivo=${idDispositivo}`,{
         method: 'POST',
