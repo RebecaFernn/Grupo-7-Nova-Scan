@@ -34,6 +34,17 @@ function primeiroAcesso(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function alterarSenha(email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function primeiroAcesso():", nome, email, senha);
+    console.log("Modificando na tabela usuario:", email, senha);
+
+    var instrucaoSql = `
+           UPDATE usuario SET senha = '${senha}' WHERE email = '${email}';; 
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function listarPainel(fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPainel():");
 
@@ -81,6 +92,7 @@ module.exports = {
     autenticar,
     cadastrarFunc,
     primeiroAcesso,
+    alterarSenha,
     listarPainel,
     atualizarDados,
     atualizarCargo
