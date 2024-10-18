@@ -2,6 +2,8 @@
 function cadastrarColaborador() {
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+   
+
     var empresaVar = sessionStorage.getItem('FK_EMPRESA')
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
@@ -73,29 +75,47 @@ function cadastrarColaborador() {
     }
 }
 
-//Função para listar os usuários no painel de colaboradores
 function listarFuncionarios() {
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
     fetch(`/usuarios/listarPainel/${fkEmpresa}`, {
         method: 'GET',
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         }
     })
-    .then(function (resposta) {
+    .then(function(resposta) {
         if (resposta.ok) {
-            var listaUsuarios = resposta.json()
-            console.log("Usuários encontrados: ", listaUsuarios)
-        }
-        else {
-            console.log("Houve um problema ao buscar os usuários")
+            return resposta.json();
+        } else {
+            console.log("Houve um problema ao buscar os usuários");
+            throw new Error('Erro ao buscar usuários');
         }
     })
-        .catch(function (error) {
-            console.log("Erro!: ", error)
-        })
+    .then(function(listaUsuarios) {
+        console.log("Usuários encontrados: ", listaUsuarios);
+        let colaborador
+        for (var i = 0; i < listaUsuarios.length; i++) {
+            colaborador = `
+            <div class="box-colaboradores">
+                <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
+                <div class="email" id="email">${listaUsuarios[i].email}</div>
+                <div class="cargo" id="cargo">${listaUsuarios[i].fkTipoUsuario}</div>
+                <div class="administrador" id="administrador">${listaUsuarios[i].fkAdmin}</div>
+                <div class="status" id="status">${listaUsuarios[i].fkStatusUsuario}</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div>`;
+            
+            const elementoPai = document.getElementById('conteudoColadores');
+            elementoPai.innerHTML += colaborador;
+            console.log(elementoPai);
+        }
+    })
+    .catch(function(error) {
+        console.log("Erro!: ", error);
+    });
 }
+
 
 function editarDados() {
     var params = {

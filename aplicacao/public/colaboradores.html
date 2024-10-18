@@ -59,7 +59,7 @@
         </div>
 
 
-        <div class="conteudoColadores">
+        <div class="conteudoColadores" id="conteudoColadores">
             <div class="topColaboradores">
                 <h2>Colaboradores da “Nome da empresa”</h2>
                 <button class="btn-novoColaborador" onclick="cadastrar()">Cadrastrar novo colaborador</button>
@@ -71,6 +71,17 @@
                 <div class="administrador">Administrador</div>
                 <div class="status">Status</div>
             </div>
+            <!-- <div class="box-colaboradores">
+                <div class="nome" id="nome">Ryan Oliveira</div>
+                <div class="email" id="email">ryanoliveira123@sptech.school</div>
+                <div class="cargo" id="cargo">Desenvolvedor</div>
+                <div class="administrador" id="administrador">Nenhum</div>
+                <div class="status" id="status">Ativo</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div> -->
+
+            <!--
             <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
                 <div class="email" id="email">ryanoliveira123@sptech.school</div>
@@ -98,7 +109,7 @@
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
-            <div class="box-colaboradores">
+            <div class="box-colaboradores" id="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
                 <div class="email" id="email">ryanoliveira123@sptech.school</div>
                 <div class="cargo" id="cargo">Desenvolvedor</div>
@@ -124,16 +135,7 @@
                 <div class="status" id="status">Ativo</div>
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div>
-            <div class="box-colaboradores">
-                <div class="nome" id="nome">Ryan Oliveira</div>
-                <div class="email" id="email">ryanoliveira123@sptech.school</div>
-                <div class="cargo" id="cargo">Desenvolvedor</div>
-                <div class="administrador" id="administrador">Nenhum</div>
-                <div class="status" id="status">Ativo</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div>
+            </div> -->
 
 
         </div>
@@ -298,6 +300,8 @@
         setTimeout(function () {
             div.style.display = "none";
         }, 2000);
+        
+
     }
 
     // ---------------pup up editar----------------
