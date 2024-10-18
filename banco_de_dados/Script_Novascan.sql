@@ -65,6 +65,15 @@ CREATE TABLE componentes (
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
 
+CREATE TABLE alertas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    intervaloMax INT NOT NULL,
+    intervaloMin INT NOT NULL,
+    descricao VARCHAR(255),
+    fkUsuario INT NOT NULL,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
+);
+
 CREATE TABLE log (
     id INT PRIMARY KEY AUTO_INCREMENT,
     valor DOUBLE NOT NULL,
@@ -76,15 +85,6 @@ CREATE TABLE log (
     FOREIGN KEY (fkComponente) REFERENCES componentes(id),
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
     FOREIGN KEY (fkAlertas) REFERENCES alertas(id)
-);
-
-CREATE TABLE alertas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    intervaloMax INT NOT NULL,
-    intervaloMin INT NOT NULL,
-    descricao VARCHAR(255),
-    fkUsuario INT NOT NULL,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
 
 CREATE TABLE alertasComponentes (
@@ -109,22 +109,6 @@ INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
     
-CREATE VIEW listaFuncionarios as
-SELECT u.nome, 
-u.email,  
-adm.nome as 'Administrador Por:', 
-tu.tipo, 
-su.situacao 
-FROM usuario as u 
-LEFT JOIN usuario as adm
-ON adm.id = u.fkAdmin
-JOIN empresa as e 
-ON e.id = u.fkEmpresa
-JOIN tipoUsuario as tu
-ON tu.id = u.fkTipoUsuario
-JOIN statusUsuario as su
-ON su.id = u.fkStatusUsuario;
-
 CREATE VIEW ultimoComponente AS
  SELECT 
         MAX(componentes.id) AS id,
@@ -133,3 +117,16 @@ CREATE VIEW ultimoComponente AS
     FROM
         componentes
     GROUP BY componentes.nome , componentes.tipo;
+    
+CREATE VIEW listarfuncionario as
+SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, u.fkEmpresa, tu.tipo as cargo, su.situacao, e.razaoSocial FROM usuario as u JOIN tipoUsuario as tu
+ON u.fkTipoUsuario = tu.id
+JOIN statusUsuario as su
+ON u.fkStatusUsuario = su.id
+LEFT JOIN usuario as adm
+ON u.fkAdmin = adm.id
+JOIN empresa as e 
+ON e.id = u.fkEmpresa;
+
+
+

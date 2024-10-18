@@ -150,7 +150,7 @@ function atualizarDados(req,res){
 }
 
 function atualizarCargo(req,res){
-    var fkEmpresa = req.query.fkEmpresa
+    var fkEmpresa = req.params.fkEmpresa
     var novoCargo = req.body.cargoServer
     var idUsuario = req.body.idUsuarioServer
 

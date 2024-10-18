@@ -92,6 +92,8 @@ function listarFuncionarios() {
     })
     .then(function(listaUsuarios) {
         console.log("Usuários encontrados: ", listaUsuarios);
+        const nomeEmpresa = document.getElementById('nomeEmpresa');
+        nomeEmpresa.innerHTML = `Colaborades ${listaUsuarios[0].razaoSocial}`;
         let colaborador
         for (var i = 0; i < listaUsuarios.length; i++) {
             
@@ -118,7 +120,6 @@ function listarFuncionarios() {
         console.log("Erro!: ", error);
     });
 }
-
 
 function editarDados() {
     var params = {
@@ -173,14 +174,11 @@ function editarDados() {
     }
 }
 
-
-function editarCargo() {
-    var params = {
-        fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
-    }
-
-    var novoCargo = cargo_input.value
-    var idUsuario = id_input.value
+function editarCargo(idUsuario) {
+    
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+   
+    var novoCargo = comboBox.value
 
     if (novoCargo == "") {
         Swal.fire({
@@ -190,29 +188,29 @@ function editarCargo() {
             timer: 2000
         })
     }
-    else {
-        fetch(`/usuarios/atualizarCargo/${params.fkEmpresa}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                novoCargoServer: novoCargo,
-                idUsuarioServer: idUsuario
-            }),
+    else{
+    fetch(`/usuarios/atualizarCargo/${fkEmpresa}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            novoCargoServer: novoCargo,
+            idUsuarioServer: idUsuario
+        }),
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                console.log("Informações atualizadas no banco com sucesso: ", resposta)
+            }
+            else {
+                console.log("Houve um problema ao atualizar as informações")
+            }
         })
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    resposta.json()
-                    console.log("Informações atualizadas no banco com sucesso: ", resposta)
-                }
-                else {
-                    console.log("Houve um problema ao atualizar as informações")
-                }
-            })
-            .catch(function (error) {
-                console.log("Erro ao atualizar os dados: ", error)
-            })
+        .catch(function (error) {
+            console.log("Erro ao atualizar os dados: ", error)
+        })
     }
 }
 // Fazer a função para desativar o usuario

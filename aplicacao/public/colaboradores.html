@@ -195,7 +195,7 @@
                     <option value="1">Administrador</option>
                     <option value="2">Funcionário</option>
                 </select>
-                <button onclick="ChamarPopupEditar(), editarCargo()">Confirmar</button>
+                <button onclick="editarCargo()">Confirmar</button>
 
             </div>
         </div>
@@ -230,7 +230,7 @@
 </body>
 
 </html>
- <script src="js/Login_Cadastro/Dashboard.js"></script>
+<script src="js/Login_Cadastro/Dashboard.js"></script>
 <script>
 
     function overview() {
@@ -281,10 +281,8 @@
 
     }
     //---------------------------------------- Editar e deletar --------------------------------
-
     function editar() {
         fundoEditar.style.display = 'flex';
-
     }
 
     function excluir() {
