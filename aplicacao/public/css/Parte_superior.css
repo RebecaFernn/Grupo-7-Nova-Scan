@@ -592,4 +592,25 @@ html{
     }
 }
 
-@media screen and (height: 1000px) {}
+@media screen and (height: 844px) {
+    .Sessao1 img{
+        top: 30.4%;
+    }
+}
+@media screen and (height: 896px) {
+    .Sessao1 img{
+        top: 25.4%;
+    }
+}
+@media screen and (height: 667px) {
+    .Sessao1 img{
+        height: 60%;
+        top: 48%;
+    }
+    .Sessao1 .up H1{
+        font-size: 1.5rem;
+        line-height: 1;
+     
+    }
+}
+
