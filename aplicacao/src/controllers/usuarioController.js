@@ -140,6 +140,7 @@ function atualizarDados(req,res){
         usuarioModel.atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa)
         .then(function(resposta){
             console.log("Informações atualizada dentro do banco: ", resposta)
+            res.status(200).json(resposta)
         })
         .catch(function(error){
             console.log("Houve um erro ao tentar atualizar as informações: ", error)

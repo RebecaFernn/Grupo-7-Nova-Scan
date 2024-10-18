@@ -18,23 +18,23 @@ function cadastrarColaborador() {
         confirmacaoSenhaVar == ""
     ) {
         Swal.fire({
-            title: 'Preencha todos os campos!', 
+            title: 'Preencha todos os campos!',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
         })
     }
-    else if(senhaVar !== confirmacaoSenhaVar){
+    else if (senhaVar !== confirmacaoSenhaVar) {
         Swal.fire({
-            title: 'As senhas não coincidem!', 
+            title: 'As senhas não coincidem!',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
         })
     }
-    else if(emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1){
+    else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
         Swal.fire({
-            title: 'Insira um email válido!', 
+            title: 'Insira um email válido!',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
@@ -103,62 +103,49 @@ function editarDados() {
         fkEmpresa: sessionStorage.getItem('FK_EMPRESA')
     }
 
-    var novoEmail = email_input.value
-    var novoNome = nome_input.value
-    var novaSenha = senha_input.value
-    var confirmarSenha = confirmar_input.value
+    var novoNome = inp1.value
+    var novoEmail = inp2.value
+    var novaSenha = inp3.value
+    var confirmarSenha = inp4.value
 
-    if (novoEmail == "" || novoNome == "" || novaSenha == "" || confirmarSenha == "") {
-        Swal.fire({
-            title: 'Preencha todos os campos!', 
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
+        fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                novoNomeServer: novoNome,
+                novoEmailServer: novoEmail,
+                novoSenhaServer: novaSenha,
+            }),
         })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    console.log("Informações atualizadas no banco com sucesso: ", resposta)
+                    console.log("Cai dentro do if do perfil atuzliado com sucesso")
+                    Swal.fire({
+                        title: 'Perfil Atualizado!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+                else {
+                    console.log("Houve um problema ao atualizar as informações")
+                    Swal.fire({
+                        title: 'Ocorreu um erro ao atualizar as informações!',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao atualizar os dados: ", error)
+            })
     }
-    else if (novaSenha !== confirmarSenha) {
-        Swal.fire({
-            title: 'As senhas não coincidem!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
-        })
-    }
-    else if(novoEmail.indexOf("@") == -1 || novoEmail.indexOf(".") == -1){
-        Swal.fire({
-            title: 'Insira um email válido!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
-        })
-    }
-    else{
 
-    fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            novoEmailServer: novoEmail,
-            novoNomeServer: novoNome,
-            novoSenhaServer: novaSenha,
-        }),
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
-                console.log("Informações atualizadas no banco com sucesso: ", resposta)
-            }
-            else {
-                console.log("Houve um problema ao atualizar as informações")
-            }
-        })
-        .catch(function (error) {
-            console.log("Erro ao atualizar os dados: ", error)
-        })
-    }
-}
 
 function editarCargo() {
     var params = {
@@ -170,35 +157,35 @@ function editarCargo() {
 
     if (novoCargo == "") {
         Swal.fire({
-            title: 'Preencha o campo!', 
+            title: 'Preencha o campo!',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
         })
     }
-    else{
-    fetch(`/usuarios/atualizarCargo/${params.fkEmpresa}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            novoCargoServer: novoCargo,
-            idUsuarioServer: idUsuario
-        }),
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
-                console.log("Informações atualizadas no banco com sucesso: ", resposta)
-            }
-            else {
-                console.log("Houve um problema ao atualizar as informações")
-            }
+    else {
+        fetch(`/usuarios/atualizarCargo/${params.fkEmpresa}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                novoCargoServer: novoCargo,
+                idUsuarioServer: idUsuario
+            }),
         })
-        .catch(function (error) {
-            console.log("Erro ao atualizar os dados: ", error)
-        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    console.log("Informações atualizadas no banco com sucesso: ", resposta)
+                }
+                else {
+                    console.log("Houve um problema ao atualizar as informações")
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao atualizar os dados: ", error)
+            })
     }
 }
 // Fazer a função para desativar o usuario

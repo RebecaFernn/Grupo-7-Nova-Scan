@@ -69,26 +69,26 @@
                         <div class="caixas">
                             Nome
                             <br>
-                            <input class="ip_1" type="text" placeholder="Digite seu nome">
+                            <input id="inp1" class="ip_1" type="text" placeholder="">
                         </div>
                         <div class="caixas">
                             Email
                             <br>
-                            <input class="ip_2" type="text" placeholder="Digite seu novo email">
+                            <input id="inp2"class="ip_2" type="text" placeholder="">
                         </div>
                         <div class="two">
                             <div class="caixas">
                                 Senha
                                 <br>
-                                <input class="ip_3" type="text" placeholder="Digite sua nova senha">
+                                <input id="inp3" class="ip_3" type="text" placeholder="Digite sua nova senha">
                             </div>
                             <div class="caixas">
                                 Confirmar senha
                                 <br>
-                                <input class="ip_4" type="text" placeholder="Confirme sua nova senha">
+                                <input id="inp4" class="ip_4" type="text" placeholder="Confirme sua nova senha">
                             </div>
                         </div>
-                        <button onclick="ChamarPopupPerfil()">Confirmar</button>
+                        <button onclick="editarDados()">Confirmar</button>
                     </div>
                 </div>
             </div>
@@ -102,6 +102,7 @@
 </body>
 
 </html>
+<script src="js/Login_Cadastro/Dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
@@ -134,5 +135,14 @@
             div.style.display = "none";
         }, 2000);
     }
+
+    // Colocando os valores do sessionStorage nos inputs
+    var nome = sessionStorage.getItem("NOME_USUARIO");
+    var input1 = document.getElementById("inp1");
+    input1.placeholder = nome;
+
+    var email = sessionStorage.getItem("EMAIL_USUARIO");
+    var input2 = document.getElementById("inp2");
+    input2.placeholder = email;
 
 </script>

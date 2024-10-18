@@ -91,6 +91,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor: pointer;
 }
 .left .infos .objects .two{
     width: 100%;
@@ -114,7 +115,7 @@ body {
     font-family: Montserrat;
     font-size: 12px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: normal;
     padding-left: 10px;
 }
