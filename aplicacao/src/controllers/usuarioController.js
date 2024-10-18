@@ -106,6 +106,31 @@ function primeiroAcesso(req, res) {
     }
 }
 
+function alterarSenha(req, res) {
+    var email = req.body.emailServer
+    var senha = req.body.senhaServer
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        usuarioModel.primeiroAcesso(email, senha)
+            .then(
+                function (resposta) {
+                    res.json(resposta)
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro)
+                    console.log(`Teve um erro ao realizar a alteração de senha! Erro: ${erro.sqlMessage}`)
+                    res.status(500).json(erro.sqlMessage)
+                }
+            )
+    }
+}
+
 function listarPainel(req,res){
     var fkEmpresa = req.params.fkEmpresa
 
@@ -178,6 +203,7 @@ module.exports = {
     autenticar,
     cadastrarFunc,
     primeiroAcesso,
+    alterarSenha,
     listarPainel,
     atualizarDados,
     atualizarCargo

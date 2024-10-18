@@ -11,6 +11,9 @@ router.post("/cadastrarFunc", function (req, res) {
 router.post("/primeiroAcesso", function (req, res) {
     usuarioController.primeiroAcesso(req, res);
 })
+router.post("/alterarSenha", function (req, res) {
+    usuarioController.primeiroAcesso(req, res);
+})
 
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
