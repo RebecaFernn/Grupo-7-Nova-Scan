@@ -107,7 +107,7 @@ function listarFuncionarios() {
     .then(function(listaUsuarios) {
         console.log("Usuários encontrados: ", listaUsuarios);
         const nomeEmpresa = document.getElementById('nomeEmpresa');
-        nomeEmpresa.innerHTML = `Colaborades ${listaUsuarios[0].razaoSocial}`;
+        nomeEmpresa.innerHTML = `Colaboradores ${listaUsuarios[0].razaoSocial}`;
         let colaborador
         for (var i = 0; i < listaUsuarios.length; i++) {
             
