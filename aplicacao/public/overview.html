@@ -60,9 +60,12 @@
             </div>
         </div>
         <div class="conteudoOverview">
+
             <div class="topOverview">
                 <h2>Overview</h2>
+            <div class="boxData" id="boxData">
 
+            </div>
 
             </div>
             <div class="midOverview">
@@ -119,21 +122,21 @@
 
 
 
-    // // Obtém a data atual
-    // const dataAtual = new Date();
-    // const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
-    // const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
+    //  Obtém a data atual
+    const dataAtual = new Date();
+    const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
 
-    // // Subtrai 20 dias
-    // const dataMenos20Dias = new Date(dataAtual);
-    // dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 20);
-    // const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
+    //  Subtrai 20 dias
+    const dataMenos20Dias = new Date(dataAtual);
+    dataMenos20Dias.setDate(dataMenos20Dias.getDate() - 30);
+    const dataMenos20DiasFormatada = dataMenos20Dias.toLocaleDateString('pt-BR', opcoes);
 
-    // console.log('Data atual:', dataFormatada);
-    // console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
+    console.log('Data atual:', dataFormatada);
+    console.log('Data menos 20 dias:', dataMenos20DiasFormatada);
 
 
-    // boxData.innerHTML += `<p>${dataFormatada}</p> // <p>${dataMenos20DiasFormatada}</p>`;
+    boxData.innerHTML += `<p>${dataFormatada}</p> | <p>${dataMenos20DiasFormatada}</p>`;
 
     //
 
