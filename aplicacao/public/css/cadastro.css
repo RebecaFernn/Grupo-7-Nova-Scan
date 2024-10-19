@@ -186,6 +186,12 @@ html{
     font-size: 14px;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 /* Responsividade Cadastro */
 @media screen and (max-width: 1000px) {
