@@ -524,7 +524,7 @@ canvas {
     border-radius: 15px;
     border-width: 10px 7px;
     border-style: solid;
-    border-color: #F84455;
+    border-color: #3A527A;
     padding-left: 10px;
 }
 .low-info{
@@ -537,7 +537,7 @@ canvas {
     border-radius: 15px;
     border-width: 10px 7px;
     border-style: solid;
-    border-color: #F84455;
+    border-color: #3A527A;;
     & .top-low{
         height: 30%;
         width: 95%;
@@ -586,17 +586,12 @@ canvas {
 .alertas-right{
     height: 95%;
     width: 100%;
-    border-radius: 15px;
-    border-width: 10px 7px;
-    border-style: solid;
-    border-color: #F84455;
     flex-direction: column;
     display: flex;
     justify-content: start;
     align-items: start;
-    padding-left: 10px;
-    padding-top: 10px;
     gap: 2%;
+    overflow-y: auto;
 
 
 }
@@ -616,4 +611,19 @@ canvas {
     font-family: Montserrat;
     font-weight: 600;
     border: none;
+}
+
+.BoxAlertaUso{
+    background-color: #F84455;
+    width: 80%;
+    height: 25%;
+    min-height: 25%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+    text-align: center;
+    color: white;
 }
