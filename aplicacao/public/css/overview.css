@@ -182,3 +182,18 @@ width: 90% !important;
 height: 90% !important;
 }
 
+.select-overview{
+    height: 40px;
+    width: auto;
+    display: flex;
+    border: rgba(82, 82, 82, 0.733) solid 1.5px;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: none;
+}

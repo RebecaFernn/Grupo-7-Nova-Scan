@@ -28,6 +28,8 @@
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
+
+                
             </div>
             <div class="midNavBar">
                 <div class="links" onclick="overview()">
@@ -63,6 +65,19 @@
 
             <div class="topOverview">
                 <h2>Overview</h2>
+
+                <select name="" id="select-maquina" class="select-overview">
+    
+                    <option value="s1" selected>Self-Checkout 1</option>
+                    <option value="s2">Self-Checkout 2</option>
+                    <option value="s3">Self-Checkout 3</option>
+                    <option value="s4">Self-Checkout 4</option>
+                    <option value="s5">Self-Checkout 5</option>
+                    <option value="s6">Self-Checkout 6</option>
+                    <option value="s7">Self-Checkout 7</option>
+                    <option value="s8">Self-Checkout 8</option>
+                    <option value="s9">Self-Checkout 9</option>
+                </select>
             <div class="boxData" id="boxData">
 
             </div>
@@ -118,7 +133,44 @@
     function index(){
         window.location.href = "index.html"
     }
+    
+// Seleciona o elemento <select> pelo ID
+// Seleciona o elemento <select> pelo ID
+    const selectElement = document.getElementById('select-maquina');
 
+// Adiciona um evento para quando o valor mudar
+selectElement.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    var nomeMaquina = '';
+
+    // Verifica qual valor foi selecionado e atribui o nome correspondente
+    if (selectedValue === 's1') {
+        nomeMaquina = "Self-Checkout 1";
+    } else if (selectedValue === 's2') {
+        nomeMaquina = "Self-Checkout 2";
+    } else if (selectedValue === 's3') {
+        nomeMaquina = "Self-Checkout 3";
+    } else if (selectedValue === 's4') {
+        nomeMaquina = "Self-Checkout 4";
+    } else if (selectedValue === 's5') {
+        nomeMaquina = "Self-Checkout 5";
+    } else if (selectedValue === 's6') {
+        nomeMaquina = "Self-Checkout 6";
+    } else if (selectedValue === 's7') {
+        nomeMaquina = "Self-Checkout 7";
+    } else if (selectedValue === 's8') {
+        nomeMaquina = "Self-Checkout 8";
+    } else if (selectedValue === 's9') {
+        nomeMaquina = "Self-Checkout 9";
+    }
+
+    console.log(nomeMaquina); 
+
+
+
+    meuHistograma.options.plugins.title.text = `Uso de CPU: ${nomeMaquina}`;
+    meuHistograma.update();
+});
 
 
 
@@ -138,53 +190,9 @@
 
     boxData.innerHTML += `<p>${dataFormatada}</p> | <p>${dataMenos20DiasFormatada}</p>`;
 
-    //
-
-    // var l20 = [];
-    // var l40 = [];
-    // var l60 = [];
-    // var l80 = [];
-    // var l100 = [];
-
 
     var labelsFreq = ['', '', '', '2.7', '', '', '', '', '', '', '2.8', '', '', '', '', '', '', '2.9', '', '', '', '', '', '', '', '3.0', '', ''];
 
-    // for (var cont = 0; cont < 2000; cont++) {
-    //     var aleatorio = Math.random(); 
-
-    //     if (aleatorio < 0.15) { 
-
-    //         l60.push(Math.floor(Math.random() * 19) + 51); 
-    //     } else if (aleatorio < 0.45) { 
-
-    //         l80.push(Math.floor(Math.random() * 9) + 76); 
-    //     } else if (aleatorio < 0.95) { 
-
-    //         l100.push(Math.floor(Math.random() * 20) + 81); 
-    //     } else {
-
-    //         var numero = Math.floor(Math.random() * 81); 
-
-    //         if (numero >= 0 && numero <= 20) {
-    //             l20.push(numero);
-    //         } else if (numero > 20 && numero <= 40) {
-    //             l40.push(numero);
-    //         } else if (numero > 40 && numero <= 60) {
-    //             l60.push(numero);
-    //         } else if (numero > 60 && numero <= 80) {
-    //             l80.push(numero);
-    //         }
-    //     }
-    // }
-
-
-
-
-    // var ate20 = l20.length;
-    // var ate40 = l40.length;
-    // var ate60 = l60.length;
-    // var ate80 = l80.length;
-    // var ate100 = l100.length;
 
     const histograma = document.getElementById('meuHistograma').getContext('2d');
     const meuHistograma = new Chart(histograma, {
@@ -251,7 +259,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Uso de CPU: Self-Checkout 1',
+                    text: `Uso de CPU: Self-Checkout 1`,
                     color: 'black',  // Define a cor do título do gráfico
                     font: {
                         size: 30,
