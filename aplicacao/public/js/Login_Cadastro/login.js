@@ -54,7 +54,7 @@ function entrar() {
                 Swal.fire({
                     title: 'Sucesso ao fazer o login!',
                     text: 'Redirecionando para a tela de Dashboard!',
-                    icon: 'success',
+                    imageUrl: "img/ok.svg",
                     showConfirmButton: false,
                     timer: 2000
                 })

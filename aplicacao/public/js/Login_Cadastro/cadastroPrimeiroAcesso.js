@@ -9,7 +9,6 @@ function cadastrarEmpresa() {
     if(cnpj.length != 14){
         Swal.fire({
             title: 'CNPJ Inválido!',
-            text: 'No máximo 14 caracteres',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
@@ -31,7 +30,6 @@ function cadastrarEmpresa() {
                 if (resposta.ok) {
                     Swal.fire({
                         title: 'Empresa cadastrada!',
-                        text: 'Redirecionando para o cadastro do administrador!',
                         imageUrl: "img/ok.svg",
                         showConfirmButton: false,
                         timer: 2000
@@ -50,7 +48,6 @@ function cadastrarEmpresa() {
                 console.log(`Erro: ${resposta}`)
                 Swal.fire({
                     title: 'Houve um erro ao cadastrar a empresa!',
-                    text: 'Tente novamente',
                     icon: 'error',
                     timer: 2000
                   })
@@ -108,7 +105,6 @@ function cadastrarUserAdmin() {
                 if (resposta.ok) {
                     Swal.fire({
                         title: 'Sucesso ao cadastrar o administrador!',
-                        text: 'Redirecionando para a tela de login!',
                         imageUrl: "img/ok.svg",
                         showConfirmButton: false,
                         timer: 2000
@@ -127,7 +123,6 @@ function cadastrarUserAdmin() {
                 console.log(`Erro: ${resposta}`)
                 Swal.fire({
                     title: 'Houve um erro ao cadastrar o administrador!',
-                    text: 'Tente novamente',
                     icon: 'error',
                     timer: 2000
                   })
