@@ -69,12 +69,13 @@ body {
 
 }
 .left .infos .objects{
-    height: 80.5%;
+    height: 90.5%;
     width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 5%;
 }
 .left .infos .objects h1{
     font-family: Montserrat;
@@ -127,7 +128,15 @@ body {
     padding-left: 10px;
 }
 .infos .objects .caixas .ip_1{
+    height: 40px;
     width: 60%;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 10px;
 }
 .infos .objects .caixas .ip_2{
     width: 90%;
@@ -145,6 +154,7 @@ body {
     font-weight: 300;
     line-height: normal;
     padding-left: 10px;
+    resize: none;
 }
 .infos .objects .caixas .ip_4{
     width: 100%;
@@ -171,7 +181,7 @@ body {
     position: absolute;
     background-color: #F84455;
     width: 15%;
-    height: 5%;
+    height: 40px;
     color: white;
     display: flex;
     justify-content: center;
@@ -184,6 +194,8 @@ body {
     font-weight: 600;
     border: none;
     border-radius: 10px;
+    min-height: 40px;
+    
 }
 .btn-voltar{
     position: absolute;

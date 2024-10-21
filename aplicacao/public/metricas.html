@@ -20,7 +20,7 @@
 
 <body>
     <section class="Editar">
-        
+
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
@@ -30,7 +30,7 @@
                     <img src="./img/overview.svg" alt="">
                     <a href="overview.html">Overview</a>
                 </div>
-                <div class="links" onclick="maquinas()" >
+                <div class="links" onclick="maquinas()">
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
@@ -66,26 +66,47 @@
                     <div class="objects">
                         <h1>Crie o seu alerta personalizado!</h1>
                         <div class="caixas">
-                      
+
                             <br>
                             <input class="ip_1" type="text" placeholder="Intervalo minimo">
                         </div>
                         <div class="caixas">
-                            
+
                             <br>
                             <input class="ip_1" type="text" placeholder="Intervalo máximo">
                         </div>
                         <div class="two">
                             <div class="caixas">
                                 <br>
-                                <textarea class="ip_3" type="text" placeholder="Descreva a função desse alerta"></textarea>
+                                <textarea class="ip_3" type="text"
+                                    placeholder="Descreva a função desse alerta"></textarea>
                             </div>
 
+
                         </div>
+                        <div class="caixas">
+                            <br>
+                            <select name="" id="" class="ip_1">
+                                <option selected value=""> Selecione a maquina que deseja atribuir</option>
+                                <option value="">Self-Checkout 1</option>
+                                <option value="">Self-Checkout 2</option>
+                                <option value="">Self-Checkout 3</option>
+                                <option value="">Self-Checkout 4</option>
+                                <option value="">Self-Checkout 5</option>
+                                <option value="">Self-Checkout 6</option>
+                                <option value="">Self-Checkout 7</option>
+                                <option value="">Self-Checkout 8</option>
+                                <option value="">Self-Checkout 9</option>
+
+                            </select>
+                        </div>
+
+                       <div class="caixas">
                         <button onclick="ChamarPopupPerfil()">Confirmar</button>
+                       </div>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -161,21 +182,21 @@
     function metricas() {
         window.location.href = "metricas.html"
     }
-    function index(){
+    function index() {
         window.location.href = "index.html"
     }
-    function visualizarAlertas(){
+    function visualizarAlertas() {
         const conteudoAlertas = document.getElementById('alertas');
         conteudoAlertas.style.display = 'flex';
         const btnVoltar = document.getElementById('voltar');
         btnVoltar.style.display = 'flex'
     }
-    function voltar(){
+    function voltar() {
         const conteudoAlertas = document.getElementById('alertas');
         conteudoAlertas.style.display = 'none';
-         const btnVoltar = document.getElementById('voltar');
+        const btnVoltar = document.getElementById('voltar');
         btnVoltar.style.display = 'none'
     }
-  
+
 
 </script>
