@@ -128,5 +128,10 @@ ON u.fkAdmin = adm.id
 JOIN empresa as e 
 ON e.id = u.fkEmpresa;
 
+DESC empresa;
 
+INSERT INTO empresa (razaoSocial, cnpj) VALUES
+('Mercado Mix', '12345678912345');
 
+INSERT INTO usuario (nome, email, senha, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES
+('Teste', 'teste@gmail.com', '123', 1, 1, 1);
