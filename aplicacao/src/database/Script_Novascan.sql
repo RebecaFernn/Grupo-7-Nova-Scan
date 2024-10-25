@@ -3,99 +3,90 @@ CREATE DATABASE novaScan;
 USE novaScan;
 
 CREATE TABLE empresa (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    razaoSocial VARCHAR(90) NOT NULL,
-    cnpj CHAR(14) NOT NULL UNIQUE
+    id INT PRIMARY KEY,
+    razaoSocial VARCHAR(90),
+    cnpj CHAR(14)
 );
 
-CREATE TABLE tipoUsuario (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(45) NOT NULL
+CREATE TABLE dispositivo (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45),
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
+);
+
+CREATE TABLE componente (
+    id INT PRIMARY KEY,
+    nome VARCHAR(45),
+    tipo VARCHAR(30),
+    unidadeMedida VARCHAR(255),
+    fkDispositivo INT,
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
 
 CREATE TABLE statusUsuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    situacao CHAR(7) NOT NULL
+    situacao CHAR(7)
+);
+
+CREATE TABLE tipoUsuario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(45)
 );
 
 CREATE TABLE usuario (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(90) NOT NULL,
-    email VARCHAR(256) NOT NULL UNIQUE,
-    senha VARCHAR(256) NOT NULL,
+    id INT PRIMARY KEY,
+    nome VARCHAR(90),
+    email VARCHAR(256),
+    senha VARCHAR(256),
     fkAdmin INT,
     fkEmpresa INT,
-    fkTipoUsuario INT NOT NULL,
-    fkStatusUsuario INT NOT NULL,
+    fkTipoUsuario INT,
+    fkStatusUsuario INT,
     FOREIGN KEY (fkAdmin) REFERENCES usuario(id),
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (fkTipoUsuario) REFERENCES tipoUsuario(id),
     FOREIGN KEY (fkStatusUsuario) REFERENCES statusUsuario(id)
 );
 
-CREATE TABLE dispositivo (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(45) NOT NULL,
-    fkEmpresa INT NOT NULL,
-    FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
-);
-
 CREATE TABLE atividade (
     idAtividade INT PRIMARY KEY AUTO_INCREMENT,
-    situacao CHAR(7) NOT NULL
+    situacao CHAR(7)
 );
 
 CREATE TABLE historicoAtividade (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fkDispositivo INT NOT NULL,
-    fkAtividade INT NOT NULL,
-    dataHora DATETIME NOT NULL,
+	id INT,
+    fkDispositivo INT,
+    fkAtividade INT,
+    dataHora DATETIME,
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
-    FOREIGN KEY (fkAtividade) REFERENCES atividade(idAtividade)
+    FOREIGN KEY (fkAtividade) REFERENCES atividade(idAtividade),
+    PRIMARY KEY (id, fkDispositivo, fkAtividade)
 );
 
-CREATE TABLE componentes (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fkDispositivo INT NOT NULL,
-    nome VARCHAR(45) NOT NULL,
-    tipo VARCHAR(30) NOT NULL,
-    qtdNucleos INT,
-    memTotal INT,
-    armazTotal INT,
+CREATE TABLE alerta (
+    id INT PRIMARY KEY,
+    minIntervalo INT,
+    maxIntervalo INT,
+    fkUsuario INT,
+    fkComponente INT,
+    fkDispositivo INT,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
+    FOREIGN KEY (fkComponente) REFERENCES componente(id),
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
 
-CREATE TABLE alertas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    intervaloMax INT NOT NULL,
-    intervaloMin INT NOT NULL,
-    descricao VARCHAR(255),
-    fkUsuario INT NOT NULL,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
-);
-
 CREATE TABLE log (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    valor DOUBLE NOT NULL,
-    dataHora DATETIME NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
-    fkComponente INT NOT NULL,
-    fkDispositivo INT NOT NULL,
-    fkAlertas INT,
-    FOREIGN KEY (fkComponente) REFERENCES componentes(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
-    FOREIGN KEY (fkAlertas) REFERENCES alertas(id)
+    id INT PRIMARY KEY,
+    valor DOUBLE,
+    dataHora DATETIME,
+    descricao VARCHAR(255),
+    fkComponente INT,
+    fkDispositivo INT,
+    FOREIGN KEY (fkComponente) REFERENCES componente(id),
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
 
-CREATE TABLE alertasComponentes (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fkComponente INT NOT NULL,
-    fkDispositivo INT NOT NULL,
-    fkAlertas INT NOT NULL,
-    FOREIGN KEY (fkComponente) REFERENCES componentes(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
-    FOREIGN KEY (fkAlertas) REFERENCES alertas(id)
-);
 
 INSERT INTO statusUsuario (situacao) VALUES 
 ('Ativo'),
@@ -111,12 +102,12 @@ INSERT INTO tipoUsuario(tipo) VALUES
     
 CREATE VIEW ultimoComponente AS
  SELECT 
-        MAX(componentes.id) AS id,
-        componentes.nome AS nome,
-        componentes.tipo AS tipo
+        MAX(componente.id) AS id,
+        componente.nome AS nome,
+        componente.tipo AS tipo
     FROM
-        componentes
-    GROUP BY componentes.nome , componentes.tipo;
+        componente
+    GROUP BY componente.nome , componente.tipo;
     
 CREATE VIEW listarfuncionario as
 SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, u.fkEmpresa, tu.tipo as cargo, su.situacao, e.razaoSocial FROM usuario as u JOIN tipoUsuario as tu
@@ -128,10 +119,9 @@ ON u.fkAdmin = adm.id
 JOIN empresa as e 
 ON e.id = u.fkEmpresa;
 
-DESC empresa;
 
-INSERT INTO empresa (razaoSocial, cnpj) VALUES
-('Mercado Mix', '12345678912345');
 
-INSERT INTO usuario (nome, email, senha, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES
-('Teste', 'teste@gmail.com', '123', 1, 1, 1);
+
+
+
+
