@@ -176,8 +176,10 @@ function atualizarDados(req,res){
 
 function atualizarCargo(req,res){
     var fkEmpresa = req.params.fkEmpresa
-    var novoCargo = req.body.cargoServer
+    var novoCargo = req.body.novoCargoServer
     var idUsuario = req.body.idUsuarioServer
+
+    console.log(`fkEmpresa: ${fkEmpresa}, novoCargo: ${novoCargo}, idUsuario: ${idUsuario}`)
 
     if(fkEmpresa == undefined){
         res.status(400).send("A fkEmpresa esta undefined")

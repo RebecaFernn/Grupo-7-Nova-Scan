@@ -121,8 +121,8 @@ function listarFuncionarios() {
                 <div class="cargo" id="cargo">${listaUsuarios[i].cargo}</div>
                 <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
                 <div class="status" id="status">${listaUsuarios[i].situacao}</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+                <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick=excluir()> <img src="./img/delete.svg" alt=""></button>
             </div>`;
             
             const elementoPai = document.getElementById('conteudoColadores');
@@ -188,13 +188,19 @@ function editarDados() {
     }
 }
 
-function editarCargo(idUsuario) {
-    
+var usuarioId
+
+function editar(id){
+    fundoEditar.style.display = 'flex';
+    usuarioId = id
+}
+
+function editarCargo() {
+
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-   
     var novoCargo = comboBox.value
 
-    if (novoCargo == "") {
+    if (novoCargo == "#") {
         Swal.fire({
             title: 'Preencha o campo!',
             icon: 'error',
@@ -210,16 +216,31 @@ function editarCargo(idUsuario) {
         },
         body: JSON.stringify({
             novoCargoServer: novoCargo,
-            idUsuarioServer: idUsuario
+            idUsuarioServer: usuarioId
         }),
     })
         .then(function (resposta) {
             if (resposta.ok) {
                 resposta.json()
                 console.log("Informações atualizadas no banco com sucesso: ", resposta)
+              Swal.fire({
+                    title: 'Cargo atualizado com sucesso!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setTimeout(function(){
+                    atualizarPagina();
+                }, 3000)
             }
             else {
                 console.log("Houve um problema ao atualizar as informações")
+                Swal.fire({
+                    title: 'Erro ao atualizar o cargo!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
         })
         .catch(function (error) {
@@ -227,4 +248,3 @@ function editarCargo(idUsuario) {
         })
     }
 }
-// Fazer a função para desativar o usuario

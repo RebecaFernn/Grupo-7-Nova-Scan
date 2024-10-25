@@ -65,11 +65,11 @@
                 <button class="btn-novoColaborador" onclick="cadastrar()">Cadrastrar novo colaborador</button>
             </div>
             <div class="box-colunas">
-                <div class="nome">Nome</div>
-                <div class="email">Email</div>
-                <div class="cargo">Cargo</div>
-                <div class="administrador">Administrador</div>
-                <div class="status">Status</div>
+                <div class="nome">Nome:</div>
+                <div class="email">Email:</div>
+                <div class="cargo">Cargo:</div>
+                <div class="administrador">Criado por:</div>
+                <div class="status">Status:</div>
             </div>
             <!-- <div class="box-colaboradores">
                 <div class="nome" id="nome">Ryan Oliveira</div>
@@ -191,7 +191,7 @@
             <div class="boxEditar" onclick="pararPropagacao()">
                 <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
                 <select name="" id="comboBox">
-                    <option disabled selected>Escolha um cargo</option>
+                    <option disabled value="#">Escolha um cargo</option>
                     <option value="1">Administrador</option>
                     <option value="2">Funcionário</option>
                 </select>
@@ -201,7 +201,7 @@
         </div>
         <!-- <div class="popup" id="popupEditar">
             <img src="img/ok.svg" alt="">
-            <h2>Cargo atualizado <br> com sucesso!</h2>
+            <h2>Cargo atualizado <br> com sucesso!</h2> 
         </div> -->
 
 
@@ -230,6 +230,7 @@
 </body>
 
 </html>
+
 <script src="js/Login_Cadastro/Dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -269,6 +270,7 @@
         event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
 
     }
+
     function fechar() {
         const fundoInfomaquina = document.getElementById('fundoCadastrar');
         const fundoEditar = document.getElementById('fundoEditar')
@@ -277,10 +279,6 @@
         fundoEditar.style.display = 'none'
         fundoExcluir.style.display = 'none'
 
-    }
-    //---------------------------------------- Editar e deletar --------------------------------
-    function editar() {
-        fundoEditar.style.display = 'flex';
     }
 
     function excluir() {
