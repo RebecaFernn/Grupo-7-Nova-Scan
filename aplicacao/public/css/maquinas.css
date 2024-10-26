@@ -640,3 +640,12 @@ canvas {
     font-weight: 600;
     color: white;
 }
+
+/* Customização da fonte do Sweet Alert */
+.swal2-title{
+    font-family: Montserrat;
+}
+.swal2-text{
+    font-family: Montserrat;
+    font-size: 14px;
+}

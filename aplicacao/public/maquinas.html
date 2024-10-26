@@ -109,8 +109,8 @@
                 <div class="box-btn">
                     <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
                             src="./img/rename.svg" alt=""></button>
-                    <button class="btn-ativar"> Ativar máquina </button>
-                    <button class="btn-desativar"> Desativar máquina </button>
+                    <button class="btn-ativar" onclick="ativarDispositivo()"> Ativar máquina </button>
+                    <button class="btn-desativar" onclick="desativarDispositivo()"> Desativar máquina </button>
                     <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
                 </div>
                 <div class="box-informacoes">
@@ -381,6 +381,7 @@
     </div>
 
     <script src="js/Maquina/dispositivos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
 
@@ -403,6 +404,9 @@
         function index() {
             window.location.href = "index.html"
         }
+        function atualizarPagina() {
+            location.reload();
+        }
 
         function informacoesMaquinas() {
             const fundoInfomaquina = document.getElementById('informacoesdaMaquina');
@@ -414,13 +418,6 @@
             fundoInformacoesmaquina.style.display = 'flex';
             const fundoInfomaquina = document.getElementById('fundoInfomaquina');
             fundoInfomaquina.style.display = 'none';
-        }
-
-
-        // Função para exibir a div fundoInfomaquina
-        function maquina() {
-            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-            fundoInformacoesmaquina.style.display = 'flex';
         }
 
         function grafico() {

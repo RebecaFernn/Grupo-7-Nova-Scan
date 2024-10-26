@@ -19,14 +19,14 @@ function listarMaquinas() {
 
                 if (listaMaquinas[i].situacao == "Ativo") {
                     maquinas = `
-                    <div class="maquinasOK" onclick="maquina()">
+                    <div class="maquinasOK" onclick="maquina(${listaMaquinas[i].id})">
                         <p>${listaMaquinas[i].nome}</p>
                         <img src="./img/ok.svg" class="imgMaquina" alt="">
                     </div>`;
                 }
                 else if (listaMaquinas[i].situacao == "Inativo") {
                     maquinas = `
-                    <div class="maquinasInativa" onclick="maquina()">
+                    <div class="maquinasInativa" onclick="maquina(${listaMaquinas[i].id})">
                         <p>${listaMaquinas[i].nome}</p>
                         <img src="./img/inativo.svg" class="imgMaquina" alt="">
                      </div>
@@ -42,48 +42,135 @@ function listarMaquinas() {
         })
 }
 
-function atualizarNomeDispositivo() {
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    var idDispositivo = sessionStorage.getItem('ID_DISPOSITIVO')
-    var novoNome = nome_input.value
+var idDispositivo;
 
-    fetch(`/maquinas/atualizarNome/${fkEmpresa}?idDispositivo=${idDispositivo}`, {
-        method: 'POST',
-        headers: { contentType: 'application/json' },
-        body: JSON.stringify({
-            nomeServer: novoNome
-        })
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
-                console.log("Nome atualizado com sucesso")
-            }
-        })
-        .catch(function (error) {
-            console.log("Erro!: ", error)
-        })
+// Função para abrir o modal de informações da máquina
+function maquina(id) {
+    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+    fundoInformacoesmaquina.style.display = 'flex';
+    
+    idDispositivo = id;
 }
 
-function atualizarStatus() {
+function atualizarNomeDispositivo() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    var idDispositivo = sessionStorage.getItem('ID_DISPOSITIVO')
-    var status = status_dispositivo.value
+    var novoNome = nome_input.value
 
-    fetch(`/maquinas/atualizarStatus/${fkEmpresa}?idDispositivo=${idDispositivo}`, {
-        method: 'POST',
-        headers: { contentType: 'application/json' },
+    if (novoNome == "") {
+        Swal.fire({
+            title: 'Preencha o campo do nome da máquina!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+    else {
+
+        fetch(`/maquinas/atualizarNome/${fkEmpresa}`, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                nomeServer: novoNome,
+                idDispositivoServer: idDispositivo
+            })
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    console.log("Nome atualizado com sucesso")
+                    Swal.fire({
+                        title: 'Nome da máquina mudado com sucesso!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    idDispositivo = null
+                    setTimeout(function () {
+                        atualizarPagina();
+                    }, 1000)
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro!: ", error)
+                idDispositivo = null
+                Swal.fire({
+                    title: 'Houve um erro ao mudar o nome da máquina!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
+    }
+}
+
+function desativarDispositivo() {
+    fetch(`/maquinas/desativarDispositivo/`, {
+        method: 'PATCH',
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            statusServer: status
+            idDispositivoServer: idDispositivo,
         })
     })
         .then(function (resposta) {
             if (resposta.ok) {
                 resposta.json()
                 console.log("Status atualizado com sucesso")
+                Swal.fire({
+                    title: 'Máquina desativada com sucesso!',
+                    imageUrl: "img/ok.svg",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                idDispositivo = null
+                setTimeout(function () {
+                    atualizarPagina();
+                }, 1000)
             }
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
+            Swal.fire({
+                title: 'Houve um erro ao desativar a máquina!',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            idDispositivo = null
+        })
+}
+
+function ativarDispositivo() {
+    fetch(`/maquinas/ativarDispositivo/`, {
+        method: 'PATCH',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            idDispositivoServer: idDispositivo,
+        })
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                console.log("Status atualizado com sucesso")
+                Swal.fire({
+                    title: 'Máquina ativada com sucesso!',
+                    imageUrl: "img/ok.svg",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                idDispositivo = null
+                setTimeout(function () {
+                    atualizarPagina();
+                }, 1000)
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+            Swal.fire({
+                title: 'Houve um erro ao desativar a máquina!',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            idDispositivo = null
         })
 }

@@ -11,8 +11,12 @@ router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })
 
-router.post("/atualizarStatus/:fkEmpresa", function(req,res){
-    maquinasController.atualizarStatus(req,res);
+router.patch("/desativarDispositivo/", function(req,res){
+    maquinasController.desativarDispositivo(req,res);
+})
+
+router.patch("/ativarDispositivo/", function(req,res){
+    maquinasController.ativarDispositivo(req,res);
 })
 
 module.exports = router;
