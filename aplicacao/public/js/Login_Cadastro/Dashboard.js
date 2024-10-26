@@ -200,15 +200,6 @@ function editarCargo() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     var novoCargo = comboBox.value
 
-    if (novoCargo == "#") {
-        Swal.fire({
-            title: 'Preencha o campo!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
-        })
-    }
-    else{
     fetch(`/usuarios/atualizarCargo/${fkEmpresa}`, {
         method: "PATCH",
         headers: {
@@ -223,12 +214,13 @@ function editarCargo() {
             if (resposta.ok) {
                 resposta.json()
                 console.log("Informações atualizadas no banco com sucesso: ", resposta)
-              Swal.fire({
+
+                Swal.fire({
                     title: 'Cargo atualizado com sucesso!',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 2000
-                })
+                    timer: 2000})
+            
                 setTimeout(function(){
                     atualizarPagina();
                 }, 3000)
@@ -247,4 +239,3 @@ function editarCargo() {
             console.log("Erro ao atualizar os dados: ", error)
         })
     }
-}
