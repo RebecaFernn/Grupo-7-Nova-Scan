@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function lista(fkEmpresa) {
     // Listagem de maquians feitas mas o select pode ser alterado 
-    var instrucaoSql = `SELECT * FROM dispositivo WHERE fkEmpresa = ${fkEmpresa}`;
+    var instrucaoSql = `SELECT * FROM listaDispositivo WHERE idEmpresa = ${fkEmpresa}`;
   
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
