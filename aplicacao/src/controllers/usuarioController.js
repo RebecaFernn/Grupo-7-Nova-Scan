@@ -204,6 +204,29 @@ function atualizarCargo(req,res){
     }
 }
 
+function desativarFuncionario(req, res){
+    var fkEmpresa = req.params.fkEmpresa
+    var idUsuario = req.body.idUsuarioServer
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fkEmpresa esta undefined")
+    }
+    else if(idUsuario == undefined){
+        res.status(400).send("O idUsuario está undefined")
+    }
+    else{
+        usuarioModel.desativarFuncionario(fkEmpresa, idUsuario)
+        .then(function(resposta){
+            console.log("Informações atualizada dentro do banco: ", resposta)
+            res.status(200).json(resposta)
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao tentar atualizar as informações: ", error)
+            res.status(500).json(error)
+        })
+    }
+}
+
 module.exports = {
     autenticar,
     cadastrarFunc,
@@ -211,5 +234,6 @@ module.exports = {
     alterarSenha,
     listarPainel,
     atualizarDados,
-    atualizarCargo
+    atualizarCargo,
+    desativarFuncionario
 }

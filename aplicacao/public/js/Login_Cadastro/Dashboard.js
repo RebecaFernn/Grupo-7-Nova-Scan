@@ -2,7 +2,7 @@
 function cadastrarColaborador() {
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-   
+
 
     var empresaVar = sessionStorage.getItem('FK_EMPRESA')
     var nomeVar = nome_input.value;
@@ -68,7 +68,7 @@ function cadastrarColaborador() {
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    setTimeout(function(){
+                    setTimeout(function () {
                         atualizarPagina();
                     }, 3000)
                 } else {
@@ -96,25 +96,25 @@ function listarFuncionarios() {
             "Content-Type": "application/json"
         }
     })
-    .then(function(resposta) {
-        if (resposta.ok) {
-            return resposta.json();
-        } else {
-            console.log("Houve um problema ao buscar os usuários");
-            throw new Error('Erro ao buscar usuários');
-        }
-    })
-    .then(function(listaUsuarios) {
-        console.log("Usuários encontrados: ", listaUsuarios);
-        const nomeEmpresa = document.getElementById('nomeEmpresa');
-        nomeEmpresa.innerHTML = `Colaboradores ${listaUsuarios[0].razaoSocial}`;
-        let colaborador
-        for (var i = 0; i < listaUsuarios.length; i++) {
-            
-            if(listaUsuarios[i].nomeAdmin == null) {
-                listaUsuarios[i].nomeAdmin = "Nenhum"
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                console.log("Houve um problema ao buscar os usuários");
+                throw new Error('Erro ao buscar usuários');
             }
-            colaborador = `
+        })
+        .then(function (listaUsuarios) {
+            console.log("Usuários encontrados: ", listaUsuarios);
+            const nomeEmpresa = document.getElementById('nomeEmpresa');
+            nomeEmpresa.innerHTML = `Colaboradores ${listaUsuarios[0].razaoSocial}`;
+            let colaborador
+            for (var i = 0; i < listaUsuarios.length; i++) {
+
+                if (listaUsuarios[i].nomeAdmin == null) {
+                    listaUsuarios[i].nomeAdmin = "Nenhum"
+                }
+                colaborador = `
             <div class="box-colaboradores">
                 <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
                 <div class="email" id="email">${listaUsuarios[i].email}</div>
@@ -122,17 +122,17 @@ function listarFuncionarios() {
                 <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
                 <div class="status" id="status">${listaUsuarios[i].situacao}</div>
                 <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick=excluir()> <img src="./img/delete.svg" alt=""></button>
+                <button id="deletar" onclick=excluir(${listaUsuarios[i].id})> <img src="./img/delete.svg" alt=""></button>
             </div>`;
-            
-            const elementoPai = document.getElementById('conteudoColadores');
-            elementoPai.innerHTML += colaborador;
-            console.log(elementoPai);
-        }
-    })
-    .catch(function(error) {
-        console.log("Erro!: ", error);
-    });
+
+                const elementoPai = document.getElementById('conteudoColadores');
+                elementoPai.innerHTML += colaborador;
+                console.log(elementoPai);
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error);
+        });
 }
 
 function editarDados() {
@@ -147,7 +147,7 @@ function editarDados() {
     var confirmarSenha = inp4.value
 
     if (novaSenha !== confirmarSenha) {
-        
+
     }
     else {
         fetch(`/usuarios/atualizarDados/${params.idUsuario}?fkEmpresa=${params.fkEmpresa}`, {
@@ -190,8 +190,16 @@ function editarDados() {
 
 var usuarioId
 
-function editar(id){
+// função para chamar o pop up editar e excluir que estão recebendo o ID do usuario listado no listarFuncionario 
+// e armazenando na variavel global usuarioId
+function editar(id) {
     fundoEditar.style.display = 'flex';
+    usuarioId = id
+}
+
+function excluir(id) {
+    fundoExcluir.style.display = 'flex';
+    alert(id)
     usuarioId = id
 }
 
@@ -215,13 +223,16 @@ function editarCargo() {
                 resposta.json()
                 console.log("Informações atualizadas no banco com sucesso: ", resposta)
 
+                usuarioId = null
+
                 Swal.fire({
                     title: 'Cargo atualizado com sucesso!',
                     imageUrl: "img/ok.svg",
                     showConfirmButton: false,
-                    timer: 2000})
-            
-                setTimeout(function(){
+                    timer: 2000
+                })
+
+                setTimeout(function () {
                     atualizarPagina();
                 }, 3000)
             }
@@ -233,9 +244,72 @@ function editarCargo() {
                     showConfirmButton: false,
                     timer: 2000
                 })
+                usuarioId = null
             }
         })
         .catch(function (error) {
             console.log("Erro ao atualizar os dados: ", error)
+            usuarioId = null
         })
+}
+
+function desativarFuncionario() {
+
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+    var input = inputExcluir.value;
+
+    if (input != "excluir usuário") {
+        Swal.fire({
+            title: 'Digite "excluir usuário" para confirmar!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    } else {
+        fetch(`/usuarios/desativarFuncionario/${fkEmpresa}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: usuarioId
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    console.log("Informações atualizadas no banco com sucesso: ", resposta)
+
+                    Swal.fire({
+                        title: 'Usuario desativado!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    usuarioId = null
+
+                    setTimeout(function () {
+                        atualizarPagina();
+                    }, 3000)
+                }
+                else {
+                    console.log("Houve um problema ao atualizar as informações")
+                    Swal.fire({
+                        title: 'Houve um erro ao desativar o funcionario!',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    usuarioId = null
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao atualizar os dados: ", error)
+                usuarioId = null
+            })
+
     }
+}

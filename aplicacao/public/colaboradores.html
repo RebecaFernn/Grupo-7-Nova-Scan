@@ -217,7 +217,7 @@
                 </div>
 
                 <input type="text" id="inputExcluir" placeholder="excluir usuário">
-                <button onclick="validarExclusao()">Confirmar</button>
+                <button onclick="desativarFuncionario()">Confirmar</button>
 
             </div>
         </div>
@@ -281,11 +281,7 @@
 
     }
 
-    function excluir() {
-        fundoExcluir.style.display = 'flex';
-    }
     //-----------------pop up cadastrar -----------------
-
     function ChamarPopupCadastrar() {
         fechar()
         var div = document.getElementById("popupCadastrar");
@@ -308,20 +304,7 @@
             div.style.display = "none";
         }, 2000);
     }
-
-    //--------------popup deletar---------------
-    function validarExclusao() {
-        var input = document.getElementById("inputExcluir").value;
-
-
-        if (input == "excluir usuário") {
-            ChamarPopupDeletar()
-        } else {
-            alert("Verifique se a frese está correta!")
-        }
-    }
-
-
+    
     function ChamarPopupDeletar() {
         fechar()
         var div = document.getElementById("popupDeletar");

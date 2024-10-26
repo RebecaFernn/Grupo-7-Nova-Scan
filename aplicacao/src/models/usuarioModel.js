@@ -9,13 +9,10 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrarFunc(nome, email, senha, fkUsuario, empresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarFunc():", email, senha, empresa);
     console.log("Inserindo na tabela usuario:", empresa, senha, email);
 
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         INSERT INTO usuario (nome, email, senha, fkAdmin, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES ('${nome}', '${email}', '${senha}', ${fkUsuario}, ${empresa}, 2, 1);
     `;
@@ -59,7 +56,6 @@ function listarPainel(fkEmpresa) {
 function atualizarDados(novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarDados():");
     console.log("Inserindo na tabela usuario:", novoNome, novoEmail, novaSenha, idUsuario, fkEmpresa);
-
     /*
      usando operador ternário para poder fazer uma estrutura de if-else, onde ele verifica se diferente de nulo, 
      se for nulo ele mantém o novoNome em aspas simples
@@ -79,11 +75,16 @@ function atualizarCargo(novoCargo, idUsuario, fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarDados():");
     console.log("Inserindo na tabela usuario:", novoCargo, fkEmpresa, idUsuario);
 
-    /*
-     usando operador ternário para poder fazer uma estrutura de if-else, onde ele verifica se diferente de nulo, 
-     se for nulo ele mantém o novoNome em aspas simples
-     */
     var instrucaoSql = `UPDATE usuario SET fkTipoUsuario = ${novoCargo} WHERE fkEmpresa = ${fkEmpresa} AND id = ${idUsuario};`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function desativarFuncionario(fkEmpresa, idUsuario){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function desativarFuncionario():");
+    console.log("Inserindo na tabela usuario:", fkEmpresa, idUsuario);
+
+    var instrucaoSql = `UPDATE usuario SET fkStatusUsuario = 2 WHERE fkEmpresa = ${fkEmpresa} AND id = ${idUsuario};`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -95,5 +96,6 @@ module.exports = {
     alterarSenha,
     listarPainel,
     atualizarDados,
-    atualizarCargo
+    atualizarCargo,
+    desativarFuncionario
 };
