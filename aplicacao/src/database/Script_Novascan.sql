@@ -1,25 +1,24 @@
 -- Criação do banco de dados
-CREATE DATABASE novaScan;
-USE novaScan;
+CREATE DATABASE novascan;
+USE novascan;
 
 CREATE TABLE empresa (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(90),
     cnpj CHAR(14)
 );
 
 CREATE TABLE dispositivo (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
 );
 
 CREATE TABLE componente (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
     tipo VARCHAR(30),
-    unidadeMedida VARCHAR(255),
     fkDispositivo INT,
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
@@ -35,7 +34,7 @@ CREATE TABLE tipoUsuario (
 );
 
 CREATE TABLE usuario (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(90),
     email VARCHAR(256),
     senha VARCHAR(256),
@@ -55,7 +54,7 @@ CREATE TABLE atividade (
 );
 
 CREATE TABLE historicoAtividade (
-	id INT,
+	id INT AUTO_INCREMENT,
     fkDispositivo INT,
     fkAtividade INT,
     dataHora DATETIME,
@@ -65,7 +64,7 @@ CREATE TABLE historicoAtividade (
 );
 
 CREATE TABLE alerta (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     minIntervalo INT,
     maxIntervalo INT,
     fkUsuario INT,
@@ -77,8 +76,9 @@ CREATE TABLE alerta (
 );
 
 CREATE TABLE log (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     valor DOUBLE,
+    unidadeDeMedida VARCHAR(5),
     dataHora DATETIME,
     descricao VARCHAR(255),
     fkComponente INT,
@@ -118,6 +118,10 @@ LEFT JOIN usuario as adm
 ON u.fkAdmin = adm.id
 JOIN empresa as e 
 ON e.id = u.fkEmpresa;
+
+
+
+
 
 
 
