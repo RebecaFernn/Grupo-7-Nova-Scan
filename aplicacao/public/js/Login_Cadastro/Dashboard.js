@@ -167,7 +167,7 @@ function editarDados() {
                     console.log("Informações atualizadas no banco com sucesso: ", resposta)
                     Swal.fire({
                         title: 'Informações atualizadas com sucesso!',
-                        icon: 'success',
+                        imageUrl: "img/ok.svg",
                         showConfirmButton: false,
                         timer: 2000
                     })
@@ -217,7 +217,7 @@ function editarCargo() {
 
                 Swal.fire({
                     title: 'Cargo atualizado com sucesso!',
-                    icon: 'success',
+                    imageUrl: "img/ok.svg",
                     showConfirmButton: false,
                     timer: 2000})
             
