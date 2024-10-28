@@ -32,6 +32,10 @@ function listarMaquinas() {
                      </div>
                     `
                 }
+
+                // Tem que ter mais uma validação para ver se a máquina entrou em estado de alerta
+
+                
                 const elementoPai = document.getElementById('boxmaquinas');
                 elementoPai.innerHTML += maquinas;
                 console.log(elementoPai);
@@ -50,6 +54,37 @@ function maquina(id) {
     fundoInformacoesmaquina.style.display = 'flex';
     
     idDispositivo = id;
+    componentesDispositivo();
+}
+
+function componentesDispositivo(){
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+    fetch(`/maquinas/componentes/${fkEmpresa}?idDispositivo=${idDispositivo}`,{
+        method: 'GET',
+        headers: { "Content-Type": "application/json"},
+    })
+    .then(function(resposta){
+        if(resposta.ok){
+           return resposta.json()
+        }
+    })
+    .then(function(listaComponente){
+        console.log("Componentes encontrados: ", listaComponente)
+        let componentes
+            componentes = `
+                <p> <strong>Nome da máquina: ${listaComponente[0].nomeMaquina}</strong></p>
+                <p> <strong>Processador: </strong>${listaComponente[5].nomeComponente}</p>
+                <p> <strong>Total Mémoria Ram Total: ${listaComponente[3].valor} GB</strong></p>
+                <p> <strong>Total Armazenamento Total: </strong> ${listaComponente[2].valor}GB</p>
+            `
+            const elementoPai = document.getElementById('top-info');
+            elementoPai.innerHTML += componentes;
+            console.log(elementoPai);
+    })
+    .catch(function(error){
+        console.log("Erro!: ", error)
+    })
 }
 
 function atualizarNomeDispositivo() {

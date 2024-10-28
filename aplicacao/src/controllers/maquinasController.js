@@ -76,9 +76,36 @@ function ativarDispositivo(req,res){
     })
   }
 }
+
+
+function componentes(req, res){
+  var fkEmpresa = req.params.fkEmpresa;
+  var idDispositivo = req.query.idDispositivo;
+
+  if(fkEmpresa == undefined){
+    res.status(400).send("O fk da empresa esta undefined")
+  }
+  else if(idDispositivo == undefined){
+    res.status(400).send("O id do dispositivo esta undefined")
+  }
+  else{
+    maquinasModel.componentes(fkEmpresa, idDispositivo)
+    .then(function(resultado){
+        res.status(200).json(resultado)
+    })
+    .catch(function(erro){
+      console.log(erro)
+      console.log(`Houve um erro ao buscar os componentes! Erro: ${erro.sqlMessage}`)
+      res.status(500).json(erro.sqlMessage)
+    })
+  }
+
+
+}
 module.exports = {
     lista,
     atualizarNome,
     desativarDispositivo,
     ativarDispositivo,
+    componentes
 }
