@@ -72,6 +72,7 @@ function componentesDispositivo(){
     .then(function(listaComponente){
         console.log("Componentes encontrados: ", listaComponente)
         const elementoPai = document.getElementById('top-info');
+        //limpando o html para nao ficar repetindo
         elementoPai.innerHTML = "";
         let componentes
             componentes = `
@@ -82,9 +83,13 @@ function componentesDispositivo(){
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
+
+            idDispositivo = null
     })
     .catch(function(error){
         console.log("Erro!: ", error)
+
+        idDispositivo = null
     })
 }
 
