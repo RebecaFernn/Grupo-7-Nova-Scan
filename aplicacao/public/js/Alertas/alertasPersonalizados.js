@@ -64,6 +64,29 @@ function listarComponentes() {
         })
 }
 
+// função de contar quantos alertas o usuário tem
+function qtdAlertasUsuario(){
+    var fkUsuario = sessionStorage.getItem('ID_USUARIO')
+    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if(resposta.ok){
+                return resposta.json()
+            }
+        })
+        .then(function(qtd){
+            var quantidade = qtd[0].qtdAlertas
+
+            console.log("Quantidade de alertas: ", quantidade)
+            return quantidade
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao contar os alertas", error)
+        })
+}
+
 //Função para criar o alerta
 function criarAlerta() {
 
@@ -73,6 +96,10 @@ function criarAlerta() {
     var minIntervalo = Number(input_min.value)
     var maxIntervalo = Number(input_max.value)
 
+    //verificando a quantidade de alertas do usuário
+    var quantidadeAlertas = qtdAlertasUsuario()
+    console.log("Quantidade de alertas da segunda função: ", quantidadeAlertas)
+
     if(minIntervalo >= maxIntervalo){
         Swal.fire({
             title: 'Intervalo mínimo maior ou igual ao intervalo máximo!',
@@ -80,7 +107,6 @@ function criarAlerta() {
             showConfirmButton: false,
             timer: 2000
         })
-        return
     }
     else if(minIntervalo == "" || maxIntervalo == ""){
         Swal.fire({
@@ -89,7 +115,6 @@ function criarAlerta() {
             showConfirmButton: false,
             timer: 2000
         })
-        return
     }
     else if(fkComponente == "" || fkDispositivo == ""){
         Swal.fire({
@@ -98,7 +123,14 @@ function criarAlerta() {
             showConfirmButton: false,
             timer: 2000
         })
-        return
+    }
+    else if(quantidadeAlertas >= 1){
+        Swal.fire({
+            title: 'Limite de alertas atingido!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
     }
     else{
         fetch(`/alertas/criarAlerta`, {

@@ -56,7 +56,20 @@ function criarAlerta(req, res) {
   }
 }
 
+
+function qtdAlertasUsuario(req, res){
+    var fkUsuario = req.params.fkUsuario
+    alertaModel.qtdAlertasUsuario(fkUsuario)
+    .then(function(qtdAlertas){
+        res.status(200).send(qtdAlertas)
+    })
+    .catch(function(error){
+      res.status(500).send("Erro ao buscar a quantidade de alertas: " + error)
+    })
+  }
+
 module.exports = {
   listaComponentes,
-  criarAlerta
+  criarAlerta,
+  qtdAlertasUsuario
 };
