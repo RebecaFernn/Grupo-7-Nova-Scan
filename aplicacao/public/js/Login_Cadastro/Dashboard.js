@@ -334,7 +334,7 @@ function ativarFuncionario() {
 
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
-    var input = inputExcluir.value;
+    var input = inputAtivar.value;
 
     if (input != "ativar usuário") {
         Swal.fire({
