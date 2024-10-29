@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/metricas.css">
 </head>
 
-<body>
+<body onload="listarMaquinas()">
     <section class="Editar">
 
         <div class="NavBar">
@@ -78,9 +78,8 @@
                         <div class="two">
                             <div class="caixas">
                                 <br>
-                                <select name="" id="" class="ip_1">
-                                 
-                                    <option selected value=""> Selecione a maquina que deseja atribuir</option>
+                                <select name="" id="comboBoxMaquinas" class="ip_1" onchange="listarComponentes()">
+                                    <!-- <option selected value=""> Selecione a maquina que deseja atribuir</option>
                                     <option value="">Self-Checkout 1</option>
                                     <option value="">Self-Checkout 2</option>
                                     <option value="">Self-Checkout 3</option>
@@ -89,8 +88,7 @@
                                     <option value="">Self-Checkout 6</option>
                                     <option value="">Self-Checkout 7</option>
                                     <option value="">Self-Checkout 8</option>
-                                    <option value="">Self-Checkout 9</option>
-    
+                                    <option value="">Self-Checkout 9</option> -->
                                 </select>
                             </div>
 
@@ -98,21 +96,17 @@
                         </div>
                         <div class="caixas">
                             <br>
-                            <select name="" id="" class="ip_1">
-                            
-
-                                <option selected value=""> Selecione seu componente</option>
+                            <select name="" id="comboBoxComponentes" class="ip_1">
+                                <!-- <option selected value=""> Selecione seu componente</option>
                                 <option value="">CPU</option>
                                 <option value="">RAM</option>
                                 <option value="">ARMAZENAMENTO</option>
-                                <option value="">REDE</option>
-                              
-
+                                <option value="">REDE</option> -->
                             </select>
                         </div>
 
                        <div class="caixas">
-                        <button onclick="ChamarPopupPerfil()">Confirmar</button>
+                        <button onclick="">Confirmar</button>
                        </div>
                     </div>
 
@@ -175,6 +169,7 @@
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src = "js/Alertas/alertasPersonalizados.js"></script>
 <script>
 
     let nomeUsuario = sessionStorage.getItem('NOME_USUARIO')

@@ -1,5 +1,3 @@
-const { lista } = require("../../../src/models/maquinasModel")
-
 function listarMaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`, {
@@ -37,7 +35,6 @@ function listarMaquinas() {
 
                 // Tem que ter mais uma validação para ver se a máquina entrou em estado de alerta
 
-                
                 const elementoPai = document.getElementById('boxmaquinas');
                 elementoPai.innerHTML += maquinas;
                 console.log(elementoPai);
