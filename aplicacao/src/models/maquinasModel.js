@@ -46,4 +46,19 @@ AND c.tipo = 'Processador';`
   return database.executar(instrucaoSql);
 }
 
-module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes };
+
+function valoresComponentes(fkEmpresa, fkDispositivo) {
+  console.log("Inserindo na tabela dispositivo:", fkEmpresa, fkDispositivo);
+  var instrucaoSql = `SELECT l.valor, l.fkDispositivo, l.descricao FROM log as l JOIN dispositivo as d
+ON l.fkDispositivo = d.id
+JOIN empresa as e
+ON d.fkEmpresa = e.id
+WHERE descricao IN ('Armazenamento Total', 'Memória RAM Total') 
+AND l.fkDispositivo = ${fkDispositivo}
+AND e.id = ${fkEmpresa};`
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes };

@@ -1,3 +1,5 @@
+const { lista } = require("../../../src/models/maquinasModel")
+
 function listarMaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`, {
@@ -55,11 +57,33 @@ function maquina(id) {
     
     idDispositivo = id;
     componentesDispositivo();
+    valoresComponentes();
 }
 
-function componentesDispositivo(){
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
+function valoresComponentes() {
+
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    fetch(`/maquinas/valoresComponentes/${fkEmpresa}?idDispositivo=${idDispositivo}`, {
+        methot: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function(resposta){
+        if(resposta.ok){
+            return resposta.json()
+        }
+    })
+    .then(function(listaValores){
+        componentesDispositivo(listaValores)
+    })
+    .catch(function(error){
+        console.log("Erro!: ", error)
+    })
+}
+
+function componentesDispositivo(listaValores) {
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    
     fetch(`/maquinas/componentes/${fkEmpresa}?idDispositivo=${idDispositivo}`,{
         method: 'GET',
         headers: { "Content-Type": "application/json"},
@@ -71,6 +95,7 @@ function componentesDispositivo(){
     })
     .then(function(listaComponente){
         console.log("Componentes encontrados: ", listaComponente)
+        var valores = listaValores
         const elementoPai = document.getElementById('top-info');
         //limpando o html para nao ficar repetindo
         elementoPai.innerHTML = "";
@@ -78,18 +103,14 @@ function componentesDispositivo(){
             componentes = `
                 <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
                 <p> <strong>Processador:</strong> ${listaComponente[0].nomeProcessador}</p>
-                <p> <strong>Total Mémoria Ram Total:</strong>  GB</p>
-                <p> <strong>Total Armazenamento Total:</strong> GB</p>
+                <p> <strong>Total Mémoria Ram Total: </strong> ${valores[0].valor} GB</p>
+                <p> <strong>Total Armazenamento Total: </strong> ${valores[1].valor}GB</p>
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
-
-            idDispositivo = null
     })
     .catch(function(error){
         console.log("Erro!: ", error)
-
-        idDispositivo = null
     })
 }
 
