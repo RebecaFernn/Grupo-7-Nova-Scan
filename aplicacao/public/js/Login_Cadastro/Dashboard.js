@@ -199,7 +199,6 @@ function editar(id) {
 
 function excluir(id) {
     fundoExcluir.style.display = 'flex';
-    alert(id)
     usuarioId = id
 }
 
