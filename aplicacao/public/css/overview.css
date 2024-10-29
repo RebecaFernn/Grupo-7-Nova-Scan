@@ -79,12 +79,21 @@ font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 45%;
     height: 50%;
     gap: 5%;
     background-color: #F84455;
     font-family: Prompt;
 
+}
+
+
+.inputData{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 1.2rem;
 }
 .midOverview{
     width: 80%;
@@ -183,8 +192,8 @@ height: 90% !important;
 }
 
 .select-overview{
-    height: 40px;
-    width: auto;
+    height: 50%;
+    width: 20%;
     display: flex;
     border: rgba(82, 82, 82, 0.733) solid 1.5px;
     color: #000;
