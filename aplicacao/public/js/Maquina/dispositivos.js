@@ -71,14 +71,15 @@ function componentesDispositivo(){
     })
     .then(function(listaComponente){
         console.log("Componentes encontrados: ", listaComponente)
+        const elementoPai = document.getElementById('top-info');
+        elementoPai.innerHTML = "";
         let componentes
             componentes = `
-                <p> <strong>Nome da máquina: ${listaComponente[0].nomeMaquina}</strong></p>
-                <p> <strong>Processador: </strong>${listaComponente[5].nomeComponente}</p>
-                <p> <strong>Total Mémoria Ram Total: ${listaComponente[3].valor} GB</strong></p>
-                <p> <strong>Total Armazenamento Total: </strong> ${listaComponente[2].valor}GB</p>
+                <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
+                <p> <strong>Processador:</strong> ${listaComponente[5].nomeComponente}</p>
+                <p> <strong>Total Mémoria Ram Total:</strong> ${listaComponente[3].valor} GB</p>
+                <p> <strong>Total Armazenamento Total:</strong> ${listaComponente[2].valor}GB</p>
             `
-            const elementoPai = document.getElementById('top-info');
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
     })
