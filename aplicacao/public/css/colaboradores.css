@@ -362,6 +362,18 @@ option{
     height: 100vh;
 }
 
+.fundoAtivar{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .boxExcluir{
     width: 35%;
     height: 40%;
@@ -457,6 +469,11 @@ option{
     font-family: Montserrat;
     font-size: 2.125rem;
     gap: 5%;
+}
+
+.icon-statusColaborador{
+    height: 30px;
+    width: 30px;
 }
 
 .swal2-title{

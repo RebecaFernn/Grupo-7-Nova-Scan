@@ -226,7 +226,7 @@ function desativarFuncionario(req, res){
         })
     }
 }
-function ativarFuncionario(){
+function ativarFuncionario(req, res){
     var fkEmpresa = req.params.fkEmpresa
     var idUsuario = req.body.idUsuarioServer
 

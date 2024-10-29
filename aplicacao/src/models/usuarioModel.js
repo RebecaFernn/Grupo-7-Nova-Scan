@@ -105,5 +105,6 @@ module.exports = {
     listarPainel,
     atualizarDados,
     atualizarCargo,
-    desativarFuncionario
+    desativarFuncionario,
+    ativarFuncionario
 };

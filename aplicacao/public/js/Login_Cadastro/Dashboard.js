@@ -124,7 +124,7 @@ function listarFuncionarios() {
                     <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
                     <div class="status" id="status">${listaUsuarios[i].situacao}</div>
                     <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
-                    <button id="deletar" onclick=excluir(${listaUsuarios[i].id})> <img src="./img/desative.svg" alt=""></button>
+                    <button id="deletar" onclick=excluir(${listaUsuarios[i].id})> <img src="./img/desative.svg" class="icon-statusColaborador" alt=""></button>
                 </div>`;
                 }else{
                     colaborador = `
@@ -135,7 +135,7 @@ function listarFuncionarios() {
                         <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
                         <div class="status" id="status">${listaUsuarios[i].situacao}</div>
                         <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
-                        <button id="deletar" onclick=ativar(${listaUsuarios[i].id})> <img src="./img/active.svg" alt=""></button>
+                        <button id="deletar" onclick=ativar(${listaUsuarios[i].id})> <img src="./img/active.svg" class="icon-statusColaborador" alt=""></button>
                     </div>`;
                 }
                 const elementoPai = document.getElementById('conteudoColadores');
@@ -308,7 +308,7 @@ function desativarFuncionario() {
 
                     setTimeout(function () {
                         atualizarPagina();
-                    }, 3000)
+                    },2000)
                 }
                 else {
                     console.log("Houve um problema ao atualizar as informações")
@@ -369,7 +369,7 @@ function ativarFuncionario() {
 
                     setTimeout(function () {
                         atualizarPagina();
-                    }, 3000)
+                    },2000)
                 }
                 else {
                     console.log("Houve um problema ao atualizar as informações")
