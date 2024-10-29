@@ -65,7 +65,6 @@ function listarComponentes() {
 }
 
 //Função para criar o alerta
-
 function criarAlerta() {
 
     var fkUsuario = sessionStorage.getItem('ID_USUARIO')
@@ -74,35 +73,64 @@ function criarAlerta() {
     var minIntervalo = Number(input_min.value)
     var maxIntervalo = Number(input_max.value)
 
-    fetch(`/alertas/criarAlerta`, {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            fkUsuarioServer: fkUsuario,
-            fkComponenteServer: fkComponente,
-            fkDispositivoServer: fkDispositivo,
-            minIntervaloServer: minIntervalo,
-            maxIntervaloServer: maxIntervalo
+    if(minIntervalo >= maxIntervalo){
+        Swal.fire({
+            title: 'Intervalo mínimo maior ou igual ao intervalo máximo!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
         })
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
+        return
+    }
+    else if(minIntervalo == "" || maxIntervalo == ""){
+        Swal.fire({
+            title: 'Preencha os campos de intervalo!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        return
+    }
+    else if(fkComponente == "" || fkDispositivo == ""){
+        Swal.fire({
+            title: 'Selecione um componente e uma máquina!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        return
+    }
+    else{
+        fetch(`/alertas/criarAlerta`, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                fkUsuarioServer: fkUsuario,
+                fkComponenteServer: fkComponente,
+                fkDispositivoServer: fkDispositivo,
+                minIntervaloServer: minIntervalo,
+                maxIntervaloServer: maxIntervalo
+            })
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    Swal.fire({
+                        title: 'Alerta criado com sucesso!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao criar o alerta: ", error)
                 Swal.fire({
-                    title: 'Alerta criado com sucesso!',
-                    imageUrl: "img/ok.svg",
+                    title: 'Erro ao criar o alerta!',
+                    icon: 'error',
                     showConfirmButton: false,
                     timer: 2000
                 })
-            }
-        })
-        .catch(function (error) {
-            console.log("Erro ao criar o alerta: ", error)
-            Swal.fire({
-                title: 'Erro ao criar o alerta!',
-                icons: 'error',
-                showConfirmButton: false,
-                timer: 2000
             })
-        })
+    }
 }
