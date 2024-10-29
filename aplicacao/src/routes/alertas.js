@@ -7,4 +7,8 @@ router.get("/listaComponentes/:fkEmpresa", function (req, res) {
     alertaController.listaComponentes(req, res);
 })
 
+router.post("/criarAlerta", function (req, res) {
+    alertaController.criarAlerta(req, res);
+})
+
 module.exports = router;

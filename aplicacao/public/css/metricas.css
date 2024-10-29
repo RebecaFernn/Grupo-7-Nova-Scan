@@ -332,5 +332,15 @@ body {
     justify-content: left;
     align-items: center;
     display: flex;
-  
+}
+
+/* Customização da fonte do Sweet Alert */
+.swal2-title{
+    font-family: Montserrat;
+    color: black;
+}
+.swal2-container{
+    font-family: Montserrat;
+    font-size: 14px;
+    color: red;
 }
