@@ -329,6 +329,7 @@ function desativarFuncionario() {
 
     }
 }
+
 function ativarFuncionario() {
 
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
