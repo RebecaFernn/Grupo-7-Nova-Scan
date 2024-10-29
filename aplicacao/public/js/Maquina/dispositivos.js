@@ -77,9 +77,9 @@ function componentesDispositivo(){
         let componentes
             componentes = `
                 <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
-                <p> <strong>Processador:</strong> ${listaComponente[5].nomeComponente}</p>
-                <p> <strong>Total Mémoria Ram Total:</strong> ${listaComponente[3].valor} GB</p>
-                <p> <strong>Total Armazenamento Total:</strong> ${listaComponente[2].valor}GB</p>
+                <p> <strong>Processador:</strong> ${listaComponente[0].nomeProcessador}</p>
+                <p> <strong>Total Mémoria Ram Total:</strong>  GB</p>
+                <p> <strong>Total Armazenamento Total:</strong> GB</p>
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);

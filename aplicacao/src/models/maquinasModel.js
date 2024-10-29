@@ -35,15 +35,12 @@ function ativarDispositivo(idDispositivo) {
 
 function componentes(fkEmpresa, fkDispositivo) {
   console.log("Inserindo na tabela dispositivo:", fkEmpresa, fkDispositivo);
-  var instrucaoSql = `SELECT d.nome as nomeMaquina, c.nome as nomeComponente, c.tipo, l.valor, l.descricao FROM dispositivo as d JOIN componente as c 
+  var instrucaoSql = `SELECT d.nome as nomeMaquina, c.nome as nomeProcessador, e.id FROM dispositivo as d JOIN componente as c
 ON d.id = c.fkDispositivo 
-JOIN empresa as e 
-ON d.fkEmpresa = e.id
-JOIN log as l 
-ON d.id = l.fkDispositivo
-WHERE d.id = ${fkDispositivo} AND e.id = ${fkEmpresa}
-AND l.descricao IN ('Armazenamento Total', 'Memória RAM Total')
-GROUP BY d.nome, c.nome, c.tipo, l.descricao, l.valor;`
+JOIN empresa as e
+ON e.id = d.fkEmpresa
+WHERE c.fkDispositivo = ${fkDispositivo} AND e.id = ${fkEmpresa}
+AND c.tipo = 'Processador';`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
