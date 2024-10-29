@@ -22,7 +22,7 @@
 
 <body onload="listarFuncionarios()">
     <section class="pgColaboradores">
-        
+
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
@@ -32,7 +32,7 @@
                     <img src="./img/overview.svg" alt="">
                     <a href="overview.html">Overview</a>
                 </div>
-                <div class="links" onclick="maquinas()" >
+                <div class="links" onclick="maquinas()">
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
@@ -51,7 +51,7 @@
             </div>
             <div class="lowNavBar">
                 <img src="./img/LogoBranca.svg" class="imgLow">
-                <div class="links" onclick="index()" >
+                <div class="links" onclick="index()">
                     <img src="./img/sair.svg" alt="">
                     <a href="#">Logout</a>
                 </div>
@@ -221,6 +221,22 @@
 
             </div>
         </div>
+
+        <!-- ------------Ativar------------------- -->
+        <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
+            <div class="boxExcluir" onclick="pararPropagacao()">
+                <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
+                <div class="titulosExcluir">
+                    <h2>Deseja ativar este usuário?</h2>
+                    <p>Repita a frase do campo</p>
+
+                </div>
+
+                <input type="text" id="inputExcluir" placeholder="ativar usuário">
+                <button onclick="ativarFuncionario()">Confirmar</button>
+
+            </div>
+        </div>
         <div class="popup" id="popupDeletar">
             <img src="img/ok.svg" alt="">
             <h2>Usuário removido <br> com sucesso!</h2>
@@ -253,7 +269,7 @@
     function metricas() {
         window.location.href = "metricas.html"
     }
-    function index(){
+    function index() {
         window.location.href = "index.html"
     }
     function atualizarPagina() {
@@ -290,7 +306,7 @@
         setTimeout(function () {
             div.style.display = "none";
         }, 2000);
-        
+
 
     }
 
@@ -304,7 +320,7 @@
             div.style.display = "none";
         }, 2000);
     }
-    
+
     function ChamarPopupDeletar() {
         fechar()
         var div = document.getElementById("popupDeletar");

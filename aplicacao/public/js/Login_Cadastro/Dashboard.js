@@ -114,17 +114,30 @@ function listarFuncionarios() {
                 if (listaUsuarios[i].nomeAdmin == null) {
                     listaUsuarios[i].nomeAdmin = "Nenhum"
                 }
-                colaborador = `
-            <div class="box-colaboradores">
-                <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
-                <div class="email" id="email">${listaUsuarios[i].email}</div>
-                <div class="cargo" id="cargo">${listaUsuarios[i].cargo}</div>
-                <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
-                <div class="status" id="status">${listaUsuarios[i].situacao}</div>
-                <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick=excluir(${listaUsuarios[i].id})> <img src="./img/delete.svg" alt=""></button>
-            </div>`;
 
+                if (listaUsuarios[1].situacao == "Ativo") {
+                    colaborador = `
+                <div class="box-colaboradores">
+                    <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
+                    <div class="email" id="email">${listaUsuarios[i].email}</div>
+                    <div class="cargo" id="cargo">${listaUsuarios[i].cargo}</div>
+                    <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
+                    <div class="status" id="status">${listaUsuarios[i].situacao}</div>
+                    <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
+                    <button id="deletar" onclick=excluir(${listaUsuarios[i].id})> <img src="./img/desative.svg" alt=""></button>
+                </div>`;
+                }else{
+                    colaborador = `
+                    <div class="box-colaboradores">
+                        <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
+                        <div class="email" id="email">${listaUsuarios[i].email}</div>
+                        <div class="cargo" id="cargo">${listaUsuarios[i].cargo}</div>
+                        <div class="administrador" id="administrador">${listaUsuarios[i].nomeAdmin}</div>
+                        <div class="status" id="status">${listaUsuarios[i].situacao}</div>
+                        <button id="editar" onclick=editar(${listaUsuarios[i].id})> <img src="./img/editar.svg" alt=""> </button>
+                        <button id="deletar" onclick=ativar(${listaUsuarios[i].id})> <img src="./img/active.svg" alt=""></button>
+                    </div>`;
+                }
                 const elementoPai = document.getElementById('conteudoColadores');
                 elementoPai.innerHTML += colaborador;
                 console.log(elementoPai);
@@ -199,7 +212,10 @@ function editar(id) {
 
 function excluir(id) {
     fundoExcluir.style.display = 'flex';
-    alert(id)
+    usuarioId = id
+}
+function ativar(id) {
+    fundoExcluir.style.display = 'flex';
     usuarioId = id
 }
 
@@ -298,6 +314,66 @@ function desativarFuncionario() {
                     console.log("Houve um problema ao atualizar as informações")
                     Swal.fire({
                         title: 'Houve um erro ao desativar o funcionario!',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    usuarioId = null
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao atualizar os dados: ", error)
+                usuarioId = null
+            })
+
+    }
+}
+function ativarFuncionario() {
+
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+    var input = inputExcluir.value;
+
+    if (input != "ativar usuário") {
+        Swal.fire({
+            title: 'Digite "ativar usuário" para confirmar!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    } else {
+        fetch(`/usuarios/ativarFuncionario/${fkEmpresa}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: usuarioId
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    console.log("Informações atualizadas no banco com sucesso: ", resposta)
+
+                    Swal.fire({
+                        title: 'Usuario ativado!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    usuarioId = null
+
+                    setTimeout(function () {
+                        atualizarPagina();
+                    }, 3000)
+                }
+                else {
+                    console.log("Houve um problema ao atualizar as informações")
+                    Swal.fire({
+                        title: 'Houve um erro ao ativar o funcionario!',
                         icon: 'error',
                         showConfirmButton: false,
                         timer: 2000

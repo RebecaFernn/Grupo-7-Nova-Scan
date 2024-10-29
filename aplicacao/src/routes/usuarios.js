@@ -42,6 +42,10 @@ router.patch("/atualizarCargo/:fkEmpresa", function (req, res) {
 router.patch("/desativarFuncionario/:fkEmpresa", function (req, res) {
     usuarioController.desativarFuncionario(req, res);
 })
+// Rota para ativar o funcionario
+router.patch("/ativarFuncionario/:fkEmpresa", function (req, res) {
+    usuarioController.ativarFuncionario(req, res);
+})
 
 
 module.exports = router;
