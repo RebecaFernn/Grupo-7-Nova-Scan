@@ -223,7 +223,7 @@
         </div>
 
         <!-- ------------Ativar------------------- -->
-        <div onclick="fechar()" class="fundoExcluir" id="fundoExcluir">
+        <div onclick="fechar()" class="fundoAtivar" id="fundoAtivar">
             <div class="boxExcluir" onclick="pararPropagacao()">
                 <div class="topExcluir"><img onclick="fechar()" src="img/fechar.svg" alt=""></div>
                 <div class="titulosExcluir">
@@ -293,6 +293,8 @@
         const fundoExcluir = document.getElementById('fundoExcluir')
         fundoCadastrar.style.display = 'none';
         fundoEditar.style.display = 'none'
+        fundoExcluir.style.display = 'none'
+        const fundoAtivar = document.getElementById('fundoAtivar')
         fundoExcluir.style.display = 'none'
 
     }

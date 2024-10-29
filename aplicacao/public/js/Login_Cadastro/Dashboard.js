@@ -115,7 +115,7 @@ function listarFuncionarios() {
                     listaUsuarios[i].nomeAdmin = "Nenhum"
                 }
 
-                if (listaUsuarios[1].situacao == "Ativo") {
+                if (listaUsuarios[i].situacao == "Ativo") {
                     colaborador = `
                 <div class="box-colaboradores">
                     <div class="nome" id="nome">${listaUsuarios[i].nome}</div>
@@ -215,7 +215,7 @@ function excluir(id) {
     usuarioId = id
 }
 function ativar(id) {
-    fundoExcluir.style.display = 'flex';
+    fundoAtivar.style.display = 'flex';
     usuarioId = id
 }
 
