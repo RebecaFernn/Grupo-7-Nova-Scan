@@ -99,7 +99,9 @@ INSERT INTO atividade (situacao) VALUES
 INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
-    
+
+
+-- Adicionando todas as views do projeto
 CREATE VIEW ultimoComponente AS
  SELECT 
         MAX(componente.id) AS id,
@@ -118,6 +120,14 @@ LEFT JOIN usuario as adm
 ON u.fkAdmin = adm.id
 JOIN empresa as e 
 ON e.id = u.fkEmpresa;
+
+CREATE VIEW listaDispositivo as 
+SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id as idEmpresa FROM dispositivo as d JOIN historicoAtividade as ha
+ON d.id = ha.fkDispositivo
+JOIN atividade as a
+ON a.idAtividade = ha.fkAtividade
+JOIN empresa as e
+ON e.id = d.fkEmpresa;
 
 
 
