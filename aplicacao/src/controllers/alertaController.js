@@ -57,19 +57,44 @@ function criarAlerta(req, res) {
 }
 
 
-function qtdAlertasUsuario(req, res){
-    var fkUsuario = req.params.fkUsuario
-    alertaModel.qtdAlertasUsuario(fkUsuario)
-    .then(function(qtdAlertas){
-        res.status(200).send(qtdAlertas)
-    })
-    .catch(function(error){
-      res.status(500).send("Erro ao buscar a quantidade de alertas: " + error)
-    })
+function qtdAlertasUsuario(req, res) {
+  var fkUsuario = req.params.fkUsuario
+
+  if (fkUsuario == undefined) {
+    res.status(400).send("O id do usuário está undefined")
   }
+  else {
+    alertaModel.qtdAlertasUsuario(fkUsuario)
+      .then(function (qtdAlertas) {
+        res.status(200).send(qtdAlertas)
+      })
+      .catch(function (error) {
+        res.status(500).send("Erro ao buscar a quantidade de alertas: " + error)
+      })
+  }
+}
+
+function listaAlertas(req, res) {
+  var fkUsuario = req.params.fkUsuario
+
+  console.log("ID do usuário na controller: ", fkUsuario)
+  if (fkUsuario == undefined) {
+    res.status(400).send("O id do usuário está undefined")
+  }
+  else {
+    alertaModel.listaAlertas(fkUsuario)
+      .then(function (resposta) {
+        res.status(200).send(resposta)
+      })
+      .catch(function (error) {
+        res.status(500).send("Erro ao listar os alertas: " + error)
+      })
+  }
+}
 
 module.exports = {
   listaComponentes,
   criarAlerta,
-  qtdAlertasUsuario
+  qtdAlertasUsuario,
+  listaAlertas
 };

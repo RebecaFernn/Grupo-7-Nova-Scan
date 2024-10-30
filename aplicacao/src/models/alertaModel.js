@@ -34,5 +34,26 @@ function qtdAlertasUsuario(fkUsuario){
     return database.executar(instrucaoSql);
 }
 
+function listaAlertas(fkUsuario){
+    console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listaAlertas():");
+    console.log("Inserindo na tabela usuario:", fkUsuario);
 
-module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario };
+    var instrucaoSql = `SELECT a.minIntervalo, 
+a.maxIntervalo, 
+c.tipo, 
+d.nome as NomeMaquina, 
+u.nome as NomeUsuario
+FROM alerta as a JOIN componente as c 
+ON a.fkComponente = c.id
+JOIN dispositivo as d
+ON a.fkDispositivo = d.id
+JOIN usuario as u
+ON a.fkUsuario = u.id
+WHERE a.fkUsuario = ${fkUsuario};`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas };

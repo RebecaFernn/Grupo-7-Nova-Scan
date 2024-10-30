@@ -64,29 +64,6 @@ function listarComponentes() {
         })
 }
 
-// função de contar quantos alertas o usuário tem
-function qtdAlertasUsuario(){
-    var fkUsuario = sessionStorage.getItem('ID_USUARIO')
-    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}`, {
-        method: 'GET',
-        headers: { "Content-Type": "application/json" },
-    })
-        .then(function (resposta) {
-            if(resposta.ok){
-                return resposta.json()
-            }
-        })
-        .then(function(qtd){
-            var quantidade = qtd[0].qtdAlertas
-
-            console.log("Quantidade de alertas: ", quantidade)
-            return quantidade
-        })
-        .catch(function(error){
-            console.log("Houve um erro ao contar os alertas", error)
-        })
-}
-
 //Função para criar o alerta
 function criarAlerta() {
 
@@ -97,8 +74,6 @@ function criarAlerta() {
     var maxIntervalo = Number(input_max.value)
 
     //verificando a quantidade de alertas do usuário
-    var quantidadeAlertas = qtdAlertasUsuario()
-    console.log("Quantidade de alertas da segunda função: ", quantidadeAlertas)
 
     if(minIntervalo >= maxIntervalo){
         Swal.fire({
@@ -119,14 +94,6 @@ function criarAlerta() {
     else if(fkComponente == "" || fkDispositivo == ""){
         Swal.fire({
             title: 'Selecione um componente e uma máquina!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
-        })
-    }
-    else if(quantidadeAlertas >= 1){
-        Swal.fire({
-            title: 'Limite de alertas atingido!',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
@@ -165,4 +132,75 @@ function criarAlerta() {
                 })
             })
     }
+}
+
+// função de contar quantos alertas o usuário tem
+function qtdAlertasUsuario(){
+    var fkUsuario = sessionStorage.getItem('ID_USUARIO')
+    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if(resposta.ok){
+                return resposta.json()
+            }
+        })
+        .then(function(qtd){
+            var quantidade = qtd[0].qtdAlertas
+
+            console.log("Quantidade de alertas: ", quantidade)
+
+            if(quantidade >= 1){
+                Swal.fire({
+                    title: 'Limites de alertas atingidos!',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        })
+        .catch(function(error){
+            console.log("Houve um erro ao contar os alertas", error)
+        })
+}
+
+
+// função para listar os alertas do usuario
+
+function listarAlertas(){
+    var fkUsuario = sessionStorage.getItem('ID_USUARIO')
+
+    fetch(`/alertas/listaAlertas/${fkUsuario}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function(resposta){
+        if(resposta.ok){
+             return resposta.json()
+        }
+    })
+    .then(function(listaAlertas){
+        console.log("Alertas encontrados: ", listaAlertas)
+        let alertas
+
+        for(i = 0; i < listaAlertas.length; i++){
+            alertas += `
+            <div class="box-colaboradores">
+                <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
+                <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
+                <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
+                <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+            </div>
+            `
+        }
+        const elementoPai = document.getElementById('alertas')
+        elementoPai.innerHTML += alertas
+        console.log(elementoPai)
+    })
+    .catch(function(error){
+        console.log("Houve um erro ao listar os alertas", error)
+    })
 }

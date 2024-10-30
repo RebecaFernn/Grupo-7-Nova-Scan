@@ -119,13 +119,21 @@
                 <h2 id="nomeUsuarioAlertas"></h2>
             </div>
             <div class="box-colunas">
-                <div class="nome">ID</div>
-                <div class="email"> Máximo do intervalo</div>
-                <div class="cargo"> Mínimo do intervalo</div>
-                <div class="administrador">Descrição</div>
-                <div class="status">Status</div>
+                <div class="nome">Nome da Máquina</div>
+                <div class="email"> Mínimo do intervalo</div>
+                <div class="cargo"> Máximo do intervalo</div>
+                <div class="status">Componente Associado</div>
             </div>
-            <div class="box-colaboradores">
+            <!-- <div class="box-colaboradores" id="box-colaboradores">
+                <div class="nome" id="nome">1</div>
+                <div class="email" id="email">50</div>
+                <div class="cargo" id="cargo">20</div>
+                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
+                <div class="status" id="status">Ativo</div>
+                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button> -->
+            
+            <!-- <div class="box-colaboradores">
                 <div class="nome" id="nome">1</div>
                 <div class="email" id="email">50</div>
                 <div class="cargo" id="cargo">20</div>
@@ -142,16 +150,7 @@
                 <div class="status" id="status">Ativo</div>
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div>
-            <div class="box-colaboradores">
-                <div class="nome" id="nome">1</div>
-                <div class="email" id="email">50</div>
-                <div class="cargo" id="cargo">20</div>
-                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
-                <div class="status" id="status">Ativo</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div>
+            </div> --> -->
 
 
         </div>
@@ -198,6 +197,9 @@
         conteudoAlertas.style.display = 'flex';
         const btnVoltar = document.getElementById('voltar');
         btnVoltar.style.display = 'flex'
+        
+        //chamando a função listar alertas
+        listarAlertas()
     }
     function voltar() {
         const conteudoAlertas = document.getElementById('alertas');

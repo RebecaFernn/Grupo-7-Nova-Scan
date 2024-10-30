@@ -11,9 +11,15 @@ router.get("/qtdAlertasUsuario/:fkUsuario", function (req, res) {
     alertaController.qtdAlertasUsuario(req, res);
 })
 
+router.get("/listaAlertas/:fkUsuario", function (req, res) {
+    alertaController.listaAlertas(req, res);
+})
+
 router.post("/criarAlerta", function (req, res) {
     alertaController.criarAlerta(req, res);
 })
+
+
 
 
 
