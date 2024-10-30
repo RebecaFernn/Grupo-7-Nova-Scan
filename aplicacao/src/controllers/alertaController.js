@@ -59,12 +59,20 @@ function criarAlerta(req, res) {
 
 function qtdAlertasUsuario(req, res) {
   var fkUsuario = req.params.fkUsuario
+  var fkDispositivo = req.query.fkDispositivo
+  var fkComponente = req.query.fkComponente
 
   if (fkUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
   }
+  else if(fkDispositivo == undefined){
+    res.status(400).send("O id do dispositivo está undefined")
+  }
+  else if(fkComponente == undefined){
+    res.status(400).send("O id do componente está undefined")
+  }
   else {
-    alertaModel.qtdAlertasUsuario(fkUsuario)
+    alertaModel.qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente)
       .then(function (qtdAlertas) {
         res.status(200).send(qtdAlertas)
       })

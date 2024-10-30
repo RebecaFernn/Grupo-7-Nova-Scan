@@ -75,7 +75,7 @@ function criarAlerta() {
 
     //verificando a quantidade de alertas do usuário
 
-    if(minIntervalo >= maxIntervalo){
+    if (minIntervalo >= maxIntervalo) {
         Swal.fire({
             title: 'Intervalo mínimo maior ou igual ao intervalo máximo!',
             icon: 'error',
@@ -83,7 +83,7 @@ function criarAlerta() {
             timer: 2000
         })
     }
-    else if(minIntervalo == "" || maxIntervalo == ""){
+    else if (minIntervalo == "" || maxIntervalo == "") {
         Swal.fire({
             title: 'Preencha os campos de intervalo!',
             icon: 'error',
@@ -91,7 +91,7 @@ function criarAlerta() {
             timer: 2000
         })
     }
-    else if(fkComponente == "" || fkDispositivo == ""){
+    else if (fkComponente == "" || fkDispositivo == "") {
         Swal.fire({
             title: 'Selecione um componente e uma máquina!',
             icon: 'error',
@@ -99,7 +99,7 @@ function criarAlerta() {
             timer: 2000
         })
     }
-    else{
+    else {
         fetch(`/alertas/criarAlerta`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -135,32 +135,37 @@ function criarAlerta() {
 }
 
 // função de contar quantos alertas o usuário tem
-function qtdAlertasUsuario(){
+function qtdAlertasUsuario() {
     var fkUsuario = sessionStorage.getItem('ID_USUARIO')
-    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}`, {
+    var fkDispositivo = comboBoxMaquinas.value
+    var fkComponente = comboBoxComponentes.value
+
+    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}?fkDispositivo=${fkDispositivo}&fkComponente=${fkComponente}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
         .then(function (resposta) {
-            if(resposta.ok){
+            if (resposta.ok) {
                 return resposta.json()
             }
         })
-        .then(function(qtd){
+        .then(function (qtd) {
             var quantidade = qtd[0].qtdAlertas
 
-            console.log("Quantidade de alertas: ", quantidade)
-
-            if(quantidade >= 1){
+            if (quantidade >= 1) {
                 Swal.fire({
-                    title: 'Limites de alertas atingidos!',
+                    title: 'Limites de alertas para o componente e máquina selecionado!',
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 2000
                 })
             }
+            else {
+                console.log("Quantidade de alertas: ", quantidade)
+                criarAlerta()
+            }
         })
-        .catch(function(error){
+        .catch(function (error) {
             console.log("Houve um erro ao contar os alertas", error)
         })
 }
@@ -168,24 +173,24 @@ function qtdAlertasUsuario(){
 
 // função para listar os alertas do usuario
 
-function listarAlertas(){
+function listarAlertas() {
     var fkUsuario = sessionStorage.getItem('ID_USUARIO')
 
     fetch(`/alertas/listaAlertas/${fkUsuario}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
-    .then(function(resposta){
-        if(resposta.ok){
-             return resposta.json()
-        }
-    })
-    .then(function(listaAlertas){
-        console.log("Alertas encontrados: ", listaAlertas)
-        let alertas
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+        })
+        .then(function (listaAlertas) {
+            console.log("Alertas encontrados: ", listaAlertas)
+            let alertas
 
-        for(i = 0; i < listaAlertas.length; i++){
-            alertas += `
+            for (i = 0; i < listaAlertas.length; i++) {
+                alertas += `
             <div class="box-colaboradores">
                 <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
                 <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
@@ -195,12 +200,12 @@ function listarAlertas(){
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div>
             `
-        }
-        const elementoPai = document.getElementById('alertas')
-        elementoPai.innerHTML += alertas
-        console.log(elementoPai)
-    })
-    .catch(function(error){
-        console.log("Houve um erro ao listar os alertas", error)
-    })
+            }
+            const elementoPai = document.getElementById('alertas')
+            elementoPai.innerHTML += alertas
+            console.log(elementoPai)
+        })
+        .catch(function (error) {
+            console.log("Houve um erro ao listar os alertas", error)
+        })
 }
