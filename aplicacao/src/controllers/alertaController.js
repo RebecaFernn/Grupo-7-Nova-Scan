@@ -85,7 +85,6 @@ function qtdAlertasUsuario(req, res) {
 function listaAlertas(req, res) {
   var fkUsuario = req.params.fkUsuario
 
-  console.log("ID do usuário na controller: ", fkUsuario)
   if (fkUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
   }
@@ -100,9 +99,27 @@ function listaAlertas(req, res) {
   }
 }
 
+function excluirAlerta(req,res){
+  var idAlerta = req.params.idAlerta
+
+  if(idAlerta == undefined){
+    res.status(400).send("O id do alerta está undefined")
+  }
+  else{
+    alertaModel.excluirAlerta(idAlerta)
+    .then(function(resposta){
+      res.status(200).send(resposta)
+    })
+    .catch(function(error){
+      res.status(500).send("Erro ao excluir o alerta: " + error)
+    })
+  }
+}
+
 module.exports = {
   listaComponentes,
   criarAlerta,
   qtdAlertasUsuario,
-  listaAlertas
+  listaAlertas,
+  excluirAlerta 
 };
