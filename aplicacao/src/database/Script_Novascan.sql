@@ -129,6 +129,15 @@ ON a.idAtividade = ha.fkAtividade
 JOIN empresa as e
 ON e.id = d.fkEmpresa;
 
+CREATE VIEW alertaUsuario as
+SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, a.fkUsuario, a.fkDispositivo
+FROM alerta as a JOIN componente as c
+ON a.fkComponente = c.id
+JOIN dispositivo as d
+ON a.fkDispositivo = d.id
+JOIN usuario as u
+ON a.fkUsuario = u.id;
+
 
 
 
