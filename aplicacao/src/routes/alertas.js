@@ -19,6 +19,10 @@ router.post("/criarAlerta", function (req, res) {
     alertaController.criarAlerta(req, res);
 })
 
+router.delete("/excluirAlerta/:idAlerta", function (req, res) {
+    alertaController.excluirAlerta(req, res);
+})
+
 
 
 

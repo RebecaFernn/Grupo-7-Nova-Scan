@@ -188,7 +188,7 @@ function listarAlertas() {
         .then(function (listaAlertas) {
             console.log("Alertas encontrados: ", listaAlertas)
             let alertas
-
+            const elementoPai = document.getElementById('alertas')
             for (i = 0; i < listaAlertas.length; i++) {
                 alertas += `
             <div class="box-colaboradores">
@@ -197,15 +197,48 @@ function listarAlertas() {
                 <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
                 <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
+                <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
             </div>
             `
             }
-            const elementoPai = document.getElementById('alertas')
+
             elementoPai.innerHTML += alertas
             console.log(elementoPai)
         })
         .catch(function (error) {
             console.log("Houve um erro ao listar os alertas", error)
+        })
+}
+
+// função para excluir o alerta
+function excluirAlerta(id) {
+    var idAlerta = id
+    fetch(`/alertas/excluirAlerta/${idAlerta}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                console.log("Alerta excluido com sucesso!")
+                Swal.fire({
+                    title: 'Alerta excluido com sucesso!',
+                    imageUrl: "img/ok.svg",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setTimeout(function () {
+                    atualizarPagina();
+                }, 3000)
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro ao excluir o alerta: ", error)
+            Swal.fire({
+                title: 'Erro ao excluir o alerta!',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000
+            })
         })
 }

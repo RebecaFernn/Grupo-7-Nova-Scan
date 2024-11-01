@@ -32,9 +32,7 @@ function listarMaquinas() {
                      </div>
                     `
                 }
-
                 // Tem que ter mais uma validação para ver se a máquina entrou em estado de alerta
-
                 const elementoPai = document.getElementById('boxmaquinas');
                 elementoPai.innerHTML += maquinas;
                 console.log(elementoPai);

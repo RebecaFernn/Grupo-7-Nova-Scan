@@ -24,9 +24,9 @@ function criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIn
     return database.executar(instrucaoSql);
 }
 
-function qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente){
+function qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function qtdAlertasUsuario():");
-    console.log("Inserindo na tabela usuario:", fkUsuario);
+    console.log("Inserindo na tabela usuariooooooooooooooooooooooooooooooooooooooooooooo:", fkUsuario, fkDispositivo, fkComponente);
 
     var instrucaoSql = `SELECT COUNT(*) as qtdAlertas FROM alerta WHERE fkUsuario = ${fkUsuario} AND fkDispositivo = ${fkDispositivo} AND fkComponente = ${fkComponente};`
 
@@ -34,11 +34,12 @@ function qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente){
     return database.executar(instrucaoSql);
 }
 
-function listaAlertas(fkUsuario){
+function listaAlertas(fkUsuario) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listaAlertas():");
     console.log("Inserindo na tabela usuario:", fkUsuario);
 
-    var instrucaoSql = `SELECT a.minIntervalo, 
+    var instrucaoSql = `SELECT a.id as idAlerta,
+    a.minIntervalo, 
 a.maxIntervalo, 
 c.tipo, 
 d.nome as NomeMaquina, 
@@ -55,5 +56,16 @@ WHERE a.fkUsuario = ${fkUsuario};`
     return database.executar(instrucaoSql);
 }
 
+function excluirAlerta(idAlerta) {
+    console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirAlerta():");
+    console.log("Inserindo na tabela usuario:", idAlerta);
 
-module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas };
+    var instrucaoSql = `DELETE FROM alerta WHERE id = ${idAlerta};`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
+module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas, excluirAlerta };
