@@ -127,7 +127,7 @@ body {
     line-height: normal;
     padding-left: 10px;
 }
-.infos .objects .caixas .ip_1{
+.ip_1{
     height: 40px;
     width: 60%;
     color: #000;
@@ -155,6 +155,19 @@ body {
     line-height: normal;
     padding-left: 10px;
     resize: none;
+}
+
+.btn-editar{
+    height: 40px;
+    width: 60%;
+    background-color: #F84455;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
 }
 .infos .objects .caixas .ip_4{
     width: 100%;
@@ -354,3 +367,33 @@ width: 100%;
 height: auto;
 gap: 5%;
 }
+
+.fundoEditar{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Montserrat;
+}
+.Pop-upEditar{
+    display: flex;
+    justify-content: start;
+    padding-top: 4%;
+    align-items: center;
+    gap: 5%;
+    width: 30%;
+    height: 50%;
+    flex-direction: column;
+    background-color: white;
+    & h2{
+        font-size: 40px;
+        margin-bottom: 5%;
+    }
+}
+
+
+

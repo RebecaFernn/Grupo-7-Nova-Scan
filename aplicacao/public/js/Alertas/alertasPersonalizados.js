@@ -196,7 +196,7 @@ function listarAlertas() {
                 <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
                 <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
                 <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
+                <button id="editar" onclick="abrirEditar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
             </div>
             `
