@@ -1,59 +1,43 @@
+version: '3.8'
+
 services:
-  # nome do serviço 
+ #criando o serviço:
     bd: 
   # imagem do container
-      image: mysql:5.7
+      image: becafernn/mysql-novascan:latest
   # nome do container
-      container_name: bancoDeDados
+      container_name: bd-novascan
   # variaveis de ambiente
       environment:
         MYSQL_ROOT_PASSWORD=urubu100
-        MYSQL_DATABASE=bancoTeste
   # direcionamento de porta
       ports:
         - "3306:3306"
   # definindo qual rede o serviço vai se comunicar
       networks:
-        - back-end
+        - rede-novascan
   # volume para persistencia de dados
       volumes:
-        - db_data:/var/lib/mysql
+        - ./Script_Novascan.sql:/docker-entrypoint-initdb.d/Script_Novascan.sql
 
-    backend:
-      imagem: node:8
-      container_name: nodeJs
-  # repositorio de inicialização
-      working_dir: /app
+    app:
+      image: becafernn/nodejs-novascan:latest
+      working_dir: /aplicacao
+      ports:
+        - "8080:8080"
       volumes:
-        - ./app:/app
-        - /app/node_modules
-  # redirecionamento de porta
-      ports:
-        - "3000:3000"
-  # definindo qual rede o serviço vai se comunicar
-      networks:
-        - back-end
-        - front-end
-  # comando que será executado dentro do repositorio de inicialização
+        - .:/aplicacao
+      environment:
+        - NODE_ENV=development
       command: npm start
-
-    frontend:
-      image: nginx
-      ports:
-        - "80:80"
-    # definindo qual rede o serviço vai se comunicar
       networks:
-        - front-end
+        - rede-novascan
+      stdin_open: true
 
-# definindo o driver a ser utilizado pelas redes (bridge = ponte entre containers (rede padrão))
-# existem outras com a Host e None
+
 networks:
-  front-end:
+  rede-novascan:
     driver: bridge
-  back-end:
-    driver: bridge
+  
 
-volume:
-# definindo um nome para o volume para ser mais facil de identificar
-  db_data:
   

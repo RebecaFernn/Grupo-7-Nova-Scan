@@ -117,6 +117,7 @@
                 <div class="cargo"> Máximo do intervalo</div>
                 <div class="status">Componente Associado</div>
             </div>
+<<<<<<< HEAD
             <!-- <div class="box-colaboradores" id="box-colaboradores">
                 <div class="nome" id="nome">1</div>
                 <div class="email" id="email">50</div>
@@ -143,6 +144,11 @@
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
             </div> --> 
+=======
+            <div class="boxDosAlertas" id="osAlertas">
+
+            </div>
+>>>>>>> 05b68bb3e52e21a0710804b596ba89e325cce41c
         </div>
 
 
@@ -152,7 +158,21 @@
             <img src="img/ok.svg" alt="">
             <h2>Perfil atualizado!</h2>
         </div> -->
+<<<<<<< HEAD
         
+=======
+        </div>
+        <div class="fundoEditar" id="fundoEditar" onclick="fechar()">
+            <div class="Pop-upEditar" onclick="pararPropagacao()">
+                <h2>Editar Intevalo</h2>
+                <input type="text" class="ip_1" placeholder="Mínimo do intervalo">
+                <input type="text" class="ip_1" placeholder="Máximo do intervalo">
+
+                <button class="btn-editar">Editar</button>
+            </div>
+        </div>
+      
+>>>>>>> 05b68bb3e52e21a0710804b596ba89e325cce41c
     </section>
 </body>
 
@@ -200,6 +220,25 @@
 
     function atualizarPagina() {
         location.reload();
+    }
+
+
+    function abrirEditar(){
+        const fundoEditar = document.getElementById('fundoEditar')
+        fundoEditar.style.display = 'flex'
+
+    }
+
+
+    function pararPropagacao(fechar) {
+        event.stopPropagation(); //Não deixa fechar a div ao clicar, se tirar isso a div some ao clicar nela.
+
+    }
+
+    function fechar() {
+        const fundoEditar = document.getElementById('fundoEditar')
+        fundoEditar.style.display = 'none'
+
     }
 
 
