@@ -248,7 +248,7 @@ function listandoAlertasMaquinas() {
             console.log("Alertas encontrados:", listaAlertas)
             let alertas
             for (var i = 0; i < listaAlertas.length; i++) {
-
+                console.log(listaAlertas[i])
                 if (listaAlertas[i].tipo == "Processador") {
                     alertas += `
                     <div class="top-low">
