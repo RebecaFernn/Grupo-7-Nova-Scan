@@ -15,6 +15,10 @@ router.get("/valoresComponentes/:fkEmpresa", function(req,res){
     maquinasController.valoresComponentes(req,res);
 })
 
+router.get("/listaAlertasMaquina/:idUsuario", function(req,res){
+    maquinasController.listaAlertasMaquina(req,res);
+})
+
 router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })

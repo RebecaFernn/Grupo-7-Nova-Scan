@@ -100,9 +100,9 @@
                                 <option value="">REDE</option> -->
                             </select>
                         </div>
-                       <div class="caixas">
-                        <button onclick="qtdAlertasUsuario()">Confirmar</button>
-                       </div>
+                        <div class="caixas">
+                            <button onclick="qtdAlertasUsuario()">Confirmar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,15 +117,6 @@
                 <div class="cargo"> Máximo do intervalo</div>
                 <div class="status">Componente Associado</div>
             </div>
-<<<<<<< HEAD
-            <!-- <div class="box-colaboradores" id="box-colaboradores">
-                <div class="nome" id="nome">1</div>
-                <div class="email" id="email">50</div>
-                <div class="cargo" id="cargo">20</div>
-                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
-                <div class="status" id="status">Ativo</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button> -->
             <!-- <div class="box-colaboradores">
                 <div class="nome" id="nome">1</div>
                 <div class="email" id="email">50</div>
@@ -134,23 +125,8 @@
                 <div class="status" id="status">Ativo</div>
                 <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
                 <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div>
-            <div class="box-colaboradores">
-                <div class="nome" id="nome">1</div>
-                <div class="email" id="email">50</div>
-                <div class="cargo" id="cargo">20</div>
-                <div class="administrador" id="administrador">Alerta para <br> Uso de CPU</div>
-                <div class="status" id="status">Ativo</div>
-                <button id="editar" onclick="editar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluir()"> <img src="./img/delete.svg" alt=""></button>
-            </div> --> 
-=======
-            <div class="boxDosAlertas" id="osAlertas">
-
-            </div>
->>>>>>> 05b68bb3e52e21a0710804b596ba89e325cce41c
+            </div> -->
         </div>
-
 
         <button onclick="voltar()" class="btn-voltar" id="voltar"><img src="./img/voltar.svg" alt=""> Voltar</button>
         <button onclick="visualizarAlertas()" class="btn-alerta">Ver alertas criados</button>
@@ -158,27 +134,12 @@
             <img src="img/ok.svg" alt="">
             <h2>Perfil atualizado!</h2>
         </div> -->
-<<<<<<< HEAD
-        
-=======
-        </div>
-        <div class="fundoEditar" id="fundoEditar" onclick="fechar()">
-            <div class="Pop-upEditar" onclick="pararPropagacao()">
-                <h2>Editar Intevalo</h2>
-                <input type="text" class="ip_1" placeholder="Mínimo do intervalo">
-                <input type="text" class="ip_1" placeholder="Máximo do intervalo">
-
-                <button class="btn-editar">Editar</button>
-            </div>
-        </div>
-      
->>>>>>> 05b68bb3e52e21a0710804b596ba89e325cce41c
     </section>
 </body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src = "js/Alertas/alertasPersonalizados.js"></script>
+<script src="js/Alertas/alertasPersonalizados.js"></script>
 <script>
 
     let nomeUsuario = sessionStorage.getItem('NOME_USUARIO')
@@ -207,7 +168,7 @@
         conteudoAlertas.style.display = 'flex';
         const btnVoltar = document.getElementById('voltar');
         btnVoltar.style.display = 'flex'
-        
+
         //chamando a função listar alertas
         listarAlertas()
     }
@@ -223,7 +184,7 @@
     }
 
 
-    function abrirEditar(){
+    function abrirEditar() {
         const fundoEditar = document.getElementById('fundoEditar')
         fundoEditar.style.display = 'flex'
 

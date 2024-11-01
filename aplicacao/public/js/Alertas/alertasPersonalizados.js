@@ -200,7 +200,7 @@ function listarAlertas() {
             </div>
             `
             }
-
+            const elementoPai = document.getElementById('alertas')
             elementoPai.innerHTML += alertas
             console.log(elementoPai)
         })

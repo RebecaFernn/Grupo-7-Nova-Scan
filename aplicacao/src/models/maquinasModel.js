@@ -61,4 +61,12 @@ AND e.id = ${fkEmpresa};`
   return database.executar(instrucaoSql);
 }
 
-module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes };
+function listaAlertasMaquina(idUsuario, fkDispositivo){
+  console.log("Inserindo na tabela dispositivo:", idUsuario);
+  var instrucaoSql = `SELECT * FROM alertaUsuario WHERE fkUsuario = ${idUsuario} AND fkDispositivo = ${fkDispositivo}`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina };

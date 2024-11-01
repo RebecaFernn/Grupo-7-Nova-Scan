@@ -49,10 +49,11 @@ var idDispositivo;
 function maquina(id) {
     const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
     fundoInformacoesmaquina.style.display = 'flex';
-    
+
     idDispositivo = id;
     componentesDispositivo();
     valoresComponentes();
+    listandoAlertasMaquinas();
 }
 
 
@@ -63,38 +64,38 @@ function valoresComponentes() {
         methot: 'GET',
         headers: { "Content-Type": "application/json" },
     })
-    .then(function(resposta){
-        if(resposta.ok){
-            return resposta.json()
-        }
-    })
-    .then(function(listaValores){
-        componentesDispositivo(listaValores)
-    })
-    .catch(function(error){
-        console.log("Erro!: ", error)
-    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+        })
+        .then(function (listaValores) {
+            componentesDispositivo(listaValores)
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
 }
 
 function componentesDispositivo(listaValores) {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    
-    fetch(`/maquinas/componentes/${fkEmpresa}?idDispositivo=${idDispositivo}`,{
+
+    fetch(`/maquinas/componentes/${fkEmpresa}?idDispositivo=${idDispositivo}`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
     })
-    .then(function(resposta){
-        if(resposta.ok){
-           return resposta.json()
-        }
-    })
-    .then(function(listaComponente){
-        console.log("Componentes encontrados: ", listaComponente)
-        var valores = listaValores
-        const elementoPai = document.getElementById('top-info');
-        //limpando o html para nao ficar repetindo
-        elementoPai.innerHTML = "";
-        let componentes
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+        })
+        .then(function (listaComponente) {
+            console.log("Componentes encontrados: ", listaComponente)
+            var valores = listaValores
+            const elementoPai = document.getElementById('top-info');
+            //limpando o html para nao ficar repetindo
+            elementoPai.innerHTML = "";
+            let componentes
             componentes = `
                 <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
                 <p> <strong>Processador:</strong> ${listaComponente[0].nomeProcessador}</p>
@@ -103,10 +104,10 @@ function componentesDispositivo(listaValores) {
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
-    })
-    .catch(function(error){
-        console.log("Erro!: ", error)
-    })
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
 }
 
 function atualizarNomeDispositivo() {
@@ -229,5 +230,67 @@ function ativarDispositivo() {
                 timer: 2000
             })
             idDispositivo = null
+        })
+}
+
+function listandoAlertasMaquinas() {
+    idUsuario = sessionStorage.getItem('ID_USUARIO')
+    fetch(`/maquinas/listaAlertasMaquina/${idUsuario}?idDispositivo=${idDispositivo}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+        })
+        .then(function (listaAlertas) {
+            console.log("Alertas encontrados:", listaAlertas)
+            let alertas
+            for (var i = 0; i < listaAlertas.length; i++) {
+
+                if (listaAlertas[i].tipo == "Processador") {
+                    alertas += `
+                    <div class="top-low">
+                        <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                        <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                        <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                    </div>
+                `
+                }
+                else if (listaAlertas[i].tipo == "Mémoria") {
+                    alertas += `
+                        <div class="mid-low">
+                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                        </div>
+                    `
+                }
+                else if (listaAlertas[i].tipo == "Armazenamento") {
+                    alertas += `
+                        <div class="low-low">
+                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                        </div>
+                    `
+                }
+                else{
+                    alertas += `
+                        <div class="low-low">
+                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                        </div>
+                    `
+                }
+            }
+            const elementoPai = document.getElementById('low-info');
+            elementoPai.innerHTML += alertas
+            console.log(elementoPai)
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
         })
 }

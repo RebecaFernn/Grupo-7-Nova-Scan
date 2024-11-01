@@ -99,8 +99,6 @@ function componentes(req, res){
       res.status(500).json(erro.sqlMessage)
     })
   }
-
-
 }
 
 function valoresComponentes(req, res){
@@ -124,14 +122,38 @@ function valoresComponentes(req, res){
       res.status(500).json(erro.sqlMessage)
     })
   }
-
-
 }
+
+function listaAlertasMaquina(req, res){
+  var idUsuario = req.params.idUsuario;
+  var fkEmpresa = req.query.idDispositivo;
+
+  if(idUsuario == undefined){
+    res.status(400).send("O id do usuario esta undefined")
+  }
+  else if(fkEmpresa == undefined){
+    res.status(400).send("O id do dispositivo esta undefined")
+  }
+  else{
+    maquinasModel.listaAlertasMaquina(idUsuario, fkEmpresa)
+    .then(function(resultado){
+        res.status(200).json(resultado)
+    })
+    .catch(function(erro){
+      console.log(erro)
+      console.log(`Houve um erro ao buscar os alertas! Erro: ${erro.sqlMessage}`)
+      res.status(500).json(erro.sqlMessage)
+    })
+  }
+}
+
+
 module.exports = {
     lista,
     atualizarNome,
     desativarDispositivo,
     ativarDispositivo,
     componentes,
-    valoresComponentes
+    valoresComponentes,
+    listaAlertasMaquina
 }
