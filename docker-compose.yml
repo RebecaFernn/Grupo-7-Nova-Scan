@@ -17,8 +17,7 @@ services:
       networks:
         - rede-novascan
   # volume para persistencia de dados
-      volumes:
-        - ./Script_Novascan.sql:/docker-entrypoint-initdb.d/Script_Novascan.sql
+      
 
     app:
       image: becafernn/nodejs-novascan:latest
@@ -27,6 +26,7 @@ services:
         - "8080:8080"
       volumes:
         - .:/aplicacao
+        - /aplicacao/package.json
       environment:
         - NODE_ENV=development
       command: npm start
