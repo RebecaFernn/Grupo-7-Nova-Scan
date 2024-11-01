@@ -188,7 +188,6 @@ function listarAlertas() {
         .then(function (listaAlertas) {
             console.log("Alertas encontrados: ", listaAlertas)
             let alertas
-
             for (i = 0; i < listaAlertas.length; i++) {
                 alertas += `
             <div class="box-colaboradores">
