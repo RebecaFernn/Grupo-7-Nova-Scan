@@ -235,6 +235,8 @@ function ativarDispositivo() {
 
 function listandoAlertasMaquinas() {
     idUsuario = sessionStorage.getItem('ID_USUARIO')
+    elementoPai = document.getElementById('low-info');
+    elementoPai.innerHTML = "";
     fetch(`/maquinas/listaAlertasMaquina/${idUsuario}?idDispositivo=${idDispositivo}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
@@ -252,43 +254,41 @@ function listandoAlertasMaquinas() {
                 if (listaAlertas[i].tipo == "Processador") {
                     alertas += `
                     <div class="top-low">
-                        <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
-                        <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
-                        <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                        <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                        <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                        <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
                     </div>
                 `
                 }
                 else if (listaAlertas[i].tipo == "Mémoria") {
                     alertas += `
                         <div class="mid-low">
-                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
-                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
-                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
                         </div>
                     `
                 }
                 else if (listaAlertas[i].tipo == "Armazenamento") {
                     alertas += `
                         <div class="low-low">
-                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
-                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
-                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
                         </div>
                     `
                 }
                 else{
                     alertas += `
                         <div class="low-low">
-                            <p><strong>Intervalo Máximo:</strong> ${listaAlertas[i].maxIntervalo}</p>
-                            <p><strong>Intervalo Minimo:</strong> ${listaAlertas[i].minIntervalo}</p>
-                            <p><strong>Tipo Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
+                            <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
+                            <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
                         </div>
                     `
                 }
             }
-            const elementoPai = document.getElementById('low-info');
             elementoPai.innerHTML += alertas
-            console.log(elementoPai)
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
