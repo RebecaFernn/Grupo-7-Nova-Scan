@@ -147,6 +147,26 @@ function listaAlertasMaquina(req, res){
   }
 }
 
+function listarAlertasComponentesMaquina(req, res){
+  var idDispositivo = req.params.idDispositivo;
+
+  if(idDispositivo == undefined){
+    res.status(400).send("O id do dispositivo esta undefined")
+  }
+  else{
+    maquinasModel.listarAlertasComponentesMaquina(idDispositivo)
+    .then(function(resultado){
+        res.status(200).json(resultado)
+    })
+    .catch(function(erro){
+      console.log(erro)
+      console.log(`Houve um erro ao buscar os alertas! Erro: ${erro.sqlMessage}`)
+      res.status(500).json(erro.sqlMessage)
+    })
+  }
+
+}
+
 
 module.exports = {
     lista,
@@ -155,5 +175,6 @@ module.exports = {
     ativarDispositivo,
     componentes,
     valoresComponentes,
-    listaAlertasMaquina
+    listaAlertasMaquina,
+    listarAlertasComponentesMaquina
 }

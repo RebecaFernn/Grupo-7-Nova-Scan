@@ -189,7 +189,7 @@ function listarAlertas() {
             console.log("Alertas encontrados: ", listaAlertas)
             const elementoPai = document.getElementById('box-colaboradores')
             elementoPai.innerHTML = ""
-            let alertas
+            let alertas = ""
             for (i = 0; i < listaAlertas.length; i++) {
                 alertas += `
                 <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>

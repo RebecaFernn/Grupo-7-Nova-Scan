@@ -139,6 +139,33 @@ ON a.fkDispositivo = d.id
 JOIN usuario as u
 ON a.fkUsuario = u.id;
 
+CREATE VIEW alertaDispositivo as 
+SELECT 
+    MAX(l.valor) AS valor,
+    l.unidadeDeMedida,
+    (SELECT l2.dataHora 
+     FROM log AS l2 
+     WHERE l2.fkComponente = l2.fkComponente 
+       AND l2.valor = MAX(l.valor)
+       AND l2.eAlerta = 1 
+       AND l2.fkDispositivo = d.id
+     LIMIT 1) AS dataHora,
+     l.descricao,
+    c.tipo,
+    d.id as idDispositivo
+FROM 
+    log AS l 
+JOIN 
+    componente AS c ON l.fkComponente = c.id
+JOIN 
+    dispositivo AS d ON l.fkDispositivo = d.id 
+WHERE 
+    l.eAlerta = 1 
+GROUP BY 
+    c.tipo, l.unidadeDeMedida, l.descricao, d.id
+ORDER BY 
+    c.tipo;
+
 
 
 

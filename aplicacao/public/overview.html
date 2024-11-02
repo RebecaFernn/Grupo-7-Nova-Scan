@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="contarMaquinas()">
     <section class="Overview">
         
         <div class="NavBar">
@@ -67,7 +67,6 @@
                 <h2>Overview</h2>
 
                 <select name="" id="select-maquina" class="select-overview">
-    
                     <option value="s1" selected>Self-Checkout 1</option>
                     <option value="s2">Self-Checkout 2</option>
                     <option value="s3">Self-Checkout 3</option>
@@ -87,8 +86,8 @@
             <div class="midOverview">
                 <canvas id="meuHistograma"></canvas>
             </div>
-            <div class="lowOverview">
-                <div class="boxleftLow" onclick="maquinas()">
+            <div class="lowOverview" id="lowOverview">
+                <!-- <div class="boxleftLow" onclick="maquinas()">
                     <img src="./img/alertwhite.svg" alt="">
                     <h3>Máquinas em estado crítico</h3>
                     <h1> 5 </h1>
@@ -102,7 +101,7 @@
                     <img src="./img/maquinasEstaveis.svg" alt="">
                     <h3>Máquinas estaveis</h3>
                     <h1>4</h1>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -112,6 +111,8 @@
 </body>
 
 </html>
+
+<script src="js/Maquina/dispositivos.js"></script>
 
 <script>
 

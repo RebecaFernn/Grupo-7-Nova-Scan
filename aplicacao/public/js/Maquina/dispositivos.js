@@ -14,25 +14,36 @@ function listarMaquinas() {
         })
         .then(function (listaMaquinas) {
             console.log("Maquinas encontradas: ", listaMaquinas)
-            let maquinas
+
+            let maquinas = ""
             for (var i = 0; i < listaMaquinas.length; i++) {
 
-                if (listaMaquinas[i].situacao == "Ativo") {
-                    maquinas = `
-                    <div class="maquinasOK" onclick="maquina(${listaMaquinas[i].id})">
-                        <p>${listaMaquinas[i].nome}</p>
-                        <img src="./img/ok.svg" class="imgMaquina" alt="">
-                    </div>`;
+                if (listaMaquinas[i].alerta == 0) {
+
+                    if (listaMaquinas[i].situacao == "Ativo") {
+                        maquinas = `
+                        <div class="maquinasOK" onclick="maquina(${listaMaquinas[i].id})">
+                            <p>${listaMaquinas[i].nome}</p>
+                            <img src="./img/ok.svg" class="imgMaquina" alt="">
+                        </div>`;
+                    }
+                    else if (listaMaquinas[i].situacao == "Inativo") {
+                        maquinas = `
+                        <div class="maquinasInativa" onclick="maquina(${listaMaquinas[i].id})">
+                            <p>${listaMaquinas[i].nome}</p>
+                            <img src="./img/inativo.svg" class="imgMaquina" alt="">
+                         </div>
+                        `
+                    }
                 }
-                else if (listaMaquinas[i].situacao == "Inativo") {
+                else {
                     maquinas = `
-                    <div class="maquinasInativa" onclick="maquina(${listaMaquinas[i].id})">
-                        <p>${listaMaquinas[i].nome}</p>
-                        <img src="./img/inativo.svg" class="imgMaquina" alt="">
-                     </div>
-                    `
+                        <div class="maquinas" onclick="maquina(${listaMaquinas[i].id})">
+                            <p>${listaMaquinas[i].nome}</p>
+                            <img src="./img/alert.svg" class="imgMaquina" alt="">
+                        </div>
+                        `
                 }
-                // Tem que ter mais uma validação para ver se a máquina entrou em estado de alerta
                 const elementoPai = document.getElementById('boxmaquinas');
                 elementoPai.innerHTML += maquinas;
                 console.log(elementoPai);
@@ -41,6 +52,69 @@ function listarMaquinas() {
         .catch(function (error) {
             console.log("Erro!: ", error)
         })
+}
+
+function contarMaquinas() {
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    fetch(`/maquinas/lista/${fkEmpresa}`, {
+        method: 'GET',
+        headers: { contentType: 'application/json' },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+            else {
+                console.log("Houve um problema ao buscar as maquinas")
+            }
+        })
+        .then(function (listaMaquinas) {
+            console.log("Maquinas encontradas: ", listaMaquinas)
+
+            var maquinasOk = 0
+            var totalMaquinas = 0
+            var maquinasCriticas = 0
+
+            for (var i = 0; i < listaMaquinas.length; i++) {
+
+                totalMaquinas++
+
+                if (listaMaquinas[i].alerta == 0) {
+                    maquinasOk++
+                }
+                else {
+                    maquinasCriticas++
+                }
+            }
+            overviewMaquinas(maquinasOk, maquinasCriticas, totalMaquinas)
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
+}
+
+function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
+    const elementoPai = document.getElementById('lowOverview');
+    let overview = ""
+    overview = `
+        <div class="boxleftLow" onclick="maquinas()">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <h3>Máquinas em estado crítico</h3>
+                    <h1>${maquinasCriticas}</h1>
+                </div>
+                <div class="boxcenterLow" onclick="maquinas()">
+                    <img src="./img/totalMaquinas.svg" alt="">
+                    <h3>Total de máquinas</h3>
+                    <h1>${maquinasTotais}</h1>
+                </div>
+                <div class="boxrightLow" onclick="maquinas()">
+                    <img src="./img/maquinasEstaveis.svg" alt="">
+                    <h3>Máquinas estaveis</h3>
+                    <h1>${maquinasOk}</h1>
+                </div>
+    `
+    elementoPai.innerHTML += overview;
+    console.log(elementoPai);
 }
 
 var idDispositivo;
@@ -54,6 +128,7 @@ function maquina(id) {
     componentesDispositivo();
     valoresComponentes();
     listandoAlertasMaquinas();
+    listandoAlertasComponenteMaquina();
 }
 
 
@@ -248,7 +323,7 @@ function listandoAlertasMaquinas() {
         })
         .then(function (listaAlertas) {
             console.log("Alertas encontrados:", listaAlertas)
-            let alertas
+            let alertas = ""
             for (var i = 0; i < listaAlertas.length; i++) {
                 console.log(listaAlertas[i])
                 if (listaAlertas[i].tipo == "Processador") {
@@ -278,7 +353,7 @@ function listandoAlertasMaquinas() {
                         </div>
                     `
                 }
-                else{
+                else {
                     alertas += `
                         <div class="low-low">
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
@@ -289,6 +364,84 @@ function listandoAlertasMaquinas() {
                 }
             }
             elementoPai.innerHTML += alertas
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
+}
+
+function listandoAlertasComponenteMaquina() {
+    fetch(`/maquinas/listarAlertasComponentesMaquina/${idDispositivo}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+        })
+        .then(function (listaAlertasDisparado) {
+            console.log("Alertas Disparados:", listaAlertasDisparado)
+            const elementoPai = document.getElementById('right-informacoes');
+            elementoPai.innerHTML = "";
+
+            let alertasDisparados = ""
+
+            for (var i = 0; i < listaAlertasDisparado.length; i++) {
+
+                const dataHora = listaAlertasDisparado[i].dataHora;
+
+                // Converter a string de data e hora para um objeto Date
+                const data = new Date(dataHora)
+
+                const opcoes = {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+
+                const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+
+                if (listaAlertasDisparado[i].tipo == "Processador") {
+                    alertasDisparados += `
+                <div class="BoxAlertaUso">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
+                </div>
+            `
+                }
+                else if (listaAlertasDisparado[i].tipo == "Memória") {
+                    alertasDisparados += `
+                <div class="BoxAlertaUso">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
+                </div>
+            `
+                }
+                else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
+                    alertasDisparados += `
+                <div class="BoxAlertaUso">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
+                </div>
+            `
+                }
+                else {
+                    alertasDisparados += `
+                <div class="BoxAlertaUso">
+                    <img src="./img/alertwhite.svg" alt="">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
+                </div>
+            `
+                }
+
+            }
+
+            elementoPai.innerHTML += alertasDisparados
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
