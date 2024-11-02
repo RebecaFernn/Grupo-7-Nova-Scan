@@ -123,12 +123,29 @@ JOIN empresa as e
 ON e.id = u.fkEmpresa;
 
 CREATE VIEW listaDispositivo as 
-SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id as idEmpresa FROM dispositivo as d JOIN historicoAtividade as ha
-ON d.id = ha.fkDispositivo
-JOIN atividade as a
-ON a.idAtividade = ha.fkAtividade
-JOIN empresa as e
-ON e.id = d.fkEmpresa;
+SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id AS idEmpresa, l.eAlerta AS alerta
+FROM dispositivo AS d
+JOIN historicoAtividade AS ha ON d.id = ha.fkDispositivo
+JOIN atividade AS a ON a.idAtividade = ha.fkAtividade
+JOIN empresa AS e ON e.id = d.fkEmpresa
+JOIN log AS l ON l.fkDispositivo = d.id
+WHERE l.eAlerta = 1
+
+UNION
+
+SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id AS idEmpresa, l.eAlerta AS alerta
+FROM dispositivo AS d
+JOIN historicoAtividade AS ha ON d.id = ha.fkDispositivo
+JOIN atividade AS a ON a.idAtividade = ha.fkAtividade
+JOIN empresa AS e ON e.id = d.fkEmpresa
+JOIN log AS l ON l.fkDispositivo = d.id
+WHERE l.eAlerta = 0
+AND d.id NOT IN (
+    SELECT d2.id
+    FROM dispositivo AS d2
+    JOIN log AS l2 ON l2.fkDispositivo = d2.id
+    WHERE l2.eAlerta = 1
+);
 
 CREATE VIEW alertaUsuario as
 SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, a.fkUsuario, a.fkDispositivo
