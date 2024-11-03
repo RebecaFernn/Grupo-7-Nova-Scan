@@ -122,6 +122,12 @@ function editarAlerta(req, res) {
   var maxIntervalo = req.body.maxIntervaloServer
   var idAlerta = req.body.idAlertaServer
 
+  console.log("ID do usuário: ", idUsuario)
+  console.log("Intervalo mínimo: ", minIntervalo)
+  console.log("Intervalo máximo: ", maxIntervalo)
+  console.log("ID do alerta: ", idAlerta)
+  
+
   if (idUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
   }

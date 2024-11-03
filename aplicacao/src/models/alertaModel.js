@@ -67,12 +67,12 @@ function excluirAlerta(idAlerta) {
 }
 
 
-function editarAlerta(idUSuario, minIntervalo, maxIntervalo){
+function editarAlerta(idUsuario, minIntervalo, maxIntervalo, idAlerta){
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirAlerta():");
-    console.log("Atualizando alerta do usuario:", idAlerta);
+    console.log("Atualizando alerta do usuario:", idUsuario, minIntervalo, maxIntervalo, idAlerta);
 
     var instrucaoSql = `
-    
+    UPDATE alerta SET minIntervalo = ${minIntervalo}, maxIntervalo = ${maxIntervalo} WHERE fkUsuario = ${idUsuario} AND id = ${idAlerta};
     `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -81,4 +81,4 @@ function editarAlerta(idUSuario, minIntervalo, maxIntervalo){
 
 
 
-module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas, excluirAlerta };
+module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas, excluirAlerta, editarAlerta };

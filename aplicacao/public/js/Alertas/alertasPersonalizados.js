@@ -196,7 +196,7 @@ function listarAlertas() {
                     <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
                     <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
                     <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
-                    <button id="editar" onclick="abrirEditar()"> <img src="./img/editar.svg" alt=""> </button>
+                    <button id="editar" onclick="abrirEditar(${listaAlertas[i].idAlerta})"> <img src="./img/editar.svg" alt=""> </button>
                     <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
                 </div>
             `
@@ -228,7 +228,7 @@ function excluirAlerta(id) {
                 })
                 setTimeout(function () {
                     atualizarPagina();
-                }, 3000)
+                }, 2000)
             }
         })
         .catch(function (error) {
@@ -242,12 +242,20 @@ function excluirAlerta(id) {
         })
 }
 
+var idAlerta = 0
+
+function abrirEditar(id) {
+    const fundoEditar = document.getElementById('fundoEditar')
+    fundoEditar.style.display = 'flex'
+    idAlerta = id
+}
+
 function editarAlerta(){
     var minIntervalo = Number(min1.value)
     var maxIntervalo = Number(max1.value)
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
-    var idAlerta = id
-    fetch(`/aletas/editarAlerta`,{
+
+    fetch(`/alertas/editarAlerta`,{
         method: 'PATCH',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -257,7 +265,7 @@ function editarAlerta(){
             idAlertaServer: idAlerta
         })
     })
-    .then(function(respoosta){
+    .then(function(resposta){
         if(resposta.ok){
             resposta.json()
             Swal.fire({
@@ -266,6 +274,9 @@ function editarAlerta(){
                 showConfirmButton: false,
                 timer: 2000
             })
+            setTimeout(function () {
+                atualizarPagina();
+            }, 2000)
         }
     })
     .catch(function(error){

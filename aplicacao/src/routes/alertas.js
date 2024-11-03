@@ -23,7 +23,7 @@ router.delete("/excluirAlerta/:idAlerta", function (req, res) {
     alertaController.excluirAlerta(req, res);
 })
 
-router.patch("/editarAlerta/:idAlerta", function (req, res) {
+router.patch("/editarAlerta", function (req, res) {
     alertaController.editarAlerta(req, res);
 })
 
