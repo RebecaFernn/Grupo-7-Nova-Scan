@@ -187,17 +187,18 @@ function listarAlertas() {
         })
         .then(function (listaAlertas) {
             console.log("Alertas encontrados: ", listaAlertas)
-            const elementoPai = document.getElementById('box-colaboradores')
-            elementoPai.innerHTML = ""
+            const elementoPai = document.getElementById('alertas')
             let alertas = ""
             for (i = 0; i < listaAlertas.length; i++) {
                 alertas += `
-                <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
-                <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
-                <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
-                <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
-                <button id="editar" onclick="abrirEditar()"> <img src="./img/editar.svg" alt=""> </button>
-                <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
+                <div class="box-colaboradores">
+                    <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
+                    <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
+                    <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
+                    <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
+                    <button id="editar" onclick="abrirEditar()"> <img src="./img/editar.svg" alt=""> </button>
+                    <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
+                </div>
             `
             }
             elementoPai.innerHTML += alertas
