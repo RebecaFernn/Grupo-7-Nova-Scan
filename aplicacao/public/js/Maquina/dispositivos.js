@@ -117,6 +117,40 @@ function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
     console.log(elementoPai);
 }
 
+function overviewSelect(){
+
+    fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    fetch(`/maquinas/lista/${fkEmpresa}`, {
+        method: 'GET',
+        headers: { contentType: 'application/json' },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+            else {
+                console.log("Houve um problema ao buscar as maquinas")
+            }
+        })
+        .then(function (listaMaquinas) {
+            console.log("Maquinas encontradas: ", listaMaquinas)
+            let selectMaquinas = ""
+            selectMaquinas = `<option selected value="#">Seleciona a máquina que deseja visualizar</option>`
+            for (var i = 0; i < listaMaquinas.length; i++) {
+                selectMaquinas += `
+                    <option value="${listaMaquinas[i].id}">${listaMaquinas[i].nome}</option>
+                `
+                const elementoPai = document.getElementById('select-maquina');
+                elementoPai.innerHTML += selectMaquinas;
+                console.log(elementoPai);
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
+}
+
+//variavel global para armazenar o id do dispositivo quando clicar em um dos cards de dispositivo
 var idDispositivo;
 
 // Função para abrir o modal de informações da máquina
