@@ -81,6 +81,7 @@ CREATE TABLE log (
     unidadeDeMedida VARCHAR(5),
     dataHora DATETIME,
     descricao VARCHAR(255),
+    eAlerta TINYINT,
     fkComponente INT,
     fkDispositivo INT,
     FOREIGN KEY (fkComponente) REFERENCES componente(id),
@@ -122,12 +123,29 @@ JOIN empresa as e
 ON e.id = u.fkEmpresa;
 
 CREATE VIEW listaDispositivo as 
-SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id as idEmpresa FROM dispositivo as d JOIN historicoAtividade as ha
-ON d.id = ha.fkDispositivo
-JOIN atividade as a
-ON a.idAtividade = ha.fkAtividade
-JOIN empresa as e
-ON e.id = d.fkEmpresa;
+SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id AS idEmpresa, l.eAlerta AS alerta
+FROM dispositivo AS d
+JOIN historicoAtividade AS ha ON d.id = ha.fkDispositivo
+JOIN atividade AS a ON a.idAtividade = ha.fkAtividade
+JOIN empresa AS e ON e.id = d.fkEmpresa
+JOIN log AS l ON l.fkDispositivo = d.id
+WHERE l.eAlerta = 1
+
+UNION
+
+SELECT d.id, d.nome, ha.dataHora, a.situacao, e.id AS idEmpresa, l.eAlerta AS alerta
+FROM dispositivo AS d
+JOIN historicoAtividade AS ha ON d.id = ha.fkDispositivo
+JOIN atividade AS a ON a.idAtividade = ha.fkAtividade
+JOIN empresa AS e ON e.id = d.fkEmpresa
+JOIN log AS l ON l.fkDispositivo = d.id
+WHERE l.eAlerta = 0
+AND d.id NOT IN (
+    SELECT d2.id
+    FROM dispositivo AS d2
+    JOIN log AS l2 ON l2.fkDispositivo = d2.id
+    WHERE l2.eAlerta = 1
+);
 
 CREATE VIEW alertaUsuario as
 SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, a.fkUsuario, a.fkDispositivo
@@ -137,6 +155,33 @@ JOIN dispositivo as d
 ON a.fkDispositivo = d.id
 JOIN usuario as u
 ON a.fkUsuario = u.id;
+
+CREATE VIEW alertaDispositivo as 
+SELECT 
+    MAX(l.valor) AS valor,
+    l.unidadeDeMedida,
+    (SELECT l2.dataHora 
+     FROM log AS l2 
+     WHERE l2.fkComponente = l2.fkComponente 
+       AND l2.valor = MAX(l.valor)
+       AND l2.eAlerta = 1 
+       AND l2.fkDispositivo = d.id
+     LIMIT 1) AS dataHora,
+     l.descricao,
+    c.tipo,
+    d.id as idDispositivo
+FROM 
+    log AS l 
+JOIN 
+    componente AS c ON l.fkComponente = c.id
+JOIN 
+    dispositivo AS d ON l.fkDispositivo = d.id 
+WHERE 
+    l.eAlerta = 1 
+GROUP BY 
+    c.tipo, l.unidadeDeMedida, l.descricao, d.id
+ORDER BY 
+    c.tipo;
 
 
 
