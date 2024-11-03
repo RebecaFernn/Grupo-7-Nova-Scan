@@ -241,3 +241,40 @@ function excluirAlerta(id) {
             })
         })
 }
+
+function editarAlerta(){
+    var minIntervalo = Number(min1.value)
+    var maxIntervalo = Number(max1.value)
+    var idUsuario = sessionStorage.getItem('ID_USUARIO')
+    var idAlerta = id
+    fetch(`/aletas/editarAlerta`,{
+        method: 'PATCH',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            minIntervaloServer: minIntervalo,
+            maxIntervaloServer: maxIntervalo,
+            idUsuarioServer: idUsuario,
+            idAlertaServer: idAlerta
+        })
+    })
+    .then(function(respoosta){
+        if(resposta.ok){
+            resposta.json()
+            Swal.fire({
+                title: 'Alerta editado com sucesso!',
+                imageUrl: "img/ok.svg",
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+    })
+    .catch(function(error){
+        console.log("Erro ao editar o alerta: ", error)
+        Swal.fire({
+            title: 'Erro ao editar o alerta!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    })
+}
