@@ -105,12 +105,13 @@ INSERT INTO tipoUsuario(tipo) VALUES
 -- Adicionando todas as views do projeto
 CREATE VIEW ultimoComponente AS
  SELECT 
-        MAX(componente.id) AS id,
-        componente.nome AS nome,
-        componente.tipo AS tipo
+        MAX(c.id) AS id,
+        c.nome AS nome,
+        c.tipo AS tipo,
+        c.fkDispositivo
     FROM
-        componente
-    GROUP BY componente.nome , componente.tipo;
+        componente as c 
+    GROUP BY c.nome , c.tipo, c.fkDispositivo;
     
 CREATE VIEW listarfuncionario as
 SELECT u.id, u.nome, adm.nome as nomeAdmin, u.email, u.fkEmpresa, tu.tipo as cargo, su.situacao, e.razaoSocial FROM usuario as u JOIN tipoUsuario as tu
