@@ -15,6 +15,10 @@ router.get("/listaAlertas/:fkUsuario", function (req, res) {
     alertaController.listaAlertas(req, res);
 })
 
+router.get("/listarTipoAlertaComponente", function(req, res){
+    alertaController.listarAlertaComponente(req, res);
+})
+
 router.post("/criarAlerta", function (req, res) {
     alertaController.criarAlerta(req, res);
 })

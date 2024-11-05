@@ -4,8 +4,6 @@ function listaComponentes(req, res) {
   var fkEmpresa = req.params.fkEmpresa
   var id = req.query.idSelecionado
 
-  console.log("ID selecionado na controller: ", id)
-
   if (id == undefined) {
     res.status(400).send("O id do dispositivo está undefined")
   }
@@ -21,6 +19,16 @@ function listaComponentes(req, res) {
         res.status(500).send("Erro ao buscar os componentes: " + error)
       })
   }
+}
+
+function listarAlertaComponente(req, res){
+  alertaModel.listarAlertaComponente()
+  .then(function(resposta){
+    res.status(200).send(resposta)
+  })
+  .catch(function(error){
+    res.status(500).send("Erro ao listar os tipos de alerta: " + error)
+  })
 }
 
 function criarAlerta(req, res) {
@@ -157,5 +165,6 @@ module.exports = {
   qtdAlertasUsuario,
   listaAlertas,
   excluirAlerta,
-  editarAlerta
+  editarAlerta,
+  listarAlertaComponente
 };

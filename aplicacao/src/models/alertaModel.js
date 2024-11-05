@@ -14,6 +14,15 @@ WHERE d.id = ${id} AND e.id = ${fkEmpresa};`
     return database.executar(instrucaoSql);
 }
 
+function listarAlertaComponente(){
+    console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarAlertasComponente():");
+
+    var instrucaoSql = `SELECT * FROM tipoAlerta;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function criarAlerta():");
     console.log("Inserindo na tabela usuario:", fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo);
@@ -81,4 +90,4 @@ function editarAlerta(idUsuario, minIntervalo, maxIntervalo, idAlerta){
 
 
 
-module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas, excluirAlerta, editarAlerta };
+module.exports = { listaComponentes, criarAlerta, qtdAlertasUsuario, listaAlertas, excluirAlerta, editarAlerta, listarAlertaComponente };

@@ -1,7 +1,7 @@
 //Listando as máquinas da empresa
 function listarMaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    fetch(`/maquinas/lista/${fkEmpresa}`, {
+    fetch(`/maquinas/listaSelect/${fkEmpresa}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -60,8 +60,38 @@ function listarComponentes() {
             }
             elementoPai.innerHTML = nomeComponentes;
             console.log(elementoPai);
-
         })
+        .catch(function(error){
+            console.log("Erro ao buscar os componentes: ", error)
+        })
+}
+
+function listarTipoAlertaComponente(){
+    fetch(`/alertas/listarTipoAlertaComponente/`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function(resposta){
+        return resposta.json()
+    })
+    .then(function(tipoAlerta){
+        console.log("Tipo de alerta encontrado: ", tipoAlerta)
+
+        const elementoPai = document.getElementById('comboBoxTipoAlertaComponente')
+        let tipo = `<option selected value="">Selecione o tipo de alerta</option>`
+
+        for(i = 0; i < tipoAlerta.length; i++){
+            tipo += `
+             <option value="${tipoAlerta[i].id}">${tipoAlerta[i].tipo}</option>
+            `
+        }
+
+        elementoPai.innerHTML = tipo
+        console.log(elementoPai)
+    })
+    .catch(function(error){
+        console.log("Erro ao buscar o tipo de alerta: ", error)
+    })
 }
 
 //Função para criar o alerta
@@ -72,6 +102,7 @@ function criarAlerta() {
     var fkDispositivo = comboBoxMaquinas.value
     var minIntervalo = Number(input_min.value)
     var maxIntervalo = Number(input_max.value)
+    var fkTipoAlerta = comboBoxTipoAlertaComponente
 
     //verificando a quantidade de alertas do usuário
 
