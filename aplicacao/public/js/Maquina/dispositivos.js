@@ -15,6 +15,8 @@ function listarMaquinas() {
         .then(function (listaMaquinas) {
              console.log("Máquinas encontradas: ", listaMaquinas)
 
+            //Verificação para pegar a atividade mais recente das máquinas
+            
             // Objeto para armazenar a última atividade por máquina
             let maquinasMap = {};
 
