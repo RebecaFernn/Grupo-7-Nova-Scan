@@ -196,7 +196,7 @@ function listarAlertas() {
                     <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
                     <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
                     <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
-                    <button id="editar" onclick="abrirEditar()"> <img src="./img/editar.svg" alt=""> </button>
+                    <button id="editar" onclick="abrirEditar(${listaAlertas[i].idAlerta})"> <img src="./img/editar.svg" alt=""> </button>
                     <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
                 </div>
             `
@@ -228,7 +228,7 @@ function excluirAlerta(id) {
                 })
                 setTimeout(function () {
                     atualizarPagina();
-                }, 3000)
+                }, 2000)
             }
         })
         .catch(function (error) {
@@ -240,4 +240,52 @@ function excluirAlerta(id) {
                 timer: 2000
             })
         })
+}
+
+var idAlerta = 0
+
+function abrirEditar(id) {
+    const fundoEditar = document.getElementById('fundoEditar')
+    fundoEditar.style.display = 'flex'
+    idAlerta = id
+}
+
+function editarAlerta(){
+    var minIntervalo = Number(min1.value)
+    var maxIntervalo = Number(max1.value)
+    var idUsuario = sessionStorage.getItem('ID_USUARIO')
+
+    fetch(`/alertas/editarAlerta`,{
+        method: 'PATCH',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            minIntervaloServer: minIntervalo,
+            maxIntervaloServer: maxIntervalo,
+            idUsuarioServer: idUsuario,
+            idAlertaServer: idAlerta
+        })
+    })
+    .then(function(resposta){
+        if(resposta.ok){
+            resposta.json()
+            Swal.fire({
+                title: 'Alerta editado com sucesso!',
+                imageUrl: "img/ok.svg",
+                showConfirmButton: false,
+                timer: 2000
+            })
+            setTimeout(function () {
+                atualizarPagina();
+            }, 2000)
+        }
+    })
+    .catch(function(error){
+        console.log("Erro ao editar o alerta: ", error)
+        Swal.fire({
+            title: 'Erro ao editar o alerta!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    })
 }

@@ -65,10 +65,10 @@ function qtdAlertasUsuario(req, res) {
   if (fkUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
   }
-  else if(fkDispositivo == undefined){
+  else if (fkDispositivo == undefined) {
     res.status(400).send("O id do dispositivo está undefined")
   }
-  else if(fkComponente == undefined){
+  else if (fkComponente == undefined) {
     res.status(400).send("O id do componente está undefined")
   }
   else {
@@ -99,20 +99,55 @@ function listaAlertas(req, res) {
   }
 }
 
-function excluirAlerta(req,res){
+function excluirAlerta(req, res) {
   var idAlerta = req.params.idAlerta
 
-  if(idAlerta == undefined){
+  if (idAlerta == undefined) {
     res.status(400).send("O id do alerta está undefined")
   }
-  else{
+  else {
     alertaModel.excluirAlerta(idAlerta)
-    .then(function(resposta){
-      res.status(200).send(resposta)
-    })
-    .catch(function(error){
-      res.status(500).send("Erro ao excluir o alerta: " + error)
-    })
+      .then(function (resposta) {
+        res.status(200).send(resposta)
+      })
+      .catch(function (error) {
+        res.status(500).send("Erro ao excluir o alerta: " + error)
+      })
+  }
+}
+
+function editarAlerta(req, res) {
+  var idUsuario = req.body.idUsuarioServer
+  var minIntervalo = req.body.minIntervaloServer
+  var maxIntervalo = req.body.maxIntervaloServer
+  var idAlerta = req.body.idAlertaServer
+
+  console.log("ID do usuário: ", idUsuario)
+  console.log("Intervalo mínimo: ", minIntervalo)
+  console.log("Intervalo máximo: ", maxIntervalo)
+  console.log("ID do alerta: ", idAlerta)
+  
+
+  if (idUsuario == undefined) {
+    res.status(400).send("O id do usuário está undefined")
+  }
+  else if (minIntervalo == undefined) {
+    res.status(400).send("O intervalo mínimo está undefined")
+  }
+  else if (maxIntervalo == undefined) {
+    res.status(400).send("O intervalo máximo está undefined")
+  }
+  else if (idAlerta == undefined) {
+    res.status(400).send("O id do alerta está undefined")
+  }
+  else {
+    alertaModel.editarAlerta(idUsuario, minIntervalo, maxIntervalo, idAlerta)
+      .then(function (resposta) {
+        res.status(200).send(resposta)
+      })
+      .catch(function (error) {
+        res.status(500).send("Erro ao editar o alerta: " + error)
+      })
   }
 }
 
@@ -121,5 +156,6 @@ module.exports = {
   criarAlerta,
   qtdAlertasUsuario,
   listaAlertas,
-  excluirAlerta 
+  excluirAlerta,
+  editarAlerta
 };
