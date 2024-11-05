@@ -35,6 +35,10 @@ function listarMaquinas() {
 }
 
 //Listando os componentes da máquina no select
+
+var listaGlobalComponentes = []
+
+
 function listarComponentes() {
     var idSelecionado = comboBoxMaquinas.value
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
@@ -60,38 +64,69 @@ function listarComponentes() {
             }
             elementoPai.innerHTML = nomeComponentes;
             console.log(elementoPai);
+
+            listaGlobalComponentes = listaComponentes
         })
-        .catch(function(error){
+        .catch(function (error) {
             console.log("Erro ao buscar os componentes: ", error)
         })
 }
 
-function listarTipoAlertaComponente(){
+function listarTipoAlertaComponente() {
+
+    var idSelecionado = comboBoxComponentes.value
+
+    console.log("Componente selecionado: ", idSelecionado)
+    console.log("Retorno da função lista global: ", listaGlobalComponentes)
+
     fetch(`/alertas/listarTipoAlertaComponente/`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
-    .then(function(resposta){
-        return resposta.json()
-    })
-    .then(function(tipoAlerta){
-        console.log("Tipo de alerta encontrado: ", tipoAlerta)
+        .then(function (resposta) {
+            return resposta.json()
+        })
+        .then(function (tipoAlerta) {
+            console.log("Tipo de alerta encontrado: ", tipoAlerta)
 
-        const elementoPai = document.getElementById('comboBoxTipoAlertaComponente')
-        let tipo = `<option selected value="">Selecione o tipo de alerta</option>`
+            const elementoPai = document.getElementById('comboBoxTipoAlertaComponente')
+            let tipo = `<option selected value="">Selecione o tipo de alerta</option>`
 
-        for(i = 0; i < tipoAlerta.length; i++){
-            tipo += `
-             <option value="${tipoAlerta[i].id}">${tipoAlerta[i].tipo}</option>
-            `
-        }
+            for (i = 0; i < tipoAlerta.length; i++) {
 
-        elementoPai.innerHTML = tipo
-        console.log(elementoPai)
-    })
-    .catch(function(error){
-        console.log("Erro ao buscar o tipo de alerta: ", error)
-    })
+                for (a = 0; a < listaGlobalComponentes.length; a++) {
+
+                    if (listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Processador") {
+                        tipo = `
+                            <option value="${tipoAlerta[0].id}">${tipoAlerta[0].tipo}</option>
+                            <option value="${tipoAlerta[1].id}">${tipoAlerta[1].tipo}</option>
+                            `
+                    }
+                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Memória"){
+                        tipo = `
+                            <option value="${tipoAlerta[2].id}">${tipoAlerta[2].tipo}</option>
+                            `
+                    }
+                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Armazenamento"){
+                        tipo = `
+                            <option value="${tipoAlerta[3].id}">${tipoAlerta[3].tipo}</option>
+                            `
+                    }
+                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Placa de Rede"){
+                        tipo = `
+                            <option value="${tipoAlerta[4].id}">${tipoAlerta[4].tipo}</option>
+                            <option value="${tipoAlerta[5].id}">${tipoAlerta[5].tipo}</option>
+                            `
+                    }
+                }
+            }
+
+            elementoPai.innerHTML = tipo
+            console.log(elementoPai)
+        })
+        .catch(function (error) {
+            console.log("Erro ao buscar o tipo de alerta: ", error)
+        })
 }
 
 //Função para criar o alerta
@@ -102,7 +137,7 @@ function criarAlerta() {
     var fkDispositivo = comboBoxMaquinas.value
     var minIntervalo = Number(input_min.value)
     var maxIntervalo = Number(input_max.value)
-    var fkTipoAlerta = comboBoxTipoAlertaComponente
+    var fkTipoAlerta = comboBoxTipoAlertaComponente.value
 
     //verificando a quantidade de alertas do usuário
 
@@ -139,7 +174,8 @@ function criarAlerta() {
                 fkComponenteServer: fkComponente,
                 fkDispositivoServer: fkDispositivo,
                 minIntervaloServer: minIntervalo,
-                maxIntervaloServer: maxIntervalo
+                maxIntervaloServer: maxIntervalo,
+                fkTipoAlertaServer: fkTipoAlerta
             })
         })
             .then(function (resposta) {
@@ -151,6 +187,8 @@ function criarAlerta() {
                         showConfirmButton: false,
                         timer: 2000
                     })
+
+                    listaGlobalComponentes = []
                 }
             })
             .catch(function (error) {
@@ -170,8 +208,9 @@ function qtdAlertasUsuario() {
     var fkUsuario = sessionStorage.getItem('ID_USUARIO')
     var fkDispositivo = comboBoxMaquinas.value
     var fkComponente = comboBoxComponentes.value
+    var fkTipoAlerta = comboBoxTipoAlertaComponente.value
 
-    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}?fkDispositivo=${fkDispositivo}&fkComponente=${fkComponente}`, {
+    fetch(`/alertas/qtdAlertasUsuario/${fkUsuario}?fkDispositivo=${fkDispositivo}&fkComponente=${fkComponente}&fkTipoAlerta=${fkTipoAlerta}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -226,7 +265,8 @@ function listarAlertas() {
                     <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
                     <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
                     <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
-                    <div class="administrador" id="administrador">${listaAlertas[i].tipo}</div>
+                    <div class="administrador" id="administrador">${listaAlertas[i].tipoComponente}</div>
+                    <div class="administrador" id="administrador">${listaAlertas[i].tipoAlerta}</div>
                     <button id="editar" onclick="abrirEditar(${listaAlertas[i].idAlerta})"> <img src="./img/editar.svg" alt=""> </button>
                     <button id="deletar" onclick="excluirAlerta(${listaAlertas[i].idAlerta})"> <img src="./img/delete.svg" alt=""></button>
                 </div>
@@ -281,12 +321,12 @@ function abrirEditar(id) {
     idAlerta = id
 }
 
-function editarAlerta(){
+function editarAlerta() {
     var minIntervalo = Number(min1.value)
     var maxIntervalo = Number(max1.value)
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
 
-    fetch(`/alertas/editarAlerta`,{
+    fetch(`/alertas/editarAlerta`, {
         method: 'PATCH',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -296,27 +336,27 @@ function editarAlerta(){
             idAlertaServer: idAlerta
         })
     })
-    .then(function(resposta){
-        if(resposta.ok){
-            resposta.json()
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                Swal.fire({
+                    title: 'Alerta editado com sucesso!',
+                    imageUrl: "img/ok.svg",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setTimeout(function () {
+                    atualizarPagina();
+                }, 2000)
+            }
+        })
+        .catch(function (error) {
+            console.log("Erro ao editar o alerta: ", error)
             Swal.fire({
-                title: 'Alerta editado com sucesso!',
-                imageUrl: "img/ok.svg",
+                title: 'Erro ao editar o alerta!',
+                icon: 'error',
                 showConfirmButton: false,
                 timer: 2000
             })
-            setTimeout(function () {
-                atualizarPagina();
-            }, 2000)
-        }
-    })
-    .catch(function(error){
-        console.log("Erro ao editar o alerta: ", error)
-        Swal.fire({
-            title: 'Erro ao editar o alerta!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2000
         })
-    })
 }

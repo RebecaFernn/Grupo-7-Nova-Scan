@@ -37,6 +37,7 @@ function criarAlerta(req, res) {
   var fkDispositivo = req.body.fkDispositivoServer
   var minIntervalo = req.body.minIntervaloServer
   var maxIntervalo = req.body.maxIntervaloServer
+  var fkTipoAlerta = req.body.fkTipoAlertaServer
 
   if (fkUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
@@ -53,8 +54,11 @@ function criarAlerta(req, res) {
   else if (maxIntervalo == undefined) {
     res.status(400).send("O intervalo máximo está undefined")
   }
+  else if(fkTipoAlerta == undefined){
+    res.status(400).send("O tipo de alerta está undefined")
+  }
   else {
-    alertaModel.criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo)
+    alertaModel.criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo, fkTipoAlerta)
       .then(function (resposta) {
         res.status(200).send(resposta)
       })
@@ -69,6 +73,7 @@ function qtdAlertasUsuario(req, res) {
   var fkUsuario = req.params.fkUsuario
   var fkDispositivo = req.query.fkDispositivo
   var fkComponente = req.query.fkComponente
+  var fkTipoAlerta = req.query.fkTipoAlerta
 
   if (fkUsuario == undefined) {
     res.status(400).send("O id do usuário está undefined")
@@ -79,8 +84,11 @@ function qtdAlertasUsuario(req, res) {
   else if (fkComponente == undefined) {
     res.status(400).send("O id do componente está undefined")
   }
+  else if(fkTipoAlerta == undefined){
+    res.status(400).send("O tipo de alerta está undefined")
+  }
   else {
-    alertaModel.qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente)
+    alertaModel.qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente, fkTipoAlerta)
       .then(function (qtdAlertas) {
         res.status(200).send(qtdAlertas)
       })

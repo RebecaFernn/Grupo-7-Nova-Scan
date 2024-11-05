@@ -14,7 +14,7 @@ WHERE d.id = ${id} AND e.id = ${fkEmpresa};`
     return database.executar(instrucaoSql);
 }
 
-function listarAlertaComponente(){
+function listarAlertaComponente() {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarAlertasComponente():");
 
     var instrucaoSql = `SELECT * FROM tipoAlerta;`
@@ -23,21 +23,21 @@ function listarAlertaComponente(){
     return database.executar(instrucaoSql);
 }
 
-function criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo) {
+function criarAlerta(fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo, fkTipoAlerta) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function criarAlerta():");
-    console.log("Inserindo na tabela usuario:", fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo);
+    console.log("Inserindo na tabela usuario:", fkUsuario, fkComponente, fkDispositivo, minIntervalo, maxIntervalo, fkTipoAlerta);
 
-    var instrucaoSql = `INSERT INTO alerta (minIntervalo, maxIntervalo, fkUsuario, fkComponente, fkDispositivo) VALUES (${minIntervalo}, ${maxIntervalo}, ${fkUsuario}, ${fkComponente}, ${fkDispositivo});`
+    var instrucaoSql = `INSERT INTO alerta (minIntervalo, maxIntervalo, fkUsuario, fkComponente, fkDispositivo, fkTipoAlerta) VALUES (${minIntervalo}, ${maxIntervalo}, ${fkUsuario}, ${fkComponente}, ${fkDispositivo}, ${fkTipoAlerta});`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente) {
+function qtdAlertasUsuario(fkUsuario, fkDispositivo, fkComponente, fkTipoAlerta) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function qtdAlertasUsuario():");
-    console.log("Inserindo na tabela usuariooooooooooooooooooooooooooooooooooooooooooooo:", fkUsuario, fkDispositivo, fkComponente);
+    console.log("Buscando a quantidade de alertas do usúario:", fkUsuario, fkDispositivo, fkComponente);
 
-    var instrucaoSql = `SELECT COUNT(*) as qtdAlertas FROM alerta WHERE fkUsuario = ${fkUsuario} AND fkDispositivo = ${fkDispositivo} AND fkComponente = ${fkComponente};`
+    var instrucaoSql = `SELECT COUNT(*) as qtdAlertas FROM alerta WHERE fkUsuario = ${fkUsuario} AND fkDispositivo = ${fkDispositivo} AND fkComponente = ${fkComponente} AND fkTipoAlerta = ${fkTipoAlerta};`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -49,12 +49,15 @@ function listaAlertas(fkUsuario) {
 
     var instrucaoSql = `SELECT a.id as idAlerta,
     a.minIntervalo, 
-a.maxIntervalo, 
-c.tipo, 
+a.maxIntervalo,
+tp.tipo as tipoAlerta, 
+c.tipo as tipoComponente, 
 d.nome as NomeMaquina, 
 u.nome as NomeUsuario
 FROM alerta as a JOIN componente as c 
 ON a.fkComponente = c.id
+JOIN tipoAlerta as tp
+ON a.fkTipoAlerta = tp.id
 JOIN dispositivo as d
 ON a.fkDispositivo = d.id
 JOIN usuario as u
@@ -76,7 +79,7 @@ function excluirAlerta(idAlerta) {
 }
 
 
-function editarAlerta(idUsuario, minIntervalo, maxIntervalo, idAlerta){
+function editarAlerta(idUsuario, minIntervalo, maxIntervalo, idAlerta) {
     console.log("ACESSEI O ALERTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirAlerta():");
     console.log("Atualizando alerta do usuario:", idUsuario, minIntervalo, maxIntervalo, idAlerta);
 
