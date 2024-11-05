@@ -27,11 +27,11 @@ router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })
 
-router.patch("/desativarDispositivo/", function(req,res){
+router.post("/desativarDispositivo/", function(req,res){
     maquinasController.desativarDispositivo(req,res);
 })
 
-router.patch("/ativarDispositivo/", function(req,res){
+router.post("/ativarDispositivo/", function(req,res){
     maquinasController.ativarDispositivo(req,res);
 })
 

@@ -13,41 +13,57 @@ function listarMaquinas() {
             }
         })
         .then(function (listaMaquinas) {
-            console.log("Maquinas encontradas: ", listaMaquinas)
+             console.log("Máquinas encontradas: ", listaMaquinas)
 
-            let maquinas = ""
-            for (var i = 0; i < listaMaquinas.length; i++) {
+            // Objeto para armazenar a última atividade por máquina
+            let maquinasMap = {};
 
-                if (listaMaquinas[i].alerta == 0) {
+            // Agrupando máquinas pela ID e mantendo o registro mais recente
+            for (let i = 0; i < listaMaquinas.length; i++) {
+                let maquina = listaMaquinas[i];
+                let id = maquina.id;
 
-                    if (listaMaquinas[i].situacao == "Ativo") {
-                        maquinas = `
-                        <div class="maquinasOK" onclick="maquina(${listaMaquinas[i].id})">
-                            <p>${listaMaquinas[i].nome}</p>
+                // Se a máquina ainda não foi adicionada ou a dataHora é mais recente, atualiza
+                if (!maquinasMap[id] || maquina.dataHora > maquinasMap[id].dataHora) {
+                    maquinasMap[id] = maquina;
+                }
+            }
+
+            console.log("Maquinas agrupadas: ", maquinasMap);
+
+            let maquinasUnicas = Object.values(maquinasMap);
+            
+            let maquinasHTML = "";
+            for (let i = 0; i < maquinasUnicas.length; i++) {
+                let maquina = maquinasUnicas[i];
+
+                if (maquina.alerta == 0) {
+                    if (maquina.situacao == "Ativo") {
+                        maquinasHTML += `
+                        <div class="maquinasOK" onclick="maquina(${maquina.id})">
+                            <p>${maquina.nome}</p>
                             <img src="./img/ok.svg" class="imgMaquina" alt="">
                         </div>`;
-                    }
-                    else if (listaMaquinas[i].situacao == "Inativo") {
-                        maquinas = `
-                        <div class="maquinasInativa" onclick="maquina(${listaMaquinas[i].id})">
-                            <p>${listaMaquinas[i].nome}</p>
+                    } else if (maquina.situacao == "Inativo") {
+                        maquinasHTML += `
+                        <div class="maquinasInativa" onclick="maquina(${maquina.id})">
+                            <p>${maquina.nome}</p>
                             <img src="./img/inativo.svg" class="imgMaquina" alt="">
-                         </div>
-                        `
+                        </div>`;
                     }
+                } else {
+                    maquinasHTML += `
+                    <div class="maquinas" onclick="maquina(${maquina.id})">
+                        <p>${maquina.nome}</p>
+                        <img src="./img/alert.svg" class="imgMaquina" alt="">
+                    </div>`;
                 }
-                else {
-                    maquinas = `
-                        <div class="maquinas" onclick="maquina(${listaMaquinas[i].id})">
-                            <p>${listaMaquinas[i].nome}</p>
-                            <img src="./img/alert.svg" class="imgMaquina" alt="">
-                        </div>
-                        `
-                }
-                const elementoPai = document.getElementById('boxmaquinas');
-                elementoPai.innerHTML += maquinas;
-                console.log(elementoPai);
             }
+
+            const elementoPai = document.getElementById('boxmaquinas');
+            elementoPai.innerHTML = maquinasHTML; 
+            console.log(elementoPai);
+            
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -272,7 +288,7 @@ function atualizarNomeDispositivo() {
 
 function desativarDispositivo() {
     fetch(`/maquinas/desativarDispositivo/`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             idDispositivoServer: idDispositivo,
@@ -308,7 +324,7 @@ function desativarDispositivo() {
 
 function ativarDispositivo() {
     fetch(`/maquinas/ativarDispositivo/`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             idDispositivoServer: idDispositivo,

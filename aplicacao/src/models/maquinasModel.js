@@ -18,7 +18,8 @@ function atualizarNome(novoNome, fkEmpresa, idDispositivo) {
 
 function desativarDispositivo(idDispositivo) {
   console.log("Inserindo na tabela historicoDispositivo:", idDispositivo);
-  var instrucaoSql = `UPDATE historicoAtividade SET fkAtividade = 2 WHERE fkDispositivo = ${idDispositivo}`;
+  var instrucaoSql = `INSERT INTO historicoAtividade (fkAtividade, fkDispositivo, dataHora) VALUES
+                      (2, ${idDispositivo}, current_timestamp())`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -26,7 +27,8 @@ function desativarDispositivo(idDispositivo) {
 
 function ativarDispositivo(idDispositivo) {
   console.log("Inserindo na tabela historicoDispositivo:", idDispositivo);
-  var instrucaoSql = `UPDATE historicoAtividade SET fkAtividade = 1 WHERE fkDispositivo = ${idDispositivo}`;
+  var instrucaoSql = `INSERT INTO historicoAtividade (fkAtividade, fkDispositivo, dataHora) VALUES
+                      (1, ${idDispositivo}, current_timestamp())`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
