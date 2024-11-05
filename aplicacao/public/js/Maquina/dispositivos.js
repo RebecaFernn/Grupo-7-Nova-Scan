@@ -34,7 +34,7 @@ function listarMaquinas() {
             console.log("Maquinas agrupadas: ", maquinasMap);
 
             let maquinasUnicas = Object.values(maquinasMap);
-            
+        
             let maquinasHTML = "";
             for (let i = 0; i < maquinasUnicas.length; i++) {
                 let maquina = maquinasUnicas[i];
@@ -65,6 +65,12 @@ function listarMaquinas() {
             const elementoPai = document.getElementById('boxmaquinas');
             elementoPai.innerHTML = maquinasHTML; 
             console.log(elementoPai);
+
+
+            const topMaquinas = document.getElementsByName('topGraficoAlerta') 
+            let nomeDaMaquina = maquina.nome
+            console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${nomeDaMaquina}`)
+            topMaquinas.innerHTML = nomeDaMaquina
             
         })
         .catch(function (error) {
@@ -460,7 +466,7 @@ function listandoAlertasComponenteMaquina() {
 
                 if (listaAlertasDisparado[i].tipo == "Processador") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
                 </div>
@@ -468,7 +474,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Memória") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -476,7 +482,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -484,7 +490,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else {
                     alertasDisparados += `
-                <div class="BoxAlertaUso">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
                 </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -62,6 +63,13 @@
         <div class="conteudoMaquinas" id="conteudoMaquinas">
             <div class="topmaquinas">
                 <h2>Máquinas Self-Checkout</h2>
+                <select name="" id="" class="btn-topmaquinas">
+                    <option value="0" selected>Selecione uma opção</option>
+                    <option value="1">CPU</option>
+                    <option value="2">RAM</option>
+                    <option value="3">Disco</option>
+                    <option value="4">Rede</option>
+                </select>
             </div>
             <div class="boxmaquinas" id="boxmaquinas">
                 <!-- <div class="maquinasOK" onclick="maquina()">
@@ -101,6 +109,78 @@
                     <img src="./img/alert.svg" class="imgMaquina" alt="">
                 </div> -->
             </div>
+        </div>
+        <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas" > 
+            <div class="topGraficoAlerta" id="topGraficoAlerta" >
+                
+            </div>
+
+            <div class="medGraficoAlerta" id="medGraficoAlerta">
+
+                <title>Gráfico de Uso de CPU</title>
+                <div id="chartContainer">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+            
+                <script>
+                    const ct = document.getElementById('cpuChart').getContext('2d');
+            
+                    new Chart(ct, {
+                        type: 'line',
+                        data: {
+                            labels: ['13:32:20', '13:34:20', '13:44:45', '13:45:00'],
+                            datasets: [{
+                                label: 'Uso de CPU',
+                                data: [20, 10, 50, 90, 85, 74],
+                                fill: false,
+                                borderColor: 'black',
+                                pointBackgroundColor: 'red',
+                                pointBorderColor: 'red',
+                                pointRadius: 5,
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Horário'
+                                    }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Uso de CPU (%)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return context.raw + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <div class="fimGraficoAlerta" id="fimGraficoAlerta">
+                <div class="infoFimGraficoAlerta">
+                    <p><strong>Problema:</strong> Alto uso de CPU 90%</p>
+                    <p><strong>Data e Hora:</strong> 17/10/2024 13:46:20</p>
+                </div>
+            </div>
+
+            <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
         </div>
 
 
@@ -438,6 +518,26 @@
         function pararPropagacao(fecharInfomaquina) {
             event.stopPropagation();
 
+        }
+
+        function visualizarGraficoAlerta(){
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+            fundoInformacoesmaquina.style.display = 'none';
+            const conteudoMaquinas = document.getElementById('conteudoMaquinas');
+            conteudoMaquinas.style.display = 'none';
+            const GraficoAlerta = document.getElementById('GraficoAlerta');
+            GraficoAlerta.style.display = 'flex';
+        }
+
+        function VoltarInfoMaquina(){
+            const GraficoAlerta = document.getElementById('GraficoAlerta');
+            GraficoAlerta.style.display = 'none';
+            const conteudoMaquinas = document.getElementById('conteudoMaquinas');
+            conteudoMaquinas.style.display = 'flex';
+            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+            fundoInformacoesmaquina.style.display = 'flex';
+      
+           
         }
 
 
