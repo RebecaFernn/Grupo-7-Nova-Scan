@@ -63,6 +63,11 @@ CREATE TABLE historicoAtividade (
     PRIMARY KEY (id, fkDispositivo, fkAtividade)
 );
 
+CREATE TABLE tipoAlerta(
+id INT PRIMARY KEY AUTO_INCREMENT,
+tipo VARCHAR(45)
+);
+
 CREATE TABLE alerta (
     id INT PRIMARY KEY AUTO_INCREMENT,
     minIntervalo INT,
@@ -70,9 +75,11 @@ CREATE TABLE alerta (
     fkUsuario INT,
     fkComponente INT,
     fkDispositivo INT,
+    fkTipoAlerta INT, 
     FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
     FOREIGN KEY (fkComponente) REFERENCES componente(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
+    FOREIGN KEY (fkTipoAlerta) REFERENCES tipoAlerta(id)
 );
 
 CREATE TABLE log (
@@ -100,6 +107,14 @@ INSERT INTO atividade (situacao) VALUES
 INSERT INTO tipoUsuario(tipo) VALUES
 ('Administrador'),
 ('Funcionário');
+
+INSERT INTO tipoAlerta(tipo) VALUES
+('Uso CPU (%)'),
+('Frequência CPU (Ghz)'),
+('Uso Memória Ram (GB)'),
+('Uso Armazenamento(GB)'),
+('Perda de Pacote(%)'),
+('Bytes Enviados e Recebidos(MB)');
 
 
 -- Adicionando todas as views usadas no projeto

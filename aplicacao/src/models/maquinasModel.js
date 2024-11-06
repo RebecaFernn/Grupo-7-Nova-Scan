@@ -8,6 +8,14 @@ function lista(fkEmpresa) {
   return database.executar(instrucaoSql);
 }
 
+function listaSelect(fkEmpresa) {
+  console.log("Usando a função lista() na model valores a serem usados:", fkEmpresa);
+  var instrucaoSql = `SELECT * FROM dispositivo WHERE fkEmpresa = ${fkEmpresa}`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function atualizarNome(novoNome, fkEmpresa, idDispositivo) {
   console.log("Usando a função atualizarNome() na model valores a serem usados:", novoNome, fkEmpresa, idDispositivo);
   var instrucaoSql = `UPDATE dispositivo SET nome = '${novoNome}' WHERE fkEmpresa = ${fkEmpresa} AND id = ${idDispositivo}`;
@@ -79,4 +87,4 @@ function listarAlertasComponentesMaquina(idDispositivo){
   return database.executar(instrucaoSql);
 }
 
-module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina , listarAlertasComponentesMaquina};
+module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina , listarAlertasComponentesMaquina, listaSelect};

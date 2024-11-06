@@ -28,6 +28,7 @@ services:
         - NODE_ENV=development
       command: npm start
       networks:
+        - rede-novascan
 
 
 networks:
