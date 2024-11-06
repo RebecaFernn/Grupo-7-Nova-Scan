@@ -21,34 +21,21 @@ sudo systemctl start docker
 sudo systemctl enable docker
 echo "------------------------------------------"
 
-echo "criando a rede..."
-sudo docker network create rede-novascan
+echo "baixando pacotes do docker compose..."
+
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
 echo "------------------------------------------"
+ 
+ echo "Iniciando o docker-compose..."
 
-# clonando o repositório
-echo "clonando o repositório da equipe..."
-git clone https://github.com/RebecaFernn/Grupo-7-Nova-Scan.git
-echo "------------------------------------------"
+ sudo sudo docker-compose up -d
 
-cd Grupo-7-Nova-Scan/
+ echo "------------------------------------------"
 
-# criando o container do banco de dados
-cd banco_de_dados/
+ echo "Verificando se os containers estão rodando..."
 
-echo "configurando o mysql..."
-sudo docker build -t banco_novascan .
-sudo docker run -d --name bd-novascan --network rede-novascan -p 3306:3306 banco_novascan
-echo "------------------------------------------"
-
-sudo docker exec -it bd-novascan bash
-
-# criando o container do node/site
-cd ..
-cd aplicacao/
-
-echo "iniciando a aplicação..."
-sudo docker build -t node . || { echo "Falha ao construir a imagem."; exit 1; }
-sudo docker run -d --name novascan --network rede-novascan -p 8080:8080 node
-echo "------------------------------------------"
-
-sudo docker exec -it novascan bash
+ sudo docker ps
+ 
+  echo "------------------------------------------"

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+ #criando o serviço:
+    bd: 
+  # imagem do container
+      image: becafernn/mysql-novascan:versao1
+  # nome do container
+      container_name: bd-novascan
+  # variaveis de ambiente
+      environment:
+        - MYSQL_ROOT_PASSWORD=urubu100
+  # direcionamento de porta
+      ports:
+        - "3306:3306"
+  # definindo qual rede o serviço vai se comunicar
+      networks:
+        - rede-novascan
+      
+
+    app:
+      image: becafernn/nodejs-novascan:versao2
+      working_dir: /aplicacao
+      ports:
+        - "8080:8080"
+      environment:
+        - NODE_ENV=development
+      command: npm start
+      networks:
+        - rede-novascan
+
+
+networks:
+  rede-novascan:
+    driver: bridge
+  
