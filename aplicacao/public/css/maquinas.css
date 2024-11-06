@@ -175,7 +175,7 @@ body {
     align-items: center;
     padding-top:2% ;
     padding-bottom: 5%;
-    gap: 5%;
+    
 }
 .fundoInformacoesmaquina{
     position: absolute;
@@ -648,4 +648,68 @@ canvas {
 .swal2-text{
     font-family: Montserrat;
     font-size: 14px;
+}
+.top-Graficos{
+    height: 8%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.graficos-Tempo-Real{
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px; 
+    background-color: pink;
+    
+
+}
+
+.graficoCPU{
+    background-color: #3CD06E;
+    border-radius: 15px;
+}
+.graficoRAM{
+    background-color: #F84455;
+    border-radius: 15px;
+}
+.graficoMEM{
+    background-color: aqua;
+    border-radius: 15px;
+}
+.graficoREDE{
+    background-color: #8e8e8e;
+    border-radius: 15px;
+}
+
+.bom{
+    height: 80%;
+    width: 8%;
+    display: flex;
+    justify-content: left;
+    gap: 5%;
+    align-items: center;
+}
+.cuidado{
+    height: 80%;
+    width: 8%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5%;
+}
+.ruim{
+    height: 80%;
+    width: 8%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5%;
 }
