@@ -46,6 +46,10 @@
                     <img src="./img/metricas.svg" alt="">
                     <a href="#">Personalizar alertas</a>
                 </div>
+                <div class="links" onclick="picos()">
+                    <img src="./img/picos.svg" alt="">
+                    <a href="#">Histórico de picos</a>
+                </div>
             </div>
             <div class="lowNavBar">
                 <img src="./img/LogoBranca.svg" class="imgLow">
@@ -123,11 +127,11 @@
             </div>
             <div class="box-colunas">
                 <div class="nome">Nome da Máquina</div>
-                <div class="email"> Mínimo do intervalo</div>
-                <div class="cargo"> Máximo do intervalo</div>
+                <div class="email"> Intervalo</div>
                 <div class="status">Componente Associado</div>
                 <div class="status">Tipo do Alerta</div>
             </div>
+            <div class="boxConteudoAlertas" id="alertasCriados"></div>
             <!-- <div class="box-colaboradores"> -->
                 <!-- <div class="nome" id="nome">1</div>
                 <div class="email" id="email">50</div>
@@ -184,6 +188,9 @@
     }
     function index() {
         window.location.href = "index.html"
+    }
+    function picos(){
+         window.location.href = "picos.html"
     }
     function visualizarAlertas() {
         const conteudoAlertas = document.getElementById('alertas');

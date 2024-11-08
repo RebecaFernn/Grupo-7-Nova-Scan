@@ -51,6 +51,10 @@
                     <img src="./img/metricas.svg" alt="">
                     <a href="#">Personalizar alertas</a>
                 </div>
+                <div class="links" onclick="picos()">
+                    <img src="./img/picos.svg" alt="">
+                    <a href="#">Histórico de picos</a>
+                </div>
             </div>
             <div class="lowNavBar">
                 <img src="./img/LogoBranca.svg" class="imgLow">
@@ -72,10 +76,11 @@
                 </select>
             </div>
             <div class="boxmaquinas" id="boxmaquinas">
-                <!-- <div class="maquinasOK" onclick="maquina()">
+                <div class="maquinasOK" onclick="maquina()">
                     <p>Self-Checkout 1</p>
                     <img src="./img/ok.svg" class="imgMaquina" alt="">
                 </div>
+                <!--
                 <div class="maquinasOK" onclick="maquina()">
                     <p>Self-Checkout 2</p>
                     <img src="./img/ok.svg" class="imgMaquina" alt="">
@@ -205,7 +210,7 @@
                         </div>
                         <h2>Alertas associados</h2>
                         <div class="low-info" id="low-info">
-                         
+
                         </div>
                     </div>
                     <div class="right-informacoes" id="right-informacoes">
@@ -243,165 +248,42 @@
                 <div class="box-btn-voltar">
                     <button onclick="voltar()" class="btn-voltar"><img src="./img/voltar.svg" alt=""> Voltar </button>
                 </div>
-                <div class="boxInfoCPU">
-                    <div class="boxFichaCPU">
-
-                        <div class="CPU" id="CPU">
-                            <div class="tituloCPU">
-                                <h2>CPU</h2>
-                            </div>
-
-                            <div class="usoCPU" id="usoCPU">
-
-                            </div>
-                        </div>
-
-                        <div class="boxVelocidade">
-                            <div class="tituloVelocidade">
-                                Velocidade
-                            </div>
-                            <div class="velocidade" id="velocidade">
-
-                            </div>
-                        </div>
-                        <div class="boxNucleos">
-                            <div class="titulosNucleos">
-                                Nucleos lógicos
-                            </div>
-                            <div class="qtdNucleos">
-                                4
-                            </div>
-                        </div>
+                <div class="top-Graficos">
+                    <div class="bom">
+                        <img src="./img/bom.svg" alt="">
+                        BOM
+                    </div>
+                    <div class="cuidado">
+                        <img src="./img/cuidado.svg" alt="">
+                        CUIDADO
+                    </div>
+                    <div class="ruim">
+                    <img src="./img/ruim.svg" alt="">
+                    RUIM
                     </div>
 
-                    <div class="boxGrafico">
-                        <canvas id="meuGrafico"></canvas>
+                </div>
+                <div class="graficos-Tempo-Real">
+
+                    <div class="graficoCPU" id="graficoCPU">
+                        .
+                    </div>
+
+                    <div class="graficoRAM" id="graficoRAM">
+
+                    </div>
+
+                    <div class="graficoMEM" id="graficoMEM">
+
+                    </div>
+
+                    <div class="graficoREDE" id="graficoREDE">
+
                     </div>
 
                 </div>
 
-                <!-- MEMÓRIA RAM -->
-                <div class="boxInfoCPU">
-                    <div class="boxFichaCPU">
 
-                        <div class="CPU" id="CPU">
-                            <div class="tituloCPU">
-                                <h2>RAM</h2>
-                            </div>
-
-                            <div class="usoCPU" id="usoRAM">
-
-                            </div>
-                        </div>
-
-                        <div class="boxVelocidade">
-                            <div class="tituloVelocidade">
-                                Em uso
-                            </div>
-                            <div class="velocidade" id="RAMemuso">
-
-                            </div>
-                        </div>
-                        <div class="boxNucleos">
-                            <div class="titulosNucleos">
-                                Total
-                            </div>
-                            <div class="qtdNucleos">
-                                16GB
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="boxGrafico">
-                        <canvas id="meuGrafico2"></canvas>
-                    </div>
-
-                </div>
-
-                <!-- ARMAZENAMENTO -->
-                <div class="boxInfoCPU">
-                    <div class="boxFichaCPU">
-
-                        <div class="CPU" id="CPU">
-                            <div class="tituloCPU">
-                                <h2>MEM</h2>
-                            </div>
-
-                            <div class="usoCPU" id="usoMEM">
-
-                            </div>
-                        </div>
-
-                        <div class="boxVelocidade">
-                            <div class="tituloVelocidade">
-                                Em uso
-                            </div>
-                            <div class="velocidade" id="MEMemuso">
-
-                            </div>
-                        </div>
-                        <div class="boxNucleos">
-                            <div class="titulosNucleos">
-                                Total
-                            </div>
-                            <div class="qtdNucleos">
-                                1024GB
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="boxGrafico">
-                        <canvas id="meuGrafico3"></canvas>
-                    </div>
-
-                </div>
-
-                <div class="boxInfoCPU">
-                    <div class="boxFichaCPU">
-
-                        <div class="REDE" id="CPU">
-                            <div class="tituloREDE">
-                                <h2>REDE</h2>
-                            </div>
-
-                            <div class="usoCPU" id="usoCPU">
-
-                            </div>
-                        </div>
-
-                        <div class="boxVelocidade">
-                            <div class="tituloVelocidade">
-                                Pacotes enviados
-                            </div>
-                            <div class="velocidade" id="enviados">
-
-                            </div>
-                        </div>
-                        <div class="boxNucleos">
-                            <div class="titulosNucleos">
-                                Pacotes recebidos
-                            </div>
-                            <div class="velocidade" id="recebidos">
-
-                            </div>
-                        </div>
-                        <div class="boxVelocidade">
-                            <div class="tituloVelocidade">
-                                Pacotes perdidos
-                            </div>
-                            <div class="velocidade" id="perdidos">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="boxGrafico">
-                        <canvas id="meuGrafico4"></canvas>
-                    </div>
-
-                </div>
-
-                <!-- --------- rede --------- -->
 
 
 
@@ -460,6 +342,9 @@
         }
         function index() {
             window.location.href = "index.html"
+        }
+        function picos(){
+         window.location.href = "picos.html"
         }
         function atualizarPagina() {
             location.reload();
@@ -541,296 +426,294 @@
         }
 
 
-        var lista = [];
-        var labels = [];
+        // var lista = [];
+        // var labels = [];
 
-        const ctx = document.getElementById('meuGrafico').getContext('2d');
-        const meuGrafico = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'CPU',
-                    data: lista,
-                    borderColor: 'rgb(96, 231, 231)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    borderWidth: 4,
-                    fill: true,
-                    pointRadius: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        min: 0,
-                        max: 100,
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false,
-                        labels: {
-                            font: {
-                                size: 16,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        // const ctx = document.getElementById('meuGrafico').getContext('2d');
+        // const meuGrafico = new Chart(ctx, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels,
+        //         datasets: [{
+        //             label: 'CPU',
+        //             data: lista,
+        //             borderColor: 'rgb(96, 231, 231)',
+        //             backgroundColor: 'rgba(75, 192, 192, 0.5)',
+        //             borderWidth: 4,
+        //             fill: true,
+        //             pointRadius: 0,
+        //         }]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         maintainAspectRatio: false,
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //                 min: 0,
+        //                 max: 100,
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             },
+        //             x: {
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         plugins: {
+        //             legend: {
+        //                 display: false,
+        //                 labels: {
+        //                     font: {
+        //                         size: 16,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
-        // Loop para atualizar os dados
-        for (var i = 0; i < 100; i++) {
-            (function (i) {
-                setTimeout(function () {
+        // // Loop para atualizar os dados
+        // for (var i = 0; i < 100; i++) {
+        //     (function (i) {
+        //         setTimeout(function () {
 
-                    const now = new Date();
-                    const date = now.toLocaleDateString();
-                    const time = now.toLocaleTimeString();
-
-
-
-
-
-                    var uso = Math.random() * 10 + 20;
-                    var velocidade = Math.random() + 1;
-                    lista.push(uso.toFixed(0));
-                    labels.push(`Hora: ${time}`);
-
-                    // Mantém apenas os últimos 7 pontos no gráfico
-                    if (lista.length >= 7) {
-                        lista.shift();
-                        labels.shift();
-                    }
-
-
-                    meuGrafico.data.datasets[0].data = lista;
-                    meuGrafico.data.labels = labels;
-                    meuGrafico.update();  // Atualiza o gráfico
-
-                    document.getElementById("usoCPU").innerHTML = uso.toFixed(0) + "%";
-                    document.getElementById("velocidade").innerHTML = velocidade.toFixed(1) + "GHz";
-
-                }, i * 2000);
-            })(i);
-        }
-
-
-
-        // --------grafico ram -------------
-
-        var lista2 = [];
-        var labels2 = [];
-
-        const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
-        const meuGrafico2 = new Chart(ctx2, {
-            type: 'line',
-            data: {
-                labels: labels2,
-                datasets: [{
-                    label: 'RAM',
-                    data: lista2,
-                    borderColor: 'rgb(108, 126, 212)',
-                    backgroundColor: 'rgba(92, 107, 179, 0.5)',
-                    borderWidth: 4,
-                    fill: true,
-                    pointRadius: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        min: 0,
-                        max: 100,
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false,
-                        labels: {
-                            font: {
-                                size: 16,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
-        for (var c = 0; c < 100; c++) {
-            (function (c) {
-                setTimeout(function () {
-                    const now = new Date();
-                    const time = now.toLocaleTimeString();
-
-                    var uso = Math.random() * 10 + 70;
-                    var velocidade = Math.random() + 1;
-                    lista2.push(uso.toFixed(0));
-                    labels2.push(`Hora: ${time}`);
-
-
-
-                    var usoRam = (uso.toFixed(0) / 100) * 16;
-                    // Mantém apenas os últimos 7 pontos no gráfico
-                    if (lista2.length >= 7) {
-                        lista2.shift();
-                        labels2.shift();
-                    }
-
-                    meuGrafico2.data.datasets[0].data = lista2;
-                    meuGrafico2.data.labels = labels2;
-                    meuGrafico2.update();
-
-                    document.getElementById("usoRAM").innerHTML = uso.toFixed(0) + "%";
-                    document.getElementById("RAMemuso").innerHTML = usoRam.toFixed(2) + "GB"
-
-                    RAMemuso
-                }, c * 2000);
-            })(c);
-        }
+        //             const now = new Date();
+        //             const date = now.toLocaleDateString();
+        //             const time = now.toLocaleTimeString();
 
 
 
 
 
+        //             var uso = Math.random() * 10 + 20;
+        //             var velocidade = Math.random() + 1;
+        //             lista.push(uso.toFixed(0));
+        //             labels.push(`Hora: ${time}`);
+
+        //             // Mantém apenas os últimos 7 pontos no gráfico
+        //             if (lista.length >= 7) {
+        //                 lista.shift();
+        //                 labels.shift();
+        //             }
 
 
-        var lista3 = [];
-        var labels3 = [];
+        //             meuGrafico.data.datasets[0].data = lista;
+        //             meuGrafico.data.labels = labels;
+        //             meuGrafico.update();  // Atualiza o gráfico
 
-        const ctx3 = document.getElementById('meuGrafico3').getContext('2d');
-        const meuGrafico3 = new Chart(ctx3, {
-            type: 'line',
-            data: {
-                labels: labels2,
-                datasets: [{
-                    label: 'RAM',
-                    data: lista2,
-                    borderColor: 'rgb(31, 108, 108)',
-                    backgroundColor: 'rgb(31, 108, 108, 0.5)',
-                    borderWidth: 4,
-                    fill: true,
-                    pointRadius: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        min: 0,
-                        max: 100,
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false,
-                        labels: {
-                            font: {
-                                size: 16,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        //             document.getElementById("usoCPU").innerHTML = uso.toFixed(0) + "%";
+        //             document.getElementById("velocidade").innerHTML = velocidade.toFixed(1) + "GHz";
 
-        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
-        for (var c = 0; c < 100; c++) {
-            (function (c) {
-                setTimeout(function () {
-                    const now = new Date();
-                    const time = now.toLocaleTimeString();
-
-                    var uso = Math.random() * 10 + 70;
-                    var velocidade = Math.random() + 1;
-                    lista3.push(uso.toFixed(0));
-                    labels3.push(`Hora: ${time}`);
+        //         }, i * 2000);
+        //     })(i);
+        // }
 
 
 
-                    var usoRam = (uso.toFixed(0) / 100) * 1024;
-                    // Mantém apenas os últimos 7 pontos no gráfico
-                    if (lista3.length >= 7) {
-                        lista3.shift();
-                        labels3.shift();
-                    }
+        // // --------grafico ram -------------
 
-                    meuGrafico3.data.datasets[0].data = lista3;
-                    meuGrafico3.data.labels = labels3;
-                    meuGrafico3.update();
+        // var lista2 = [];
+        // var labels2 = [];
 
-                    document.getElementById("usoMEM").innerHTML = uso.toFixed(0) + "%";
-                    document.getElementById("MEMemuso").innerHTML = usoRam.toFixed(2) + "GB"
+        // const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
+        // const meuGrafico2 = new Chart(ctx2, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels2,
+        //         datasets: [{
+        //             label: 'RAM',
+        //             data: lista2,
+        //             borderColor: 'rgb(108, 126, 212)',
+        //             backgroundColor: 'rgba(92, 107, 179, 0.5)',
+        //             borderWidth: 4,
+        //             fill: true,
+        //             pointRadius: 0,
+        //         }]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         maintainAspectRatio: false,
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //                 min: 0,
+        //                 max: 100,
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             },
+        //             x: {
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         plugins: {
+        //             legend: {
+        //                 display: false,
+        //                 labels: {
+        //                     font: {
+        //                         size: 16,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
-                    RAMemuso
-                }, c * 5000);
-            })(c);
-        }
+        // // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        // for (var c = 0; c < 100; c++) {
+        //     (function (c) {
+        //         setTimeout(function () {
+        //             const now = new Date();
+        //             const time = now.toLocaleTimeString();
+
+        //             var uso = Math.random() * 10 + 70;
+        //             var velocidade = Math.random() + 1;
+        //             lista2.push(uso.toFixed(0));
+        //             labels2.push(`Hora: ${time}`);
 
 
+
+        //             var usoRam = (uso.toFixed(0) / 100) * 16;
+        //             // Mantém apenas os últimos 7 pontos no gráfico
+        //             if (lista2.length >= 7) {
+        //                 lista2.shift();
+        //                 labels2.shift();
+        //             }
+
+        //             meuGrafico2.data.datasets[0].data = lista2;
+        //             meuGrafico2.data.labels = labels2;
+        //             meuGrafico2.update();
+
+        //             document.getElementById("usoRAM").innerHTML = uso.toFixed(0) + "%";
+        //             document.getElementById("RAMemuso").innerHTML = usoRam.toFixed(2) + "GB"
+
+        //             RAMemuso
+        //         }, c * 2000);
+        //     })(c);
+        // }
+
+
+
+
+
+
+
+        // var lista3 = [];
+        // var labels3 = [];
+
+        // const ctx3 = document.getElementById('meuGrafico3').getContext('2d');
+        // const meuGrafico3 = new Chart(ctx3, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels2,
+        //         datasets: [{
+        //             label: 'RAM',
+        //             data: lista2,
+        //             borderColor: 'rgb(31, 108, 108)',
+        //             backgroundColor: 'rgb(31, 108, 108, 0.5)',
+        //             borderWidth: 4,
+        //             fill: true,
+        //             pointRadius: 0,
+        //         }]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         maintainAspectRatio: false,
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //                 min: 0,
+        //                 max: 100,
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             },
+        //             x: {
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         plugins: {
+        //             legend: {
+        //                 display: false,
+        //                 labels: {
+        //                     font: {
+        //                         size: 16,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+
+        // // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        // for (var c = 0; c < 100; c++) {
+        //     (function (c) {
+        //         setTimeout(function () {
+        //             const now = new Date();
+        //             const time = now.toLocaleTimeString();
+
+        //             var uso = Math.random() * 10 + 70;
+        //             var velocidade = Math.random() + 1;
+        //             lista3.push(uso.toFixed(0));
+        //             labels3.push(`Hora: ${time}`);
+
+
+
+        //             var usoRam = (uso.toFixed(0) / 100) * 1024;
+        //             // Mantém apenas os últimos 7 pontos no gráfico
+        //             if (lista3.length >= 7) {
+        //                 lista3.shift();
+        //                 labels3.shift();
+        //             }
+
+        //             meuGrafico3.data.datasets[0].data = lista3;
+        //             meuGrafico3.data.labels = labels3;
+        //             meuGrafico3.update();
+
+        //             document.getElementById("usoMEM").innerHTML = uso.toFixed(0) + "%";
+        //             document.getElementById("MEMemuso").innerHTML = usoRam.toFixed(2) + "GB"
+
+        //             RAMemuso
+        //         }, c * 5000);
+        //     })(c);
+        // }
 
 
 
@@ -840,114 +723,116 @@
 
 
 
-        var Listaenviados = [];
-        var Listarecebidos = [];
-        var labels4 = [];
 
-        const ctx4 = document.getElementById('meuGrafico4').getContext('2d');
-        const meuGrafico4 = new Chart(ctx4, {
-            type: 'line',
-            data: {
-                labels: labels4,
-                datasets: [
-                    {
-                        label: 'Enviados',
-                        data: Listaenviados,
-                        borderColor: 'rgb(248, 100, 199)',
-                        backgroundColor: 'rgba(31, 108, 108, 0)',
-                        borderWidth: 4,
-                        fill: true,
-                        pointRadius: 0,
-                        borderDash: [10, 5]
-                    },
-                    {
-                        label: 'Recebidos',
-                        data: Listarecebidos,
-                        borderColor: 'rgb(248, 100, 199, 0.7)',
-                        backgroundColor: 'rgb(248, 100, 199, 0.3)',
-                        borderWidth: 4,
-                        fill: true,
-                        pointRadius: 0,
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        min: 0,
-                        max: 50,
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        labels: {
-                            font: {
-                                size: 16,
-                                weight: 'bold',
-                                family: 'Montserrat'
-                            }
-                        }
-                    }
-                }
-            }
-        });
 
-        // Loop para atualizar os dados do gráfico REDE
-        for (var c = 0; c < 100; c++) {
-            (function (c) {
-                setTimeout(function () {
-                    const now = new Date();
-                    const time = now.toLocaleTimeString();
+        // var Listaenviados = [];
+        // var Listarecebidos = [];
+        // var labels4 = [];
 
-                    var enviados = Math.random() * 10;
-                    var recebidos = Math.random() * 10 + 5;
-                    var perdidos = Math.random() * 5; // Exemplo: valor aleatório para perdidos
+        // const ctx4 = document.getElementById('meuGrafico4').getContext('2d');
+        // const meuGrafico4 = new Chart(ctx4, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels4,
+        //         datasets: [
+        //             {
+        //                 label: 'Enviados',
+        //                 data: Listaenviados,
+        //                 borderColor: 'rgb(248, 100, 199)',
+        //                 backgroundColor: 'rgba(31, 108, 108, 0)',
+        //                 borderWidth: 4,
+        //                 fill: true,
+        //                 pointRadius: 0,
+        //                 borderDash: [10, 5]
+        //             },
+        //             {
+        //                 label: 'Recebidos',
+        //                 data: Listarecebidos,
+        //                 borderColor: 'rgb(248, 100, 199, 0.7)',
+        //                 backgroundColor: 'rgb(248, 100, 199, 0.3)',
+        //                 borderWidth: 4,
+        //                 fill: true,
+        //                 pointRadius: 0,
+        //             }
+        //         ]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         maintainAspectRatio: false,
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //                 min: 0,
+        //                 max: 50,
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             },
+        //             x: {
+        //                 ticks: {
+        //                     font: {
+        //                         size: 14,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         plugins: {
+        //             legend: {
+        //                 display: true,
+        //                 labels: {
+        //                     font: {
+        //                         size: 16,
+        //                         weight: 'bold',
+        //                         family: 'Montserrat'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
-                    // Adicionar valores às listas
-                    Listaenviados.push(enviados.toFixed(0));
-                    Listarecebidos.push(recebidos.toFixed(0));
-                    labels4.push(`Hora: ${time}`);
+        // // Loop para atualizar os dados do gráfico REDE
+        // for (var c = 0; c < 100; c++) {
+        //     (function (c) {
+        //         setTimeout(function () {
+        //             const now = new Date();
+        //             const time = now.toLocaleTimeString();
 
-                    // Mantém apenas os últimos 7 pontos no gráfico
-                    if (Listaenviados.length >= 7) {
-                        Listaenviados.shift();
-                        Listarecebidos.shift();
-                        labels4.shift();
-                    }
+        //             var enviados = Math.random() * 10;
+        //             var recebidos = Math.random() * 10 + 5;
+        //             var perdidos = Math.random() * 5; // Exemplo: valor aleatório para perdidos
 
-                    // Atualizar os dados do gráfico
-                    meuGrafico4.data.datasets[0].data = Listaenviados;
-                    meuGrafico4.data.datasets[1].data = Listarecebidos;
-                    meuGrafico4.data.labels = labels4;
-                    meuGrafico4.update();
+        //             // Adicionar valores às listas
+        //             Listaenviados.push(enviados.toFixed(0));
+        //             Listarecebidos.push(recebidos.toFixed(0));
+        //             labels4.push(`Hora: ${time}`);
 
-                    // Atualizar o conteúdo dos elementos HTML
-                    document.getElementById("enviados").innerHTML = enviados.toFixed(2) + "Mb";
-                    document.getElementById("recebidos").innerHTML = recebidos.toFixed(2) + "Mb";
-                    document.getElementById("perdidos").innerHTML = perdidos.toFixed(2) + "%";
-                }, c * 2000);
-            })(c);
-        }
+        //             // Mantém apenas os últimos 7 pontos no gráfico
+        //             if (Listaenviados.length >= 7) {
+        //                 Listaenviados.shift();
+        //                 Listarecebidos.shift();
+        //                 labels4.shift();
+        //             }
+
+        //             // Atualizar os dados do gráfico
+        //             meuGrafico4.data.datasets[0].data = Listaenviados;
+        //             meuGrafico4.data.datasets[1].data = Listarecebidos;
+        //             meuGrafico4.data.labels = labels4;
+        //             meuGrafico4.update();
+
+        //             // Atualizar o conteúdo dos elementos HTML
+        //             document.getElementById("enviados").innerHTML = enviados.toFixed(2) + "Mb";
+        //             document.getElementById("recebidos").innerHTML = recebidos.toFixed(2) + "Mb";
+        //             document.getElementById("perdidos").innerHTML = perdidos.toFixed(2) + "%";
+        //         }, c * 2000);
+        //     })(c);
+        // }
 
 
 

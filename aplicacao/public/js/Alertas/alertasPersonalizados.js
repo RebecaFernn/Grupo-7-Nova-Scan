@@ -255,14 +255,14 @@ function listarAlertas() {
         })
         .then(function (listaAlertas) {
             console.log("Alertas encontrados: ", listaAlertas)
-            const elementoPai = document.getElementById('alertas')
-            let alertas = ""
+            const elementoPai = document.getElementById('alertasCriados')
+            elementoPai.innerHTML = ""
+            let alertas = ``
             for (i = 0; i < listaAlertas.length; i++) {
                 alertas += `
                 <div class="box-colaboradores">
                     <div class="nome" id="nome">${listaAlertas[i].NomeMaquina}</div>
-                    <div class="email" id="email">${listaAlertas[i].minIntervalo}</div>
-                    <div class="cargo" id="cargo">${listaAlertas[i].maxIntervalo}</div>
+                    <div class="email" id="email">${listaAlertas[i].minIntervalo} - ${listaAlertas[i].maxIntervalo}</div>
                     <div class="administrador" id="administrador">${listaAlertas[i].tipoComponente}</div>
                     <div class="administrador" id="administrador">${listaAlertas[i].tipoAlerta}</div>
                     <button id="editar" onclick="abrirEditar(${listaAlertas[i].idAlerta})"> <img src="./img/editar.svg" alt=""> </button>
