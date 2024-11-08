@@ -492,7 +492,7 @@ function listandoAlertasComponenteMaquina() {
                     alertasDisparados += `
                 <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
                     <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
                 </div>
             `
                 }
