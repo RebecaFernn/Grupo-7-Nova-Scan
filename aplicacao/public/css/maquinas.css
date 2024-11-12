@@ -658,7 +658,7 @@ canvas {
     gap: 3%;
 }
 
-.topGraficoAlerta p{
+.topGraficoAlerta .p{
 height: 90%;
 width: 100%;
 background-color: #3A527A;
