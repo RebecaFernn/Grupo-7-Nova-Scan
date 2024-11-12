@@ -174,31 +174,35 @@ ON a.fkUsuario = u.id;
 
 CREATE VIEW alertaDispositivo as 
 SELECT 
-    MAX(l.valor) AS valor,
-    l.unidadeDeMedida,
-    (SELECT l2.dataHora 
-     FROM log AS l2 
-     WHERE l2.fkComponente = l2.fkComponente 
-       AND l2.valor = MAX(l.valor)
-       AND l2.eAlerta = 1 
-       AND l2.fkDispositivo = d.id
-     LIMIT 1) AS dataHora,
-     l.descricao,
+    l_max.valor AS valor,
+    l_max.unidadeDeMedida,
+    l_max.dataHora,
+    l_max.id AS idLog, -- Adiciona o id do log com o valor máximo
+    l_max.descricao,
     c.tipo,
-    d.id as idDispositivo
+    d.id AS idDispositivo
 FROM 
-    log AS l 
+    (SELECT 
+         l.valor,
+         l.unidadeDeMedida,
+         l.dataHora,
+         l.id,
+         l.descricao,
+         l.fkComponente,
+         l.fkDispositivo
+     FROM 
+         log AS l
+     WHERE 
+         l.eAlerta = 1
+     ORDER BY 
+         l.valor DESC
+     LIMIT 1) AS l_max -- Subconsulta para selecionar o log com o maior valor
 JOIN 
-    componente AS c ON l.fkComponente = c.id
+    componente AS c ON l_max.fkComponente = c.id
 JOIN 
-    dispositivo AS d ON l.fkDispositivo = d.id 
-WHERE 
-    l.eAlerta = 1 
-GROUP BY 
-    c.tipo, l.unidadeDeMedida, l.descricao, d.id
+    dispositivo AS d ON l_max.fkDispositivo = d.id 
 ORDER BY 
     c.tipo;
-
 
 
 
