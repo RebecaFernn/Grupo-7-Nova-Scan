@@ -174,6 +174,23 @@ function listarAlertasComponentesMaquina(req, res) {
 
 }
 
+function graficoAlerta(req, res){
+  var idDoAlerta = req.params.idAlerta
+
+  if(idDoAlerta == undefined){
+    res.status(400).send("o id do alerta esta indefinido")
+  }
+  else{
+    maquinasModel.graficoAlerta(idDoAlerta)
+    .then(function(resultado){
+      res.status(200).json(resultado)
+    })
+    .catch(function(erro){
+      res.status(500).json(erro.sqlMessage)
+    })
+  }
+}
+
 
 module.exports = {
   lista,
@@ -184,5 +201,6 @@ module.exports = {
   valoresComponentes,
   listaAlertasMaquina,
   listarAlertasComponentesMaquina,
-  listaSelect
+  listaSelect,
+  graficoAlerta
 }

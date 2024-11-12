@@ -658,13 +658,17 @@ canvas {
     gap: 3%;
 }
 
-.topGraficoAlerta{
-height: 10%;
-width: 90%;
+.topGraficoAlerta p{
+height: 90%;
+width: 100%;
 background-color: #3A527A;
 display: flex;
-align-items: center;
+font-size: 60px;
+align-items: first baseline;
+
 }
+
+
 
 .medGraficoAlerta{
     height: 70%;

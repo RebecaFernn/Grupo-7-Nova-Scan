@@ -117,7 +117,7 @@
         </div>
         <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas" > 
             <div class="topGraficoAlerta" id="topGraficoAlerta" >
-                
+                 <p id="nomeMaquina"></p>
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -405,14 +405,6 @@
 
         }
 
-        function visualizarGraficoAlerta(){
-            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-            fundoInformacoesmaquina.style.display = 'none';
-            const conteudoMaquinas = document.getElementById('conteudoMaquinas');
-            conteudoMaquinas.style.display = 'none';
-            const GraficoAlerta = document.getElementById('GraficoAlerta');
-            GraficoAlerta.style.display = 'flex';
-        }
 
         function VoltarInfoMaquina(){
             const GraficoAlerta = document.getElementById('GraficoAlerta');

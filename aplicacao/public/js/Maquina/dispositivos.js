@@ -61,16 +61,9 @@ function listarMaquinas() {
                     </div>`;
                 }
             }
-
             const elementoPai = document.getElementById('boxmaquinas');
             elementoPai.innerHTML = maquinasHTML; 
             console.log(elementoPai);
-
-
-            const topMaquinas = document.getElementsByName('topGraficoAlerta') 
-            let nomeDaMaquina = maquina.nome
-            console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${nomeDaMaquina}`)
-            topMaquinas.innerHTML = nomeDaMaquina
             
         })
         .catch(function (error) {
@@ -386,7 +379,7 @@ function listandoAlertasMaquinas() {
                 console.log(listaAlertas[i])
                 if (listaAlertas[i].tipo == "Processador") {
                     alertas += `
-                    <div class="top-low">
+                    <div class="top-low")">
                         <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                         <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                         <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -395,7 +388,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Mémoria") {
                     alertas += `
-                        <div class="mid-low">
+                        <div class="mid-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -404,7 +397,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Armazenamento") {
                     alertas += `
-                        <div class="low-low">
+                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -413,7 +406,7 @@ function listandoAlertasMaquinas() {
                 }
                 else {
                     alertas += `
-                        <div class="low-low">
+                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -466,7 +459,7 @@ function listandoAlertasComponenteMaquina() {
 
                 if (listaAlertasDisparado[i].tipo == "Processador") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta(${listaAlertasDisparado[i].idLog})">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
                 </div>
@@ -504,4 +497,37 @@ function listandoAlertasComponenteMaquina() {
         .catch(function (error) {
             console.log("Erro!: ", error)
         })
+}
+
+function visualizarGraficoAlerta(idLog){
+    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+    fundoInformacoesmaquina.style.display = 'none';
+    const conteudoMaquinas = document.getElementById('conteudoMaquinas');
+    conteudoMaquinas.style.display = 'none';
+    const GraficoAlerta = document.getElementById('GraficoAlerta');
+    GraficoAlerta.style.display = 'flex';
+
+
+    //Mandando o id do log para a função grafico alerta
+    graficoAlerta(idLog)
+}
+
+function graficoAlerta(idLog){
+    var idAlerta = idLog
+
+    fetch(`/maquinas/graficoAlerta/${idAlerta}`,{
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function(resposta){
+        return resposta.json()
+    })
+    .then(function(nome){
+        console.log(nome)
+        let nomeMaquina = document.getElementById('nomeMaquina')
+        nomeMaquina.innerHTML = nome[0].nome 
+    })
+    .catch(function(error){
+        console.log("Deu erro na função graficoAlerta()", error)
+    })
 }

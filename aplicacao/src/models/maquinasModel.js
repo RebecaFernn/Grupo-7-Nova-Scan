@@ -87,4 +87,15 @@ function listarAlertasComponentesMaquina(idDispositivo){
   return database.executar(instrucaoSql);
 }
 
-module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina , listarAlertasComponentesMaquina, listaSelect};
+function graficoAlerta(idDoAlerta){
+  console.log("Usando a função graficoAlerta")
+  var instrucaoSql = `SELECT d.nome FROM dispositivo as d 
+JOIN log as l 
+ON d.id = l.fkDispositivo 
+WHERE l.id = ${idDoAlerta};`
+
+console.log("Executando a instrução SQL" + instrucaoSql)
+return database.executar(instrucaoSql)
+}
+
+module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina , listarAlertasComponentesMaquina, listaSelect, graficoAlerta};

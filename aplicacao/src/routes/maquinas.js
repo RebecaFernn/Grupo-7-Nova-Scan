@@ -27,6 +27,10 @@ router.get("/listarAlertasComponentesMaquina/:idDispositivo", function(req,res){
     maquinasController.listarAlertasComponentesMaquina(req,res);
 })
 
+router.get("/graficoAlerta/:idAlerta", function(req, res){
+    maquinasController.graficoAlerta(req, res);
+})
+
 router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })
