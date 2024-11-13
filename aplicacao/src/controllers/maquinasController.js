@@ -189,7 +189,32 @@ function graficoAlerta(req, res){
       res.status(500).json(erro.sqlMessage)
     })
   }
+  
 }
+
+function updateChart() {
+    
+  currentTime = new Date(currentTime.getTime() + 1 * 60 * 1000);
+
+ 
+  const graficoAlerta = Math.floor(Math.random() * 100);
+ 
+  cpuChart.data.labels.push(currentTime.toLocaleString());
+  cpuChart.data.datasets[0].data.push(graficoAlerta);
+  
+ 
+  if (cpuChart.data.labels.length > 5) {
+      cpuChart.data.labels.shift();
+      cpuChart.data.datasets[0].data.shift();
+  }
+  
+ 
+  cpuChart.update();
+}
+
+
+setInterval(updateChart, 1 * 60 * 1000); 
+
 
 
 module.exports = {
@@ -202,5 +227,6 @@ module.exports = {
   listaAlertasMaquina,
   listarAlertasComponentesMaquina,
   listaSelect,
-  graficoAlerta
+  graficoAlerta,
+  updateChart
 }

@@ -20,7 +20,8 @@
         rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="script.js"></script>
+    
 </head>
 
 <body onload="listarMaquinas()">
@@ -127,54 +128,90 @@
                     <canvas id="cpuChart"></canvas>
                 </div>
             
+                <canvas id="cpuChart" width="600px" height="600px"></canvas>
                 <script>
-                    const ct = document.getElementById('cpuChart').getContext('2d');
+                   
+                    
+                    const ctx = document.getElementById('cpuChart').getContext('2d');
             
-                    new Chart(ct, {
-                        type: 'line',
-                        data: {
-                            labels: ['13:32:20', '13:34:20', '13:44:45', '13:45:00'],
-                            datasets: [{
-                                label: 'Uso de CPU',
-                                data: [20, 10, 50, 90, 85, 74],
-                                fill: false,
-                                borderColor: 'black',
-                                pointBackgroundColor: 'red',
-                                pointBorderColor: 'red',
-                                pointRadius: 5,
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                x: {
-                                    title: {
-                                        display: true,
-                                        text: 'Horário'
-                                    }
-                                },
-                                y: {
-                                    beginAtZero: true,
-                                    title: {
-                                        display: true,
-                                        text: 'Uso de CPU (%)'
-                                    }
-                                }
-                            },
-                            plugins: {
-                                legend: {
-                                    display: false
-                                },
-                                tooltip: {
-                                    callbacks: {
-                                        label: function(context) {
-                                            return context.raw + '%';
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    let currentTime = new Date('2024-10-17T13:43:20');
+                    const initialData = {
+                    labels: [
+                        currentTime.toLocaleString(), 
+                        new Date(currentTime.getTime() + 5 * 60 * 1000).toLocaleString(), 
+                        new Date(currentTime.getTime() + 10 * 60 * 1000).toLocaleString(), 
+                        new Date(currentTime.getTime() + 15 * 60 * 1000).toLocaleString(), 
+                        new Date(currentTime.getTime() + 20 * 60 * 1000).toLocaleString()  
+                    ],
+                    datasets: [{
+                        label: 'Uso de CPU (%)',
+                        data: [20, 10, 50, 90, 85],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        pointBackgroundColor: 'red',
+                        borderWidth: 2,
+                        tension: 0.2
+                    }]
+                };
+                const cpuChart = new Chart(ctx, {
+                    type: 'line',
+                    Date: initialData,
+                    options: {
+                    responsive: true,
+                    scales: {
+                y: {
+                beginAtZero: true,
+                max: 100
+                }
+            }
+        }
+    });
+                
+                    // new Chart(ct, {
+                    //     type: 'line',
+                    //     data: {
+                    //         labels: ['13:32:20', '13:34:20', '13:44:45', '13:45:00'],
+                    //         datasets: [{
+                    //             label: 'Uso de CPU',
+                    //             data: [20, 10, 50, 90, 85, 74],
+                    //             fill: false,
+                    //             borderColor: 'black',
+                    //             pointBackgroundColor: 'red',
+                    //             pointBorderColor: 'red',
+                    //             pointRadius: 5,
+                    //             borderWidth: 1
+                    //         }]
+                    //     },
+                    //     options: {
+                    //         scales: {
+                    //             x: {
+                    //                 title: {
+                    //                     display: true,
+                    //                     text: 'Horário'
+                    //                 }
+                    //             },
+                    //             y: {
+                    //                 beginAtZero: true,
+                    //                 title: {
+                    //                     display: true,
+                    //                     text: 'Uso de CPU (%)'
+                    //                 }
+                    //             }
+                    //         },
+                    //         plugins: {
+                    //             legend: {
+                    //                 display: false
+                    //             },
+                    //             tooltip: {
+                    //                 callbacks: {
+                    //                     label: function(context) {
+                    //                         return context.raw + '%';
+                    //                     }
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // });
                 </script>
             </div>
 

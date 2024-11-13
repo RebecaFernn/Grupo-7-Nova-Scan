@@ -531,3 +531,27 @@ function graficoAlerta(idLog){
         console.log("Deu erro na função graficoAlerta()", error)
     })
 }
+
+
+function updateChart() {
+    
+    currentTime = new Date(currentTime.getTime() + 1 * 60 * 1000);
+
+   
+    const updateChart = Math.floor(Math.random() * 100);
+   
+    // cpuChart.Date.labels.push(currentTime.toLocaleString());
+    // cpuChart.Date.datasets[0].Date.push(updateChart);
+    
+   
+    if (cpuChart.data.labels.length > 5) {
+        cpuChart.data.labels.shift();
+        cpuChart.data.datasets[0].data.shift();
+    }
+    
+   
+    cpuChart.update();
+}
+
+
+setInterval(updateChart, 1 * 60 * 1000); 
