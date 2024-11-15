@@ -203,3 +203,14 @@ JOIN
     dispositivo AS d ON l_max.fkDispositivo = d.id 
 ORDER BY 
     c.tipo;
+
+CREATE VIEW mediaPorHorario AS
+SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,
+	DATE_FORMAT(dataHora, '%H:00') AS hora, 
+    DATE_FORMAT(dataHora, '%Y-%m-%d') AS data,
+       AVG(valor) AS media_valor
+FROM log
+WHERE dataHora BETWEEN '2024-11-03%' AND '2024-11-09 23:59:59'
+  AND fkComponente = 1
+GROUP BY dia_semana, data, hora
+ORDER BY  data, hora desc;
