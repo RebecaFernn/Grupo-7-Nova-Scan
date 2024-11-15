@@ -131,7 +131,7 @@
             <div class="conteudoPai2">
                 <div class="conteudoFilho2_3">
                     <div class="graficoDownTime">
-
+                        <canvas id="graficoBarra"></canvas>
                     </div>
                 </div>
 
@@ -156,7 +156,8 @@
 
                     <div class="conteudoFilho2_2">
                         <div class="graficoPizza">
-                            <button>Histórico de falhas detalhado</button>
+                            <!-- <button>Histórico de falhas detalhado</button> -->
+                            <canvas id="graficoPizza"></canvas>
                         </div>
                     </div>
                 </div>
@@ -165,3 +166,85 @@
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    // Teste de gráfico de barras
+    const ctx = document.getElementById('graficoBarra');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1'],
+            datasets: [{
+                label: 'Horas',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tempo Médio Entre Falhas na Semana',
+                    font: {
+                        size: 20
+                    },
+                    color: 'black',
+                    padding: {
+                        top: 10,
+                        bottom: 20
+                    },
+                    align: 'center'
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+    });
+
+    const ctx2 = document.getElementById('graficoPizza')
+
+    const data = {
+        labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    new Chart(ctx2, {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Frequência de Falhas da Semana',
+                    font: {
+                        size: 20
+                    },
+                    color: 'black',
+                    padding: {
+                        top: 10,
+                        bottom: 20
+                    },
+                    align: 'center'
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+    })
+</script>
