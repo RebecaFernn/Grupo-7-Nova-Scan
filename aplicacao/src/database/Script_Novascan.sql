@@ -194,15 +194,28 @@ FROM
          log AS l
      WHERE 
          l.eAlerta = 1
-     ORDER BY 
-         l.valor DESC
-     LIMIT 1) AS l_max -- Subconsulta para selecionar o log com o maior valor
+) AS l_max -- Subconsulta para selecionar logs com eAlerta = 1
 JOIN 
     componente AS c ON l_max.fkComponente = c.id
 JOIN 
-    dispositivo AS d ON l_max.fkDispositivo = d.id 
+    dispositivo AS d ON l_max.fkDispositivo = d.id
+WHERE
+    l_max.valor = (SELECT MAX(l.valor)
+                   FROM log AS l
+                   WHERE l.eAlerta = 1 AND l.fkComponente = l_max.fkComponente) -- Valor máximo por componente
 ORDER BY 
     c.tipo;
+
+    CREATE VIEW mediaPorHorario AS
+SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,
+	DATE_FORMAT(dataHora, '%H:00') AS hora, 
+    DATE_FORMAT(dataHora, '%Y-%m-%d') AS data,
+       AVG(valor) AS media_valor
+FROM log
+WHERE dataHora BETWEEN '2024-11-03%' AND '2024-11-09 23:59:59'
+  AND fkComponente = 1
+GROUP BY dia_semana, data, hora
+ORDER BY  data, hora desc;
 
 
 
