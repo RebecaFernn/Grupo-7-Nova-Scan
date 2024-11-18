@@ -177,34 +177,36 @@ SELECT
     l_max.valor AS valor,
     l_max.unidadeDeMedida,
     l_max.dataHora,
-    l_max.id AS idLog, -- Adiciona o id do log com o valor máximo
+    l_max.id AS idLog,
     l_max.descricao,
     c.tipo,
     d.id AS idDispositivo
 FROM 
-    (SELECT 
-         l.valor,
-         l.unidadeDeMedida,
-         l.dataHora,
-         l.id,
-         l.descricao,
-         l.fkComponente,
-         l.fkDispositivo
-     FROM 
-         log AS l
-     WHERE 
-         l.eAlerta = 1
-) AS l_max -- Subconsulta para selecionar logs com eAlerta = 1
+    (
+        SELECT 
+            l.valor,
+            l.unidadeDeMedida,
+            l.dataHora,
+            l.id,
+            l.descricao,
+            l.fkComponente,
+            l.fkDispositivo,
+            ROW_NUMBER() OVER (PARTITION BY c.tipo, l.descricao ORDER BY l.dataHora DESC, l.valor DESC) AS rn
+        FROM 
+            log AS l
+        JOIN 
+            componente AS c ON l.fkComponente = c.id
+        WHERE 
+            l.eAlerta = 1
+    ) AS l_max
 JOIN 
     componente AS c ON l_max.fkComponente = c.id
 JOIN 
     dispositivo AS d ON l_max.fkDispositivo = d.id
-WHERE
-    l_max.valor = (SELECT MAX(l.valor)
-                   FROM log AS l
-                   WHERE l.eAlerta = 1 AND l.fkComponente = l_max.fkComponente) -- Valor máximo por componente
+WHERE 
+    l_max.rn = 1
 ORDER BY 
-    c.tipo;
+    c.tipo, l_max.descricao;
 
     CREATE VIEW mediaPorHorario AS
 SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,
