@@ -27,7 +27,7 @@ router.get("/listarAlertasComponentesMaquina/:idDispositivo", function(req,res){
     maquinasController.listarAlertasComponentesMaquina(req,res);
 })
 
-router.get("/graficoAlerta/:idAlerta", function(req, res){
+router.get("/graficoAlerta/:descricao", function(req, res){
     maquinasController.graficoAlerta(req, res);
 })
 

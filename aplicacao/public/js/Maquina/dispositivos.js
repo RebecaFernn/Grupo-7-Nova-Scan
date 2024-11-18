@@ -459,7 +459,7 @@ function listandoAlertasComponenteMaquina() {
 
                 if (listaAlertasDisparado[i].tipo == "Processador") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta(${listaAlertasDisparado[i].idLog})">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
                 </div>
@@ -467,7 +467,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Memória") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -475,7 +475,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -483,7 +483,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
                 </div>
@@ -499,7 +499,9 @@ function listandoAlertasComponenteMaquina() {
         })
 }
 
-function visualizarGraficoAlerta(idLog){
+
+//Funções Mônica
+function visualizarGraficoAlerta(descricao){
     const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
     fundoInformacoesmaquina.style.display = 'none';
     const conteudoMaquinas = document.getElementById('conteudoMaquinas');
@@ -509,49 +511,67 @@ function visualizarGraficoAlerta(idLog){
 
 
     //Mandando o id do log para a função grafico alerta
-    graficoAlerta(idLog)
+    graficoAlerta(descricao)
 }
 
-function graficoAlerta(idLog){
-    var idAlerta = idLog
-
-    fetch(`/maquinas/graficoAlerta/${idAlerta}`,{
+function graficoAlerta(descricao){
+    fetch(`/maquinas/graficoAlerta/${descricao}`,{
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
     .then(function(resposta){
         return resposta.json()
     })
-    .then(function(nome){
-        console.log(nome)
-        let nomeMaquina = document.getElementById('nomeMaquina')
-        nomeMaquina.innerHTML = nome[0].nome 
+    .then(function(dados){
+        console.log("Dados do alerta clicado: ", dados)
+        
+        const ctx = document.getElementById('cpuChart').getContext('2d');
+
+        listaData = []
+        listaDados = []
+        i = 0
+        a = 0
+        while (i < dados.length){
+            //Logica de formatar data para enviar dentro da lista
+            console.log(dados[i].intervalo_inicio)
+            listaData.push(dados[i].intervalo_inicio)
+            i++
+        }
+
+        while (a < dados.length){
+            console.log(dados[a].pico_maximo)
+            listaDados.push(dados[a].pico_maximo)
+            a++
+        }
+
+        console.log("Lista Dados", listaDados)
+        console.log("Lista Tempo", listaData)
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: listaData,
+                datasets: [{
+                    label: dados[0].descricao,
+                    data: listaDados,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    pointBackgroundColor: 'red',
+                    borderWidth: 2,
+                    tension: 0.2
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+
+        let maquinaNome = document.getElementById('nomeMaquina')
+        maquinaNome.innerHTML = dados[0].nome
+
+    
     })
     .catch(function(error){
         console.log("Deu erro na função graficoAlerta()", error)
     })
 }
-
-
-function updateChart() {
-    
-    currentTime = new Date(currentTime.getTime() + 1 * 60 * 1000);
-
-   
-    const updateChart = Math.floor(Math.random() * 100);
-   
-    // cpuChart.Date.labels.push(currentTime.toLocaleString());
-    // cpuChart.Date.datasets[0].Date.push(updateChart);
-    
-   
-    if (cpuChart.data.labels.length > 5) {
-        cpuChart.data.labels.shift();
-        cpuChart.data.datasets[0].data.shift();
-    }
-    
-   
-    cpuChart.update();
-}
-
-
-setInterval(updateChart, 1 * 60 * 1000); 

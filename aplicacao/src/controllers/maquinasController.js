@@ -175,13 +175,13 @@ function listarAlertasComponentesMaquina(req, res) {
 }
 
 function graficoAlerta(req, res){
-  var idDoAlerta = req.params.idAlerta
+  var descricaoLog = req.params.descricao
 
-  if(idDoAlerta == undefined){
+  if(descricaoLog == undefined){
     res.status(400).send("o id do alerta esta indefinido")
   }
   else{
-    maquinasModel.graficoAlerta(idDoAlerta)
+    maquinasModel.graficoAlerta(descricaoLog)
     .then(function(resultado){
       res.status(200).json(resultado)
     })
