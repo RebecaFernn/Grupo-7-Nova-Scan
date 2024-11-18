@@ -164,9 +164,11 @@ AND d.id NOT IN (
 );
 
 CREATE VIEW alertaUsuario as
-SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, a.fkUsuario, a.fkDispositivo
+SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, ta.tipo, a.fkUsuario, a.fkDispositivo
 FROM alerta as a JOIN componente as c
 ON a.fkComponente = c.id
+JOIN tipoAlerta as ta
+ON a.fkTipoAlerta = ta.id
 JOIN dispositivo as d
 ON a.fkDispositivo = d.id
 JOIN usuario as u
