@@ -534,12 +534,38 @@ function graficoAlerta(descricao){
         while (i < dados.length){
             //Logica de formatar data para enviar dentro da lista
             console.log(dados[i].intervalo_inicio)
+            // const data = new Date(dataHora)
+
+            //     const opcoes = {
+            //         year: 'numeric',
+            //         month: 'numeric',
+            //         day: 'numeric',
+            //         hour: '2-digit',
+            //         minute: '2-digit',
+            //         second: '2-digit',
+            //         hour12: false
+            //     };
+
+            //     const dataFormatada = data.toLocaleString('pt-BR', opcoes);
             listaData.push(dados[i].intervalo_inicio)
             i++
         }
 
         while (a < dados.length){
             console.log(dados[a].pico_maximo)
+            // const data = new Date(dataHora)
+
+            //     const opcoes = {
+            //         year: 'numeric',
+            //         month: 'numeric',
+            //         day: 'numeric',
+            //         hour: '2-digit',
+            //         minute: '2-digit',
+            //         second: '2-digit',
+            //         hour12: false
+            //     };
+
+            //     const dataFormatada = data.toLocaleString('pt-BR', opcoes);
             listaDados.push(dados[a].pico_maximo)
             a++
         }
@@ -558,7 +584,7 @@ function graficoAlerta(descricao){
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     pointBackgroundColor: 'red',
                     borderWidth: 2,
-                    tension: 0.2
+                    tension: 0.12
                 }]
             },
             options: {
