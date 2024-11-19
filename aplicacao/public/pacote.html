@@ -74,18 +74,24 @@
         
             <div class="dashboard">
               <div class="chart">
-                <h2>Bytes Enviados e Recebidos</h2>
-                <div class="placeholder">Gráfico 1</div>
+                <h2></h2>
+                <div>
+                    <canvas id="myChart-Bytes">Gráfico-Maquina</canvas>
+                  </div>
               </div>
         
               <div class="chart">
                 <h2>Máquinas Cadastradas</h2>
-                <div class="placeholder">Lista de Maquinas</div>
+                <div>
+                    <canvas id="myChart-Maquinas">Lista-Maquinas</canvas>
+                  </div>
               </div>
         
               <div class="maquina">
                 <h2>Perda de Pacotes</h2>
-                <div class="placeholder">Gráfico 2</div>
+                <div>
+                    <canvas id="myChart-Pacotes">Gráfico-Perda</canvas>
+                  </div>
               </div>
             </div>
           </div>
@@ -93,3 +99,92 @@
     </div>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart-Bytes').getContext('2d');
+    
+    // Dados para o gráfico
+    const data = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'], // Rótulos do eixo X
+      datasets: [
+        {
+          label: 'Dataset 1', // Nome do conjunto de dados
+          data: [10, 20, 30, 40, 50], // Dados
+          borderColor: 'rgba(255, 99, 132, 1)', // Cor da linha
+          backgroundColor: 'rgba(255, 99, 132, 0.2)', // Cor de fundo (se houver área preenchida)
+          tension: 0.4 // Suavização da linha
+        },
+        {
+          label: 'Dataset 2', // Outro conjunto de dados
+          data: [50, 40, 30, 20, 10], // Dados
+          borderColor: 'rgba(54, 162, 235, 1)', // Cor da linha
+          backgroundColor: 'rgba(54, 162, 235, 0.2)', // Cor de fundo
+          tension: 0.4 // Suavização da linha
+        }
+      ]
+    };
+    // Configuração do gráfico
+    const config = {
+        type: 'line', // Tipo do gráfico
+        data: data, // Dados definidos acima
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top' // Posição da legenda
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Meses' // Título do eixo X
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Valores' // Título do eixo Y
+              }
+            }
+          }
+        }
+      };
+      
+      // Renderizar o gráfico
+      new Chart(ctx, config);
+
+    const ctx2 = document.getElementById('myChart-Pacotes');
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1'],
+            datasets: [{
+                label: 'Horas',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Pacotes Perdidos',
+                    font: {
+                        size: 20
+                    },
+                    color: 'black',
+                    padding: {
+                        top: 10,
+                        bottom: 20
+                    },
+                    align: 'center'
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+    });
+
+</script>

@@ -22,6 +22,7 @@ var empresasRouter = require("./src/routes/empresas");
 var maquinasRouter = require("./src/routes/maquinas");
 var alertasRouter = require("./src/routes/alertas");
 var rebecaRouter = require("./src/routes/rebeca");
+var kaueRouter = require("./src/routes/kaue")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,6 +36,7 @@ app.use("/empresas", empresasRouter);
 app.use("/maquinas", maquinasRouter);
 app.use("/alertas", alertasRouter);
 app.use("/rebeca", rebecaRouter);
+app.use("/kaue", kaueRouter)
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
