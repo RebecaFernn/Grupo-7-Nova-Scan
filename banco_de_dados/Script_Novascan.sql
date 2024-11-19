@@ -253,7 +253,6 @@ CREATE VIEW graficoTempoReal as
 
         l.dataHora DESC;
 
-
 CREATE VIEW mediaPorHorario AS
 SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,
 	DATE_FORMAT(dataHora, '%H:00') AS hora, 
