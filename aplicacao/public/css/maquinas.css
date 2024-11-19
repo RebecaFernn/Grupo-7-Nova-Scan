@@ -721,26 +721,46 @@ height: 50px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 20px; 
-    background-color: pink;
+    
     
 
 }
 
 .graficoCPU{
-    background-color: #3CD06E;
+    background-color: #3A527A;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3%;
 }
 .graficoRAM{
-    background-color: #F84455;
+    background-color: #3A527A;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3%;
 }
 .graficoMEM{
-    background-color: aqua;
+    background-color: #3A527A;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3%;
 }
 .graficoREDE{
-    background-color: #8e8e8e;
+    background-color: #3A527A;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3%;
 }
 
 .bom{
@@ -766,4 +786,69 @@ height: 50px;
     justify-content: left;
     align-items: center;
     gap: 5%;
+}
+
+.info-dispositivo{
+    width: 15%;
+    height: 90%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+
+}
+
+.grafico-cpu{
+    width: 75%;
+    height: 90%;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uso-atual{
+    height: 30%;
+    width: 100%;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 1.25rem;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    flex-direction: column;
+}
+.qtd-uso{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 20%;
+    font-family: Montserrat;
+}
+.qtd-total{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 20%;
+    font-family: Montserrat;
+}
+.status{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 20%;
+    font-family: Montserrat;
 }

@@ -13,10 +13,10 @@ function listarMaquinas() {
             }
         })
         .then(function (listaMaquinas) {
-             console.log("Máquinas encontradas: ", listaMaquinas)
+            console.log("Máquinas encontradas: ", listaMaquinas)
 
             //Verificação para pegar a atividade mais recente das máquinas
-            
+
             // Objeto para armazenar a última atividade por máquina
             let maquinasMap = {};
 
@@ -34,7 +34,7 @@ function listarMaquinas() {
             console.log("Maquinas agrupadas: ", maquinasMap);
 
             let maquinasUnicas = Object.values(maquinasMap);
-        
+
             let maquinasHTML = "";
             for (let i = 0; i < maquinasUnicas.length; i++) {
                 let maquina = maquinasUnicas[i];
@@ -63,15 +63,15 @@ function listarMaquinas() {
             }
 
             const elementoPai = document.getElementById('boxmaquinas');
-            elementoPai.innerHTML = maquinasHTML; 
+            elementoPai.innerHTML = maquinasHTML;
             console.log(elementoPai);
 
 
-            const topMaquinas = document.getElementsByName('topGraficoAlerta') 
+            const topMaquinas = document.getElementsByName('topGraficoAlerta')
             let nomeDaMaquina = maquina.nome
             console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${nomeDaMaquina}`)
             topMaquinas.innerHTML = nomeDaMaquina
-            
+
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -141,7 +141,7 @@ function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
     console.log(elementoPai);
 }
 
-function overviewSelect(){
+function overviewSelect() {
 
     fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`, {
@@ -187,6 +187,7 @@ function maquina(id) {
     valoresComponentes();
     listandoAlertasMaquinas();
     listandoAlertasComponenteMaquina();
+    listandologMaquinas();
 }
 
 
@@ -210,6 +211,8 @@ function valoresComponentes() {
         })
 }
 
+var ramTOTAL = 0;
+
 function componentesDispositivo(listaValores) {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
@@ -225,6 +228,7 @@ function componentesDispositivo(listaValores) {
         .then(function (listaComponente) {
             console.log("Componentes encontrados: ", listaComponente)
             var valores = listaValores
+
             const elementoPai = document.getElementById('top-info');
             //limpando o html para nao ficar repetindo
             elementoPai.innerHTML = "";
@@ -232,11 +236,18 @@ function componentesDispositivo(listaValores) {
             componentes = `
                 <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
                 <p> <strong>Processador:</strong> ${listaComponente[0].nomeProcessador}</p>
-                <p> <strong>Total Mémoria Ram Total: </strong> ${valores[0].valor} GB</p>
-                <p> <strong>Total Armazenamento Total: </strong> ${valores[1].valor}GB</p>
+                <p> <strong>Mémoria Ram Total: </strong> ${valores[0].valor} GB</p>
+                <p> <strong>Armazenamento Total: </strong> ${valores[1].valor}GB</p>
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
+
+            ramTOTAL = valores[1].valor
+            //Mostrando total de ram e armazenamento nos graficos
+            const ram = document.getElementById('Total-RAM')
+            ram.innerHTML = `<p>Total</p>
+                                    <p ><strong >${valores[0].valor}Gb</strong></p>`;
+
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -505,3 +516,160 @@ function listandoAlertasComponenteMaquina() {
             console.log("Erro!: ", error)
         })
 }
+// Ram
+var listaRam = []
+var dataRam = []
+
+//Cpu
+var listaCPU = []
+var listaVelocidade;
+//Armazenamento
+var listaMemoria = []
+var ArmazenamentoTotal;
+
+
+//Rede
+var perdaPacotes = []
+var pacotesEnviados = []
+var pacotesRecebidos = []
+
+
+
+
+function listandologMaquinas() {
+    var idUsuario = sessionStorage.getItem('ID_USUARIO')
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    var dispositivo = idDispositivo
+
+    fetch(`/maquinas/listarlogMaquina/${dispositivo}?idUsuario=${idUsuario}&fkEmpresa=${fkEmpresa}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+
+            }
+            console.log("AQUI NA VALIDAÇÂO RYAN")
+        })
+        .then(function (listarlogMaquinas) {
+
+            // Listas e validações para separar componentes
+
+
+            for (let i = 0; i < listarlogMaquinas.length; i++) {
+                
+           
+
+                console.log(listarlogMaquinas)
+
+                if (listarlogMaquinas[i].descricaoLog == "Uso de Memória RAM") {
+                    listaRam.push(listarlogMaquinas[i].valor)
+                    dataRam.push(listarlogMaquinas[i].dataHoraLog)
+
+                    if (listaRam.length == 7) {
+                        listaRam.shift()
+                    }
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "Uso da CPU") {
+                    listaCPU.push(listarlogMaquinas[i].valor)
+                    if (listaCPU.length == 7) {
+                        listaCPU.shift()
+                    }
+
+                }
+                else if (listarlogMaquinas[i].unidadeDeMedida == "Ghz") {
+                    listaVelocidade = listarlogMaquinas[i].valor
+
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "Perda de Pacotes") {
+                    perdaPacotes.push(listarlogMaquinas[i].valor)
+                    if (perdaPacotes.length == 7) {
+                        perdaPacotes.shift()
+                    }
+
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "Uso de Armazenamento") {
+                    listaMemoria.push(listarlogMaquinas[i].valor)
+                    if (listaMemoria.length == 7) {
+                        listaMemoria.shift()
+                    }
+
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "BytesEnviados") {
+                    pacotesEnviados.push(listarlogMaquinas[i].valor)
+                    if (pacotesEnviados.length == 7) {
+                        pacotesEnviados.shift()
+                    }
+
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "BytesRecebidos") {
+                    pacotesRecebidos.push(listarlogMaquinas[i].valor)
+                    if (pacotesRecebidos.length == 7) {
+                        pacotesRecebidos.shift()
+                    }
+
+                }
+                else if (listarlogMaquinas[i].descricaoLog == "Armazenamento Total") {
+                    ArmazenamentoTotal = listarlogMaquinas[i].valor
+                }
+
+
+
+
+                const enviados = document.getElementById('Rede-enviados')
+                var MbEnviados = pacotesEnviados[pacotesEnviados.length - 1];
+                enviados.innerHTML = `<p>Enviados</p>
+                <p ><strong >${MbEnviados}Mb</strong></p>`;
+
+                const recebidos = document.getElementById('Rede-recebidos')
+                var MbRecebidos = pacotesRecebidos[pacotesRecebidos.length - 1];
+                recebidos.innerHTML = `<p>Recebidos</p>
+                <p ><strong >${MbRecebidos}Mb</strong></p>`;
+
+
+                const ramUso = document.getElementById('USO-RAM')
+                var RamEmUso = listaRam[listaRam.length - 1];
+                ramUso.innerHTML = `<p>Em uso</p>
+                <p ><strong >${RamEmUso}Gb</strong></p>`;
+
+                const porcentagemRam = document.getElementById('porcentagemRAM')
+                var RamPorcentagem = RamEmUso / ramTOTAL * 100;
+                porcentagemRam.innerHTML = `<p>RAM</p>
+                <p><strong>${RamPorcentagem.toFixed(0)}%</strong> </p>`
+
+                const usoCPU = document.getElementById('USO-CPU')
+                var usoAtualCPU = listaCPU[listaCPU.length - 1]
+                usoCPU.innerHTML = ` <p>CPU</p>
+                                <p><strong>${usoAtualCPU}%</strong> </p>`
+
+                const velocidade = document.getElementById('velocidade-CPU')
+                velocidade.innerHTML = ` <p>Velocidade</p>
+                <p><strong>${listaVelocidade}Ghz</strong> </p>`
+
+                
+
+            }
+
+
+            //REDE
+
+
+
+            console.log("AQUI NA RESPOSTA RYAN")
+            setInterval(listarlogMaquinas, 2000);
+
+        })
+        .catch(function (error) {
+            console.log("AQUI NO ERRO RYAN")
+            console.log("Erro!: ", error)
+        })
+}
+
+setInterval(() => {
+
+
+    listandologMaquinas()
+
+  
+}, 2000);

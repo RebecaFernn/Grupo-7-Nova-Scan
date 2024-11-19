@@ -39,4 +39,9 @@ router.post("/ativarDispositivo/", function(req,res){
     maquinasController.ativarDispositivo(req,res);
 })
 
+// logs maquina
+router.get("/listarlogMaquina/:dispositivo", function(req,res){
+    maquinasController.listarLogMaquina(req,res);
+})
+
 module.exports = router;

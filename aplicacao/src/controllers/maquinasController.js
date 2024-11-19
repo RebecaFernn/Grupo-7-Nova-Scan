@@ -175,6 +175,40 @@ function listarAlertasComponentesMaquina(req, res) {
 }
 
 
+function listarLogMaquina(req, res) {
+  var idDispositivo = req.params.dispositivo; // Vem da rota.
+  var idUsuario = req.query.idUsuario; // Passar via query string.
+  var fkEmpresa = req.query.fkEmpresa
+  
+  
+  console.log(`idDispositivo ${idDispositivo}, idUsuario ${idUsuario}, fkEmpresa ${fkEmpresa}`)
+
+
+
+  if (idUsuario == undefined) {
+    res.status(400).send("O id do usuario esta undefined")
+  }
+  else if (idDispositivo == undefined) {
+    res.status(400).send("O id do dispositivo esta undefined")
+  }
+  else if (fkEmpresa == undefined) {
+    res.status(400).send("Fk da empresa esta undefined")
+  }
+  else {
+    maquinasModel.listarLogMaquina(idUsuario, idDispositivo, fkEmpresa)
+      .then(function (resultado) {
+        res.status(200).json(resultado)
+      })
+      .catch(function (erro) {
+        console.log(erro)
+        console.log(`Houve um erro ao buscar os alertas! Erro: ${erro.sqlMessage}`)
+        res.status(500).json(erro.sqlMessage)
+      })
+  }
+}
+
+
+
 module.exports = {
   lista,
   atualizarNome,
@@ -184,5 +218,6 @@ module.exports = {
   valoresComponentes,
   listaAlertasMaquina,
   listarAlertasComponentesMaquina,
-  listaSelect
+  listaSelect,
+  listarLogMaquina
 }
