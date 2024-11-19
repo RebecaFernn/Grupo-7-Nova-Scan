@@ -20,6 +20,7 @@
         rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body>
@@ -67,15 +68,21 @@
 
     <!--CONTEÚDO-->
     <div class="picos">
+            <div class="voltar">
+                <img src="img/seta.svg" alt="">
+                <a href="">voltar</a>
+            </div>
         <div class="up">
             <h1>Horários de Pico da semana: 03/11/2024 - 09/11/2024</h1>
             <p>Última vez atualizado: 09/11/2024 - 23:59:59</p>
             <div class="caixas">
                 <select name="" id="">
-                    <option value=""> Qual semana deseja visualizar?</option>
+                    <option disabled selected value=""> Qual semana deseja visualizar?</option>
                 </select>
                 <select name="" id="">
-                    <option value="">Qual o componente que deseja visualizar?</option>
+                    <option disabled selected value="">Qual o componente que deseja visualizar?</option>
+                    <option value="CPU">CPU</option>
+                    <option value="RAM">RAM</option>
                 </select>
                 <button> Buscar</button>
             </div>
@@ -84,21 +91,16 @@
         <!--GRÁFICO-->
         <div class="down">
             <div class="space">
-
-            </div>
-            <div class="infos">
-                Tem alguma dúvida sobre o mapa de calor?
-                <a href="">Tire suas dúvidas aqui!</a>
-                <div class="i_logo">
-                    NOVASCAN
-                    <img src="img/LogoBranca.svg" alt="">
-                </div>
+                <h1>CPU</h1>
+                <div id="heatmap"></div>
             </div>
         </div>
     </div>
 
 </section>
 </body>
+
+<script src="js/Individual/rebeca.js"></script>
 
 <script>
     function overview() {
@@ -122,4 +124,7 @@
     function picos(){
          window.location.href = "picos.html"
     }
+
+   
+
 </script>

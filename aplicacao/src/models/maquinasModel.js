@@ -71,7 +71,7 @@ AND e.id = ${fkEmpresa};`
   return database.executar(instrucaoSql);
 }
 
-function listaAlertasMaquina(idUsuario, fkDispositivo){
+function listaAlertasMaquina(idUsuario, fkDispositivo) {
   console.log("Usando a função listarAlertasMaquina() na model valores a serem usados:", idUsuario);
   var instrucaoSql = `SELECT * FROM alertaUsuario WHERE fkUsuario = ${idUsuario} AND fkDispositivo = ${fkDispositivo}`;
 
@@ -79,7 +79,7 @@ function listaAlertasMaquina(idUsuario, fkDispositivo){
   return database.executar(instrucaoSql);
 }
 
-function listarAlertasComponentesMaquina(idDispositivo){
+function listarAlertasComponentesMaquina(idDispositivo) {
   console.log("Usando a função listarAlertasComponentesMaquina() na model valores a serem usados:", idDispositivo);
   var instrucaoSql = `SELECT * FROM alertaDispositivo WHERE idDispositivo = ${idDispositivo};`;
 
@@ -136,5 +136,36 @@ LIMIT 7;
   return database.executar(instrucaoSql);
 }
 
+function graficoAlerta(descricaoLog) {
+  console.log("Usando a função graficoAlerta")
+  var instrucaoSql = `SELECT 
+    FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(dataHora) / 5) * 5) AS intervalo_inicio, 
+    MAX(valor) AS pico_maximo,
+    descricao,
+    d.nome
+FROM log 
+JOIN dispositivo as d
+ON log.fkDispositivo = d.id
+WHERE descricao = '${descricaoLog}' AND
+eAlerta = 1
+AND DATE(dataHora) = curdate() 
+GROUP BY intervalo_inicio, d.id
+ORDER BY intervalo_inicio;`
 
-module.exports = { lista, atualizarNome, desativarDispositivo, ativarDispositivo, componentes, valoresComponentes, listaAlertasMaquina , listarAlertasComponentesMaquina, listaSelect, listarLogMaquina};
+  console.log("Executando a instrução SQL" + instrucaoSql)
+  return database.executar(instrucaoSql)
+
+}
+
+module.exports = { 
+  lista, 
+  atualizarNome, 
+  desativarDispositivo, 
+  ativarDispositivo, 
+  componentes, 
+  valoresComponentes, 
+  listaAlertasMaquina, 
+  listarAlertasComponentesMaquina, 
+  listaSelect, 
+  listarLogMaquina,
+graficoAlerta};

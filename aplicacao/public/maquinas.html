@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,6 @@
         rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
 <body onload="listarMaquinas()">
@@ -115,9 +114,13 @@
                 </div> -->
             </div>
         </div>
-        <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas" > 
-            <div class="topGraficoAlerta" id="topGraficoAlerta" >
-                
+        <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
+            <div class="topGraficoAlerta" id="topGraficoAlerta">
+                <p id="nomeMaquina"></p>
+            </div>
+            <div class="descricaoGrafico" id="descricaoGrafico">
+                <p id="descricao"><strong>Problema:</strong> </p>
+                    <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -126,66 +129,16 @@
                 <div id="chartContainer">
                     <canvas id="cpuChart"></canvas>
                 </div>
-            
-                <script>
-                    const ct = document.getElementById('cpuChart').getContext('2d');
-            
-                    new Chart(ct, {
-                        type: 'line',
-                        data: {
-                            labels: ['13:32:20', '13:34:20', '13:44:45', '13:45:00'],
-                            datasets: [{
-                                label: 'Uso de CPU',
-                                data: [20, 10, 50, 90, 85, 74],
-                                fill: false,
-                                borderColor: 'black',
-                                pointBackgroundColor: 'red',
-                                pointBorderColor: 'red',
-                                pointRadius: 5,
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                x: {
-                                    title: {
-                                        display: true,
-                                        text: 'Horário'
-                                    }
-                                },
-                                y: {
-                                    beginAtZero: true,
-                                    title: {
-                                        display: true,
-                                        text: 'Uso de CPU (%)'
-                                    }
-                                }
-                            },
-                            plugins: {
-                                legend: {
-                                    display: false
-                                },
-                                tooltip: {
-                                    callbacks: {
-                                        label: function(context) {
-                                            return context.raw + '%';
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
-                </script>
             </div>
 
             <div class="fimGraficoAlerta" id="fimGraficoAlerta">
-                <div class="infoFimGraficoAlerta">
-                    <p><strong>Problema:</strong> Alto uso de CPU 90%</p>
-                    <p><strong>Data e Hora:</strong> 17/10/2024 13:46:20</p>
-                </div>
+                <!-- <div class="infoFimGraficoAlerta" >
+                    <p id="descricao"><strong>Problema:</strong> </p>
+                    <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
+                </div> -->
             </div>
-
             <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
+            
         </div>
 
 
@@ -246,7 +199,8 @@
 
                 <!-- ------ cpu -------- -->
                 <div class="box-btn-voltar">
-                    <button onclick="voltar()" class="btn-voltar"><img src="./img/voltar.svg" alt=""> Voltar </button>
+                    <button onclick="voltar()" class="btn-voltar"><img src="./img/voltar.svg" alt=""> Voltar
+                    </button>
                 </div>
                 <div class="top-Graficos">
                     <div class="bom">
@@ -258,8 +212,8 @@
                         CUIDADO
                     </div>
                     <div class="ruim">
-                    <img src="./img/ruim.svg" alt="">
-                    RUIM
+                        <img src="./img/ruim.svg" alt="">
+                        RUIM
                     </div>
 
                 </div>
@@ -424,8 +378,8 @@
         function index() {
             window.location.href = "index.html"
         }
-        function picos(){
-         window.location.href = "picos.html"
+        function picos() {
+            window.location.href = "picos.html"
         }
         function atualizarPagina() {
             location.reload();
@@ -486,34 +440,21 @@
 
         }
 
-        function visualizarGraficoAlerta(){
-            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-            fundoInformacoesmaquina.style.display = 'none';
-            const conteudoMaquinas = document.getElementById('conteudoMaquinas');
-            conteudoMaquinas.style.display = 'none';
-            const GraficoAlerta = document.getElementById('GraficoAlerta');
-            GraficoAlerta.style.display = 'flex';
-        }
 
-        function VoltarInfoMaquina(){
+        function VoltarInfoMaquina() {
             const GraficoAlerta = document.getElementById('GraficoAlerta');
             GraficoAlerta.style.display = 'none';
             const conteudoMaquinas = document.getElementById('conteudoMaquinas');
             conteudoMaquinas.style.display = 'flex';
             const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
             fundoInformacoesmaquina.style.display = 'flex';
-      
-           
         }
 
 
       
         
-
-
-
-
-
+        // var lista = [];
+        // var labels = [];
 
         const ctx = document.getElementById('meuGrafico').getContext('2d');
         const meuGrafico = new Chart(ctx, {

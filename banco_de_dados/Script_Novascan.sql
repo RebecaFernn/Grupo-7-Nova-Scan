@@ -164,9 +164,11 @@ AND d.id NOT IN (
 );
 
 CREATE VIEW alertaUsuario as
-SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, a.fkUsuario, a.fkDispositivo
+SELECT d.nome as nomeMaquina, a.minIntervalo, a.maxIntervalo, c.tipo, ta.tipo as tipoAlerta, a.fkUsuario, a.fkDispositivo
 FROM alerta as a JOIN componente as c
 ON a.fkComponente = c.id
+JOIN tipoAlerta as ta
+ON a.fkTipoAlerta = ta.id
 JOIN dispositivo as d
 ON a.fkDispositivo = d.id
 JOIN usuario as u
@@ -174,68 +176,91 @@ ON a.fkUsuario = u.id;
 
 CREATE VIEW alertaDispositivo as 
 SELECT 
-    MAX(l.valor) AS valor,
-    l.unidadeDeMedida,
-    (SELECT l2.dataHora 
-     FROM log AS l2 
-     WHERE l2.fkComponente = l2.fkComponente 
-       AND l2.valor = MAX(l.valor)
-       AND l2.eAlerta = 1 
-       AND l2.fkDispositivo = d.id
-     LIMIT 1) AS dataHora,
-     l.descricao,
+    l_max.valor AS valor,
+    l_max.unidadeDeMedida,
+    l_max.dataHora,
+    l_max.id AS idLog,
+    l_max.descricao,
     c.tipo,
-    d.id as idDispositivo
+    d.id AS idDispositivo
 FROM 
-    log AS l 
+    (
+        SELECT 
+            l.valor,
+            l.unidadeDeMedida,
+            l.dataHora,
+            l.id,
+            l.descricao,
+            l.fkComponente,
+            l.fkDispositivo,
+            ROW_NUMBER() OVER (PARTITION BY c.tipo, l.descricao ORDER BY l.dataHora DESC, l.valor DESC) AS rn
+        FROM 
+            log AS l
+        JOIN 
+            componente AS c ON l.fkComponente = c.id
+        WHERE 
+            l.eAlerta = 1
+    ) AS l_max
 JOIN 
-    componente AS c ON l.fkComponente = c.id
+    componente AS c ON l_max.fkComponente = c.id
 JOIN 
-    dispositivo AS d ON l.fkDispositivo = d.id 
+    dispositivo AS d ON l_max.fkDispositivo = d.id
 WHERE 
-    l.eAlerta = 1 
-GROUP BY 
-    c.tipo, l.unidadeDeMedida, l.descricao, d.id
+    l_max.rn = 1
 ORDER BY 
-    c.tipo;
+    c.tipo, l_max.descricao;
+
 
 -- Select Ryan
-SELECT 
-    u.id AS idUsuario,
-    u.nome AS nomeUsuario,
-    e.id AS idEmpresa,
-    e.razaoSocial AS nomeEmpresa,
-    d.id AS idDispositivo,
-    d.nome AS nomeDispositivo,
-    c.id AS idComponente,
-    c.nome AS nomeComponente,
-    c.tipo AS tipoComponente,
-    l.id AS idLog,
-    l.valor,
-    l.unidadeDeMedida,
-    l.dataHora AS dataHoraLog,
-    l.descricao AS descricaoLog,
-    l.eAlerta,
-    a.id AS idAlerta,
-    ta.tipo AS tipoAlerta,
-    a.minIntervalo,
-    a.maxIntervalo
-FROM 
-    usuario AS u
-JOIN 
-    empresa AS e ON u.fkEmpresa = e.id
-JOIN 
-    dispositivo AS d ON d.fkEmpresa = e.id
-JOIN 
-    componente AS c ON c.fkDispositivo = d.id
-LEFT JOIN 
-    log AS l ON l.fkComponente = c.id AND l.fkDispositivo = d.id
-LEFT JOIN 
-    alerta AS a ON a.fkComponente = c.id AND a.fkDispositivo = d.id AND a.fkUsuario = u.id
-LEFT JOIN 
-    tipoAlerta AS ta ON a.fkTipoAlerta = ta.id
-WHERE 
-    u.id = 1 AND e.id = 1 AND d.id = 1
-ORDER BY 
+CREATE VIEW graficoTempoReal as 
+    SELECT 
+        u.id AS idUsuario,
+        u.nome AS nomeUsuario,
+        e.id AS idEmpresa,
+        e.razaoSocial AS nomeEmpresa,
+        d.id AS idDispositivo,
+        d.nome AS nomeDispositivo,
+        c.id AS idComponente,
+        c.nome AS nomeComponente,
+        c.tipo AS tipoComponente,
+        l.id AS idLog,
+        l.valor,
+        l.unidadeDeMedida,
+        l.dataHora AS dataHoraLog,
+        l.descricao AS descricaoLog,
+        l.eAlerta,
+        a.id AS idAlerta,
+        ta.tipo AS tipoAlerta,
+        a.minIntervalo,
+        a.maxIntervalo
+    FROM 
+        usuario AS u
+    JOIN 
+        empresa AS e ON u.fkEmpresa = e.id
+    JOIN 
+        dispositivo AS d ON d.fkEmpresa = e.id
+    JOIN 
+        componente AS c ON c.fkDispositivo = d.id
+    LEFT JOIN 
+        log AS l ON l.fkComponente = c.id AND l.fkDispositivo = d.id
+    LEFT JOIN 
+        alerta AS a ON a.fkComponente = c.id AND a.fkDispositivo = d.id AND a.fkUsuario = u.id
+    LEFT JOIN 
+        tipoAlerta AS ta ON a.fkTipoAlerta = ta.id
+    WHERE 
+        u.id = 1 AND e.id = 1 AND d.id = 1
+    ORDER BY 
 
-    l.dataHora DESC;
+        l.dataHora DESC;
+
+
+CREATE VIEW mediaPorHorario AS
+SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,
+	DATE_FORMAT(dataHora, '%H:00') AS hora, 
+    DATE_FORMAT(dataHora, '%Y-%m-%d') AS data,
+       AVG(valor) AS media_valor
+FROM log
+WHERE dataHora BETWEEN '2024-11-03%' AND '2024-11-09 23:59:59'
+  AND fkComponente = 1
+GROUP BY dia_semana, data, hora
+ORDER BY  data, hora desc;

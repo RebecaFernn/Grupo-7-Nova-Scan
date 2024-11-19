@@ -35,9 +35,7 @@ function listarMaquinas() {
 }
 
 //Listando os componentes da máquina no select
-
 var listaGlobalComponentes = []
-
 
 function listarComponentes() {
     var idSelecionado = comboBoxMaquinas.value

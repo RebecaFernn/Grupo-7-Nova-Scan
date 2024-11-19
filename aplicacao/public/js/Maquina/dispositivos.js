@@ -61,17 +61,16 @@ function listarMaquinas() {
                     </div>`;
                 }
             }
-
             const elementoPai = document.getElementById('boxmaquinas');
             elementoPai.innerHTML = maquinasHTML;
             console.log(elementoPai);
 
 
-            const topMaquinas = document.getElementsByName('topGraficoAlerta')
+            const topMaquinas = document.getElementsByName('topGraficoAlerta') 
             let nomeDaMaquina = maquina.nome
             console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${nomeDaMaquina}`)
             topMaquinas.innerHTML = nomeDaMaquina
-
+            
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -397,7 +396,7 @@ function listandoAlertasMaquinas() {
                 console.log(listaAlertas[i])
                 if (listaAlertas[i].tipo == "Processador") {
                     alertas += `
-                    <div class="top-low">
+                    <div class="top-low")">
                         <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                         <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                         <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -406,7 +405,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Mémoria") {
                     alertas += `
-                        <div class="mid-low">
+                        <div class="mid-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -415,7 +414,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Armazenamento") {
                     alertas += `
-                        <div class="low-low">
+                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -424,7 +423,7 @@ function listandoAlertasMaquinas() {
                 }
                 else {
                     alertas += `
-                        <div class="low-low">
+                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -477,7 +476,7 @@ function listandoAlertasComponenteMaquina() {
 
                 if (listaAlertasDisparado[i].tipo == "Processador") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
                 </div>
@@ -485,7 +484,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Memória") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -493,7 +492,7 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
@@ -501,9 +500,9 @@ function listandoAlertasComponenteMaquina() {
                 }
                 else {
                     alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta()">
+                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
                 </div>
             `
                 }
@@ -516,6 +515,120 @@ function listandoAlertasComponenteMaquina() {
             console.log("Erro!: ", error)
         })
 }
+
+
+//Funções Mônica
+function visualizarGraficoAlerta(descricao){
+    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+    fundoInformacoesmaquina.style.display = 'none';
+    const conteudoMaquinas = document.getElementById('conteudoMaquinas');
+    conteudoMaquinas.style.display = 'none';
+    const GraficoAlerta = document.getElementById('GraficoAlerta');
+    GraficoAlerta.style.display = 'flex';
+
+
+    //Mandando o id do log para a função grafico alerta
+    graficoAlerta(descricao)
+}
+
+function graficoAlerta(descricao){
+    fetch(`/maquinas/graficoAlerta/${descricao}`,{
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function(resposta){
+        return resposta.json()
+    })
+    .then(function(dados){
+        console.log("Dados do alerta clicado: ", dados)
+        
+        const ctx = document.getElementById('cpuChart').getContext('2d');
+
+        listaData = []
+        listaDados = []
+        i = 0
+        a = 0
+        while (i < dados.length){
+            //Logica de formatar data para enviar dentro da lista
+            console.log(dados[i].intervalo_inicio)
+             const data = new Date(listaData)
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaData.push(dataFormatada);
+            listaData.push(dados[i].intervalo_inicio)
+            i++
+        }
+
+        // horário errado, data correta
+        while (a < dados.length){
+            console.log(dados[a].pico_maximo)
+             const data = new Date(listaDados)
+
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+             };
+
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaDados.push(dataFormatada);
+            listaDados.push(dados[a].pico_maximo)
+            a++
+        }
+
+        console.log("Lista Dados", listaDados)
+        console.log("Lista Tempo", listaData)
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: listaData,
+                datasets: [{
+                    label: dados[0].descricao,
+                    data: listaDados,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    pointBackgroundColor: 'red',
+                    borderWidth: 2,
+                    tension: 0.12
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+
+        let maquinaNome = document.getElementById('nomeMaquina')
+        maquinaNome.innerHTML = dados[0].nome
+
+        let maquinaDescricao = document.getElementById('descricao')
+        maquinaDescricao.innerHTML = dados[0].descricao
+
+        let maquinaDataHora = document.getElementById('intervalo_inicio')
+        maquinaDataHora.innerHTML = dados[0].intervalo_inicio
+
+    
+    })
+    .catch(function(error){
+        console.log("Deu erro na função graficoAlerta()", error)
+    })
+}
+
+
+
 // Ram
 var listaRam = []
 var dataRam = []
@@ -532,8 +645,6 @@ var ArmazenamentoTotal;
 var perdaPacotes = []
 var pacotesEnviados = []
 var pacotesRecebidos = []
-
-
 
 
 function listandologMaquinas() {

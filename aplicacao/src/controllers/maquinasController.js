@@ -174,6 +174,23 @@ function listarAlertasComponentesMaquina(req, res) {
 
 }
 
+function graficoAlerta(req, res) {
+  var descricaoLog = req.params.descricao
+
+  if (descricaoLog == undefined) {
+    res.status(400).send("o id do alerta esta indefinido")
+  }
+  else {
+    maquinasModel.graficoAlerta(descricaoLog)
+      .then(function (resultado) {
+        res.status(200).json(resultado)
+      })
+      .catch(function (erro) {
+        res.status(500).json(erro.sqlMessage)
+      })
+  }
+
+}
 
 function listarLogMaquina(req, res) {
   var idDispositivo = req.params.dispositivo; // Vem da rota.
@@ -206,9 +223,6 @@ function listarLogMaquina(req, res) {
       })
   }
 }
-
-
-
 module.exports = {
   lista,
   atualizarNome,
@@ -219,5 +233,6 @@ module.exports = {
   listaAlertasMaquina,
   listarAlertasComponentesMaquina,
   listaSelect,
-  listarLogMaquina
+  listarLogMaquina,
+  graficoAlerta,
 }
