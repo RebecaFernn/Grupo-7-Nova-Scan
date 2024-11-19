@@ -1,14 +1,25 @@
-window.onload = obterDadosGrafico2;
+function mostrar() {
 
-function obterDadosGrafico2() {
+    var idEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    var tipoDispositivo = componente.value
+
+    obterDadosGrafico2(idEmpresa, tipoDispositivo)
+    
+} 
+
+function obterDadosGrafico2(idEmpresa, tipoDispositivo) {
 
 
-    fetch(`/rebeca/grafico`, { cache: 'no-store' })
+    const url = `/rebeca/grafico?empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+
+    console.log(url)
+
+    fetch(url, { cache: 'no-store' })
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse(); // Reverter para garantir a ordem correta, se necessário
+                    // resposta.reverse(); // Reverter para garantir a ordem correta, se necessário
 
                     plotarGrafico2(resposta);
                 });
