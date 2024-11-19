@@ -551,6 +551,7 @@ function graficoAlerta(descricao){
             i++
         }
 
+        // horário errado, data correta
         while (a < dados.length){
             console.log(dados[a].pico_maximo)
              const data = new Date(listaDados)
@@ -599,8 +600,8 @@ function graficoAlerta(descricao){
         let maquinaDescricao = document.getElementById('descricao')
         maquinaDescricao.innerHTML = dados[0].descricao
 
-        let maquinaDataHora = document.getElementById('dataHora')
-        maquinaDataHora.innerHTML = dados[0].dataHora
+        let maquinaDataHora = document.getElementById('intervalo_inicio')
+        maquinaDataHora.innerHTML = dados[0].intervalo_inicio
 
     
     })
