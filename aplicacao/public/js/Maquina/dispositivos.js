@@ -452,9 +452,17 @@ function listandoAlertasComponenteMaquina() {
             const elementoPai = document.getElementById('right-informacoes');
             elementoPai.innerHTML = "";
 
+            const alertaCPU = document.getElementById('alertaDaCPU');
+            alertaCPU.innerHTML = "";
 
-  
+            const alertaRAM = document.getElementById('alertaDaRAM');
+            alertaRAM.innerHTML = "";
 
+            const alertaMemoria = document.getElementById('alertaDaMemoria');
+            alertaMemoria.innerHTML = "";
+
+            const alertaREDE = document.getElementById('alertaDaREDE');
+            alertaREDE.innerHTML = "";
 
             let alertasDisparados = ""
 
@@ -485,7 +493,12 @@ function listandoAlertasComponenteMaquina() {
                 </div>
             `
 
-                
+            alertaCPU.innerHTML += `
+            <div class="alerts" id="alertaDaRAM">
+             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
+            </div>
+            `
+
                 }
                 else if (listaAlertasDisparado[i].tipo == "Memória") {
                     alertasDisparados += `
@@ -494,6 +507,11 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
             `
+
+            alertaRAM.innerHTML += `
+            <div class="alerts" id="alertaDaRAM">
+            <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
+            </div>`
             
                 }
                 else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
@@ -503,6 +521,10 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
             `
+            alertaMemoria.innerHTML += `
+                    <div class="alerts" id="alertaDaRAM">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
+                    </div>`
 
                 }
                 else {
@@ -512,6 +534,10 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
                 </div>
             `
+            alertaREDE.innerHTML += `
+            <div class="alerts" id="alertaDaRAM">
+            <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
+            </div>`
       
                 }
 
@@ -783,9 +809,9 @@ function listandologMaquinas() {
             console.log("Erro!: ", error)
         })
 
-        setInterval(() => {
-            listandologMaquinas();
-        }, 5000);
+        // setInterval(() => {
+        //     listandologMaquinas();
+        // }, 5000);
 }
 
 
