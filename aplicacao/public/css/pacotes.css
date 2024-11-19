@@ -71,7 +71,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
   
-.placeholder {
+#myChart-Bytes, #myChart-Maquinas,#myChart-Pacotes {
     height: 200px;
     background-color: #eee;
     display: flex;
