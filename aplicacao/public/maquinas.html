@@ -120,7 +120,7 @@
             </div>
             <div class="descricaoGrafico" id="descricaoGrafico">
                 <p id="descricao"><strong>Problema:</strong> </p>
-                    <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
+                <p id="intervalo_inicio"><strong>Data e Hora:</strong> </p>
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -138,7 +138,7 @@
                 </div> -->
             </div>
             <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
-            
+
         </div>
 
 
@@ -222,10 +222,10 @@
                     <div class="graficoCPU" id="graficoCPU">
                         <div class="info-dispositivo">
                             <div class="uso-atual" id="USO-CPU">
-                               
+
                             </div>
                             <div class="qtd-uso" id="velocidade-CPU">
-                      
+
                             </div>
                             <div class="qtd-total">
                                 <p>Nucleos</p>
@@ -239,19 +239,22 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico"></canvas>
+                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+
+                            </div>
                         </div>
                     </div>
 
                     <div class="graficoRAM" id="graficoRAM">
                         <div class="info-dispositivo">
                             <div class="uso-atual" id="porcentagemRAM">
-                               
+
                             </div>
                             <div class="qtd-uso" id="USO-RAM">
-                        
+
                             </div>
                             <div class="qtd-total" id="Total-RAM">
-                               
+
                             </div>
                             <div class="status">
                                 <p>Status</p>
@@ -261,6 +264,9 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico2"></canvas>
+                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+
+                            </div>
                         </div>
 
                     </div>
@@ -272,8 +278,8 @@
                                 <p><strong>50%</strong> </p>
                             </div>
                             <div class="qtd-uso">
-                            <p>Em uso</p>
-                            <p><strong>10000gb</strong></p>
+                                <p>Em uso</p>
+                                <p><strong>10000gb</strong></p>
                             </div>
                             <div class="qtd-total">
                                 <p>Total</p>
@@ -287,6 +293,9 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico3"></canvas>
+                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+
+                            </div>
                         </div>
                     </div>
 
@@ -297,10 +306,10 @@
                                 <p><strong>50%</strong> </p>
                             </div>
                             <div class="qtd-uso" id="Rede-enviados">
-                            
+
                             </div>
                             <div class="qtd-total" id="Rede-recebidos">
-                               
+
                             </div>
                             <div class="status">
                                 <p>Status</p>
@@ -310,6 +319,9 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico4"></canvas>
+                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+
+                            </div>
                         </div>
                     </div>
 
@@ -320,10 +332,60 @@
 
 
             </div>
-            <div class="alertasDaMaquina" id="alertasDaMaquina">
+
+
+        </div>
+
+
+        <div onclick="fecharInfomaquina()" class="fundoInfomaquina" id="fundo-alertas">
+            <div class="alertas-componentes" onclick="pararPropagacao()">
+                <button onclick="voltar2()" class="btn-voltar2"><img src="./img/voltar.svg" alt=""> Voltar aos gráficos
+                </button>
+
+                <div class="box-alertas-pai">
+                    <div class="alertas-box">
+                        <div class="alertas-cpu">
+                            <h3>CPU</h3>
+                            <div id="alertaDaCPU">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="alertas-box">
+                        <div class="alertas-ram">
+                            <h3>RAM</h3>
+                            <div id="alertaDaRAM">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alertas-box">
+                        <div class="alertas-memoria">
+                            <h3>Memória</h3>
+                            <div id="alertaDaMemoria">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="alertas-box">
+                        <div class="alertas-rede">
+                            <h3>Rede</h3>
+                            <div id="alertaDaREDE">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
             </div>
         </div>
+
 
 
         <div onclick="fecharCadastrar()" class="fundoCadastrar" id="fundoCadastrar">
@@ -396,6 +458,12 @@
             const fundoInfomaquina = document.getElementById('fundoInfomaquina');
             fundoInfomaquina.style.display = 'none';
         }
+        function voltar2() {
+            const fundoInformacoesmaquina = document.getElementById('fundoInfomaquina');
+            fundoInformacoesmaquina.style.display = 'flex';
+            const funfoAlertas = document.getElementById('fundo-alertas');
+            funfoAlertas.style.display = 'none';
+        }
 
         function grafico() {
             const fundoInfomaquina = document.getElementById('fundoInfomaquina');
@@ -409,6 +477,13 @@
                 fundoInfomaquina.style.display = 'none';
                 fundoInformacoesmaquina.style.display = 'flex';
             }
+        }
+
+        function chamarDivAlertas(){
+            const fundoInformacoesmaquina = document.getElementById('fundoInfomaquina');
+            fundoInformacoesmaquina.style.display = 'none';
+            const funfoAlertas = document.getElementById('fundo-alertas');
+            funfoAlertas.style.display = 'flex';
         }
 
 
@@ -451,8 +526,8 @@
         }
 
 
-      
-        
+
+
         // var lista = [];
         // var labels = [];
 
@@ -552,7 +627,7 @@
 
         // --------grafico ram -------------
 
-    
+
         const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
         const meuGrafico2 = new Chart(ctx2, {
             type: 'line',
