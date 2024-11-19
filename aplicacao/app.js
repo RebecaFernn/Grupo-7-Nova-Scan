@@ -1,5 +1,5 @@
 // var ambiente_processo = 'producao';
- 
+
 var ambiente_processo = 'desenvolvimento';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
@@ -11,10 +11,31 @@ require("dotenv").config({ path: caminho_env });
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
+var WebSocket = require("ws")
+var http = require("http");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
 var app = express();
+var server = http.createServer(app);
+var wss = new WebSocket.Server({ server })
+
+wss.on('connection', (socket) => {
+    console.log('Novo cliente WebSocket conectado')
+
+    socket.on('message', (mensagem) => {
+        socket.send('Mensagem Recebida!')
+        console.log('Mensagem recebida do cliente', mensagem)
+    })
+
+    socket.on('close', () => {
+        console.log('Cliente Websocket desconectado')
+    })
+})
+var PORT = 8080
+server.listen(PORT, () => {
+    console.log(`Servidor HTTP e WebSocket rodando na porta ${PORT}`)
+})
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
@@ -23,6 +44,7 @@ var maquinasRouter = require("./src/routes/maquinas");
 var alertasRouter = require("./src/routes/alertas");
 var rebecaRouter = require("./src/routes/rebeca");
 var kaueRouter = require("./src/routes/kaue")
+var lucasRouter = require("./src/routes/lucas")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,6 +59,7 @@ app.use("/maquinas", maquinasRouter);
 app.use("/alertas", alertasRouter);
 app.use("/rebeca", rebecaRouter);
 app.use("/kaue", kaueRouter)
+app.use("/lucas", lucasRouter)
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
