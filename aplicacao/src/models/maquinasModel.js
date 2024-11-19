@@ -87,8 +87,6 @@ function listarAlertasComponentesMaquina(idDispositivo) {
   return database.executar(instrucaoSql);
 }
 
-
-
 function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa){
   console.log("Usando a função listarLogMaquina() na model valores a serem usados:", idDispositivo, fkEmpresa, idUsuario);
   var instrucaoSql = `SELECT 
