@@ -15,6 +15,13 @@ CREATE TABLE dispositivo (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
 );
 
+CREATE TABLE tempoAtividade (
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    fkDispositivo INT,
+    bootTime DATETIME,
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+);
+
 CREATE TABLE componente (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
