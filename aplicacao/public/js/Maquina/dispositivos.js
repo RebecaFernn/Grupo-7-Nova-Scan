@@ -485,13 +485,7 @@ function listandoAlertasComponenteMaquina() {
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
 
-                if (listaAlertasDisparado[i].tipo == "Processador") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
-                </div>
-            `
+               
 
             alertaCPU.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
@@ -499,48 +493,24 @@ function listandoAlertasComponenteMaquina() {
             </div>
             `
 
-                }
-                else if (listaAlertasDisparado[i].tipo == "Memória") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
-                </div>
-            `
-
             alertaRAM.innerHTML += `
-            <div class="alerts" id="alertaDaRAM">
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
             </div>`
             
-                }
-                else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
-                </div>
-            `
+               
             alertaMemoria.innerHTML += `
-                    <div class="alerts" id="alertaDaRAM">
+                    <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
                     </div>`
 
-                }
-                else {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
-                </div>
-            `
+               
             alertaREDE.innerHTML += `
-            <div class="alerts" id="alertaDaRAM">
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
             </div>`
       
-                }
-
+                
             }
 
             elementoPai.innerHTML += alertasDisparados
