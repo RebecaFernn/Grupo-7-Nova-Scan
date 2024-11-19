@@ -761,10 +761,10 @@ function listandologMaquinas() {
             console.log("AQUI NO ERRO RYAN")
             console.log("Erro!: ", error)
         })
-}
 
-setInterval(() => {
-    listandologMaquinas();
-}, 5000);
+        setInterval(() => {
+            listandologMaquinas();
+        }, 5000);
+}
 
 
