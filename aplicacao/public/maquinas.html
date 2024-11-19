@@ -75,10 +75,10 @@
                 </select>
             </div>
             <div class="boxmaquinas" id="boxmaquinas">
-                <div class="maquinasOK" onclick="maquina()">
+                <!-- <div class="maquinasOK" onclick="maquina()">
                     <p>Self-Checkout 1</p>
                     <img src="./img/ok.svg" class="imgMaquina" alt="">
-                </div>
+                </div> -->
                 <!--
                 <div class="maquinasOK" onclick="maquina()">
                     <p>Self-Checkout 2</p>
@@ -220,19 +220,97 @@
                 <div class="graficos-Tempo-Real">
 
                     <div class="graficoCPU" id="graficoCPU">
-                        .
+                        <div class="info-dispositivo">
+                            <div class="uso-atual" id="USO-CPU">
+                               
+                            </div>
+                            <div class="qtd-uso" id="velocidade-CPU">
+                      
+                            </div>
+                            <div class="qtd-total">
+                                <p>Nucleos</p>
+                                <p><strong>1.5Ghz</strong></p>
+                            </div>
+                            <div class="status">
+                                <p>Status</p>
+                                <img src="./img/bom.svg" alt="">
+                            </div>
+
+                        </div>
+                        <div class="grafico-cpu">
+                            <canvas id="meuGrafico"></canvas>
+                        </div>
                     </div>
 
                     <div class="graficoRAM" id="graficoRAM">
+                        <div class="info-dispositivo">
+                            <div class="uso-atual" id="porcentagemRAM">
+                               
+                            </div>
+                            <div class="qtd-uso" id="USO-RAM">
+                        
+                            </div>
+                            <div class="qtd-total" id="Total-RAM">
+                               
+                            </div>
+                            <div class="status">
+                                <p>Status</p>
+                                <img src="./img/bom.svg" alt="">
+                            </div>
+
+                        </div>
+                        <div class="grafico-cpu">
+                            <canvas id="meuGrafico2"></canvas>
+                        </div>
 
                     </div>
 
                     <div class="graficoMEM" id="graficoMEM">
+                        <div class="info-dispositivo">
+                            <div class="uso-atual">
+                                <p>MEM</p>
+                                <p><strong>50%</strong> </p>
+                            </div>
+                            <div class="qtd-uso">
+                            <p>Em uso</p>
+                            <p><strong>10000gb</strong></p>
+                            </div>
+                            <div class="qtd-total">
+                                <p>Total</p>
+                                <p><strong>20000gb</strong></p>
+                            </div>
+                            <div class="status">
+                                <p>Status</p>
+                                <img src="./img/bom.svg" alt="">
+                            </div>
 
+                        </div>
+                        <div class="grafico-cpu">
+                            <canvas id="meuGrafico3"></canvas>
+                        </div>
                     </div>
 
                     <div class="graficoREDE" id="graficoREDE">
+                        <div class="info-dispositivo">
+                            <div class="uso-atual">
+                                <p>REDE</p>
+                                <p><strong>50%</strong> </p>
+                            </div>
+                            <div class="qtd-uso" id="Rede-enviados">
+                            
+                            </div>
+                            <div class="qtd-total" id="Rede-recebidos">
+                               
+                            </div>
+                            <div class="status">
+                                <p>Status</p>
+                                <img src="./img/bom.svg" alt="">
+                            </div>
 
+                        </div>
+                        <div class="grafico-cpu">
+                            <canvas id="meuGrafico4"></canvas>
+                        </div>
                     </div>
 
                 </div>
@@ -240,6 +318,9 @@
 
 
 
+
+            </div>
+            <div class="alertasDaMaquina" id="alertasDaMaquina">
 
             </div>
         </div>
@@ -369,66 +450,69 @@
             fundoInformacoesmaquina.style.display = 'flex';
         }
 
+
+      
+        
         // var lista = [];
         // var labels = [];
 
-        // const ctx = document.getElementById('meuGrafico').getContext('2d');
-        // const meuGrafico = new Chart(ctx, {
-        //     type: 'line',
-        //     data: {
-        //         labels: labels,
-        //         datasets: [{
-        //             label: 'CPU',
-        //             data: lista,
-        //             borderColor: 'rgb(96, 231, 231)',
-        //             backgroundColor: 'rgba(75, 192, 192, 0.5)',
-        //             borderWidth: 4,
-        //             fill: true,
-        //             pointRadius: 0,
-        //         }]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         maintainAspectRatio: false,
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true,
-        //                 min: 0,
-        //                 max: 100,
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             },
-        //             x: {
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         plugins: {
-        //             legend: {
-        //                 display: false,
-        //                 labels: {
-        //                     font: {
-        //                         size: 16,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
+        const ctx = document.getElementById('meuGrafico').getContext('2d');
+        const meuGrafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: listaCPU,
+                datasets: [{
+                    label: 'CPU',
+                    data: listaCPU,
+                    borderColor: 'rgb(96, 231, 231)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-        // // Loop para atualizar os dados
+        // Loop para atualizar os dados
         // for (var i = 0; i < 100; i++) {
         //     (function (i) {
         //         setTimeout(function () {
@@ -466,68 +550,64 @@
 
 
 
-        // // --------grafico ram -------------
+        // --------grafico ram -------------
 
-        // var lista2 = [];
-        // var labels2 = [];
+    
+        const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
+        const meuGrafico2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: listaRam,
+                datasets: [{
+                    label: 'RAM',
+                    data: listaRam,
+                    borderColor: 'rgb(108, 126, 212)',
+                    backgroundColor: 'rgba(92, 107, 179, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-        // const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
-        // const meuGrafico2 = new Chart(ctx2, {
-        //     type: 'line',
-        //     data: {
-        //         labels: labels2,
-        //         datasets: [{
-        //             label: 'RAM',
-        //             data: lista2,
-        //             borderColor: 'rgb(108, 126, 212)',
-        //             backgroundColor: 'rgba(92, 107, 179, 0.5)',
-        //             borderWidth: 4,
-        //             fill: true,
-        //             pointRadius: 0,
-        //         }]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         maintainAspectRatio: false,
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true,
-        //                 min: 0,
-        //                 max: 100,
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             },
-        //             x: {
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         plugins: {
-        //             legend: {
-        //                 display: false,
-        //                 labels: {
-        //                     font: {
-        //                         size: 16,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
-
-        // // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
         // for (var c = 0; c < 100; c++) {
         //     (function (c) {
         //         setTimeout(function () {
@@ -566,66 +646,64 @@
 
 
 
-        // var lista3 = [];
-        // var labels3 = [];
 
-        // const ctx3 = document.getElementById('meuGrafico3').getContext('2d');
-        // const meuGrafico3 = new Chart(ctx3, {
-        //     type: 'line',
-        //     data: {
-        //         labels: labels2,
-        //         datasets: [{
-        //             label: 'RAM',
-        //             data: lista2,
-        //             borderColor: 'rgb(31, 108, 108)',
-        //             backgroundColor: 'rgb(31, 108, 108, 0.5)',
-        //             borderWidth: 4,
-        //             fill: true,
-        //             pointRadius: 0,
-        //         }]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         maintainAspectRatio: false,
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true,
-        //                 min: 0,
-        //                 max: 100,
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             },
-        //             x: {
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         plugins: {
-        //             legend: {
-        //                 display: false,
-        //                 labels: {
-        //                     font: {
-        //                         size: 16,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
+        const ctx3 = document.getElementById('meuGrafico3').getContext('2d');
+        const meuGrafico3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: listaMemoria,
+                datasets: [{
+                    label: 'RAM',
+                    data: listaMemoria,
+                    borderColor: 'rgb(31, 108, 108)',
+                    backgroundColor: 'rgb(31, 108, 108, 0.5)',
+                    borderWidth: 4,
+                    fill: true,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-        // // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
+        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
         // for (var c = 0; c < 100; c++) {
         //     (function (c) {
         //         setTimeout(function () {
@@ -668,79 +746,74 @@
 
 
 
-        // var Listaenviados = [];
-        // var Listarecebidos = [];
-        // var labels4 = [];
 
-        // const ctx4 = document.getElementById('meuGrafico4').getContext('2d');
-        // const meuGrafico4 = new Chart(ctx4, {
-        //     type: 'line',
-        //     data: {
-        //         labels: labels4,
-        //         datasets: [
-        //             {
-        //                 label: 'Enviados',
-        //                 data: Listaenviados,
-        //                 borderColor: 'rgb(248, 100, 199)',
-        //                 backgroundColor: 'rgba(31, 108, 108, 0)',
-        //                 borderWidth: 4,
-        //                 fill: true,
-        //                 pointRadius: 0,
-        //                 borderDash: [10, 5]
-        //             },
-        //             {
-        //                 label: 'Recebidos',
-        //                 data: Listarecebidos,
-        //                 borderColor: 'rgb(248, 100, 199, 0.7)',
-        //                 backgroundColor: 'rgb(248, 100, 199, 0.3)',
-        //                 borderWidth: 4,
-        //                 fill: true,
-        //                 pointRadius: 0,
-        //             }
-        //         ]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         maintainAspectRatio: false,
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true,
-        //                 min: 0,
-        //                 max: 50,
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             },
-        //             x: {
-        //                 ticks: {
-        //                     font: {
-        //                         size: 14,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         plugins: {
-        //             legend: {
-        //                 display: true,
-        //                 labels: {
-        //                     font: {
-        //                         size: 16,
-        //                         weight: 'bold',
-        //                         family: 'Montserrat'
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
+        const ctx4 = document.getElementById('meuGrafico4').getContext('2d');
+        const meuGrafico4 = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: pacotesEnviados,
+                datasets: [
+                    {
+                        label: 'Enviados',
+                        data: pacotesEnviados,
+                        borderColor: 'rgb(248, 100, 199)',
+                        backgroundColor: 'rgba(31, 108, 108, 0)',
+                        borderWidth: 4,
+                        fill: true,
+                        pointRadius: 0,
+                        borderDash: [10, 5]
+                    },
+                    {
+                        label: 'Recebidos',
+                        data: pacotesRecebidos,
+                        borderColor: 'rgb(248, 100, 199, 0.7)',
+                        backgroundColor: 'rgb(248, 100, 199, 0.3)',
+                        borderWidth: 4,
+                        fill: true,
+                        pointRadius: 0,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-        // // Loop para atualizar os dados do gráfico REDE
+        // Loop para atualizar os dados do gráfico REDE
         // for (var c = 0; c < 100; c++) {
         //     (function (c) {
         //         setTimeout(function () {

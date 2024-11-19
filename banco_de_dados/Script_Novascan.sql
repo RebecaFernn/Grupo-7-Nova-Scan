@@ -15,6 +15,13 @@ CREATE TABLE dispositivo (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
 );
 
+CREATE TABLE tempoAtividade (
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    fkDispositivo INT,
+    bootTime DATETIME,
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+);
+
 CREATE TABLE componente (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
@@ -209,6 +216,49 @@ WHERE
     l_max.rn = 1
 ORDER BY 
     c.tipo, l_max.descricao;
+
+
+-- Select Ryan
+CREATE VIEW graficoTempoReal as 
+    SELECT 
+        u.id AS idUsuario,
+        u.nome AS nomeUsuario,
+        e.id AS idEmpresa,
+        e.razaoSocial AS nomeEmpresa,
+        d.id AS idDispositivo,
+        d.nome AS nomeDispositivo,
+        c.id AS idComponente,
+        c.nome AS nomeComponente,
+        c.tipo AS tipoComponente,
+        l.id AS idLog,
+        l.valor,
+        l.unidadeDeMedida,
+        l.dataHora AS dataHoraLog,
+        l.descricao AS descricaoLog,
+        l.eAlerta,
+        a.id AS idAlerta,
+        ta.tipo AS tipoAlerta,
+        a.minIntervalo,
+        a.maxIntervalo
+    FROM 
+        usuario AS u
+    JOIN 
+        empresa AS e ON u.fkEmpresa = e.id
+    JOIN 
+        dispositivo AS d ON d.fkEmpresa = e.id
+    JOIN 
+        componente AS c ON c.fkDispositivo = d.id
+    LEFT JOIN 
+        log AS l ON l.fkComponente = c.id AND l.fkDispositivo = d.id
+    LEFT JOIN 
+        alerta AS a ON a.fkComponente = c.id AND a.fkDispositivo = d.id AND a.fkUsuario = u.id
+    LEFT JOIN 
+        tipoAlerta AS ta ON a.fkTipoAlerta = ta.id
+    WHERE 
+        u.id = 1 AND e.id = 1 AND d.id = 1
+    ORDER BY 
+
+        l.dataHora DESC;
 
 CREATE VIEW mediaPorHorario AS
 SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,

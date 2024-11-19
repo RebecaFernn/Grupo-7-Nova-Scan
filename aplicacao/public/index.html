@@ -280,36 +280,28 @@
     </section>
     <!-- Sessao 4 -->
     <section class="Sessao4" id="Sessao4">
-        <div class="boxForm">
-            <div class="titulosForm">
-                <div class="titulo1">
-                    Entre em contato com a gente
+       
+            <form id="contactForm" action="https://formcarry.com/s/PzNfCbTnCAM" method="POST" class="boxForm">
+                <div class="titulosForm">
+                    <div class="titulo1">Entre em contato com a gente</div>
+                    <div class="titulo2">Como podemos te ajudar?</div>
                 </div>
-                <div class="titulo2">
-                    Como podemos te ajudar?
+                <div class="form">
+                    <div class="informacoesPessoais">
+                        <input type="text" name="nome" placeholder=" Nome: " class="inputNome" required>
+                        <input type="text" name="sobrenome" placeholder=" Sobrenome: " class="inputSobrenome" required>
+                    </div>
+                    <input type="email" name="email" class="inputEmail" placeholder=" Email: " required>
+                    <textarea name="mensagem" placeholder="Digite sua mensagem: " class="textareaMensagem" required></textarea>
+                    <button type="submit" class="buttonEnviar" onclick="contato()">Enviar Mensagem</button>
                 </div>
-
-            </div>
-            <div class="form">
-                <div class="informacoesPessoais">
-                    <input type="text" placeholder=" Nome: " class="inputNome">
-                    <input type="text" placeholder=" Sobrenome: " class="inputSobrenome">
-                </div>
-                <input type="text" class="inputEmail" placeholder=" Email: ">
-                <textarea name="" id="" placeholder="Digite sua mensagem: " class="textareaMensagem"></textarea>
-                <button class="buttonEnviar">Enviar Mensagem</button>
-            </div>
-        </div>
+            </form>
+       
         <div class="backgroudSessao4">
-
-            <div class="tituloNovaScan">
-                NOVASCAN
-            </div>
+            <div class="tituloNovaScan">NOVASCAN</div>
             <div class="fraseDeEfeito">
-                “Monitoramento adequado com <br>
-                o cuidado que você merece”
+                “Monitoramento adequado com <br> o cuidado que você merece”
             </div>
-
         </div>
     </section>
     <!-- Sessao 5 -->
@@ -423,5 +415,28 @@
     });
 
 
+
+    function contato(){
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão para fazer a submissão assíncrona
+
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert('Mensagem enviada com sucesso!');
+                this.reset(); // Limpa o formulário após o envio
+            } else {
+                alert('Erro ao enviar a mensagem, tente novamente.');
+            }
+        }).catch(() => {
+            alert('Erro ao enviar a mensagem, tente novamente.');
+        });
+    });
+}
 
 </script>

@@ -31,10 +31,6 @@ router.get("/graficoAlerta/:descricao", function(req, res){
     maquinasController.graficoAlerta(req, res);
 })
 
-router.get("/updateChart/:newDataPoint", function(req, res){
-    maquinasController.updateChart(req, res);
-})
-
 router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })
@@ -45,6 +41,11 @@ router.post("/desativarDispositivo/", function(req,res){
 
 router.post("/ativarDispositivo/", function(req,res){
     maquinasController.ativarDispositivo(req,res);
+})
+
+// logs maquina
+router.get("/listarlogMaquina/:dispositivo", function(req,res){
+    maquinasController.listarLogMaquina(req,res);
 })
 
 module.exports = router;
