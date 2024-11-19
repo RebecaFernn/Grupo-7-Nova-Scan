@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function grafico(idEmpresa, tipoDispositivo) {
+function grafico(inicio, fim, idEmpresa, tipoDispositivo) {
     // Monta a instrução SQL usando os parâmetros fornecidos
     var instrucaoSql = ` 
         SELECT 
@@ -11,7 +11,7 @@ function grafico(idEmpresa, tipoDispositivo) {
         FROM log
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
-        WHERE log.dataHora BETWEEN '2024-11-03 00:00:00' AND '2024-11-09 23:59:59'
+        WHERE log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
             AND componente.tipo = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = ${idEmpresa}
         GROUP BY 

@@ -1,16 +1,58 @@
+// Select das datas:
+
+function gerarOpcoesSemanas() {
+    const select = document.getElementById('dataSelect');
+    const hoje = new Date();
+    const totalSemanas = 4; // Quantidade de semanas exibidas no select (atual + 3 anteriores)
+
+    for (let i = 0; i < totalSemanas; i++) {
+        const inicioSemana = new Date(hoje);
+        inicioSemana.setDate(hoje.getDate() - hoje.getDay() - (i * 7)); // Domingo da semana atual ou anterior
+
+        const fimSemana = new Date(inicioSemana);
+        fimSemana.setDate(inicioSemana.getDate() + 6); // Sábado da semana
+
+        const inicioFormatado = inicioSemana.toISOString().split('T')[0];
+        const fimFormatado = fimSemana.toISOString().split('T')[0];
+
+        const option = document.createElement('option');
+        option.value = `${inicioFormatado} a ${fimFormatado}`;
+        option.textContent = `${inicioFormatado} a ${fimFormatado}`;
+
+        if (i === 0) {
+            option.selected = true; // Semana atual como padrão
+        }
+
+        select.appendChild(option);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', gerarOpcoesSemanas);
+
+
+// Gráfico :
+
 function mostrar() {
+    const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém o ID da empresa
+    const tipoDispositivo = document.getElementById('componente').value; // Obtém o tipo de dispositivo
+    const dataSelecionada = document.getElementById('dataSelect').value; // Data selecionada no select
 
-    var idEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    var tipoDispositivo = componente.value
+    // Divide a string no formato "AAAA-MM-DD a AAAA-MM-DD"
+    const [inicio, fim] = dataSelecionada.split(' a ');
 
-    obterDadosGrafico2(idEmpresa, tipoDispositivo)
-    
-} 
+    console.log(`Data de início: ${inicio}`);
+    console.log(`Data de fim: ${fim}`);
+    console.log(`ID da Empresa: ${idEmpresa}`);
+    console.log(`Tipo do Dispositivo: ${tipoDispositivo}`);
 
-function obterDadosGrafico2(idEmpresa, tipoDispositivo) {
+    // Chama a função para buscar os dados e atualizar o gráfico
+    obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo);
+}
+
+function obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo) {
 
 
-    const url = `/rebeca/grafico?empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+    const url = `/rebeca/grafico?inicio=${inicio}&fim=${fim}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
 
     console.log(url)
 
