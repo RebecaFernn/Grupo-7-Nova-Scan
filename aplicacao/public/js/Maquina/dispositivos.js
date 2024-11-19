@@ -1,5 +1,3 @@
-const { lista } = require("../../../src/models/maquinasModel")
-
 function listarMaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`, {
@@ -455,18 +453,7 @@ function listandoAlertasComponenteMaquina() {
             elementoPai.innerHTML = "";
 
 
-            //Alertas separados pelo componente
-            const alertaCPU = document.getElementById('alertaDaCPU');
-            alertaCPU.innerHTML = "";
-
-            const alertaRAM = document.getElementById('alertaDaRAM');
-            alertaRAM.innerHTML = "";
-
-            const alertaMemoria = document.getElementById('alertaDaMemoria');
-            alertaMemoria.innerHTML = "";
-
-            const alertaREDE = document.getElementById('alertaDaREDE');
-            alertaREDE.innerHTML = "";
+  
 
 
             let alertasDisparados = ""
@@ -498,11 +485,7 @@ function listandoAlertasComponenteMaquina() {
                 </div>
             `
 
-                    alertaCPU += `
-                    <div class="alerts" id="alertaDaRAM">
-                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
-                    </div>
-                    `
+                
                 }
                 else if (listaAlertasDisparado[i].tipo == "Memória") {
                     alertasDisparados += `
@@ -511,11 +494,7 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
             `
-                    alertaRAM += `
-                    <div class="alerts" id="alertaDaRAM">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
-                    </div>`
-
+            
                 }
                 else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
                     alertasDisparados += `
@@ -524,10 +503,7 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
                 </div>
             `
-                    alertaMemoria+= `
-                    <div class="alerts" id="alertaDaRAM">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
-                    </div>`
+
                 }
                 else {
                     alertasDisparados += `
@@ -536,10 +512,7 @@ function listandoAlertasComponenteMaquina() {
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
                 </div>
             `
-                alertaREDE += `
-                <div class="alerts" id="alertaDaRAM">
-                <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
-                </div>`
+      
                 }
 
             }
@@ -585,8 +558,7 @@ function graficoAlerta(descricao) {
             a = 0
             while (i < dados.length) {
                 //Logica de formatar data para enviar dentro da lista
-                console.log(dados[i].intervalo_inicio)
-                const data = new Date(listaData)
+                const data = new Date(dados[i].intervalo_inicio)
                 const opcoes = {
                     day: 'numeric',
                     month: 'numeric',
@@ -599,27 +571,12 @@ function graficoAlerta(descricao) {
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
                 listaData.push(dataFormatada);
-                listaData.push(dados[i].intervalo_inicio)
                 i++
             }
 
             // horário errado, data correta
             while (a < dados.length) {
                 console.log(dados[a].pico_maximo)
-                const data = new Date(listaDados)
-
-                const opcoes = {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                };
-
-                const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-                listaDados.push(dataFormatada);
                 listaDados.push(dados[a].pico_maximo)
                 a++
             }
@@ -652,50 +609,6 @@ function graficoAlerta(descricao) {
             let maquinaDescricao = document.getElementById('descricao')
             maquinaDescricao.innerHTML = dados[0].descricao
 
-            let maquinaDataHora = document.getElementById('intervalo_inicio')
-            maquinaDataHora.innerHTML = dados[0].intervalo_inicio
-
-            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-            listaData.push(dataFormatada);
-            i++
-        })
-
-        // horário errado, data correta
-        while (a < dados.length){
-            console.log(dados[a].pico_maximo)
-            listaDados.push(dados[a].pico_maximo)
-            a++
-        }
-
-            console.log("Lista Dados", listaDados)
-            console.log("Lista Tempo", listaData)
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: listaData,
-                    datasets: [{
-                        label: dados[0].descricao,
-                        data: listaDados,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        pointBackgroundColor: 'red',
-                        borderWidth: 2,
-                        tension: 0.12
-                    }]
-                },
-                options: {
-                    responsive: true,
-                }
-            });
-
-            let maquinaNome = document.getElementById('nomeMaquina')
-            maquinaNome.innerHTML = dados[0].nome
-
-            let maquinaDescricao = document.getElementById('descricao')
-            maquinaDescricao.innerHTML = dados[0].descricao
-
-
             maior = 0
             b = 0
             listaMaior = []
@@ -724,14 +637,13 @@ function graficoAlerta(descricao) {
             }
 
             let maquinaDataHora = document.getElementById('intervalo_inicio')
-            maquinaDataHora.innerHTML = listaMaior[0] 
+            maquinaDataHora.innerHTML = dados[0].intervalo_inicio
+        })
 
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
         })
 }
-
-
 
 // Ram
 var listaRam = []
