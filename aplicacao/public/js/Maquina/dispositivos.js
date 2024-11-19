@@ -534,38 +534,39 @@ function graficoAlerta(descricao){
         while (i < dados.length){
             //Logica de formatar data para enviar dentro da lista
             console.log(dados[i].intervalo_inicio)
-            // const data = new Date(dataHora)
+             const data = new Date(listaData)
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
 
-            //     const opcoes = {
-            //         year: 'numeric',
-            //         month: 'numeric',
-            //         day: 'numeric',
-            //         hour: '2-digit',
-            //         minute: '2-digit',
-            //         second: '2-digit',
-            //         hour12: false
-            //     };
-
-            //     const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaData.push(dataFormatada);
             listaData.push(dados[i].intervalo_inicio)
             i++
         }
 
         while (a < dados.length){
             console.log(dados[a].pico_maximo)
-            // const data = new Date(dataHora)
+             const data = new Date(listaDados)
 
-            //     const opcoes = {
-            //         year: 'numeric',
-            //         month: 'numeric',
-            //         day: 'numeric',
-            //         hour: '2-digit',
-            //         minute: '2-digit',
-            //         second: '2-digit',
-            //         hour12: false
-            //     };
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+             };
 
-            //     const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaDados.push(dataFormatada);
             listaDados.push(dados[a].pico_maximo)
             a++
         }
@@ -594,6 +595,12 @@ function graficoAlerta(descricao){
 
         let maquinaNome = document.getElementById('nomeMaquina')
         maquinaNome.innerHTML = dados[0].nome
+
+        let maquinaDescricao = document.getElementById('descricao')
+        maquinaDescricao.innerHTML = dados[0].descricao
+
+        let maquinaDataHora = document.getElementById('dataHora')
+        maquinaDataHora.innerHTML = dados[0].dataHora
 
     
     })

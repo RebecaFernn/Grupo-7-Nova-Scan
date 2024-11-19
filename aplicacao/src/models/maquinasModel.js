@@ -90,7 +90,7 @@ function listarAlertasComponentesMaquina(idDispositivo) {
 function graficoAlerta(descricaoLog) {
   console.log("Usando a função graficoAlerta")
   var instrucaoSql = `SELECT 
-    FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(dataHora) / 5) * 5) AS intervalo_inicio, -- Cria e exibe o início do intervalo
+    FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(dataHora) / 5) * 5) AS intervalo_inicio, 
     MAX(valor) AS pico_maximo,
     descricao,
     d.nome
