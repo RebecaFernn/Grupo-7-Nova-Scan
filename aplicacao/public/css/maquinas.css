@@ -930,7 +930,7 @@ canvas {
 
 #fundo-alertas {
 
-    display: flex;
+    display: none;
 }
 
 /* Alertas por componentes */
