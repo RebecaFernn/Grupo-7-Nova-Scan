@@ -494,7 +494,7 @@ function listandoAlertasComponenteMaquina() {
             `
 
             alertaCPU.innerHTML += `
-            <div class="alerts" id="alertaDaRAM">
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
              <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
             </div>
             `
