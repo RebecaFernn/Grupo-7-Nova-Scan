@@ -31,10 +31,6 @@ router.get("/graficoAlerta/:descricao", function(req, res){
     maquinasController.graficoAlerta(req, res);
 })
 
-router.get("/updateChart/:newDataPoint", function(req, res){
-    maquinasController.updateChart(req, res);
-})
-
 router.post("/atualizarNome/:fkEmpresa", function(req,res){
     maquinasController.atualizarNome(req,res);
 })

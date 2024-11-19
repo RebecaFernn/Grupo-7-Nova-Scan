@@ -15,6 +15,13 @@ CREATE TABLE dispositivo (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
 );
 
+CREATE TABLE tempoAtividade (
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    fkDispositivo INT,
+    bootTime DATETIME,
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+);
+
 CREATE TABLE componente (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
@@ -252,7 +259,6 @@ CREATE VIEW graficoTempoReal as
     ORDER BY 
 
         l.dataHora DESC;
-
 
 CREATE VIEW mediaPorHorario AS
 SELECT DATE_FORMAT(dataHora, '%W') AS dia_semana,

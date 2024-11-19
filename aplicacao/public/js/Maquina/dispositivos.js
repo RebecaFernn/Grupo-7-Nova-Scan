@@ -186,7 +186,6 @@ function maquina(id) {
     valoresComponentes();
     listandoAlertasMaquinas();
     listandoAlertasComponenteMaquina();
-    listandologMaquinas();
 }
 
 
@@ -654,8 +653,49 @@ function graficoAlerta(descricao) {
             let maquinaDataHora = document.getElementById('intervalo_inicio')
             maquinaDataHora.innerHTML = dados[0].intervalo_inicio
 
-
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaData.push(dataFormatada);
+            i++
         })
+
+        // horário errado, data correta
+        while (a < dados.length){
+            console.log(dados[a].pico_maximo)
+            listaDados.push(dados[a].pico_maximo)
+            a++
+        }
+
+            console.log("Lista Dados", listaDados)
+            console.log("Lista Tempo", listaData)
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: listaData,
+                    datasets: [{
+                        label: dados[0].descricao,
+                        data: listaDados,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        pointBackgroundColor: 'red',
+                        borderWidth: 2,
+                        tension: 0.12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                }
+            });
+
+            let maquinaNome = document.getElementById('nomeMaquina')
+            maquinaNome.innerHTML = dados[0].nome
+
+            let maquinaDescricao = document.getElementById('descricao')
+            maquinaDescricao.innerHTML = dados[0].descricao
+
+            let maquinaDataHora = document.getElementById('intervalo_inicio')
+            maquinaDataHora.innerHTML = dados[0].dataFormatada
+
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
         })
@@ -759,9 +799,6 @@ function listandologMaquinas() {
                     ArmazenamentoTotal = listarlogMaquinas[i].valor
                 }
 
-
-
-
                 const enviados = document.getElementById('Rede-enviados')
                 var MbEnviados = pacotesEnviados[pacotesEnviados.length - 1];
                 enviados.innerHTML = `<p>Enviados</p>
@@ -795,26 +832,18 @@ function listandologMaquinas() {
 
 
             }
-
-
             //REDE
-
-
-
             console.log("AQUI NA RESPOSTA RYAN")
-            setInterval(listarlogMaquinas, 2000);
 
         })
         .catch(function (error) {
             console.log("AQUI NO ERRO RYAN")
             console.log("Erro!: ", error)
         })
+
+        setInterval(() => {
+            listandologMaquinas();
+        }, 5000);
 }
 
-setInterval(() => {
 
-
-    listandologMaquinas()
-
-
-}, 2000);
