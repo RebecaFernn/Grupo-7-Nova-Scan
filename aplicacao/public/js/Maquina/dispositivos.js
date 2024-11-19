@@ -534,19 +534,19 @@ function graficoAlerta(descricao){
         while (i < dados.length){
             //Logica de formatar data para enviar dentro da lista
             console.log(dados[i].intervalo_inicio)
-             const data = new Date(listaData)
-                const opcoes = {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                };
+            const intervalo_inicio = new Date(listaData);
+            const opcoes = {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
 
-            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-            listaData.push(dataFormatada);
+            const dataFormatada = intervalo_inicio.toLocaleString('pt-BR', opcoes);
+            console.log(dataFormatada)
             listaData.push(dados[i].intervalo_inicio)
             i++
         }
@@ -554,20 +554,19 @@ function graficoAlerta(descricao){
         // horário errado, data correta
         while (a < dados.length){
             console.log(dados[a].pico_maximo)
-             const data = new Date(listaDados)
+            const pico_maximo = new Date(listaDados);
+            const opcoes = {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
 
-                const opcoes = {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-             };
-
-            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-            listaDados.push(dataFormatada);
+            const dataFormatada = pico_maximo.toLocaleString('pt-BR', opcoes);
+            console.log(dataFormatada)
             listaDados.push(dados[a].pico_maximo)
             a++
         }
