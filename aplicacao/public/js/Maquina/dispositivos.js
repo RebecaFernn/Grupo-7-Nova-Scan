@@ -1,3 +1,5 @@
+const { lista } = require("../../../src/models/maquinasModel")
+
 function listarMaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
     fetch(`/maquinas/lista/${fkEmpresa}`, {
@@ -693,8 +695,36 @@ function graficoAlerta(descricao) {
             let maquinaDescricao = document.getElementById('descricao')
             maquinaDescricao.innerHTML = dados[0].descricao
 
+
+            maior = 0
+            b = 0
+            listaMaior = []
+            for (let b = 0; b < dados.length; b++) {
+                if (dados[b].pico_maximo > maior) {
+                    maior = dados[b].pico_maximo;
+                }
+            }
+
+            for (picoMaior in dados) {
+                if (dados[picoMaior].pico_maximo == maior) {
+                    const data = new Date(dados[picoMaior].intervalo_inicio)
+                    const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+
+                    const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+                    listaMaior.push(dataFormatada);
+                }
+            }
+
             let maquinaDataHora = document.getElementById('intervalo_inicio')
-            maquinaDataHora.innerHTML = dados[0].dataFormatada
+            maquinaDataHora.innerHTML = listaMaior[0] 
 
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
