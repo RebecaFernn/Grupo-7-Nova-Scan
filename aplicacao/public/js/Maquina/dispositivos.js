@@ -66,11 +66,11 @@ function listarMaquinas() {
             console.log(elementoPai);
 
 
-            const topMaquinas = document.getElementsByName('topGraficoAlerta') 
+            const topMaquinas = document.getElementsByName('topGraficoAlerta')
             let nomeDaMaquina = maquina.nome
             console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ${nomeDaMaquina}`)
             topMaquinas.innerHTML = nomeDaMaquina
-            
+
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -186,7 +186,6 @@ function maquina(id) {
     valoresComponentes();
     listandoAlertasMaquinas();
     listandoAlertasComponenteMaquina();
-    listandologMaquinas();
 }
 
 
@@ -518,7 +517,7 @@ function listandoAlertasComponenteMaquina() {
 
 
 //Funções Mônica
-function visualizarGraficoAlerta(descricao){
+function visualizarGraficoAlerta(descricao) {
     const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
     fundoInformacoesmaquina.style.display = 'none';
     const conteudoMaquinas = document.getElementById('conteudoMaquinas');
@@ -531,18 +530,18 @@ function visualizarGraficoAlerta(descricao){
     graficoAlerta(descricao)
 }
 
-function graficoAlerta(descricao){
-    fetch(`/maquinas/graficoAlerta/${descricao}`,{
+function graficoAlerta(descricao) {
+    fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
-    .then(function(resposta){
-        return resposta.json()
-    })
-    .then(function(dados){
-        console.log("Dados do alerta clicado: ", dados)
-        
-        const ctx = document.getElementById('cpuChart').getContext('2d');
+        .then(function (resposta) {
+            return resposta.json()
+        })
+        .then(function (dados) {
+            console.log("Dados do alerta clicado: ", dados)
+
+            const ctx = document.getElementById('cpuChart').getContext('2d');
 
         listaData = []
         listaDados = []
@@ -551,81 +550,80 @@ function graficoAlerta(descricao){
         while (i < dados.length){
             //Logica de formatar data para enviar dentro da lista
             console.log(dados[i].intervalo_inicio)
-            const intervalo_inicio = new Date(listaData);
-            const opcoes = {
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            };
+             const data = new Date(listaData)
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
 
-            const dataFormatada = intervalo_inicio.toLocaleString('pt-BR', opcoes);
-            console.log(dataFormatada)
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaData.push(dataFormatada);
             listaData.push(dados[i].intervalo_inicio)
             i++
         }
 
-        console.log("Datas dentro da lista", listaData)
-
         // horário errado, data correta
         while (a < dados.length){
             console.log(dados[a].pico_maximo)
-            const pico_maximo = new Date(listaDados);
-            const opcoes = {
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            };
+             const data = new Date(listaDados)
 
-            const dataFormatada = pico_maximo.toLocaleString('pt-BR', opcoes);
-            console.log(dataFormatada)
+                const opcoes = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+             };
+
+            const dataFormatada = data.toLocaleString('pt-BR', opcoes);
+            listaDados.push(dataFormatada);
             listaDados.push(dados[a].pico_maximo)
             a++
         }
 
-        console.log("Lista Dados", listaDados)
-        console.log("Lista Tempo", listaData)
+            console.log("Lista Dados", listaDados)
+            console.log("Lista Tempo", listaData)
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: listaData,
-                datasets: [{
-                    label: dados[0].descricao,
-                    data: listaDados,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    pointBackgroundColor: 'red',
-                    borderWidth: 2,
-                    tension: 0.12
-                }]
-            },
-            options: {
-                responsive: true,
-            }
-        });
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: listaData,
+                    datasets: [{
+                        label: dados[0].descricao,
+                        data: listaDados,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        pointBackgroundColor: 'red',
+                        borderWidth: 2,
+                        tension: 0.12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                }
+            });
 
-        let maquinaNome = document.getElementById('nomeMaquina')
-        maquinaNome.innerHTML = dados[0].nome
+            let maquinaNome = document.getElementById('nomeMaquina')
+            maquinaNome.innerHTML = dados[0].nome
 
-        let maquinaDescricao = document.getElementById('descricao')
-        maquinaDescricao.innerHTML = dados[0].descricao
+            let maquinaDescricao = document.getElementById('descricao')
+            maquinaDescricao.innerHTML = dados[0].descricao
 
-        let maquinaDataHora = document.getElementById('intervalo_inicio')
-        maquinaDataHora.innerHTML = dados[0].intervalo_inicio
+            let maquinaDataHora = document.getElementById('intervalo_inicio')
+            maquinaDataHora.innerHTML = dados[0].intervalo_inicio
 
-    
-    })
-    .catch(function(error){
-        console.log("Deu erro na função graficoAlerta()", error)
-    })
+
+        })
+        .catch(function (error) {
+            console.log("Deu erro na função graficoAlerta()", error)
+        })
 }
 
 
@@ -670,8 +668,6 @@ function listandologMaquinas() {
 
 
             for (let i = 0; i < listarlogMaquinas.length; i++) {
-                
-           
 
                 console.log(listarlogMaquinas)
 
@@ -726,9 +722,6 @@ function listandologMaquinas() {
                     ArmazenamentoTotal = listarlogMaquinas[i].valor
                 }
 
-
-
-
                 const enviados = document.getElementById('Rede-enviados')
                 var MbEnviados = pacotesEnviados[pacotesEnviados.length - 1];
                 enviados.innerHTML = `<p>Enviados</p>
@@ -759,29 +752,19 @@ function listandologMaquinas() {
                 velocidade.innerHTML = ` <p>Velocidade</p>
                 <p><strong>${listaVelocidade}Ghz</strong> </p>`
 
-                
-
             }
-
-
             //REDE
-
-
-
             console.log("AQUI NA RESPOSTA RYAN")
-            setInterval(listarlogMaquinas, 2000);
 
         })
         .catch(function (error) {
             console.log("AQUI NO ERRO RYAN")
             console.log("Erro!: ", error)
         })
+
+        setInterval(() => {
+            listandologMaquinas();
+        }, 5000);
 }
 
-setInterval(() => {
 
-
-    listandologMaquinas()
-
-  
-}, 2000);
