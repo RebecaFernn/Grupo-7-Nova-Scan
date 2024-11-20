@@ -705,21 +705,23 @@ canvas {
     width: 100%;
     /* background-color: #3A527A; */
     display: flex;
-    font-size: 60px;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    font-size: 60%;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* flex-direction: row; */
 
 }
 
 .descricaoGrafico {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 90px;
-    width: 100px;
+    align-items: center;
+    justify-self: end;
+    height: 150px;
+    width: 280px;
     flex-direction: column;
-    margin-right: 50px;
+    /* margin-right: 50px; */
+    background-color: #F84455;
+    justify-content: end;
 
 
 }
