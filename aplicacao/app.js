@@ -15,6 +15,7 @@ var WebSocket = require("ws")
 var http = require("http");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
+var PORT_WEBSOCKET = process.env.PORT_WEBSOCKET;
 
 var app = express();
 var server = http.createServer(app);
@@ -32,9 +33,8 @@ wss.on('connection', (socket) => {
         console.log('Cliente Websocket desconectado')
     })
 })
-var PORT = 8080
-server.listen(PORT, () => {
-    console.log(`Servidor HTTP e WebSocket rodando na porta ${PORT}`)
+server.listen(PORT_WEBSOCKET, () => {
+    console.log(`Servidor WebSocket rodando na porta ${PORT_WEBSOCKET}`)
 })
 
 var indexRouter = require("./src/routes/index");
