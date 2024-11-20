@@ -3,41 +3,47 @@
 function gerarOpcoesSemanas() {
     const select = document.getElementById('dataSelect');
     const hoje = new Date();
-    const totalSemanas = 4; // Quantidade de semanas exibidas no select (atual + 3 anteriores)
+    const totalSemanas = 4; 
 
     for (let i = 0; i < totalSemanas; i++) {
-        const inicioSemana = new Date(hoje);
-        inicioSemana.setDate(hoje.getDate() - hoje.getDay() - (i * 7)); // Domingo da semana atual ou anterior
+        const fimSemana = new Date(hoje);
 
-        const fimSemana = new Date(inicioSemana);
-        fimSemana.setDate(inicioSemana.getDate() + 6); // Sábado da semana
+        fimSemana.setDate(fimSemana.getDate() - fimSemana.getDay() - (i * 7) + 6);
+
+        fimSemana.setDate(fimSemana.getDate() - 1);
+
+        const inicioSemana = new Date(fimSemana);
+        inicioSemana.setDate(fimSemana.getDate() - 6);
+
+        inicioSemana.setDate(inicioSemana.getDate() );
 
         const inicioFormatado = inicioSemana.toISOString().split('T')[0];
         const fimFormatado = fimSemana.toISOString().split('T')[0];
 
+        // Criar uma nova opção no select
         const option = document.createElement('option');
         option.value = `${inicioFormatado} a ${fimFormatado}`;
         option.textContent = `${inicioFormatado} a ${fimFormatado}`;
 
         if (i === 0) {
-            option.selected = true; // Semana atual como padrão
+            option.selected = true;
         }
 
         select.appendChild(option);
     }
 }
 
+// Gera as opções ao carregar a página
 document.addEventListener('DOMContentLoaded', gerarOpcoesSemanas);
 
 
 // Gráfico :
 
 function mostrar() {
-    const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém o ID da empresa
-    const tipoDispositivo = document.getElementById('componente').value; // Obtém o tipo de dispositivo
-    const dataSelecionada = document.getElementById('dataSelect').value; // Data selecionada no select
+    const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); 
+    const tipoDispositivo = document.getElementById('componente').value;
+    const dataSelecionada = document.getElementById('dataSelect').value; 
 
-    // Divide a string no formato "AAAA-MM-DD a AAAA-MM-DD"
     const [inicio, fim] = dataSelecionada.split(' a ');
 
     console.log(`Data de início: ${inicio}`);
@@ -45,7 +51,13 @@ function mostrar() {
     console.log(`ID da Empresa: ${idEmpresa}`);
     console.log(`Tipo do Dispositivo: ${tipoDispositivo}`);
 
-    // Chama a função para buscar os dados e atualizar o gráfico
+    if(tipoDispositivo == "Processador"){
+        titulo_comp.innerHTML = "CPU"
+    } else if (tipoDispositivo == "Memória") {
+        titulo_comp.innerHTML = "RAM"
+    }
+
+
     obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo);
 }
 
@@ -85,24 +97,24 @@ function traduzirDiaSemana(diaIngles) {
         Friday: "SEX",
         Saturday: "SAB"
     };
-    return dias[diaIngles] || diaIngles; // Retorna o valor traduzido ou o original, caso não encontre
+    return dias[diaIngles] || diaIngles; 
 }
 
 
 function plotarGrafico2(resposta) {
     console.log('Iniciando plotagem do gráfico...');
 
-    // Transformação dos dados recebidos para o formato do heatmap
+    
     let seriesData = [];
-    let dias = []; // Lista de dias únicos para organizar a série
+    let dias = []; 
 
     resposta.forEach((registro) => {
         const { dia_semana, hora, media_valor } = registro;
 
-        // Traduz o nome do dia da semana para português
+        
         const diaSemanaTraduzido = traduzirDiaSemana(dia_semana);
 
-        // Localiza ou cria uma série para o dia da semana
+       
         let diaIndex = dias.indexOf(diaSemanaTraduzido);
         if (diaIndex === -1) {
             diaIndex = dias.length;
@@ -113,16 +125,14 @@ function plotarGrafico2(resposta) {
             });
         }
 
-        // Adiciona o horário e o valor médio na série correspondente
         seriesData[diaIndex].data.push({
             x: hora,
-            y: Math.round(media_valor) // Arredonda o valor, se necessário
+            y: Math.round(media_valor)
         });
     });
 
-    // Ordena os dados dentro de cada série de acordo com a hora
     seriesData.forEach(dia => {
-        dia.data.sort((a, b) => a.x - b.x); // Ordena os horários de forma crescente
+        dia.data.sort((a, b) => a.x - b.x); 
     });
 
     console.log('----------------------------------------------');
@@ -130,7 +140,7 @@ function plotarGrafico2(resposta) {
     console.log(seriesData);
     console.log('----------------------------------------------');
 
-    // Configurações do gráfico de heatmap
+  
     var options = {
         chart: {
             type: 'heatmap',
@@ -188,7 +198,7 @@ function plotarGrafico2(resposta) {
             }
         },
         title: {
-            text: '03/11/2024 - 09/11/2024',
+            text: dataSelect.value,
             align: 'center',
             style: {
                 color: 'black',
