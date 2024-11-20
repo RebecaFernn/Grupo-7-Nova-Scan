@@ -24,7 +24,7 @@ CREATE TABLE tempoAtividade (
 
 CREATE TABLE componente (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(45),
+    nome VARCHAR(100),
     tipo VARCHAR(30),
     fkDispositivo INT,
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)

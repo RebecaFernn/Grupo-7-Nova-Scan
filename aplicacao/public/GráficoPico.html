@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Overview</title>
+    <!-- LINK CSS -->
+    <link rel="stylesheet" href="css/maquinas.css">
+    <link rel="stylesheet" href="css/navBarDash.css">
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="contarMaquinas(), overviewSelect()">
+    <section class="Overview">
+        
+        <div class="NavBar">
+            <div class="topNavBar">
+                NOVASCAN
+            </div>
+            <div class="midNavBar">
+                <div class="links" onclick="overview()">
+                    <img src="./img/overview.svg" alt="">
+                    <a href="overview.html">Overview</a>
+                </div>
+                <div class="links" onclick="maquinas()" >
+                    <img src="./img/selfchekout.svg" alt="">
+                    <a href="maquinas.html">Self-Checkouts</a>
+                </div>
+                <div class="links" onclick="colaboradores()">
+                    <img src="./img/colaboradores.svg" alt="">
+                    <a href="colaboradores.html">Colaboradores</a>
+                </div>
+                <div class="links" onclick="editarPerfil()">
+                    <img src="./img/editPerfil.svg" alt="">
+                    <a href="editar_perfil.html">Editar Perfil</a>
+                </div>
+                <div class="links" onclick="metricas()">
+                    <img src="./img/metricas.svg" alt="">
+                    <a href="#">Personalizar alertas</a>
+                </div>
+                <div class="links" onclick="picos()">
+                    <img src="./img/picos.svg" alt="">
+                    <a href="./upTimeDownTime.html">Monitoramento Uptime e Downtime</a>
+                </div>
+            </div>
+            <div class="lowNavBar">
+                <img src="./img/LogoBranca.svg" class="imgLow">
+                <div class="links" onclick="index()">
+                    <img src="./img/sair.svg" alt="">
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
+            <div class="topGraficoAlerta" id="topGraficoAlerta">
+                <p id="nomeMaquina"></p>
+            </div>
+            <div class="descricaoGrafico" id="descricaoGrafico">
+                <p id="descricao">Problema: </p>
+                    <p id="intervalo_inicio">Data e Hora:</p>
+            </div>
+
+            <div class="medGraficoAlerta" id="medGraficoAlerta">
+
+                <title>Gráfico de Uso de CPU</title>
+                <div id="chartContainer">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+            </div>
+
+            <div class="fimGraficoAlerta" id="fimGraficoAlerta">
+                <!-- <div class="infoFimGraficoAlerta" >
+                    <p id="descricao"><strong>Problema:</strong> </p>
+                    <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
+                </div> -->
+            </div>
+            <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
+
+        </div>

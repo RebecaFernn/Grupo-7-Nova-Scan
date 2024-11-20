@@ -544,7 +544,7 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/maquinas/graficoAlerta/${descricao}`, {
+    fetch(`/GráficoPico/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -641,7 +641,7 @@ function graficoAlerta(descricao) {
             }
 
             let maquinaDataHora = document.getElementById('intervalo_inicio')
-            maquinaDataHora.innerHTML = dados[0].intervalo_inicio
+            maquinaDataHora.innerHTML = listaMaior[0]
         })
 
         .catch(function (error) {
