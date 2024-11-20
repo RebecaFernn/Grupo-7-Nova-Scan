@@ -17,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="dadosTempoReal()">
     <div class="paiDaTela">
 
         <div class="NavBar">
@@ -67,18 +67,9 @@
             <div class="paiUpTime">
                 <h3>Uptime em Tempo Real</h3>
 
-                <div class="filhoPaiUpTime">
-                    <div class="monitoramentoTempoRealCard">
-                        <h4 class="tituloMaquinaTempoReal">Self-Checkout 1</h4>
+                <div class="filhoPaiUpTime" id="filhoPaiUpTime">
 
-                        <div class="centroCard">
-                            <h4 class="tempoAtividade">Tempo de Atividade</h4>
-                            <h1>DD:HH:MM:SS</h1>
-                        </div>
-
-                    </div>
-
-                    <div class="monitoramentoTempoRealCard">
+                    <!-- <div class="monitoramentoTempoRealCard">
                         <h4 class="tituloMaquinaTempoReal">Self-Checkout 1</h4>
                         <div class="centroCard">
                             <h4 class="tempoAtividade">Tempo de Atividade</h4>
@@ -125,6 +116,14 @@
                             <h1>DD:HH:MM:SS</h1>
                         </div>
                     </div>
+
+                    <div class="monitoramentoTempoRealCard">
+                        <h4 class="tituloMaquinaTempoReal">Self-Checkout 1</h4>
+                        <div class="centroCard">
+                            <h4 class="tempoAtividade">Tempo de Atividade</h4>
+                            <h1>DD:HH:MM:SS</h1>
+                        </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -171,9 +170,85 @@
 <script src="js/href.js"></script>
 <script>
 
-function dadosTempoReal(){
+    function dadosTempoReal() {
+        var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
-}
+        fetch(`/lucas/bootTime/${fkEmpresa}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                return resposta.json()
+
+            })
+            .then(function (resultado) {
+                console.log("Dados retornado do banco", resultado)
+
+
+                for (maquina in resultado) {
+                    const elementoPaiCard = document.getElementById('filhoPaiUpTime')
+                    let elementoFilhoCard = ""
+
+                    elementoFilhoCard = `
+                    <div class="monitoramentoTempoRealCard">
+                        <h4 class="tituloMaquinaTempoReal">${resultado[maquina].nome}</h4>
+                        <div class="centroCard" >
+                             <h4 class="tempoAtividade">Tempo de Atividade</h4>
+                             <h1 id="tempoMaquina_${resultado[maquina].id}">--:--:--:--</h1>
+                        </div>
+                    </div>
+                    `
+                    elementoPaiCard.innerHTML += elementoFilhoCard
+                }
+
+                const socket = new WebSocket('ws://localhost:8080')
+
+                socket.onopen = () => {
+                    console.log("Cliente conectado ao WebSocket")
+
+                    var quiteria = socket.onmessage = (event) => {
+
+                        setInterval(() => {
+
+                            for (const nomeMaquina in resultado) {
+
+                                const dateMaquina = new Date(resultado[nomeMaquina].bootTime);
+                                const dataAgora = new Date()
+
+                                var diferenca = dataAgora - dateMaquina
+
+                                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+                                //usando um id dinamico baseado no id da maquina para não sobrepor valor
+                                const tempoTexto = document.getElementById(`tempoMaquina_${resultado[nomeMaquina].id}`)
+
+                                // Atualizando o tempo de atividade para cada máquina
+                                tempoTexto.textContent = `${dias}:${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
+
+                            }
+                        }, 1000)
+
+                    }
+
+                    socket.send(quiteria)
+
+                    socket.onerror = (error) => {
+                        console.log('Erro na websocket', error)
+                    }
+
+                    socket.onclose = () => {
+                        console.log("Conexão WebSocket encerrada");
+                    };
+                }
+
+            })
+            .catch(function (error) {
+                console.log("Deu erro!: ", error)
+            })
+    }
 
     // Teste de gráfico de barras
     const ctx = document.getElementById('graficoBarra');

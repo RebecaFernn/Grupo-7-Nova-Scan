@@ -452,9 +452,17 @@ function listandoAlertasComponenteMaquina() {
             const elementoPai = document.getElementById('right-informacoes');
             elementoPai.innerHTML = "";
 
+            const alertaCPU = document.getElementById('alertaDaCPU');
+            alertaCPU.innerHTML = "";
 
-  
+            const alertaRAM = document.getElementById('alertaDaRAM');
+            alertaRAM.innerHTML = "";
 
+            const alertaMemoria = document.getElementById('alertaDaMemoria');
+            alertaMemoria.innerHTML = "";
+
+            const alertaREDE = document.getElementById('alertaDaREDE');
+            alertaREDE.innerHTML = "";
 
             let alertasDisparados = ""
 
@@ -477,44 +485,32 @@ function listandoAlertasComponenteMaquina() {
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
 
-                if (listaAlertasDisparado[i].tipo == "Processador") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% <br> ${dataFormatada}</p>
-                </div>
+               
+
+            alertaCPU.innerHTML += `
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
+             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
+            </div>
             `
 
-                
-                }
-                else if (listaAlertasDisparado[i].tipo == "Memória") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
-                </div>
-            `
+            alertaRAM.innerHTML += `
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
+            <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
+            </div>`
             
-                }
-                else if (listaAlertasDisparado[i].tipo == "Armazenamento") {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB <br> ${dataFormatada}</p>
-                </div>
-            `
+               
+            alertaMemoria.innerHTML += `
+                    <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
+                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
+                    </div>`
 
-                }
-                else {
-                    alertasDisparados += `
-                <div class="BoxAlertaUso" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
-                    <img src="./img/alertwhite.svg" alt="">
-                    <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB <br> ${dataFormatada}</p>
-                </div>
-            `
+               
+            alertaREDE.innerHTML += `
+            <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
+            <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
+            </div>`
       
-                }
-
+                
             }
 
             elementoPai.innerHTML += alertasDisparados
@@ -540,7 +536,7 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/maquinas/graficoAlerta/${descricao}`, {
+    fetch(`/GráficoPico/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -783,9 +779,9 @@ function listandologMaquinas() {
             console.log("Erro!: ", error)
         })
 
-        setInterval(() => {
-            listandologMaquinas();
-        }, 5000);
+        // setInterval(() => {
+        //     listandologMaquinas();
+        // }, 5000);
 }
 
 

@@ -73,18 +73,18 @@
                 <a href="">voltar</a>
             </div>
         <div class="up">
-            <h1>Horários de Pico da semana: 03/11/2024 - 09/11/2024</h1>
+            <h1>Média de uso do último mês</h1>
             <p>Última vez atualizado: 09/11/2024 - 23:59:59</p>
             <div class="caixas">
-                <select name="" id="">
+                <select name="" id="dataSelect">
                     <option disabled selected value=""> Qual semana deseja visualizar?</option>
                 </select>
-                <select name="" id="">
+                <select name="" id="componente">
                     <option disabled selected value="">Qual o componente que deseja visualizar?</option>
-                    <option value="CPU">CPU</option>
-                    <option value="RAM">RAM</option>
+                    <option value="Processador">CPU</option>
+                    <option value="Memória">RAM</option>
                 </select>
-                <button> Buscar</button>
+                <button onclick="mostrar()"> Buscar</button>
             </div>
         </div>
 
