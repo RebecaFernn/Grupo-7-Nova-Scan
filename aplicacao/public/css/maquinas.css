@@ -61,8 +61,8 @@ body {
 }
 
 .btn-renomearSelf {
-    width: 22%;
-    height: 40px !important;
+    width: 100%;
+    height: 50px !important;
     background-color: #3A527A;
     border-radius: 0;
     border: none;
@@ -72,13 +72,14 @@ body {
     font-weight: 600;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5%;
 
 }
 
 .btn-ativar {
-    width: 22%;
-    height: 40px !important;
+    width: 100%;
+    height: 50px !important;
     background-color: #38A25C;
     border-radius: 0;
     border: none;
@@ -93,8 +94,8 @@ body {
 }
 
 .btn-desativar {
-    width: 22%;
-    height: 40px !important;
+    width: 100%;
+    height: 50px !important;
     background-color: #F84455;
     border-radius: 0;
     border: none;
@@ -215,8 +216,7 @@ body {
     overflow-y: auto;
     flex-direction: column;
     align-items: center;
-    padding-top: 2%;
-    padding-bottom: 5%;
+    justify-content: center;
     gap: 5%;
 }
 
@@ -633,8 +633,8 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-    gap: 1%;
+    align-items: center;
+    gap: 10%;
     font-family: Montserrat;
 }
 
@@ -1034,24 +1034,40 @@ canvas {
     width: 100%;
     height: 90%;
     overflow-y: auto;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
 }
 
 #alertaDaRAM {
     width: 100%;
     height: 90%;
     overflow-y: auto;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
 }
 
 #alertaDaMemoria {
     width: 100%;
     height: 90%;
     overflow-y: auto;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
 }
 
 #alertaDaREDE {
     width: 100%;
     height: 90%;
     overflow-y: auto;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-voltar2 {

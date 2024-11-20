@@ -144,13 +144,13 @@
 
         <div onclick="fecharInfomaquina()" class="fundoInformacoesmaquina" id="fundoInformacoesmaquina">
             <div class="informacoesdaMaquina" onclick="pararPropagacao()">
-                <div class="box-btn">
+                <!-- <div class="box-btn">
                     <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
                             src="./img/rename.svg" alt=""></button>
                     <button class="btn-ativar" onclick="ativarDispositivo()"> Ativar máquina </button>
                     <button class="btn-desativar" onclick="desativarDispositivo()"> Desativar máquina </button>
                     <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
-                </div>
+                </div> -->
                 <div class="box-informacoes">
                     <div class="left-informacoes" id="informacoes">
                         <h2>Informações máquina</h2>
@@ -167,28 +167,11 @@
                         </div>
                     </div>
                     <div class="right-informacoes" id="right-informacoes">
-                        <h2>Problemas ocorridos</h2>
-                        <div class="alertas-right">
-
-                            <div class="BoxAlertaUso">
-                                <img src="./img/alertwhite.svg" alt="">
-                                <p>Alto uso de CPU: 90% <br> 17/10/2024 13:46:20</p>
-                            </div>
-
-                            <div class="BoxAlertaUso">
-                                <img src="./img/alertwhite.svg" alt="">
-                                <p>Alto uso de RAM: 95% <br> 19/10/2024 17:46:20</p>
-                            </div>
-                            <div class="BoxAlertaUso">
-                                <img src="./img/alertwhite.svg" alt="">
-                                <p>Alta Perda de Pacote: 3% <br> 20/12/2024 10:46:20</p>
-                            </div>
-                            <div class="BoxAlertaUso">
-                                <img src="./img/alertwhite.svg" alt="">
-                                <p>Alta Perda de Pacote: 3% <br> 20/12/2024 10:50:20</p>
-                            </div>
-                        </div>
-
+                    <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
+                            src="./img/rename.svg" alt=""></button>
+                    <button class="btn-ativar" onclick="ativarDispositivo()"> Ativar máquina </button>
+                    <button class="btn-desativar" onclick="desativarDispositivo()"> Desativar máquina </button>
+                    <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
                     </div>
                 </div>
             </div>
@@ -346,7 +329,7 @@
                     <div class="alertas-box">
                         <div class="alertas-cpu">
                             <h3>CPU</h3>
-                            <div id="alertaDaCPU">
+                            <div id="alertaDaCPU" class="box-dos-alertas">
 
                             </div>
 
@@ -497,8 +480,8 @@
             GraficoAlerta.style.display = 'none';
             const conteudoMaquinas = document.getElementById('conteudoMaquinas');
             conteudoMaquinas.style.display = 'flex';
-            const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-            fundoInformacoesmaquina.style.display = 'flex';
+            const funfoAlertas = document.getElementById('fundo-alertas');
+            funfoAlertas.style.display = 'flex';
         }
 
 
