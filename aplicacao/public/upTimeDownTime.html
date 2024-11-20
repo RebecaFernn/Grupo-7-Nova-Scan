@@ -184,22 +184,20 @@
             .then(function (resultado) {
                 console.log("Dados retornado do banco", resultado)
 
-                var listaObjetoAtividade = []
 
-                for (nomeMaquina in resultado) {
+                for (maquina in resultado) {
                     const elementoPaiCard = document.getElementById('filhoPaiUpTime')
                     let elementoFilhoCard = ""
 
                     elementoFilhoCard = `
                     <div class="monitoramentoTempoRealCard">
-                        <h4 class="tituloMaquinaTempoReal">${resultado[nomeMaquina].nome}</h4>
+                        <h4 class="tituloMaquinaTempoReal">${resultado[maquina].nome}</h4>
                         <div class="centroCard" >
                              <h4 class="tempoAtividade">Tempo de Atividade</h4>
-                             <h1 id="tempoMaquina">--:--:--:--</h1>
+                             <h1 id="tempoMaquina_${resultado[maquina].id}">--:--:--:--</h1>
                         </div>
                     </div>
                     `
-
                     elementoPaiCard.innerHTML += elementoFilhoCard
                 }
 
@@ -211,30 +209,28 @@
                     var quiteria = socket.onmessage = (event) => {
 
                         setInterval(() => {
-                            for (const data in resultado) {
-                                // Converter a string em um objeto Date
-                                const dateMaquina = new Date(resultado[data].bootTime);
 
+                            for (const nomeMaquina in resultado) {
+
+                                const dateMaquina = new Date(resultado[nomeMaquina].bootTime);
                                 const dataAgora = new Date()
 
                                 var diferenca = dataAgora - dateMaquina
 
-                                listaObjetoAtividade.push({ idMaquina: resultado[data].id, nomeMaquina: resultado[data].nome, tempoAtividade: diferenca })
+                                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-                                for (i in listaObjetoAtividade) {
-                                    var tempoMaquina = listaObjetoAtividade[i].tempoAtividade
+                                //usando um id dinamico baseado no id da maquina para não sobrepor valor
+                                const tempoTexto = document.getElementById(`tempoMaquina_${resultado[nomeMaquina].id}`)
 
-                                    const dias = Math.floor(tempoMaquina / (1000 * 60 * 60 * 24));
-                                    const horas = Math.floor((tempoMaquina % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                    const minutos = Math.floor((tempoMaquina % (1000 * 60 * 60)) / (1000 * 60));
-                                    const segundos = Math.floor((tempoMaquina % (1000 * 60)) / 1000);
+                                // Atualizando o tempo de atividade para cada máquina
+                                tempoTexto.textContent = `${dias}:${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
 
-                                    const tempoTexto = document.getElementById(`tempoMaquina`)
-
-                                    tempoTexto.textContent = `${dias}:${horas}:${minutos}:${segundos}`
-                                }
                             }
                         }, 1000)
+
                     }
 
                     socket.send(quiteria)
