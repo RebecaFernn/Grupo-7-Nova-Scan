@@ -536,7 +536,7 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/GráficoPico/graficoAlerta/${descricao}`, {
+    fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
