@@ -582,7 +582,7 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/GráficoPico/graficoAlerta/${descricao}`, {
+    fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -651,6 +651,9 @@ function graficoAlerta(descricao) {
             let maquinaDescricao = document.getElementById('descricao')
             maquinaDescricao.innerHTML = dados[0].descricao
 
+            // let maquinaDispositivo = document.getElementById('dispositivo')
+            // maquinaDispositivo.innerHTML = dados[0].dispositivo
+
             maior = 0
             b = 0
             listaMaior = []
@@ -661,7 +664,7 @@ function graficoAlerta(descricao) {
             }
 
             for (picoMaior in dados) {
-                if (dados[picoMaior].pico_maximo == maior) {
+                if (dados[picoMaior].pico_maximo === maior) {
                     const data = new Date(dados[picoMaior].intervalo_inicio)
                     const opcoes = {
                         day: 'numeric',

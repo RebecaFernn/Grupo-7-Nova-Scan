@@ -10,7 +10,7 @@ function gerarOpcoesSemanas() {
 
         fimSemana.setDate(fimSemana.getDate() - fimSemana.getDay() - (i * 7) + 6);
 
-        fimSemana.setDate(fimSemana.getDate() - 1);
+        fimSemana.setDate(fimSemana.getDate() );
 
         const inicioSemana = new Date(fimSemana);
         inicioSemana.setDate(fimSemana.getDate() - 6);
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', gerarOpcoesSemanas);
 // Gráfico :
 
 function mostrar() {
+
     const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); 
     const tipoDispositivo = document.getElementById('componente').value;
     const dataSelecionada = document.getElementById('dataSelect').value; 
@@ -59,6 +60,9 @@ function mostrar() {
 
 
     obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo);
+
+            const diasSemanas = document.getElementById('diasSemana');
+            diasSemanas.style.display = 'flex';
 }
 
 function obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo) {

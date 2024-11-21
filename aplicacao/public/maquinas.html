@@ -115,12 +115,16 @@
             </div>
         </div>
         <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
-            <div class="topGraficoAlerta" id="topGraficoAlerta">
-                <p id="nomeMaquina"></p>
+            <button onclick="VoltarInfoMaquina()" class="btn-voltar"><img src="./img/voltar.svg" alt="">Voltar</button>
+
+            <div class="topmaquinas" id="topGraficoAlerta">
+                <h2>Histórico do dia da máquina</h2>
+                <h2 id="nomeMaquina"></h2>
             </div>
             <div class="descricaoGrafico" id="descricaoGrafico">
-                <p id="descricao">Problema: </p>
-                    <p id="intervalo_inicio">Data e Hora:</p>
+                <div class="divProblema"><Strong>Problema: </Strong><p id="descricao"></p></div>
+                <div class="divDataHora"><strong>Data e Hora do primeiro pico mais alto:</strong><p id="intervalo_inicio"></p></div>
+                
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -137,7 +141,7 @@
                     <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
                 </div> -->
             </div>
-            <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
+            
 
         </div>
 
