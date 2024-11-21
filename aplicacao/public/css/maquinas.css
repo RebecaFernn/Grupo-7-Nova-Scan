@@ -1107,4 +1107,10 @@ canvas {
     left: -3%;
     top: -35%;
     border-radius: 5px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Montserrat;
+    font-weight: 600;
 }

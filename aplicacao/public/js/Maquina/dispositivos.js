@@ -234,8 +234,8 @@ function componentesDispositivo(listaValores) {
             componentes = `
                 <p> <strong>Nome da máquina:</strong> ${listaComponente[0].nomeMaquina}</p>
                 <p> <strong>Processador:</strong> ${listaComponente[0].nomeProcessador}</p>
-                <p> <strong>Mémoria Ram Total: </strong> ${valores[0].valor} GB</p>
-                <p> <strong>Armazenamento Total: </strong> ${valores[1].valor}GB</p>
+                <p> <strong>Mémoria Ram Total: </strong> ${valores[1].valor} GB</p>
+                <p> <strong>Armazenamento Total: </strong> ${valores[0].valor}GB</p>
             `
             elementoPai.innerHTML += componentes;
             console.log(elementoPai);
@@ -244,7 +244,14 @@ function componentesDispositivo(listaValores) {
             //Mostrando total de ram e armazenamento nos graficos
             const ram = document.getElementById('Total-RAM')
             ram.innerHTML = `<p>Total</p>
-                                    <p ><strong >${valores[0].valor}Gb</strong></p>`;
+                                    <p ><strong >${valores[1].valor}Gb</strong></p>`;
+
+
+            memoriaTOTAL = valores[0].valor
+
+            const memoria = document.getElementById('total-memoria')
+            memoria.innerHTML = ` <p>Total</p>
+                                <p><strong>${valores[0].valor}Gb</strong></p>`
 
         })
         .catch(function (error) {
@@ -463,7 +470,10 @@ function listandoAlertasComponenteMaquina() {
             alertaREDE.innerHTML = "";
 
             let alertasDisparados = ""
-
+            var c = 0;
+            var r = 0;
+            var p = 0;
+            var a = 0;
             for (var i = 0; i < listaAlertasDisparado.length; i++) {
 
                 const dataHora = listaAlertasDisparado[i].dataHora;
@@ -482,46 +492,74 @@ function listandoAlertasComponenteMaquina() {
                 };
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-               
-            if(listaAlertasDisparado[i].descricao == "Alerta: Alto uso da CPU!!"){
-            alertaCPU.innerHTML += `
+
+                if (listaAlertasDisparado[i].descricao == "Alerta: Alto uso da CPU!!") {
+                    c++
+                    alertaCPU.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
              <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
             </div>`
-            }
-            else if(listaAlertasDisparado[i].descricao == "Alerta: Alta Frequencia do processador" ){
-                alertaCPU.innerHTML += `
+                }
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Alta Frequencia do processador") {
+                    c++
+                    alertaCPU.innerHTML += `
                 <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                  <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}Ghz - ${dataFormatada}</p>
                 </div>
                 `
 
-            } 
-            else if(listaAlertasDisparado[i].descricao == "Alerta: Uso Alto de Memória RAM!!"){
-            alertaRAM.innerHTML += `
+                }
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Uso Alto de Memória RAM!!") {
+                    r++
+                    alertaRAM.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
             </div>`
-            }
-            
-            else if(listaAlertasDisparado[i].descricao == "Alerta: Alto uso de armazenamento"){
-            alertaMemoria.innerHTML += `
+                }
+
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Alto uso de armazenamento") {
+                    a++
+                    alertaMemoria.innerHTML += `
                     <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
                     </div>`
-            }
-            else{
-               
-            alertaREDE.innerHTML += `
+                }
+                else {
+                    p++
+                    alertaREDE.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
             </div>`
-            
-            }
-                
+
+                }
+
             }
 
             elementoPai.innerHTML += alertasDisparados
+
+
+            const alertasCPU = document.getElementById('alertasCPU')
+            alertasCPU.innerHTML = `
+            <p> Alertas </p>
+            <p>${c}</p>`
+
+
+            const alertasRAM = document.getElementById('alertasRAM')
+            alertasRAM.innerHTML = `
+            <p> Alertas </p>
+            <p>${r}</p>`
+
+
+            const alertasMemoria = document.getElementById('alertasMEM')
+            alertasMemoria.innerHTML = `
+            <p> Alertas </p>
+            <p>${a}</p>`
+
+            const alertasREDE = document.getElementById('alertasREDE')
+            alertasREDE.innerHTML = `
+            <p> Alertas </p>
+            <p>${p}</p>` 
+
         })
         .catch(function (error) {
             console.log("Erro!: ", error)
@@ -626,14 +664,14 @@ function graficoAlerta(descricao) {
                 if (dados[picoMaior].pico_maximo == maior) {
                     const data = new Date(dados[picoMaior].intervalo_inicio)
                     const opcoes = {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                };
+                        day: 'numeric',
+                        month: 'numeric',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    };
 
                     const dataFormatada = data.toLocaleString('pt-BR', opcoes);
                     listaMaior.push(dataFormatada);
@@ -655,7 +693,7 @@ var dataRam = []
 
 //Cpu
 var listaCPU = []
-var listaVelocidade;
+var listaVelocidade = 0;
 //Armazenamento
 var listaMemoria = []
 var ArmazenamentoTotal;
@@ -684,23 +722,23 @@ function listandologMaquinas() {
             console.log("AQUI NA VALIDAÇÂO RYAN")
         })
         .then(function (listarlogMaquinas) {
-
+            console.log(listarlogMaquinas)
             // Listas e validações para separar componentes
+          
+            for (let i = 0; i < 8; i++) {
+                
 
-
-            for (let i = 0; i < listarlogMaquinas.length; i++) {
-
-                if (listarlogMaquinas[i].descricaoLog == "Uso de Memória RAM") {
+                if (listarlogMaquinas[i].tipoComponente == "Memória") {
                     listaRam.push(listarlogMaquinas[i].valor)
                     dataRam.push(listarlogMaquinas[i].dataHoraLog)
 
-                    if (listaRam.length == 7) {
+                    if (listaRam.length >= 7) {
                         listaRam.shift()
                     }
                 }
-                else if (listarlogMaquinas[i].descricaoLog == "Uso da CPU") {
+                else if (listarlogMaquinas[i].tipoComponente == "Processador") {
                     listaCPU.push(listarlogMaquinas[i].valor)
-                    if (listaCPU.length == 7) {
+                    if (listaCPU.length >= 7) {
                         listaCPU.shift()
                     }
 
@@ -711,28 +749,28 @@ function listandologMaquinas() {
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "Perda de Pacotes") {
                     perdaPacotes.push(listarlogMaquinas[i].valor)
-                    if (perdaPacotes.length == 7) {
+                    if (perdaPacotes.length >= 7) {
                         perdaPacotes.shift()
                     }
 
                 }
-                else if (listarlogMaquinas[i].descricaoLog == "Uso de Armazenamento") {
+                else if (listarlogMaquinas[i].tipoComponente == "Armazenamento") {
                     listaMemoria.push(listarlogMaquinas[i].valor)
-                    if (listaMemoria.length == 7) {
+                    if (listaMemoria.length >= 7) {
                         listaMemoria.shift()
                     }
 
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "BytesEnviados") {
                     pacotesEnviados.push(listarlogMaquinas[i].valor)
-                    if (pacotesEnviados.length == 7) {
+                    if (pacotesEnviados.length >= 7) {
                         pacotesEnviados.shift()
                     }
 
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "BytesRecebidos") {
                     pacotesRecebidos.push(listarlogMaquinas[i].valor)
-                    if (pacotesRecebidos.length == 7) {
+                    if (pacotesRecebidos.length >= 7) {
                         pacotesRecebidos.shift()
                     }
 
@@ -751,16 +789,35 @@ function listandologMaquinas() {
                 recebidos.innerHTML = `<p>Recebidos</p>
                 <p ><strong >${MbRecebidos}Mb</strong></p>`;
 
+                const perda = document.getElementById('Rede-perdidos')
+                var perdidos = perdaPacotes[perdaPacotes.length -1];
+                perda.innerHTML = `<p>Perdidos</p>
+                <p ><strong >${perdidos}Mb</strong></p>`
+
 
                 const ramUso = document.getElementById('USO-RAM')
                 var RamEmUso = listaRam[listaRam.length - 1];
                 ramUso.innerHTML = `<p>Em uso</p>
                 <p ><strong >${RamEmUso}Gb</strong></p>`;
 
+
+
+                const memoriaUso = document.getElementById('USO-MEMORIA')
+                var MemoriaEmUso = listaMemoria[listaMemoria.length - 1];
+                memoriaUso.innerHTML = `<p>Em uso</p>
+                <p ><strong >${MemoriaEmUso}Gb</strong></p>`;
+
                 const porcentagemRam = document.getElementById('porcentagemRAM')
                 var RamPorcentagem = RamEmUso / ramTOTAL * 100;
                 porcentagemRam.innerHTML = `<p>RAM</p>
                 <p><strong>${RamPorcentagem.toFixed(0)}%</strong> </p>`
+
+                const porcentagemMemoria = document.getElementById('porcentagemMemoria')
+                var MemoriaPorcentagem = MemoriaEmUso / memoriaTOTAL * 100;
+                porcentagemMemoria.innerHTML = `<p>MEM</p>
+                <p><strong>${MemoriaPorcentagem.toFixed(0)}%</strong> </p>`
+
+
 
                 const usoCPU = document.getElementById('USO-CPU')
                 var usoAtualCPU = listaCPU[listaCPU.length - 1]
@@ -771,11 +828,21 @@ function listandologMaquinas() {
                 velocidade.innerHTML = ` <p>Velocidade</p>
                 <p><strong>${listaVelocidade}Ghz</strong> </p>`
 
+                console.log(`CPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ${listaCPU}` )
 
+
+                    meuGrafico.update()
+    meuGrafico2.update()
+    meuGrafico3.update()
+    meuGrafico4.update()
 
             }
-            //REDE
+           
+        
+
             console.log("AQUI NA RESPOSTA RYAN")
+            
+            
 
         })
         .catch(function (error) {
@@ -783,9 +850,14 @@ function listandologMaquinas() {
             console.log("Erro!: ", error)
         })
 
-        // setInterval(() => {
-        //     listandologMaquinas();
-        // }, 5000);
+
+
 }
+setInterval(() => {
+
+    listandologMaquinas();
+   
+
+}, 2000);
 
 
