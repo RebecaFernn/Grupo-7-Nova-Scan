@@ -1,12 +1,19 @@
 var database = require("../database/config");
 
-function graficopacote() {
+function graficopacoterecebido() {
 
-    var instrucaoSql = ``;
+    var instrucaoSql = `SELECT * FROM log WHERE descricao = "BytesRecebidos";`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function graficopacoteenviado(){
+    var instrucaoSql = `SELECT * FROM log WHERE descricao = "BytesEnviados";`;
+    
+    console.log("Executando a instrução SQL: \n "+ instrucaoSql);
+    return database.executar(instrucaoSql)
+}
 module.exports = {
-    graficopacote
+    graficopacoterecebido,
+    graficopacoteenviado
 };
