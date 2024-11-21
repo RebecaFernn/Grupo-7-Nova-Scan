@@ -449,8 +449,6 @@ function listandoAlertasComponenteMaquina() {
         })
         .then(function (listaAlertasDisparado) {
             console.log("Alertas Disparados:", listaAlertasDisparado)
-            const elementoPai = document.getElementById('right-informacoes');
-            elementoPai.innerHTML = "";
 
             const alertaCPU = document.getElementById('alertaDaCPU');
             alertaCPU.innerHTML = "";
@@ -484,30 +482,42 @@ function listandoAlertasComponenteMaquina() {
                 };
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
-
+               
+            if(listaAlertasDisparado[i].descricao == "Alerta: Alto uso da CPU!!"){
             alertaCPU.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
              <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
-            </div>
-            `
+            </div>`
+            }
+            else if(listaAlertasDisparado[i].descricao == "Alerta: Alta Frequencia do processador" ){
+                alertaCPU.innerHTML += `
+                <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
+                 <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}Ghz - ${dataFormatada}</p>
+                </div>
+                `
 
+            } 
+            else if(listaAlertasDisparado[i].descricao == "Alerta: Uso Alto de Memória RAM!!"){
             alertaRAM.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
             </div>`
+            }
             
-               
+            else if(listaAlertasDisparado[i].descricao == "Alerta: Alto uso de armazenamento"){
             alertaMemoria.innerHTML += `
                     <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
                     <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} GB - ${dataFormatada}</p>
                     </div>`
-
+            }
+            else{
                
             alertaREDE.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
             <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor} MB - ${dataFormatada}</p>
             </div>`
-      
+            
+            }
                 
             }
 
@@ -521,8 +531,8 @@ function listandoAlertasComponenteMaquina() {
 
 //Funções Mônica
 function visualizarGraficoAlerta(descricao) {
-    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-    fundoInformacoesmaquina.style.display = 'none';
+    const funfoAlertas = document.getElementById('fundo-alertas');
+    funfoAlertas.style.display = 'none';
     const conteudoMaquinas = document.getElementById('conteudoMaquinas');
     conteudoMaquinas.style.display = 'none';
     const GraficoAlerta = document.getElementById('GraficoAlerta');
@@ -680,10 +690,6 @@ function listandologMaquinas() {
 
 
             for (let i = 0; i < listarlogMaquinas.length; i++) {
-
-
-
-                console.log(listarlogMaquinas)
 
                 if (listarlogMaquinas[i].descricaoLog == "Uso de Memória RAM") {
                     listaRam.push(listarlogMaquinas[i].valor)
