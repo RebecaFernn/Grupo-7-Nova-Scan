@@ -178,7 +178,7 @@ function graficoAlerta(req, res) {
   var descricaoLog = req.params.descricao
 
   if (descricaoLog == undefined) {
-    res.status(400).send("o id do alerta esta indefinido")
+    res.status(400).send("a descrição do alerta está undefined")
   }
   else {
     maquinasModel.graficoAlerta(descricaoLog)

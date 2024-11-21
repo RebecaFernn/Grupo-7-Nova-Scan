@@ -544,6 +544,10 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> d6b4eec02b732e0611012c1a0093fbffd81711a2
     fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },

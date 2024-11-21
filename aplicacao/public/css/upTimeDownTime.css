@@ -32,6 +32,9 @@ body {
 
 /* Titulo da dashboard */
 .tituloDash{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-top: 15px;
     padding-left: 23px;
 }
@@ -39,7 +42,9 @@ body {
     font-size: 35px;
     font-weight: 600;
 }
-
+.botoesOutrasDash{
+    margin-right: 50px;
+}
 .paiUpTime{
     background-color: #fff;
     width: 1475px;
@@ -168,7 +173,7 @@ body {
 .cardKpi1 h3{
     text-align: center;
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -213,7 +218,7 @@ body {
 .cardKpi2 h3{
     text-align: center;
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
