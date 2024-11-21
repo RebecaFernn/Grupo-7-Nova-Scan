@@ -485,8 +485,6 @@ function listandoAlertasComponenteMaquina() {
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
 
-               
-
             alertaCPU.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
              <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
@@ -536,7 +534,8 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/GráficoPico/graficoAlerta/${descricao}`, {
+
+    fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })

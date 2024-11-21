@@ -14,6 +14,46 @@ WHERE e.id = ${fkEmpresa};
     return database.executar(instrucaoSql);
 }
 
+function dadosGraficoRosquinha(fkEmpresa) {
+    console.log("Executando a função dadosGraficoRosquinha()")
+    var instrucaoSql = `
+    SELECT descricao AS Descrição_Alerta, COUNT(*) AS Quantidade_Alertas FROM log 
+JOIN dispositivo as d
+ON log.fkDispositivo = d.id 
+JOIN empresa as e
+ON d.fkEmpresa = e.id
+WHERE 
+    eAlerta = 1 
+    AND dataHora >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+    AND e.id = ${fkEmpresa}
+GROUP BY 
+    descricao
+ORDER BY 
+    Quantidade_Alertas DESC;
+
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dadosKpiAlerta(fkEmpresa) {
+    console.log("Executando a função dadosGraficoRosquinha()")
+    var instrucaoSql = `
+    SELECT count(*) as alertasGerados FROM log as l
+JOIN dispositivo as d
+ON l.fkDispositivo = d.id
+JOIN empresa as e
+ON d.fkEmpresa = e.id
+WHERE l.eAlerta = 1 
+AND l.dataHora >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+AND e.id = ${fkEmpresa};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    bootTime
+    bootTime,
+    dadosGraficoRosquinha,
+    dadosKpiAlerta
 }

@@ -96,7 +96,7 @@ function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa){
 }
 
 function graficoAlerta(descricaoLog) {
-  console.log("Usando a função graficoAlerta")
+  console.log("Usando a função graficoAlerta, valores a ser recebido: ", descricaoLog)
   var instrucaoSql = `SELECT 
     FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(dataHora) / 5) * 5) AS intervalo_inicio, 
     MAX(valor) AS pico_maximo,
@@ -111,7 +111,7 @@ AND DATE(dataHora) = curdate()
 GROUP BY intervalo_inicio, d.id
 ORDER BY intervalo_inicio;`
 
-  console.log("Executando a instrução SQL" + instrucaoSql)
+  console.log("Executando a instrução SQL " + instrucaoSql)
   return database.executar(instrucaoSql)
 
 }

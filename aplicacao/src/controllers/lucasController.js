@@ -19,6 +19,48 @@ function bootTime(req, res) {
     }
 }
 
+function dadosGraficoRosquinha(req, res){
+    var fkEmpresa = req.params.fkEmpresa
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fk da empresa está indefinida")
+    }
+    else{
+        lucasModel.dadosGraficoRosquinha(fkEmpresa)
+        .then(function(resposta){
+            res.status(200).json(resposta)
+        })
+        .catch(function(error){
+            console.log(error)
+            console.log("Houve um erro ao buscar os dados da rosquinha", error)
+            res.status(500).json(erro.sqlMessage)
+        })
+
+    }
+}
+
+function dadosKpiAlerta(req, res){
+    var fkEmpresa = req.params.fkEmpresa
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fk da empresa está indefinida")
+    }
+    else{
+        lucasModel.dadosKpiAlerta(fkEmpresa)
+        .then(function(resposta){
+            res.status(200).json(resposta)
+        })
+        .catch(function(error){
+            console.log(error)
+            console.log("Houve um erro ao buscar os dados da rosquinha", error)
+            res.status(500).json(erro.sqlMessage)
+        })
+
+    }
+}
+
 module.exports ={
     bootTime,
+    dadosGraficoRosquinha,
+    dadosKpiAlerta
 }
