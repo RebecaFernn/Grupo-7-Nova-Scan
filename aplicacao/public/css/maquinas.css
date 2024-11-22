@@ -118,6 +118,7 @@ body {
     font-size: 3.125rem;
     font-family: Montserrat;
     font-weight: 500;
+    
 }
 
 .btn-topmaquinas {
@@ -695,24 +696,24 @@ canvas {
 
 .GraficoAlerta {
     width: 80%;
-    height: 95vh;
+    height: 95%;
     /* background-color: #38A25C; */
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    gap: 3%;
+    /* gap: 3%; */
 }
 
-.topGraficoAlerta .p {
+.topGraficoAlerta {
     height: 90%;
     width: 100%;
     /* background-color: #3A527A; */
     display: flex;
     font-size: 60%;
     /* align-items: center; */
-    /* justify-content: space-between; */
-    /* flex-direction: row; */
+    justify-content: space-between;
+    flex-direction: column;
 
 }
 
@@ -720,9 +721,9 @@ canvas {
     display: flex;
     align-items: center;
     justify-self: end;
-    height: 4000%;
+    height: 35%;
     width: 45%;
-  
+    color: #ffffff;
     flex-direction: column;
     /* margin-right: 50px; */
     background-color: #F84455;
