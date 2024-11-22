@@ -575,12 +575,19 @@ function visualizarGraficoAlerta(descricao) {
     conteudoMaquinas.style.display = 'none';
     const GraficoAlerta = document.getElementById('GraficoAlerta');
     GraficoAlerta.style.display = 'flex';
+    
+
 
 
     //Mandando o id do log para a função grafico alerta
     graficoAlerta(descricao)
 }
 
+// <<<<<<< HEAD
+
+
+// =======
+// >>>>>>> a121137bf2a9395d459f05348d887853901520ee
 function graficoAlerta(descricao) {
     fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
@@ -651,8 +658,8 @@ function graficoAlerta(descricao) {
             let maquinaDescricao = document.getElementById('descricao')
             maquinaDescricao.innerHTML = dados[0].descricao
 
-            // let maquinaDispositivo = document.getElementById('dispositivo')
-            // maquinaDispositivo.innerHTML = dados[0].dispositivo
+            // let maquinaDispositivo = document.getElementById('listaData')
+            // maquinaDispositivo.innerHTML = dados[0].data
 
             maior = 0
             b = 0
