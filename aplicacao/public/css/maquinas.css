@@ -38,11 +38,36 @@ body {
     width: 80%;
     height: 10%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around; 
     align-items: center;
     flex-direction: row;
 }
 
+.topmaquinas2{
+    /* width: 80%;
+    height: 10%; */
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 25px;
+    font-size: 3.125rem;
+    font-family: Montserrat;
+    font-weight: 200;
+    
+
+}
+
+#nomeMaquina{
+     margin-left: 15px; 
+}
+
+/* #nomeMaquina{
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+
+} */
 .box-btn {
     width: 90%;
     height: 50px !important;
