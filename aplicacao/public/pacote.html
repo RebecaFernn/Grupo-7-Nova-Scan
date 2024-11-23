@@ -102,100 +102,99 @@
 
 <script src="js/href.js"></script>
 <script>
-    const ctx = document.getElementById('myChart-Bytes').getContext('2d');
-
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'], // Rótulos do eixo X
-                datasets: [
-                    {
-                        label: 'Bytes Recebidos', // Primeiro conjunto de dados
-                        data: [12, 19, 3, 5, 2],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2,
-                        fill: true // Preenche a área sob a linha
-                    },
-                    {
-                        label: 'Bytes Enviados', // Segundo conjunto de dados
-                        data: [5, 10, 4, 8, 1],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderWidth: 2,
-                        fill: false // Não preenche a área sob a linha
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Gráfico de Bytes Recebidos e Enviados'
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: ''
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: ''
-                        }
-                    }
-                }
+    fetch('/kaue/graficopacotes', { cache: 'no-store' })
+    .then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          // Arrays para os dados do gráfico
+          let bytesRecebidos = [];
+          let bytesEnviados = [];
+          let labels = [];
+  
+          // Separar os dados e criar as labels
+          for (let i = 0; i < json.length; i++) {
+            const { descricao, valor } = json[i];
+  
+            if (descricao === 'BytesRecebidos') {
+              bytesRecebidos.push(valor);
+            } else if (descricao === 'BytesEnviados') {
+              bytesEnviados.push(valor);
             }
+  
+            // Adiciona rótulos baseados no índice ou outro critério
+            if (!labels.includes(`Dado ${i + 1}`)) {
+              labels.push(`Dado ${i + 1}`);
+            }
+          }
+  
+          // Plotar o gráfico
+          plotarGrafico('myChart-Bytes', {
+            labels,
+            datasets: [
+              {
+                label: 'Bytes Recebidos',
+                data: bytesRecebidos,
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: true
+              },
+              {
+                label: 'Bytes Enviados',
+                data: bytesEnviados,
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: false
+              }
+            ]
+          }, 'Gráfico de Bytes Recebidos e Enviados');
         });
-
-        const ctx2 = document.getElementById('myChart-Pacotes')
-
-    const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 4
-        }]
-    };
-
-    new Chart(ctx2, {
-        type: 'doughnut',
-        data: data,
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Frequência de Falhas da Semana',
-                    font: {
-                        size: 20
-                    },
-                    color: 'black',
-                    padding: {
-                        top: 10,
-                        bottom: 20
-                    },
-                    align: 'center'
-                }
-            },
-            maintainAspectRatio: false,
-            responsive: true,
-        }
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
     })
+    .catch(error => {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+    function plotarGrafico(idCanvas, data, titulo) {
+  const ctx = document.getElementById(idCanvas).getContext('2d');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: data.datasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: titulo
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Período'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Bytes'
+          }
+        }
+      }
+    }
+  });
+}  
+
+  
+    
 </script>

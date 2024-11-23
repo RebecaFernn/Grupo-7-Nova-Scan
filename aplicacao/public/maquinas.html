@@ -115,12 +115,19 @@
             </div>
         </div>
         <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
-            <div class="topGraficoAlerta" id="topGraficoAlerta">
-                <p id="nomeMaquina"></p>
+            <button onclick="VoltarInfoMaquina()" class="btn-voltar"><img src="./img/voltar.svg" alt="">Voltar</button>
+
+            <div class="topmaquinas2" id="topGraficoAlerta">
+                <h2>Histórico do dia da máquina<h2 id="nomeMaquina"></h2></h2>
+                
             </div>
+            <!-- <div class="descricaoGrafico" id="descricaoGrafico">
+                <div class="divData">Data: <p id="listaData"></p></div>
+            </div> -->
             <div class="descricaoGrafico" id="descricaoGrafico">
-                <p id="descricao">Problema: </p>
-                    <p id="intervalo_inicio">Data e Hora:</p>
+                <div class="divProblema"><Strong>Problema: </Strong><p id="descricao"></p></div>
+                <div class="divDataHora"><strong>Data e Hora do primeiro pico mais alto:</strong><p id="intervalo_inicio"></p></div>
+                
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -137,7 +144,7 @@
                     <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
                 </div> -->
             </div>
-            <button onclick="VoltarInfoMaquina()" class="btn-voltarInfo">Voltar</button>
+            
 
         </div>
 
@@ -222,7 +229,7 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico"></canvas>
-                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+                            <div class="contagemAlertas" id="alertasCPU" onclick="chamarDivAlertas()">
 
                             </div>
                         </div>
@@ -247,7 +254,7 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico2"></canvas>
-                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+                            <div class="contagemAlertas" id="alertasRAM" onclick="chamarDivAlertas()">
 
                             </div>
                         </div>
@@ -256,17 +263,15 @@
 
                     <div class="graficoMEM" id="graficoMEM">
                         <div class="info-dispositivo">
-                            <div class="uso-atual">
+                            <div class="uso-atual" id="porcentagemMemoria">
                                 <p>MEM</p>
                                 <p><strong>50%</strong> </p>
                             </div>
-                            <div class="qtd-uso">
-                                <p>Em uso</p>
-                                <p><strong>10000gb</strong></p>
+                            <div class="qtd-uso" id="USO-MEMORIA">
+                               
                             </div>
-                            <div class="qtd-total">
-                                <p>Total</p>
-                                <p><strong>20000gb</strong></p>
+                            <div class="qtd-total" id="total-memoria">
+                               
                             </div>
                             <div class="status">
                                 <p>Status</p>
@@ -276,7 +281,7 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico3"></canvas>
-                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+                            <div class="contagemAlertas" id="alertasMEM" onclick="chamarDivAlertas()">
 
                             </div>
                         </div>
@@ -286,7 +291,9 @@
                         <div class="info-dispositivo">
                             <div class="uso-atual">
                                 <p>REDE</p>
-                                <p><strong>50%</strong> </p>
+                            </div>
+                            <div class="qtd-uso" id="Rede-perdidos">
+
                             </div>
                             <div class="qtd-uso" id="Rede-enviados">
 
@@ -302,7 +309,7 @@
                         </div>
                         <div class="grafico-cpu">
                             <canvas id="meuGrafico4"></canvas>
-                            <div class="contagemAlertas" onclick="chamarDivAlertas()">
+                            <div class="contagemAlertas" id="alertasREDE" onclick="chamarDivAlertas()">
 
                             </div>
                         </div>
@@ -546,45 +553,7 @@
             }
         });
 
-        // Loop para atualizar os dados
-        // for (var i = 0; i < 100; i++) {
-        //     (function (i) {
-        //         setTimeout(function () {
 
-        //             const now = new Date();
-        //             const date = now.toLocaleDateString();
-        //             const time = now.toLocaleTimeString();
-
-
-
-
-
-        //             var uso = Math.random() * 10 + 20;
-        //             var velocidade = Math.random() + 1;
-        //             lista.push(uso.toFixed(0));
-        //             labels.push(`Hora: ${time}`);
-
-        //             // Mantém apenas os últimos 7 pontos no gráfico
-        //             if (lista.length >= 7) {
-        //                 lista.shift();
-        //                 labels.shift();
-        //             }
-
-
-        //             meuGrafico.data.datasets[0].data = lista;
-        //             meuGrafico.data.labels = labels;
-        //             meuGrafico.update();  // Atualiza o gráfico
-
-        //             document.getElementById("usoCPU").innerHTML = uso.toFixed(0) + "%";
-        //             document.getElementById("velocidade").innerHTML = velocidade.toFixed(1) + "GHz";
-
-        //         }, i * 2000);
-        //     })(i);
-        // }
-
-
-
-        // --------grafico ram -------------
 
 
         const ctx2 = document.getElementById('meuGrafico2').getContext('2d');
@@ -641,43 +610,7 @@
             }
         });
 
-        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
-        // for (var c = 0; c < 100; c++) {
-        //     (function (c) {
-        //         setTimeout(function () {
-        //             const now = new Date();
-        //             const time = now.toLocaleTimeString();
-
-        //             var uso = Math.random() * 10 + 70;
-        //             var velocidade = Math.random() + 1;
-        //             lista2.push(uso.toFixed(0));
-        //             labels2.push(`Hora: ${time}`);
-
-
-
-        //             var usoRam = (uso.toFixed(0) / 100) * 16;
-        //             // Mantém apenas os últimos 7 pontos no gráfico
-        //             if (lista2.length >= 7) {
-        //                 lista2.shift();
-        //                 labels2.shift();
-        //             }
-
-        //             meuGrafico2.data.datasets[0].data = lista2;
-        //             meuGrafico2.data.labels = labels2;
-        //             meuGrafico2.update();
-
-        //             document.getElementById("usoRAM").innerHTML = uso.toFixed(0) + "%";
-        //             document.getElementById("RAMemuso").innerHTML = usoRam.toFixed(2) + "GB"
-
-        //             RAMemuso
-        //         }, c * 2000);
-        //     })(c);
-        // }
-
-
-
-
-
+       
 
 
 
@@ -702,8 +635,6 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        min: 0,
-                        max: 100,
                         ticks: {
                             font: {
                                 size: 14,
@@ -736,42 +667,6 @@
                 }
             }
         });
-
-        // Loop para atualizar os dados do gráfico RAM (corrigido para usar c)
-        // for (var c = 0; c < 100; c++) {
-        //     (function (c) {
-        //         setTimeout(function () {
-        //             const now = new Date();
-        //             const time = now.toLocaleTimeString();
-
-        //             var uso = Math.random() * 10 + 70;
-        //             var velocidade = Math.random() + 1;
-        //             lista3.push(uso.toFixed(0));
-        //             labels3.push(`Hora: ${time}`);
-
-
-
-        //             var usoRam = (uso.toFixed(0) / 100) * 1024;
-        //             // Mantém apenas os últimos 7 pontos no gráfico
-        //             if (lista3.length >= 7) {
-        //                 lista3.shift();
-        //                 labels3.shift();
-        //             }
-
-        //             meuGrafico3.data.datasets[0].data = lista3;
-        //             meuGrafico3.data.labels = labels3;
-        //             meuGrafico3.update();
-
-        //             document.getElementById("usoMEM").innerHTML = uso.toFixed(0) + "%";
-        //             document.getElementById("MEMemuso").innerHTML = usoRam.toFixed(2) + "GB"
-
-        //             RAMemuso
-        //         }, c * 5000);
-        //     })(c);
-        // }
-
-
-
 
 
 
@@ -847,42 +742,8 @@
             }
         });
 
-        // Loop para atualizar os dados do gráfico REDE
-        // for (var c = 0; c < 100; c++) {
-        //     (function (c) {
-        //         setTimeout(function () {
-        //             const now = new Date();
-        //             const time = now.toLocaleTimeString();
+        
 
-        //             var enviados = Math.random() * 10;
-        //             var recebidos = Math.random() * 10 + 5;
-        //             var perdidos = Math.random() * 5; // Exemplo: valor aleatório para perdidos
-
-        //             // Adicionar valores às listas
-        //             Listaenviados.push(enviados.toFixed(0));
-        //             Listarecebidos.push(recebidos.toFixed(0));
-        //             labels4.push(`Hora: ${time}`);
-
-        //             // Mantém apenas os últimos 7 pontos no gráfico
-        //             if (Listaenviados.length >= 7) {
-        //                 Listaenviados.shift();
-        //                 Listarecebidos.shift();
-        //                 labels4.shift();
-        //             }
-
-        //             // Atualizar os dados do gráfico
-        //             meuGrafico4.data.datasets[0].data = Listaenviados;
-        //             meuGrafico4.data.datasets[1].data = Listarecebidos;
-        //             meuGrafico4.data.labels = labels4;
-        //             meuGrafico4.update();
-
-        //             // Atualizar o conteúdo dos elementos HTML
-        //             document.getElementById("enviados").innerHTML = enviados.toFixed(2) + "Mb";
-        //             document.getElementById("recebidos").innerHTML = recebidos.toFixed(2) + "Mb";
-        //             document.getElementById("perdidos").innerHTML = perdidos.toFixed(2) + "%";
-        //         }, c * 2000);
-        //     })(c);
-        // }
 
 
 
