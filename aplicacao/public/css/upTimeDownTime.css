@@ -44,6 +44,27 @@ body {
 }
 .botoesOutrasDash{
     margin-right: 50px;
+    margin-bottom: 5px;
+}
+.botaoDashRebeca{
+    border-radius: 18px;
+    border: none;
+    background-color: #F84455;
+    font-size: 14px;
+    color: white;
+    font-family: Montserrat;
+    padding: 10px;
+    cursor: pointer;
+}
+.botaoKaue{
+    border-radius: 18px;
+    border: none;
+    background-color: #F84455;
+    font-size: 14px;
+    color: white;
+    font-family: Montserrat;
+    padding: 10px;
+    cursor: pointer;
 }
 .paiUpTime{
     background-color: #fff;
