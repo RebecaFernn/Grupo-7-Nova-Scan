@@ -106,8 +106,39 @@
         </div>
     </div>
 
-    <div id="teste">
-
+    <div id="blur">
+        <div class="canva">
+            <div class="top">
+                <div class="exit">
+                    <h3>NOVASCAN</h3>
+                    <img src="img/fechar.svg" alt="" onclick="fechar()">
+                </div>
+                <h2>00/00/0000 - dia</h2>
+            </div>
+            <div class="mid">
+                <div class="left">
+                    <div class="quadro">
+                        <h3>titulo</h3>
+                        <p>valor</p>
+                    </div>
+                    <div class="quadro">
+                        <h3>titulo</h3>
+                        <p>valor</p>
+                    </div>
+                    <div class="quadro">
+                        <h3>titulo</h3>
+                        <p>valor</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="quadro">
+                        <h1>Uso Minímo - Máximo de domingo</h1>
+                        <h1>componente</h1>
+                        <div class="grafico">gráfico</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>
@@ -121,8 +152,13 @@
 
     
 function fundo(){
-    const teste = document.getElementById('teste');
-    teste.style.display = 'flex';
+    const blur = document.getElementById('blur');
+    blur.style.display = 'flex';
+}
+
+function fechar() {
+    const blur = document.getElementById('blur');
+    blur.style.display = 'none';
 }
    
 
