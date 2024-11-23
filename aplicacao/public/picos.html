@@ -95,7 +95,7 @@
             </div>
             <div id="diasSemana">
                 <h1>USO <br> Minímo - Máximo</h1>
-                <button>DOMINGO</button>
+                <button onclick="fundo()">DOMINGO</button>
                 <button>SEGUNDA</button>
                 <button>TERÇA</button>
                 <button>QUARTA</button>
@@ -106,6 +106,10 @@
         </div>
     </div>
 
+    <div id="teste">
+
+    </div>
+
 </section>
 </body>
 
@@ -113,8 +117,13 @@
 <script src="js/href.js"></script>
 
 <script>
-    
 
+
+    
+function fundo(){
+    const teste = document.getElementById('teste');
+    teste.style.display = 'flex';
+}
    
 
 </script>
