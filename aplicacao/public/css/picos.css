@@ -315,7 +315,7 @@ body {
                     & .grafico{
                         width: 90%;
                         height: 75%;
-                        background-color: #737272;
+                        background-color: white;
                         margin-bottom: 50px;
                     }
                 }
