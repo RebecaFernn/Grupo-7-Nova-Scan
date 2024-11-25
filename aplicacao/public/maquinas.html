@@ -115,7 +115,7 @@
             </div>
         </div>
         <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
-            <button onclick="VoltarInfoMaquina()" class="btn-voltar"><img src="./img/voltar.svg" alt="">Voltar</button>
+            <button onclick="VoltarInfoMaquina()" class="btn-voltar" id="botaoVoltar"><img src="./img/voltar.svg" alt="">Voltar</button>
 
             <div class="topmaquinas2" id="topGraficoAlerta">
                 <h2>Histórico do dia da máquina<h2 id="nomeMaquina"></h2></h2>
@@ -125,8 +125,8 @@
                 <div class="divData">Data: <p id="listaData"></p></div>
             </div> -->
             <div class="descricaoGrafico" id="descricaoGrafico">
-                <div class="divProblema"><Strong>Problema: </Strong><p id="descricao"></p></div>
-                <div class="divDataHora"><strong>Data e Hora do primeiro pico mais alto:</strong><p id="intervalo_inicio"></p></div>
+                <div class="divProblema">Problema:<p id="descricao"></p></div>
+                <div class="divDataHora">Data e Hora do primeiro pico mais alto:<p id="intervalo_inicio"></p></div>
                 
             </div>
 

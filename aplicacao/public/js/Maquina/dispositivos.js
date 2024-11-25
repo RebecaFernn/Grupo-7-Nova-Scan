@@ -583,11 +583,6 @@ function visualizarGraficoAlerta(descricao) {
     graficoAlerta(descricao)
 }
 
-// <<<<<<< HEAD
-
-
-// =======
-// >>>>>>> a121137bf2a9395d459f05348d887853901520ee
 function graficoAlerta(descricao) {
     fetch(`/maquinas/graficoAlerta/${descricao}`, {
         method: 'GET',
@@ -695,6 +690,21 @@ function graficoAlerta(descricao) {
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
         })
+
+
+        // teste para apagar div 
+        const topGraficoAlerta = document.getElementById("topGraficoAlerta");
+        const botaoVoltar = document.getElementById("botaoVoltar");
+
+
+        botaoVoltar.addEventListener("click", () => {
+            if (topGraficoAlerta.classList.contains("hidden")) {
+                topGraficoAlerta.classList.remove("hidden");
+              
+            } else {
+                topGraficoAlerta.classList.add("hidden");
+            }
+          });
 }
 
 // Ram

@@ -43,25 +43,6 @@ body {
     flex-direction: row;
 }
 
-.topmaquinas2{
-    /* width: 80%;
-    height: 10%; */
-    display: flex;
-    justify-content: space-around; 
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 25px;
-    font-size: 3.125rem;
-    font-family: Montserrat;
-    font-weight: 200;
-    
-
-}
-
-#nomeMaquina{
-     margin-left: 15px; 
-}
-
 /* #nomeMaquina{
     display: flex;
     justify-content: end;
@@ -730,6 +711,30 @@ canvas {
     /* gap: 3%; */
 }
 
+.topmaquinas2{
+    width: 80%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 25px;
+    font-size: 2.125rem;
+    font-family: Montserrat;
+    font-weight: 200;
+
+}
+.topmaquinas2 h2{
+    font-size: 3.125rem;
+    font-family: Montserrat;
+    font-weight: 500;
+    margin-left: 1.5%;
+    
+}
+
+#nomeMaquina h2{
+    
+}
+
 .topGraficoAlerta {
     height: 90%;
     width: 100%;
@@ -746,7 +751,7 @@ canvas {
     display: flex;
     align-items: center;
     justify-self: end;
-    height: 35%;
+    height: 45%;
     width: 45%;
     color: #ffffff;
     flex-direction: column;
@@ -754,6 +759,7 @@ canvas {
     background-color: #F84455;
     justify-content: end;
     gap: 10%;
+    font-family: Prompt;
    
 }
 
