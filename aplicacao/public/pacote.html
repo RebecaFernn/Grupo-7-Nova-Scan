@@ -76,7 +76,7 @@
               <div class="chart">
                 <h2></h2>
                 <div>
-                    <canvas id="myChart-Bytes">Gráfico-Maquina</canvas>
+                    <canvas id="myChart-Bytes" width="400" height="150">Gráfico-Maquina</canvas>
                   </div>
               </div>
         
@@ -87,10 +87,10 @@
                   </div>
               </div>
         
-              <div class="maquina">
+              <div class="chart">
                 <h2>Perda de Pacotes</h2>
                 <div>
-                    <canvas id="myChart-Pacotes">Gráfico-Perda</canvas>
+                    <canvas id="myChart-Pacotes"width="400" height="150">Gráfico-Perda</canvas>
                   </div>
               </div>
             </div>
@@ -194,6 +194,84 @@
     }
   });
 }  
+fetch('/kaue/graficoperda', { cache: 'no-store' })
+    .then(response => {
+        if (response.ok) {
+            response.json().then(json => {
+                // Arrays para os dados do gráfico
+                let perdasPacotes = [];
+                let labels = [];
+
+                // Separar os dados e criar as labels
+                for (let i = 0; i < json.length; i++) {
+                    const { descricao, valor } = json[i];
+
+                    if (descricao === 'Perda de Pacotes') {
+                        perdasPacotes.push(valor);
+                        labels.push(`Registro ${i + 1}`); // Rótulos baseados no índice
+                    }
+                }
+
+                // Plotar o gráfico de barras
+                plotarGrafico('myChart-Pacotes', {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Perda de Pacotes (%)',
+                            data: perdasPacotes,
+                            backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                }, 'Gráfico de Perda de Pacotes');
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(error => {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+// Função para plotar o gráfico
+function plotarGrafico2(idCanvas, data, titulo) {
+    const ctx = document.getElementById(idCanvas).getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar', // Gráfico de barras
+        data: {
+            labels: data.labels,
+            datasets: data.datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: titulo
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Registros'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Perda de Pacotes (%)'
+                    }
+                }
+            }
+        }
+    });
+}
 
   
     
