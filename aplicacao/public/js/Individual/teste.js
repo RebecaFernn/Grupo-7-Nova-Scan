@@ -5,8 +5,52 @@ function fundo(dia) {
     const titulo = document.getElementById('titulo');
     titulo.textContent = `Uso Minímo - Máximo de ${dia}`;
     const data = document.getElementById('data');
-    data.textContent = `00/00/0000 - ${dia}`;
+    
+    const dataSelecionada = document.getElementById('dataSelect').value; 
+    
+    const [inicio, fim] = dataSelecionada.split(' a ');
+
+    var [ano, mes, dia_dom] = inicio.split("-")
+
+    var dia_dom = Number(dia_dom)
+    const dia_seg = dia_dom + 1
+    const dia_ter = dia_seg + 1
+    const dia_qua = dia_ter + 1
+    const dia_qui = dia_qua + 1
+    const dia_sex = dia_qui + 1
+    const dia_sab = dia_sex + 1
+    
+
     blur.style.display = 'flex';
+
+    if (dia == "DOMINGO") {
+     data.textContent = `${dia_dom}/${mes}/${ano} - ${dia}`;
+     const day = ano + "-" + mes+ "-" + dia_dom
+    } else if (dia == "SEGUNDA") {
+      data.textContent = `${dia_seg}/${mes}/${ano} - ${dia}`;
+      const day = ano + "-" + mes+ "-" + dia_seg
+    } else if (dia == "TERÇA") {
+      data.textContent = `${dia_ter}/${mes}/${ano} - ${dia}`;
+      const day = ano + "-" + mes+ "-" + dia_ter
+    }else if (dia == "QUARTA") {
+      data.textContent = `${dia_qua}/${mes}/${ano} - ${dia}`;
+      const day = ano + "-" + mes+ "-" + dia_qua
+    }else if (dia == "QUINTA") {
+      data.textContent = `${dia_qui}/${mes}/${ano} - ${dia}`;
+      const day = ano + "-" + mes+ "-" + dia_qui
+    }else if (dia == "SEXTA") {
+      data.textContent = `${dia_sex}/${mes}/${ano} - ${dia}`;
+      const day = ano + "-" + mes+ "-" + dia_sex
+    } else if (dia == "SABÁDO"){
+      data.textContent = `${dia_sab}/${mes}/${ano}- ${dia}`;
+      const day = fim
+    }
+
+    const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); 
+    const tipoDispositivo = document.getElementById('componente').value;
+
+    // obterDadosGrafico2(day, idEmpresa, tipoDispositivo);
+  
 }
 
 function fechar() {
