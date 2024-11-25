@@ -9,6 +9,8 @@ router.get("/graficopacotes", function (req, res) {
 router.get ("/graficoperda", function(req, res){
     kaueController.graficoperda(req, res);
 });
-
+router.get ("/atualizarhorario", function(req, res){
+    kaueController.graficoperda(req, res);
+});
 
 module.exports = router;
