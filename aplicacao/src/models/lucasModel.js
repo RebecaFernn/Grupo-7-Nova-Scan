@@ -52,8 +52,20 @@ AND e.id = ${fkEmpresa};
     return database.executar(instrucaoSql);
 }
 
+function tempoTotal(fkEmpresa) {
+    console.log("Executando a função tempoTotal()")
+    var instrucaoSql = `
+    SELECT d.id, ta.bootTime, d.nome FROM tempoAtividade as ta JOIN dispositivo as d 
+ON ta.fkDispositivo = d.id
+WHERE fkEmpresa = ${fkEmpresa};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     bootTime,
     dadosGraficoRosquinha,
-    dadosKpiAlerta
+    dadosKpiAlerta,
+    tempoTotal
 }

@@ -59,8 +59,28 @@ function dadosKpiAlerta(req, res){
     }
 }
 
+function tempoTotal(req, res){
+    var fkEmpresa = req.params.fkEmpresa
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fk da empresa esta indefinida")
+    }
+    else{
+        lucasModel.tempoTotal(fkEmpresa)
+        .then(function(resposta){
+            res.status(200).json(resposta)
+        })
+        .catch(function(error){
+            console.log(error)
+            console.log("Houve um erro ao buscar o tempo das maquinas", error)
+            res.status(500).json(sqlMessage.error)
+        })
+    }
+}
+
 module.exports ={
     bootTime,
     dadosGraficoRosquinha,
-    dadosKpiAlerta
+    dadosKpiAlerta,
+    tempoTotal
 }

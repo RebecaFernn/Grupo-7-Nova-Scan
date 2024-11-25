@@ -15,4 +15,8 @@ router.get("/dadosKpiAlerta/:fkEmpresa", function(req, res){
     lucasController.dadosKpiAlerta(req, res)
 })
 
+router.get("/tempoTotal/:fkEmpresa", function(req, res){
+    lucasController.tempoTotal(req, res)
+})
+
 module.exports = router

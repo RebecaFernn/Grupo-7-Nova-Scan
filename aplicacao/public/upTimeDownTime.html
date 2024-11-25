@@ -17,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="dadosTempoReal(), dadosGraficoRosquinha(), dadosKpiAlertas()">
+<body onload="dadosTempoReal(), dadosGraficoRosquinha(), dadosKpiAlertas(), tempoTotalMaquina()">
     <div class="paiDaTela">
 
         <div class="NavBar">
@@ -63,8 +63,10 @@
             <div class="tituloDash">
                 <h1>Monitoramento de Uptime e Downtime</h1>
                 <div class="botoesOutrasDash">
-                    <button class="botaoDashRebeca" onclick="window.location.href='picos.html'">Detalhamento CPU e RAM</button>
-                    <button class="botaoKaue" onclick="window.location.href='pacote.html'">Detalhamento Perda de Pacote</button>
+                    <button class="botaoDashRebeca" onclick="window.location.href='picos.html'">Detalhamento CPU e
+                        RAM</button>
+                    <button class="botaoKaue" onclick="window.location.href='pacote.html'">Detalhamento Perda de
+                        Pacote</button>
                 </div>
             </div>
 
@@ -294,6 +296,32 @@
             })
             .catch(function (error) {
                 console.log("Deu erro ao buscar os dados do gráfico rosquinha: ", error)
+            })
+    }
+
+    function tempoTotalMaquina() {
+        var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+        fetch(`/lucas/tempoTotal/${fkEmpresa}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                return resposta.json()
+            })
+            .then(function (tempo) {
+                console.log('Tempo das máquinas retornado', tempo)
+
+
+                const currentTime = new Date();
+                
+                const temposEmHoras = tempo.map(entry => {
+                    const bootTime = new Date(entry.bootTime);
+                    const totalHours = Math.abs((currentTime - bootTime) / (1000 * 60 * 60)); // Converte para horas
+                    console.log("Horas totais das máquinas", totalHours.toFixed(0))
+                })
+            })
+            .catch(function (error) {
+                console.log("Houve um erro ao buscar o tempo das maquinas", error)
             })
     }
 
