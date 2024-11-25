@@ -63,9 +63,24 @@ WHERE fkEmpresa = ${fkEmpresa};
     return database.executar(instrucaoSql);
 }
 
+function qtdAlertasPorMaquina(fkEmpresa) {
+    console.log("Executando a função qtdAlertasPorMaquina()")
+    var instrucaoSql = `
+    SELECT count(l.eAlerta) as quantidade_alerta, d.id as idMaquina FROM log as l JOIN dispositivo as d
+ON l.fkDispositivo = d.id
+JOIN empresa as e 
+ON d.fkEmpresa = e.id
+WHERE e.id = ${fkEmpresa}
+GROUP BY d.id;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     bootTime,
     dadosGraficoRosquinha,
     dadosKpiAlerta,
-    tempoTotal
+    tempoTotal,
+    qtdAlertasPorMaquina
 }
