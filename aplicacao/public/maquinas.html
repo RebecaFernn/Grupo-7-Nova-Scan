@@ -115,19 +115,23 @@
             </div>
         </div>
         <div class="GraficoAlerta" id="GraficoAlerta" onload="listarMaquinas">
-            <button onclick="VoltarInfoMaquina()" class="btn-voltar" id="botaoVoltar"><img src="./img/voltar.svg" alt="">Voltar</button>
+            <!-- <button onclick="VoltarInfoMaquina()" class="btn-voltar" id="botaoVoltar"><img src="./img/voltar.svg"
+                    alt="">Voltar</button>
 
             <div class="topmaquinas2" id="topGraficoAlerta">
-                <h2>Histórico do dia da máquina<h2 id="nomeMaquina"></h2></h2>
-                
+                <h2>Histórico do dia da máquina<h2 id="nomeMaquina"></h2>
+                </h2>
+
             </div>
-            <!-- <div class="descricaoGrafico" id="descricaoGrafico">
-                <div class="divData">Data: <p id="listaData"></p></div>
-            </div> -->
             <div class="descricaoGrafico" id="descricaoGrafico">
-                <div class="divProblema">Problema:<p id="descricao"></p></div>
-                <div class="divDataHora">Data e Hora do primeiro pico mais alto:<p id="intervalo_inicio"></p></div>
-                
+                <div class="divData">Data: <p id="listaData"></p></div>
+            </div>
+            <div class="descricaoGrafico" id="descricaoGrafico">
+                <div class="divProblema">Problema:<p id="descricao"></p>
+                </div>
+                <div class="divDataHora">Data e Hora do primeiro pico mais alto:<p id="intervalo_inicio"></p>
+                </div>
+
             </div>
 
             <div class="medGraficoAlerta" id="medGraficoAlerta">
@@ -139,12 +143,12 @@
             </div>
 
             <div class="fimGraficoAlerta" id="fimGraficoAlerta">
-                <!-- <div class="infoFimGraficoAlerta" >
+                <div class="infoFimGraficoAlerta" >
                     <p id="descricao"><strong>Problema:</strong> </p>
                     <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
-                </div> -->
-            </div>
-            
+                </div>
+            </div> -->
+
 
         </div>
 
@@ -174,11 +178,11 @@
                         </div>
                     </div>
                     <div class="right-informacoes" id="right-informacoes">
-                    <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
-                            src="./img/rename.svg" alt=""></button>
-                    <button class="btn-ativar" onclick="ativarDispositivo()"> Ativar máquina </button>
-                    <button class="btn-desativar" onclick="desativarDispositivo()"> Desativar máquina </button>
-                    <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
+                        <button onclick="renomear()" class="btn-renomearSelf">Renomear Self-Checkout <img
+                                src="./img/rename.svg" alt=""></button>
+                        <button class="btn-ativar" onclick="ativarDispositivo()"> Ativar máquina </button>
+                        <button class="btn-desativar" onclick="desativarDispositivo()"> Desativar máquina </button>
+                        <button class="btn-renomearSelf" onclick="grafico()"> Monitoramento em tempo real </button>
                     </div>
                 </div>
             </div>
@@ -268,10 +272,10 @@
                                 <p><strong>50%</strong> </p>
                             </div>
                             <div class="qtd-uso" id="USO-MEMORIA">
-                               
+
                             </div>
                             <div class="qtd-total" id="total-memoria">
-                               
+
                             </div>
                             <div class="status">
                                 <p>Status</p>
@@ -445,7 +449,7 @@
             listandologMaquinas()
         }
 
-        function chamarDivAlertas(){
+        function chamarDivAlertas() {
             const fundoInformacoesmaquina = document.getElementById('fundoInfomaquina');
             fundoInformacoesmaquina.style.display = 'none';
             const funfoAlertas = document.getElementById('fundo-alertas');
@@ -474,13 +478,11 @@
             fundoCadastrar.style.display = 'none';
 
         }
-
-
+        
         function pararPropagacao(fecharInfomaquina) {
             event.stopPropagation();
 
         }
-
 
         function VoltarInfoMaquina() {
             const GraficoAlerta = document.getElementById('GraficoAlerta');
@@ -489,10 +491,9 @@
             conteudoMaquinas.style.display = 'flex';
             const funfoAlertas = document.getElementById('fundo-alertas');
             funfoAlertas.style.display = 'flex';
+
+            GraficoAlerta.innerHTML = ""
         }
-
-
-
 
         // var lista = [];
         // var labels = [];
@@ -610,7 +611,7 @@
             }
         });
 
-       
+
 
 
 
@@ -742,7 +743,7 @@
             }
         });
 
-        
+
 
 
 
