@@ -55,7 +55,7 @@ AND e.id = ${fkEmpresa};
 function tempoTotal(fkEmpresa) {
     console.log("Executando a função tempoTotal()")
     var instrucaoSql = `
-    SELECT d.id, ta.bootTime, d.nome FROM tempoAtividade as ta JOIN dispositivo as d 
+    SELECT ta.bootTime, d.nome FROM tempoAtividade as ta JOIN dispositivo as d 
 ON ta.fkDispositivo = d.id
 WHERE fkEmpresa = ${fkEmpresa};
     `
@@ -66,7 +66,7 @@ WHERE fkEmpresa = ${fkEmpresa};
 function qtdAlertasPorMaquina(fkEmpresa) {
     console.log("Executando a função qtdAlertasPorMaquina()")
     var instrucaoSql = `
-    SELECT count(l.eAlerta) as quantidade_alerta, d.id as idMaquina FROM log as l JOIN dispositivo as d
+    SELECT count(l.eAlerta) as quantidade_alerta FROM log as l JOIN dispositivo as d
 ON l.fkDispositivo = d.id
 JOIN empresa as e 
 ON d.fkEmpresa = e.id

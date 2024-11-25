@@ -336,8 +336,8 @@
 
         var listaDados = []
         
-        for(var i = 0; i < listaHorasMaquina; i++){
-            var tempoMedio = Number(listaHorasMaquina[i].horasTotais) / listaQtdAlertas[i].quantidade_alertas
+        for(var i = 0; i < listaHorasMaquina.length; i++){
+            var tempoMedio = listaHorasMaquina[i].horasTotais / listaQtdAlertas[i].quantidade_alertas
 
             listaDados.push({nomeMaquina: listaHorasMaquina[i].nomeMaquina, tempoMedio: tempoMedio })
         }
