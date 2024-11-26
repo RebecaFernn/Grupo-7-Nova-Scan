@@ -50,7 +50,11 @@ function fundo(dia) {
     const tipoDispositivo = document.getElementById('componente').value;
 
     // obterDadosGrafico2(day, idEmpresa, tipoDispositivo);
+    obterDados1(day, idEmpresa, tipoDispositivo);
+    obterDados2(day, idEmpresa, tipoDispositivo);
+    obterDados3(day, idEmpresa, tipoDispositivo);
   
+
 }
 
 function fechar() {
@@ -120,3 +124,76 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector("#slope"), options);
 chart.render();
+
+
+function obterDados1(day, idEmpresa, tipoDispositivo) {
+
+
+  const url = `/rebeca/KPI1?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+
+  console.log(url)
+
+  fetch(url, { cache: 'no-store' })
+      .then(function (response) {
+          if (response.ok) {
+              response.json().then(function (resposta) {
+                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                  KPI1(resposta);
+              });
+          } else {
+              console.error('Nenhum dado encontrado ou erro na API');
+          }
+      })
+      .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+}
+
+function obterDados2(day, idEmpresa, tipoDispositivo) {
+
+
+  const url = `/rebeca/KPI2?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+
+  console.log(url)
+
+  fetch(url, { cache: 'no-store' })
+      .then(function (response) {
+          if (response.ok) {
+              response.json().then(function (resposta) {
+                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                  KPI2(resposta);
+              });
+          } else {
+              console.error('Nenhum dado encontrado ou erro na API');
+          }
+      })
+      .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+}
+
+function obterDados3(day, idEmpresa, tipoDispositivo) {
+
+
+  const url = `/rebeca/KPI3?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+
+  console.log(url)
+
+  fetch(url, { cache: 'no-store' })
+      .then(function (response) {
+          if (response.ok) {
+              response.json().then(function (resposta) {
+                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                  KPI3(resposta);
+              });
+          } else {
+              console.error('Nenhum dado encontrado ou erro na API');
+          }
+      })
+      .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+}

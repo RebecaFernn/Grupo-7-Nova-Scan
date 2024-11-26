@@ -27,6 +27,42 @@ function grafico(inicio, fim, idEmpresa, tipoDispositivo) {
     return database.executar(instrucaoSql);
 }
 
+function KPI1(day, idEmpresa, tipoDispositivo) {
+    // Monta a instrução SQL usando os parâmetros fornecidos
+    var instrucaoSql = ` 
+        SELECT 
+       
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function KPI2(day, idEmpresa, tipoDispositivo) {
+    // Monta a instrução SQL usando os parâmetros fornecidos
+    var instrucaoSql = ` 
+        SELECT 
+       
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function KPI3(day, idEmpresa, tipoDispositivo) {
+    // Monta a instrução SQL usando os parâmetros fornecidos
+    var instrucaoSql = ` 
+        SELECT 
+       
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    grafico
+    grafico,
+    KPI1,
+    KPI2,
+    KPI3
 };
