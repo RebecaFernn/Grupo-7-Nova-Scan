@@ -16,8 +16,15 @@ function graficoperda(){
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function atualizarhorario(){
+    var instrucaoSql = `SELECT dataHora FROM log ORDER BY dataHora DESC LIMIT 1;
+    `;
+    console.log("Executando a instrução SQL: \n"+ instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     graficopacotes,
-    graficoperda
+    graficoperda,
+    atualizarhorario
 };
