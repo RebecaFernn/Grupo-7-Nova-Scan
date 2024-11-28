@@ -474,6 +474,9 @@ function listandoAlertasComponenteMaquina() {
             var r = 0;
             var p = 0;
             var a = 0;
+
+
+
             for (var i = 0; i < listaAlertasDisparado.length; i++) {
 
                 const dataHora = listaAlertasDisparado[i].dataHora;
@@ -499,6 +502,8 @@ function listandoAlertasComponenteMaquina() {
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
              <p>${listaAlertasDisparado[i].descricao}: ${listaAlertasDisparado[i].valor}% - ${dataFormatada}</p>
             </div>`
+
+
                 }
                 else if (listaAlertasDisparado[i].descricao == "Alerta: Alta Frequencia do processador") {
                     c++
@@ -558,7 +563,7 @@ function listandoAlertasComponenteMaquina() {
             const alertasREDE = document.getElementById('alertasREDE')
             alertasREDE.innerHTML = `
             <p> Alertas </p>
-            <p>${p}</p>` 
+            <p>${p}</p>`
 
         })
         .catch(function (error) {
@@ -727,25 +732,121 @@ function listandologMaquinas() {
         .then(function (listarlogMaquinas) {
             console.log(listarlogMaquinas)
             // Listas e validações para separar componentes
-          
+
+
+            var statusCPU = document.getElementById('status-cpu')
+            var minIntervaloCPU = 0
+            var maxIntervaloCPU = 5
+
+            var statusRAM = document.getElementById('status-ram')
+            var minIntervaloRAM = 0
+            var maxIntervaloRAM = ramTOTAL * 0.8
+
+
+            var statusMEM = document.getElementById('status-mem')
+            var minIntervaloMEM = 0
+            var maxIntervaloMEM = memoriaTOTAL * 0.8
+
+
+
+
+            var statusREDE = document.getElementById('status-rede')
+            
+
             for (let i = 0; i < 8; i++) {
-                
+
 
                 if (listarlogMaquinas[i].tipoComponente == "Memória") {
                     listaRam.push(listarlogMaquinas[i].valor)
                     dataRam.push(listarlogMaquinas[i].dataHoraLog)
 
-                    if (listaRam.length >= 7) {
+                    
+                    if (listarlogMaquinas[i].minIntervalo != null) {
+                        minIntervaloRAM = listarlogMaquinas[i].minIntervalo
+
+                    }
+                    if (listarlogMaquinas[i].maxIntervalo != null) {
+                        maxIntervaloRAM = listarlogMaquinas[i].maxIntervalo
+                    }
+
+
+                  
+                    if (listaRam.length > 0) {
+                        var valorAtual = listaRam[listaRam.length - 1]; // Último valor da lista
+                    
+                        // Verificar se o valor está dentro do intervalo
+                        if (valorAtual >= minIntervaloRAM && valorAtual <= maxIntervaloRAM) {
+                            var limiteSuperiorCuidado = maxIntervaloRAM - (maxIntervaloRAM * 0.30);
+                    
+                            // Determinar o status baseado no valor atual
+                            var status = valorAtual >= limiteSuperiorCuidado ? "cuidado" : "bom";
+                    
+                            statusRAM.innerHTML = `
+                                <p>Status</p>
+                                <img src="./img/${status}.svg" alt="">
+                            `;
+                        } else {
+                            // Valor fora do intervalo
+                            statusRAM.innerHTML = `
+                                <p>Status</p>
+                                <img src="./img/ruim.svg" alt="">
+                            `;
+                        }
+                    }
+
+                    if(listaRam.length >= 7){
                         listaRam.shift()
                     }
+
+
+
+
+
                 }
                 else if (listarlogMaquinas[i].tipoComponente == "Processador") {
                     listaCPU.push(listarlogMaquinas[i].valor)
+
+                    if (listarlogMaquinas[i].minIntervalo != null) {
+                        minIntervaloCPU = listarlogMaquinas[i].minIntervalo
+
+                    }
+                    if (listarlogMaquinas[i].maxIntervalo != null) {
+                        maxIntervaloCPU = listarlogMaquinas[i].maxIntervalo
+                    }
+
+
+                  
+                    if (listaCPU[listaCPU.length - 1] >= minIntervaloCPU && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
+                        // Calcular 10% do intervalo máximo
+                        var cuidado = maxIntervaloCPU- (maxIntervaloCPU * 0.30);
+                        
+                        // Verificar se o valor está 10% próximo do limite superior
+                        if (listaCPU[listaCPU.length - 1] >= cuidado && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
+                            // Status de cuidado
+                            statusCPU.innerHTML = `<p>Status</p>
+                                                    <img src="./img/cuidado.svg" alt="">`;
+                        } else {
+                            // Status bom
+                            statusCPU.innerHTML = `<p>Status</p>
+                                                    <img src="./img/bom.svg" alt="">`;
+                        }
+                    }
+                    
+                    if (listaCPU[listaCPU.length-1] <= minIntervaloCPU || listaCPU[listaCPU.length-1] >= maxIntervaloCPU){
+                        statusCPU.innerHTML = `<p>Status</p>
+                                <img src="./img/ruim.svg" alt="">`
+                    }
+
                     if (listaCPU.length >= 7) {
                         listaCPU.shift()
                     }
-
+                    
                 }
+
+
+
+
+
                 else if (listarlogMaquinas[i].unidadeDeMedida == "Ghz") {
                     listaVelocidade = listarlogMaquinas[i].valor
 
@@ -756,12 +857,72 @@ function listandologMaquinas() {
                         perdaPacotes.shift()
                     }
 
+                    var ultmimaPerda = perdaPacotes[perdaPacotes.length-1]*0.05;
+                    var padraoAceitavel = perdaPacotes[perdaPacotes.length-1]*0.01;
+
+                    if(listarlogMaquinas[i].valor <= ultmimaPerda && listarlogMaquinas[i].valor > padraoAceitavel ){
+                        statusREDE.innerHTML = `<p>Status</p>
+                                <img src="./img/cuidado.svg" alt="">`
+                    }
+                    if(listarlogMaquinas[i].valor == 0){
+                        statusREDE.innerHTML = `<p>Status</p>
+                                <img src="./img/bom.svg" alt="">`
+                    }
+                    if(listarlogMaquinas[i].valor <= padraoAceitavel){
+
+                         statusREDE.innerHTML = `<p>Status</p>
+                                <img src="./img/ruim.svg" alt="">`
+                    }
+
+               
                 }
                 else if (listarlogMaquinas[i].tipoComponente == "Armazenamento") {
                     listaMemoria.push(listarlogMaquinas[i].valor)
+              
+
+                    
+                    if (listarlogMaquinas[i].minIntervalo != null) {
+                        minIntervaloMEM = listarlogMaquinas[i].minIntervalo
+
+                    }
+                    if (listarlogMaquinas[i].maxIntervalo != null) {
+                        maxIntervaloMEM = listarlogMaquinas[i].maxIntervalo
+                    }
+
+
+                  
+                    if (listaMemoria[listaMemoria.length - 1] >= minIntervaloMEM && listaMemoria[listaMemoria.length - 1] <= maxIntervaloMEM) {
+                    
+                        var cuidado = maxIntervaloMEM - (maxIntervaloMEM * 0.30);
+                        
+                        // Verificar se o valor está 10% próximo do limite superior
+                        if (listaMemoria[listaMemoria.length - 1] >= cuidado && listaMemoria[listaMemoria.length - 1] <= maxIntervaloMEM) {
+                            // Status de cuidado
+                            statusMEM.innerHTML = `<p>Status</p>
+                                                    <img src="./img/cuidado.svg" alt="">`;
+                        } else {
+                            // Status bom
+                            statusMEM.innerHTML = `<p>Status</p>
+                                                    <img src="./img/bom.svg" alt="">`;
+                        }
+                    }
+                    
+                    if (listaMemoria[listaMemoria.length-1] < minIntervaloMEM || listaMemoria[listaMemoria.length-1] > maxIntervaloMEM){
+
+                        statusMEM.innerHTML = `<p>Status</p>
+                                <img src="./img/ruim.svg" alt="">`
+                    }
+
                     if (listaMemoria.length >= 7) {
                         listaMemoria.shift()
                     }
+
+
+
+
+
+
+
 
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "BytesEnviados") {
@@ -793,7 +954,7 @@ function listandologMaquinas() {
                 <p ><strong >${MbRecebidos}Mb</strong></p>`;
 
                 const perda = document.getElementById('Rede-perdidos')
-                var perdidos = perdaPacotes[perdaPacotes.length -1];
+                var perdidos = perdaPacotes[perdaPacotes.length - 1];
                 perda.innerHTML = `<p>Perdidos</p>
                 <p ><strong >${perdidos}Mb</strong></p>`
 
@@ -831,21 +992,21 @@ function listandologMaquinas() {
                 velocidade.innerHTML = ` <p>Velocidade</p>
                 <p><strong>${listaVelocidade}Ghz</strong> </p>`
 
-                console.log(`CPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ${listaCPU}` )
+                console.log(`CPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ${listaCPU}`)
 
 
-                    meuGrafico.update()
-    meuGrafico2.update()
-    meuGrafico3.update()
-    meuGrafico4.update()
+                meuGrafico.update()
+                meuGrafico2.update()
+                meuGrafico3.update()
+                meuGrafico4.update()
 
             }
-           
-        
+
+
 
             console.log("AQUI NA RESPOSTA RYAN")
-            
-            
+
+
 
         })
         .catch(function (error) {
@@ -859,7 +1020,7 @@ function listandologMaquinas() {
 setInterval(() => {
 
     listandologMaquinas();
-   
+
 
 }, 2000);
 

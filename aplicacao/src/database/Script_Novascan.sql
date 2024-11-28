@@ -228,7 +228,7 @@ WHERE dataHora BETWEEN '2024-11-03%' AND '2024-11-09 23:59:59'
 GROUP BY dia_semana, data, hora
 ORDER BY  data, hora desc;
 
-CREATE VIEW graficoTempoReal as 
+CREATE VIEW graficoTempoReal AS 
     SELECT 
         u.id AS idUsuario,
         u.nome AS nomeUsuario,
@@ -266,11 +266,8 @@ CREATE VIEW graficoTempoReal as
     WHERE 
         u.id = 1 AND e.id = 1 AND d.id = 1
     ORDER BY 
-
-        l.dataHora DESC;
-
-
-
+        l.dataHora DESC
+    LIMIT 8;
 
 
 
