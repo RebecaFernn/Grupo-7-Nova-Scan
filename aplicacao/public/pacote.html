@@ -1,336 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <title>Dashboard - Perda de Pacote</title>
-        <!-- LINK CSS -->
-        <link rel="stylesheet" href="css/pacotes.css">
-        <link rel="stylesheet" href="css/navBarDash.css">
-    
-        <!-- FONTES -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
-    
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
-<body>
-    <div class="paitodas">
-        
-        <div class="NavBar">
-            <div class="topNavBar">
-                NOVASCAN
-            </div>
-            <div class="midNavBar">
-                <div class="links" onclick="overview()">
-                    <img src="./img/overview.svg" alt="">
-                    <a href="overview.html">Overview</a>
-                </div>
-                <div class="links" onclick="maquinas()" >
-                    <img src="./img/selfchekout.svg" alt="">
-                    <a href="maquinas.html">Self-Checkouts</a>
-                </div>
-                <div class="links" onclick="colaboradores()">
-                    <img src="./img/colaboradores.svg" alt="">
-                    <a href="colaboradores.html">Colaboradores</a>
-                </div>
-                <div class="links" onclick="editarPerfil()">
-                    <img src="./img/editPerfil.svg" alt="">
-                    <a href="editar_perfil.html">Editar Perfil</a>
-                </div>
-                <div class="links" onclick="metricas()">
-                    <img src="./img/metricas.svg" alt="">
-                    <a href="#">Personalizar alertas</a>
-                </div>
-                <div class="links" onclick="picos()">
-                    <img src="./img/picos.svg" alt="">
-                    <a href="#">Monitoramento Uptime e Downtime</a>
-                </div>
-            </div>
-            <div class="lowNavBar">
-                <img src="./img/LogoBranca.svg" class="imgLow">
-                <div class="links" onclick="index()">
-                    <img src="./img/sair.svg" alt="">
-                    <a href="#">Logout</a>
-                </div>
-            </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard - Perda de Pacote</title>
+  <!-- LINK CSS -->
+  <link rel="stylesheet" href="css/pacotes.css">
+  <link rel="stylesheet" href="css/navBarDash.css">
+
+  <!-- FONTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="listarmaquinas()">
+  <div class="paitodas">
+
+    <div class="NavBar">
+      <div class="topNavBar">
+        NOVASCAN
+      </div>
+      <div class="midNavBar">
+        <div class="links" onclick="overview()">
+          <img src="./img/overview.svg" alt="">
+          <a href="overview.html">Overview</a>
         </div>
-        <div class="main">
-            <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
-
-
-        
-            <div class="filtro">
-              <select>
-                <option>Selecione a máquina</option>
-              </select>
-              <button>Buscar</button>
-            </div>
-        
-            <div class="dashboard">
-              <div class="chart">
-                <h2></h2>
-                <div>
-                    <canvas id="myChart-Bytes" width="400" height="150">Gráfico-Maquina</canvas>
-                  </div>
-              </div>
-        
-              <div class="chart">
-                <h2>Máquinas Cadastradas</h2>
-                <div>
-                    <canvas id="myChart-Maquinas">Lista-Maquinas</canvas>
-                  </div>
-              </div>
-        
-              <div class="chart">
-                <h2>Perda de Pacotes</h2>
-                <div>
-                    <canvas id="myChart-Pacotes"width="400" height="150">Gráfico-Perda</canvas>
-                  </div>
-              </div>
-            </div>
-          </div>
-       
+        <div class="links" onclick="maquinas()">
+          <img src="./img/selfchekout.svg" alt="">
+          <a href="maquinas.html">Self-Checkouts</a>
+        </div>
+        <div class="links" onclick="colaboradores()">
+          <img src="./img/colaboradores.svg" alt="">
+          <a href="colaboradores.html">Colaboradores</a>
+        </div>
+        <div class="links" onclick="editarPerfil()">
+          <img src="./img/editPerfil.svg" alt="">
+          <a href="editar_perfil.html">Editar Perfil</a>
+        </div>
+        <div class="links" onclick="metricas()">
+          <img src="./img/metricas.svg" alt="">
+          <a href="#">Personalizar alertas</a>
+        </div>
+        <div class="links" onclick="picos()">
+          <img src="./img/picos.svg" alt="">
+          <a href="#">Monitoramento Uptime e Downtime</a>
+        </div>
+      </div>
+      <div class="lowNavBar">
+        <img src="./img/LogoBranca.svg" class="imgLow">
+        <div class="links" onclick="index()">
+          <img src="./img/sair.svg" alt="">
+          <a href="#">Logout</a>
+        </div>
+      </div>
     </div>
+    <div class="main">
+      <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
+
+
+
+      <div class="filtro">
+        <select>
+          <option>Selecione a máquina</option>
+        </select>
+        <button>Buscar</button>
+      </div>
+
+      <div class="dashboard">
+        <div class="chart">
+          <h2></h2>
+          <div>
+            <canvas id="myChart-Bytes" width="400" height="150">Gráfico-Maquina</canvas>
+          </div>
+        </div>
+
+        <div class="chart">
+          <h2>Máquinas Cadastradas</h2>
+          <div>
+            <div class="maquinascadastradas" id="nomeMaquina"></div>
+            <h1 id="enviado"></h1>
+            <div class="valor" id="valorEnv"></div>
+            <h1 id="recebido"></h1>
+            <div class="valor" id="valorRec"></div>
+          </div>
+        </div>
+
+        <div class="chart">
+          <h2>Perda de Pacotes</h2>
+          <div>
+            <canvas id="myChart-Pacotes" width="400" height="150">Gráfico-Perda</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
+
 </html>
 
 <script src="js/href.js"></script>
 <script>
-  function listarmaquinas(){
+
+  function listarmaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
-        fetch(`/kaue/listamaquina${fkEmpresa}`, {
-            method: 'GET',
-            headers: { "Content-Type": "application/json" },
-        })
-            .then(function (resposta) {
-                return resposta.json()
+    fetch(`/kaue/listamaquina/${fkEmpresa}`, {
+      method: 'GET',
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (resposta) {
+        return resposta.json()
+      })
+      .then(function (resultado) {
+        console.log("Dados retornado do banco", resultado)
 
-            })
-            .then(function (resultado) {
-                console.log("Dados retornado do banco", resultado)
+        var nomeMaquina = document.getElementById('nomeMaquina')
+        var bytesEnviados = document.getElementById('enviado')
+        var bytesRecebidos = document.getElementById('recebido')
+        var valorEnv = document.getElementById('valorEnv')
+        var valorRec = document.getElementById('valorRec')
+
+        nomeMaquina.innerHTML = resultado[0].nome
+        bytesEnviados.innerHTML = resultado[0].descricao
+        bytesRecebidos.innerHTML = resultado[1].descricao
+        valorEnv.innerHTML = resultado[0].valor
+        valorRec.innerHTML = resultado[1].valor
+        
 
 
-                for (maquina in resultado) {
-                    const elementoPaiCard = document.getElementById('filhoPaiUpTime')
-                    let elementoFilhoCard = ""
 
-                    elementoFilhoCard = `
-                    <div class="monitoramentoTempoRealCard">
-                        <h4 class="tituloMaquinaTempoReal">${resultado[maquina].nome}</h4>
-                        <div class="centroCard" >
-                             <h4 class="tempoAtividade">Tempo de Atividade</h4>
-                             <h1 id="tempoMaquina_${resultado[maquina].id}">--:--:--:--</h1>
-                        </div>
-                    </div>
-                    `
-                    elementoPaiCard.innerHTML += elementoFilhoCard
-                  }})
+      })
+      .catch(function(error){
+        console.log("nenhum dado foi encontrado", error)
+      })
   }
 
 
   fetch('/kaue/graficopacotes', { cache: 'no-store' })
-  .then(response => {
-    if (response.ok) {
-      response.json().then(json => {
-        // Arrays para os dados do gráfico
-        let bytesRecebidos = [];
-        let bytesEnviados = [];
-        let labels = [];
-
-        // Separar os dados e criar as labels
-        for (let i = 0; i < json.length; i++) {
-          const { descricao, valor } = json[i];
-
-          if (descricao === 'BytesRecebidos') {
-            bytesRecebidos.push(valor);
-          } else if (descricao === 'BytesEnviados') {
-            bytesEnviados.push(valor);
-          }
-
-          // Rótulos simplificados: usar apenas índices numéricos
-          labels.push(i + 1);
-        }
-
-        // Plotar o gráfico
-        plotarGrafico('myChart-Bytes', {
-          labels,
-          datasets: [
-            {
-              label: 'Bytes Recebidos',
-              data: bytesRecebidos,
-              backgroundColor: 'rgba(75, 192, 192, 0.5)',
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 2,
-              fill: false
-            },
-            {
-              label: 'Bytes Enviados',
-              data: bytesEnviados,
-              backgroundColor: 'rgba(255, 99, 132, 0.5)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 2,
-              fill: false
-            }
-          ]
-        }, 'Gráfico de Bytes Recebidos e Enviados');
-      });
-    } else {
-      console.error('Nenhum dado encontrado ou erro na API');
-    }
-  })
-  .catch(error => {
-    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-  });
-
-function plotarGrafico(idCanvas, data, titulo) {
-  const ctx = document.getElementById(idCanvas).getContext('2d');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: data.labels, // Usar os índices numéricos no eixo X
-      datasets: data.datasets
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top'
-        },
-        title: {
-          display: true,
-          text: titulo
-        }
-      },
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: 'Período'
-          },
-          ticks: {
-            maxRotation: 0, // Rótulos alinhados horizontalmente
-            minRotation: 0,
-            padding: 0 // Remover padding extra dos rótulos
-          },
-          grid: {
-            drawBorder: true, // Desenhar borda para o eixo
-            offset: false // Evitar espaços extras no início e no fim
-          }
-        },
-        y: {
-          title: {
-            display: true,
-            text: 'Bytes'
-          },
-          beginAtZero: true, // Forçar início no zero
-          grid: {
-            drawBorder: true
-          }
-        }
-      },
-      layout: {
-        padding: {
-          left: 0, // Remover espaço à esquerda
-          right: 0, // Remover espaço à direita
-          top: 10,
-          bottom: 10
-        }
-      }
-    }
-  });
-}
-
-
-fetch('/kaue/graficoperda', { cache: 'no-store' })
     .then(response => {
-        if (response.ok) {
-            response.json().then(json => {
-                // Arrays para os dados do gráfico
-                let perdasPacotes = [];
-                let labels = [];
+      if (response.ok) {
+        response.json().then(json => {
+          // Arrays para os dados do gráfico
+          let bytesRecebidos = [];
+          let bytesEnviados = [];
+          let labels = [];
 
-                // Separar os dados e criar as labels
-                for (let i = 0; i < json.length; i++) {
-                    const { descricao, valor } = json[i];
+          // Separar os dados e criar as labels
+          for (let i = 0; i < json.length; i++) {
+            const { descricao, valor } = json[i];
 
-                    if (descricao === 'Perda de Pacotes') {
-                        perdasPacotes.push(valor);
-                        labels.push(`Registro ${i + 1}`); // Rótulos baseados no índice
-                    }
-                }
+            if (descricao === 'BytesRecebidos') {
+              bytesRecebidos.push(valor);
+            } else if (descricao === 'BytesEnviados') {
+              bytesEnviados.push(valor);
+            }
 
-                // Plotar o gráfico de barras
-                plotarGrafico('myChart-Pacotes', {
-                    labels,
-                    datasets: [
-                        {
-                            label: 'Perda de Pacotes (%)',
-                            data: perdasPacotes,
-                            backgroundColor: 'rgba(255, 206, 86, 0.5)',
-                            borderColor: 'rgba(255, 206, 86, 1)',
-                            borderWidth: 2
-                        }
-                    ]
-                }, 'Gráfico de Perda de Pacotes');
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
+            // Rótulos simplificados: usar apenas índices numéricos
+            labels.push(i + 1);
+          }
+
+          // Plotar o gráfico
+          plotarGrafico('myChart-Bytes', {
+            labels,
+            datasets: [
+              {
+                label: 'Bytes Recebidos',
+                data: bytesRecebidos,
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+              },
+              {
+                label: 'Bytes Enviados',
+                data: bytesEnviados,
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: false
+              }
+            ]
+          }, 'Gráfico de Bytes Recebidos e Enviados');
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
     })
     .catch(error => {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 
-// Função para plotar o gráfico
-function plotarGrafico2(idCanvas, data, titulo) {
+  function plotarGrafico(idCanvas, data, titulo) {
     const ctx = document.getElementById(idCanvas).getContext('2d');
 
     new Chart(ctx, {
-        type: 'bar', // Gráfico de barras
-        data: {
-            labels: data.labels,
-            datasets: data.datasets
+      type: 'line',
+      data: {
+        labels: data.labels, // Usar os índices numéricos no eixo X
+        datasets: data.datasets
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: titulo
+          }
         },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: titulo
-                }
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Período'
             },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Registros'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Perda de Pacotes (%)'
-                    }
-                }
+            ticks: {
+              maxRotation: 0, // Rótulos alinhados horizontalmente
+              minRotation: 0,
+              padding: 0 // Remover padding extra dos rótulos
+            },
+            grid: {
+              drawBorder: true, // Desenhar borda para o eixo
+              offset: false // Evitar espaços extras no início e no fim
             }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Bytes'
+            },
+            beginAtZero: true, // Forçar início no zero
+            grid: {
+              drawBorder: true
+            }
+          }
+        },
+        layout: {
+          padding: {
+            left: 0, // Remover espaço à esquerda
+            right: 0, // Remover espaço à direita
+            top: 10,
+            bottom: 10
+          }
         }
+      }
     });
-}
+  }
+
+
+  fetch('/kaue/graficoperda', { cache: 'no-store' })
+    .then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          // Arrays para os dados do gráfico
+          let perdasPacotes = [];
+          let labels = [];
+
+          // Separar os dados e criar as labels
+          for (let i = 0; i < json.length; i++) {
+            const { descricao, valor } = json[i];
+
+            if (descricao === 'Perda de Pacotes') {
+              perdasPacotes.push(valor);
+              labels.push(`Registro ${i + 1}`); // Rótulos baseados no índice
+            }
+          }
+
+          // Plotar o gráfico de barras
+          plotarGrafico('myChart-Pacotes', {
+            labels,
+            datasets: [
+              {
+                label: 'Perda de Pacotes (%)',
+                data: perdasPacotes,
+                backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 2
+              }
+            ]
+          }, 'Gráfico de Perda de Pacotes');
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+    .catch(error => {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+  // Função para plotar o gráfico
+  function plotarGrafico2(idCanvas, data, titulo) {
+    const ctx = document.getElementById(idCanvas).getContext('2d');
+
+    new Chart(ctx, {
+      type: 'bar', // Gráfico de barras
+      data: {
+        labels: data.labels,
+        datasets: data.datasets
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: titulo
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Registros'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Perda de Pacotes (%)'
+            }
+          }
+        }
+      }
+    });
+  }
 
 
 
-  
-    
+
+
 </script>
