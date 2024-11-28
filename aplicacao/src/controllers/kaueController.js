@@ -29,8 +29,8 @@ function graficoperda(req, res){
             res.stastus(500).json(erro.sqlMessage);
         })
 }
-function atualizarhorario(req, res){
-    kaueModel.atualizarhorario()
+function listamaquina(req, res){
+    kaueModel.listamaquina()
         .then(function(resultado){
             if (resultado.length > 0 ) {
                 res.status(200).json(resultado); 
@@ -46,8 +46,9 @@ function atualizarhorario(req, res){
 
 
 
+
 module.exports = {
     graficopacotes,
-    graficoperda,
-    atualizarhorario
+    graficoperda, 
+    listamaquina
 };
