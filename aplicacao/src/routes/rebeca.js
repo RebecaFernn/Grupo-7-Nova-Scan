@@ -8,6 +8,10 @@ router.get("/grafico", function (req, res) {
     rebecaController.grafico(req, res);
 });
 
+router.get("/grafico2", function (req, res) {
+    rebecaController.grafico2(req, res);
+});
+
 router.get("/KPI1", function (req, res) {
     rebecaController.grafico(req, res);
 });
