@@ -606,9 +606,9 @@ function graficoAlerta(descricao) {
                 <div class="divData">Data: <p id="listaData"></p></div>
             </div> -->
             <div class="descricaoGrafico" id="descricaoGrafico">
-                <div class="divProblema">Problema:<p id="descricao"></p>
+                <div class="divProblema"><strong>Problema:</strong><p id="descricao"></p>
                 </div>
-                <div class="divDataHora">Data e Hora do primeiro pico mais alto:<p id="intervalo_inicio"></p>
+                <div class="divDataHora"><strong>Data e Hora do primeiro pico mais alto:</strong><p id="intervalo_inicio"></p>
                 </div>
 
             </div>
@@ -681,6 +681,7 @@ function graficoAlerta(descricao) {
                 },
                 options: {
                     responsive: true,
+                    
                 }
             });
 
