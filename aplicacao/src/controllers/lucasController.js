@@ -78,9 +78,29 @@ function tempoTotal(req, res){
     }
 }
 
+function qtdAlertasPorMaquina(req, res){
+    var fkEmpresa = req.params.fkEmpresa
+
+    if(fkEmpresa == undefined){
+        res.status(400).send("A fk da empresa esta indefinida")
+    }
+    else{
+        lucasModel.qtdAlertasPorMaquina(fkEmpresa)
+        .then(function(resposta){
+            res.status(200).json(resposta)
+        })
+        .catch(function(error){
+            console.log(error)
+            console.log("Houve um erro ao buscar a quantidade de alertas por máquina", error)
+            res.status(500).json(sqlMessage.error)
+        })
+    }
+}
+
 module.exports ={
     bootTime,
     dadosGraficoRosquinha,
     dadosKpiAlerta,
-    tempoTotal
+    tempoTotal,
+    qtdAlertasPorMaquina
 }

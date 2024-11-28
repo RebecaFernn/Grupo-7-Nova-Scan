@@ -17,7 +17,8 @@
         rel="stylesheet">
 </head>
 
-<body onload="dadosTempoReal(), dadosGraficoRosquinha(), dadosKpiAlertas(), tempoTotalMaquina()">
+<body
+    onload="dadosTempoReal(), dadosGraficoRosquinha(), dadosKpiAlertas(), tempoTotalMaquina(), qtdAlertasPorMaquina()">
     <div class="paiDaTela">
 
         <div class="NavBar">
@@ -91,8 +92,8 @@
                         <div class="cardKpi1">
                             <h3>Máquina com o menor tempo de operação na semana</h3>
                             <div class="kpi1">
-                                <h2 class="tituloNomeMaquina">Self-Checkout 1</h2>
-                                <h1 class="tituloHoras">120 Horas/Mês</h1>
+                                <h2 class="tituloNomeMaquina" id="tituloNomeMaquina"></h2>
+                                <h1 class="tituloHoras" id="tituloHoras"></h1>
                             </div>
                         </div>
 
@@ -106,8 +107,7 @@
 
                     <div class="conteudoFilho2_2">
                         <div class="graficoPizza">
-                            <!-- <button>Histórico de falhas detalhado</button> -->
-                            <canvas id="graficoPizza"></canvas>
+                            <div id="graficoPizza"></div>
                         </div>
                     </div>
                 </div>
@@ -117,6 +117,7 @@
 
 </html>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/href.js"></script>
 <script>
@@ -214,8 +215,6 @@
             .then(function (dados) {
                 console.log("Dados recebidos", dados)
 
-                const ctx2 = document.getElementById('graficoPizza')
-
                 var listaDados = []
                 var listaLegenda = []
                 var total = 0
@@ -232,46 +231,29 @@
 
                 console.log("porcentagem dos dados", listaDados)
 
-                const data = {
+                var options = {
+                    series: listaDados,
                     labels: listaLegenda,
-                    datasets: [{
-                        data: listaDados,
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            'rgb(99, 132, 255)',
-                            'rgb(235, 54, 162)',
-                            'rgb(86, 255, 205)',
-                            'rgb(132, 255, 99)'
-                        ],
-                        hoverOffset: 4
+                    chart: {
+                        type: 'donut',
+                        width: '100%',
+                        height: '100%',
+                    },
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: '100%'
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
                     }]
                 };
 
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: data,
-                    options: {
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Frequência de Falhas da Semana (%)',
-                                font: {
-                                    size: 20
-                                },
-                                color: 'black',
-                                padding: {
-                                    top: 10,
-                                    bottom: 20
-                                },
-                                align: 'center'
-                            }
-                        },
-                        maintainAspectRatio: false,
-                        responsive: true,
-                    }
-                })
+                var chart = new ApexCharts(document.getElementById("graficoPizza"), options);
+                chart.render();
             })
             .catch(function (error) {
                 console.log("Deu erro ao buscar os dados do gráfico rosquinha: ", error)
@@ -299,6 +281,10 @@
             })
     }
 
+
+    var listaHorasMaquina = []
+    let listaQtdAlertas = null
+
     function tempoTotalMaquina() {
         var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
         fetch(`/lucas/tempoTotal/${fkEmpresa}`, {
@@ -311,13 +297,13 @@
             .then(function (tempo) {
                 console.log('Tempo das máquinas retornado', tempo)
 
-
                 const currentTime = new Date();
-                
+
                 const temposEmHoras = tempo.map(entry => {
                     const bootTime = new Date(entry.bootTime);
-                    const totalHours = Math.abs((currentTime - bootTime) / (1000 * 60 * 60)); // Converte para horas
-                    console.log("Horas totais das máquinas", totalHours.toFixed(0))
+                    const totalHours = Math.abs((currentTime - bootTime) / (1000 * 60 * 60));
+
+                    listaHorasMaquina.push({ idMaquina: entry.id, horasTotais: totalHours.toFixed(0), nomeMaquina: entry.nome })
                 })
             })
             .catch(function (error) {
@@ -325,37 +311,91 @@
             })
     }
 
-    // Teste de gráfico de barras
-    const ctx = document.getElementById('graficoBarra');
+    function qtdAlertasPorMaquina() {
+        var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1', 'Self-Checkout 1'],
-            datasets: [{
-                label: 'Horas',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Tempo Médio Entre Falhas na Semana',
-                    font: {
-                        size: 20
-                    },
-                    color: 'black',
-                    padding: {
-                        top: 10,
-                        bottom: 20
-                    },
-                    align: 'center'
-                }
-            },
-            maintainAspectRatio: false,
-            responsive: true,
+        fetch(`/lucas/qtdAlertasPorMaquina/${fkEmpresa}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                return resposta.json()
+            })
+            .then(function (qtdAlertas) {
+                console.log('quantidade de alertas por máquina', qtdAlertas)
+                listaQtdAlertas = qtdAlertas
+                plotandoGraficoBarras()
+            })
+            .catch(function (error) {
+                console.log("Houve um erro ao buscar o tempo das maquinas", error)
+            })
+    }
+
+    function plotandoGraficoBarras() {
+        console.log("Recebendo a lista horas maquinas", listaHorasMaquina)
+        console.log("recebendo a quantidade de alertas por maquinas", listaQtdAlertas)
+
+        var listaDados = []
+
+        for (var i = 0; i < listaHorasMaquina.length; i++) {
+            var tempoMedio = listaHorasMaquina[i].horasTotais / listaQtdAlertas[i].quantidade_alerta
+            listaDados.push({ nomeMaquina: listaHorasMaquina[i].nomeMaquina, tempoMedio: tempoMedio.toFixed(1) })
         }
-    });
+
+        console.log("Tempo médio das maquinas", listaDados)
+
+        const labels = listaDados.map(item => item.nomeMaquina);
+        const data = listaDados.map(item => item.tempoMedio);
+
+        const ctx = document.getElementById('graficoBarra');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Horas',
+                    data: data,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Tempo Médio Entre Falhas na Semana',
+                        font: {
+                            size: 20
+                        },
+                        color: 'black',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        },
+                        align: 'center'
+                    }
+                },
+                maintainAspectRatio: false,
+                responsive: true,
+            }
+        });
+
+        kpiMaquinaMenorTempo(listaDados)
+    }
+
+    function kpiMaquinaMenorTempo(listaDados) {
+        console.log("QUITERIA MALUCA DAJDHASJDH", listaDados)
+        var listaMaquinaMenorTempo = []
+
+        const maquinaMenorTempo = listaDados.reduce((menor, atual) => {        
+            return atual.tempoMedio < menor.tempoMedio ? atual : menor; 
+        });
+
+        const nomeMaquina = document.getElementById('tituloNomeMaquina')
+        const tituloHoras = document.getElementById('tituloHoras')
+        console.log(maquinaMenorTempo)
+        nomeMaquina.innerHTML = maquinaMenorTempo.nomeMaquina
+        tituloHoras.innerHTML = maquinaMenorTempo.tempoMedio 
+    }
+
 </script>

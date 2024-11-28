@@ -228,3 +228,4 @@ function plotarGrafico1(resposta) {
 
 
 
+// KPIS

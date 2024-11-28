@@ -63,7 +63,8 @@
         </div>
         <div class="main">
             <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
-            <p>Atualizado em: 00/00/0000 - 00:00:00</p>
+           <p id="data-atualizacao">Atualizado em: 00/00/0000 - 00:00:00</p>
+
         
             <div class="filtro">
               <select>
@@ -272,6 +273,43 @@ function plotarGrafico2(idCanvas, data, titulo) {
         }
     });
 }
+// Função para atualizar a data e hora de atualização no HTML
+
+// Função para atualizar a data e hora de atualização no HTML
+function atualizarDataHora() {
+  const elementoAtualizacao = document.querySelector('#data-atualizacao'); // Seleciona o elemento pelo ID
+
+  fetch('/kaue/atualizarhorario', { cache: 'no-store' }) // Endpoint do backend
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error('Erro ao obter a data de atualização');
+          }
+      })
+      .then(json => {
+          const dataHora = json.dataHora; // Formato esperado: "YYYY-MM-DD HH:MM:SS"
+
+          // Verifique se dataHora existe e se é uma string válida
+          if (dataHora && typeof dataHora === 'string' && dataHora.includes(' ')) {
+              const [data, hora] = dataHora.split(' '); // Separa data e hora
+
+              // Substituir o texto no HTML
+              elementoAtualizacao.textContent = `Atualizado em: ${data} - ${hora}`;
+          } else {
+              console.error('Formato de data e hora inválido:', dataHora);
+              elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
+          }
+      })
+      .catch(error => {
+          console.error('Erro ao atualizar a data e hora:', error);
+          elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
+      });
+}
+
+// Chama a função assim que a página for carregada
+window.onload = atualizarDataHora;
+
 
   
     
