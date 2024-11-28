@@ -51,9 +51,9 @@ function fundo(dia) {
     const tipoDispositivo = document.getElementById('componente').value;
 
     obterDadosGrafico2(idEmpresa, tipoDispositivo, day);
-    //obterDados1(day, idEmpresa, tipoDispositivo);
-    //obterDados2(day, idEmpresa, tipoDispositivo);
-    //obterDados3(day, idEmpresa, tipoDispositivo);
+    obterDados1(day, idEmpresa, tipoDispositivo);
+    obterDados2(day, idEmpresa, tipoDispositivo);
+    obterDados3(day, idEmpresa, tipoDispositivo);
   
 
 }
@@ -79,7 +79,6 @@ function obterDadosGrafico2(idEmpresa, tipoDispositivo, day) {
           if (response.ok) {
               response.json().then(function (resposta) {
                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                  // resposta.reverse(); // Reverter para garantir a ordem correta, se necessário
 
                   plotarGrafico2(resposta);
               });
@@ -175,7 +174,6 @@ function plotarGrafico2(resposta) {
       },
   };
 
-  // Renderizando o gráfico
   var chart = new ApexCharts(document.querySelector("#slope"), options);
   chart.render();
 }
@@ -183,7 +181,7 @@ function plotarGrafico2(resposta) {
 function obterDados1(day, idEmpresa, tipoDispositivo) {
 
 
-  const url = `/rebeca/KPI1?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+  const url = `/rebeca/KPI1?inicio=${day}&fim=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
 
   console.log(url)
 
@@ -200,54 +198,123 @@ function obterDados1(day, idEmpresa, tipoDispositivo) {
           }
       })
       .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+          console.error(`Erro na obtenção dos dados p/ KPI: ${error.message}`);
       });
 }
+
+function KPI1(resposta) {
+    console.log("Resposta recebida da API:", resposta); 
+
+    if (resposta.length > 0) {
+        const dados = resposta[0]; 
+        const hora = dados.hora || "Sem horário"; 
+        const maximo = dados.maximo || "Sem valor"; 
+
+        const KPI_maximo = document.getElementById('KPI-maximo');
+        if (KPI_maximo) {
+            KPI_maximo.innerHTML = `${hora} - ${maximo}%`;
+        } else {
+            console.error("Elemento 'KPI-maximo' não encontrado no DOM.");
+        }
+    } else {
+        console.warn("Nenhum dado encontrado na resposta da API.");
+        const KPI_maximo = document.getElementById('KPI-maximo');
+        if (KPI_maximo) {
+            KPI_maximo.innerText = "Sem dados disponíveis";
+        }
+    }
+}
+
 
 function obterDados2(day, idEmpresa, tipoDispositivo) {
 
 
-  const url = `/rebeca/KPI2?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
-
-  console.log(url)
-
-  fetch(url, { cache: 'no-store' })
-      .then(function (response) {
-          if (response.ok) {
-              response.json().then(function (resposta) {
-                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                  KPI2(resposta);
-              });
+    const url = `/rebeca/KPI2?inicio=${day}&fim=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+  
+    console.log(url)
+  
+    fetch(url, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+  
+                    KPI2(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ KPI: ${error.message}`);
+        });
+  }
+  
+  function KPI2(resposta) {
+      console.log("Resposta recebida da API:", resposta); 
+  
+      if (resposta.length > 0) {
+          const dados = resposta[0]; 
+          const hora = dados.hora || "Sem horário"; 
+          const minimo = dados.minimo || "Sem valor"; 
+  
+          const KPI_minimo = document.getElementById('KPI-minimo');
+          if (KPI_minimo) {
+              KPI_minimo.innerHTML = `${hora} - ${minimo}%`;
           } else {
-              console.error('Nenhum dado encontrado ou erro na API');
+              console.error("Elemento 'KPI-maximo' não encontrado no DOM.");
           }
-      })
-      .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
-}
+      } else {
+          console.warn("Nenhum dado encontrado na resposta da API.");
+          const KPI_minimo = document.getElementById('KPI-minimo');
+          if (KPI_minimo) {
+              KPI_minimo.innerText = "Sem dados disponíveis";
+          }
+      }
+  }
+  
+  function obterDados3(day, idEmpresa, tipoDispositivo) {
 
-function obterDados3(day, idEmpresa, tipoDispositivo) {
 
-
-  const url = `/rebeca/KPI3?dia=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
-
-  console.log(url)
-
-  fetch(url, { cache: 'no-store' })
-      .then(function (response) {
-          if (response.ok) {
-              response.json().then(function (resposta) {
-                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                  KPI3(resposta);
-              });
+    const url = `/rebeca/KPI3?inicio=${day}&fim=${day}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
+  
+    console.log(url)
+  
+    fetch(url, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+  
+                    KPI3(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ KPI: ${error.message}`);
+        });
+  }
+  
+  function KPI3(resposta) {
+      console.log("Resposta recebida da API:", resposta); 
+  
+      if (resposta.length > 0) {
+          const dados = resposta[0]; 
+          const media = dados.media_diaria || "Sem valor"; 
+  
+          const KPI_media = document.getElementById('KPI-media');
+          if (KPI_media) {
+              KPI_media.innerHTML = `${media}%`;
           } else {
-              console.error('Nenhum dado encontrado ou erro na API');
+              console.error("Elemento 'KPI-media' não encontrado no DOM.");
           }
-      })
-      .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
-}
+      } else {
+          console.warn("Nenhum dado encontrado na resposta da API.");
+          const KPI_media = document.getElementById('KPI-media');
+          if (KPI_media) {
+              KPI_media.innerText = "Sem dados disponíveis";
+          }
+      }
+  }

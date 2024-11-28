@@ -65,7 +65,8 @@ function grafico2(req, res) {
 
 function KPI1(req, res) {
 
-    const day= req.query.dia;
+    const inicio= req.query.inicio;
+    const fim = req.query.fim;
     const idEmpresa = req.query.empresa; 
     const tipoDispositivo = req.query.tipo; 
 
@@ -75,7 +76,7 @@ function KPI1(req, res) {
     }
 
 
-    rebecaModel.KPI1(day, idEmpresa, tipoDispositivo).then(function (resultado) {
+    rebecaModel.KPI1(inicio, fim, idEmpresa, tipoDispositivo).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -90,7 +91,8 @@ function KPI1(req, res) {
 
 function KPI2(req, res) {
 
-    const day= req.query.dia;
+    const inicio= req.query.inicio;
+    const fim = req.query.fim;
     const idEmpresa = req.query.empresa; 
     const tipoDispositivo = req.query.tipo; 
 
@@ -100,7 +102,7 @@ function KPI2(req, res) {
     }
 
 
-    rebecaModel.KPI2(day, idEmpresa, tipoDispositivo).then(function (resultado) {
+    rebecaModel.KPI2(inicio, fim, idEmpresa, tipoDispositivo).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -115,7 +117,8 @@ function KPI2(req, res) {
 
 function KPI3(req, res) {
 
-    const day= req.query.dia;
+    const inicio= req.query.inicio;
+    const fim = req.query.fim;
     const idEmpresa = req.query.empresa; 
     const tipoDispositivo = req.query.tipo; 
 
@@ -125,7 +128,7 @@ function KPI3(req, res) {
     }
 
 
-    rebecaModel.KPI3(day, idEmpresa, tipoDispositivo).then(function (resultado) {
+    rebecaModel.KPI3(inicio, fim, idEmpresa, tipoDispositivo).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
