@@ -4,7 +4,7 @@ services:
  #criando o serviço:
     bd: 
   # imagem do container
-      image: becafernn/mysql-novascan:versao1
+      image: becafernn/mysql-novascan:versao2
   # nome do container
       container_name: bd-novascan
   # variaveis de ambiente
@@ -20,7 +20,7 @@ services:
       
 
     app:
-      image: becafernn/nodejs-novascan:versao2
+      image: becafernn/nodejs-novascan:versao4
       working_dir: /aplicacao
       ports:
         - "8080:8080"

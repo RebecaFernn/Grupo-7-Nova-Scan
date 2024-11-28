@@ -95,13 +95,48 @@
             </div>
             <div id="diasSemana">
                 <h1>USO <br> Minímo - Máximo</h1>
-                <button>DOMINGO</button>
-                <button>SEGUNDA</button>
-                <button>TERÇA</button>
-                <button>QUARTA</button>
-                <button>QUINTA</button>
-                <button>SEXTA</button>
-                <button>SABÁDO</button>
+                <button onclick="fundo()" id="DOMINGO">DOMINGO</button>
+                <button onclick="fundo()" id="SEGUNDA">SEGUNDA</button>
+                <button onclick="fundo()" id="TERÇA">TERÇA</button>
+                <button onclick="fundo()" id="QUARTA">QUARTA</button>
+                <button onclick="fundo()" id="QUINTA">QUINTA</button>
+                <button onclick="fundo()" id="SEXTA">SEXTA</button>
+                <button onclick="fundo()" id="SABÁDO">SABÁDO</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="blur">
+        <div class="canva">
+            <div class="top">
+                <div class="exit">
+                    <h3>NOVASCAN</h3>
+                    <img src="img/fechar.svg" alt="" onclick="fechar()">
+                </div>
+                <h2 id="data">00/00/0000 - dia</h2>
+            </div>
+            <div class="mid">
+                <div class="left">
+                    <div class="quadro">
+                        <h3>Horário com maior uso:</h3>
+                        <p>valor</p>
+                    </div>
+                    <div class="quadro">
+                        <h3>Horário com menor uso:</h3>
+                        <p>valor</p>
+                    </div>
+                    <div class="quadro">
+                        <h3>Média de uso no dia:</h3>
+                        <p>valor</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="quadro">
+                        <h1 id="titulo">Uso Minímo - Máximo de domingo</h1>
+                        <h1>CPU</h1>
+                        <div class="grafico" id="slope"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -110,11 +145,10 @@
 </body>
 
 <script src="js/Individual/rebeca.js"></script>
+<script src="js/Individual/teste.js"></script>
 <script src="js/href.js"></script>
 
 <script>
-    
 
-   
 
 </script>

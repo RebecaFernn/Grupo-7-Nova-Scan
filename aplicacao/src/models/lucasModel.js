@@ -52,8 +52,35 @@ AND e.id = ${fkEmpresa};
     return database.executar(instrucaoSql);
 }
 
+function tempoTotal(fkEmpresa) {
+    console.log("Executando a função tempoTotal()")
+    var instrucaoSql = `
+    SELECT ta.bootTime, d.nome FROM tempoAtividade as ta JOIN dispositivo as d 
+ON ta.fkDispositivo = d.id
+WHERE fkEmpresa = ${fkEmpresa};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function qtdAlertasPorMaquina(fkEmpresa) {
+    console.log("Executando a função qtdAlertasPorMaquina()")
+    var instrucaoSql = `
+    SELECT count(l.eAlerta) as quantidade_alerta FROM log as l JOIN dispositivo as d
+ON l.fkDispositivo = d.id
+JOIN empresa as e 
+ON d.fkEmpresa = e.id
+WHERE e.id = ${fkEmpresa}
+GROUP BY d.id;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     bootTime,
     dadosGraficoRosquinha,
-    dadosKpiAlerta
+    dadosKpiAlerta,
+    tempoTotal,
+    qtdAlertasPorMaquina
 }

@@ -59,13 +59,13 @@ function mostrar() {
     }
 
 
-    obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo);
+    obterDadosGrafico1(inicio, fim, idEmpresa, tipoDispositivo);
 
             const diasSemanas = document.getElementById('diasSemana');
             diasSemanas.style.display = 'flex';
 }
 
-function obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo) {
+function obterDadosGrafico1(inicio, fim, idEmpresa, tipoDispositivo) {
 
 
     const url = `/rebeca/grafico?inicio=${inicio}&fim=${fim}&empresa=${idEmpresa}&tipo=${tipoDispositivo}`;
@@ -79,7 +79,7 @@ function obterDadosGrafico2(inicio, fim, idEmpresa, tipoDispositivo) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     // resposta.reverse(); // Reverter para garantir a ordem correta, se necessário
 
-                    plotarGrafico2(resposta);
+                    plotarGrafico1(resposta);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -105,7 +105,7 @@ function traduzirDiaSemana(diaIngles) {
 }
 
 
-function plotarGrafico2(resposta) {
+function plotarGrafico1(resposta) {
     console.log('Iniciando plotagem do gráfico...');
 
     
@@ -228,3 +228,4 @@ function plotarGrafico2(resposta) {
 
 
 
+// KPIS

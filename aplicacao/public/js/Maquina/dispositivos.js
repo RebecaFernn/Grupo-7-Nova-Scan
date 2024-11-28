@@ -580,6 +580,8 @@ function visualizarGraficoAlerta(descricao) {
     conteudoMaquinas.style.display = 'none';
     const GraficoAlerta = document.getElementById('GraficoAlerta');
     GraficoAlerta.style.display = 'flex';
+    
+
 
 
     //Mandando o id do log para a função grafico alerta
@@ -656,8 +658,8 @@ function graficoAlerta(descricao) {
             let maquinaDescricao = document.getElementById('descricao')
             maquinaDescricao.innerHTML = dados[0].descricao
 
-            // let maquinaDispositivo = document.getElementById('dispositivo')
-            // maquinaDispositivo.innerHTML = dados[0].dispositivo
+            // let maquinaDispositivo = document.getElementById('listaData')
+            // maquinaDispositivo.innerHTML = dados[0].data
 
             maior = 0
             b = 0
@@ -693,6 +695,21 @@ function graficoAlerta(descricao) {
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
         })
+
+
+        // teste para apagar div 
+        const topGraficoAlerta = document.getElementById("topGraficoAlerta");
+        const botaoVoltar = document.getElementById("botaoVoltar");
+
+
+        botaoVoltar.addEventListener("click", () => {
+            if (topGraficoAlerta.classList.contains("hidden")) {
+                topGraficoAlerta.classList.remove("hidden");
+              
+            } else {
+                topGraficoAlerta.classList.add("hidden");
+            }
+          });
 }
 
 // Ram

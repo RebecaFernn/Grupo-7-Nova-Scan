@@ -63,7 +63,8 @@
         </div>
         <div class="main">
             <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
-            <p>Atualizado em: 00/00/0000 - 00:00:00</p>
+           <p id="data-atualizacao">Atualizado em: 00/00/0000 - 00:00:00</p>
+
         
             <div class="filtro">
               <select>
@@ -76,7 +77,7 @@
               <div class="chart">
                 <h2></h2>
                 <div>
-                    <canvas id="myChart-Bytes">Gráfico-Maquina</canvas>
+                    <canvas id="myChart-Bytes" width="400" height="150">Gráfico-Maquina</canvas>
                   </div>
               </div>
         
@@ -87,10 +88,10 @@
                   </div>
               </div>
         
-              <div class="maquina">
+              <div class="chart">
                 <h2>Perda de Pacotes</h2>
                 <div>
-                    <canvas id="myChart-Pacotes">Gráfico-Perda</canvas>
+                    <canvas id="myChart-Pacotes"width="400" height="150">Gráfico-Perda</canvas>
                   </div>
               </div>
             </div>
@@ -102,100 +103,214 @@
 
 <script src="js/href.js"></script>
 <script>
-    const ctx = document.getElementById('myChart-Bytes').getContext('2d');
+    fetch('/kaue/graficopacotes', { cache: 'no-store' })
+    .then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          // Arrays para os dados do gráfico
+          let bytesRecebidos = [];
+          let bytesEnviados = [];
+          let labels = [];
+  
+          // Separar os dados e criar as labels
+          for (let i = 0; i < json.length; i++) {
+            const { descricao, valor } = json[i];
+  
+            if (descricao === 'BytesRecebidos') {
+              bytesRecebidos.push(valor);
+            } else if (descricao === 'BytesEnviados') {
+              bytesEnviados.push(valor);
+            }
+  
+            // Adiciona rótulos baseados no índice ou outro critério
+            if (!labels.includes(`Dado ${i + 1}`)) {
+              labels.push(`Dado ${i + 1}`);
+            }
+          }
+  
+          // Plotar o gráfico
+          plotarGrafico('myChart-Bytes', {
+            labels,
+            datasets: [
+              {
+                label: 'Bytes Recebidos',
+                data: bytesRecebidos,
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: true
+              },
+              {
+                label: 'Bytes Enviados',
+                data: bytesEnviados,
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: false
+              }
+            ]
+          }, 'Gráfico de Bytes Recebidos e Enviados');
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+    .catch(error => {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+    function plotarGrafico(idCanvas, data, titulo) {
+  const ctx = document.getElementById(idCanvas).getContext('2d');
 
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'], // Rótulos do eixo X
-                datasets: [
-                    {
-                        label: 'Bytes Recebidos', // Primeiro conjunto de dados
-                        data: [12, 19, 3, 5, 2],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2,
-                        fill: true // Preenche a área sob a linha
-                    },
-                    {
-                        label: 'Bytes Enviados', // Segundo conjunto de dados
-                        data: [5, 10, 4, 8, 1],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderWidth: 2,
-                        fill: false // Não preenche a área sob a linha
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: data.datasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: titulo
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Período'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Bytes'
+          }
+        }
+      }
+    }
+  });
+}  
+fetch('/kaue/graficoperda', { cache: 'no-store' })
+    .then(response => {
+        if (response.ok) {
+            response.json().then(json => {
+                // Arrays para os dados do gráfico
+                let perdasPacotes = [];
+                let labels = [];
+
+                // Separar os dados e criar as labels
+                for (let i = 0; i < json.length; i++) {
+                    const { descricao, valor } = json[i];
+
+                    if (descricao === 'Perda de Pacotes') {
+                        perdasPacotes.push(valor);
+                        labels.push(`Registro ${i + 1}`); // Rótulos baseados no índice
                     }
-                ]
+                }
+
+                // Plotar o gráfico de barras
+                plotarGrafico('myChart-Pacotes', {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Perda de Pacotes (%)',
+                            data: perdasPacotes,
+                            backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                }, 'Gráfico de Perda de Pacotes');
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(error => {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+// Função para plotar o gráfico
+function plotarGrafico2(idCanvas, data, titulo) {
+    const ctx = document.getElementById(idCanvas).getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar', // Gráfico de barras
+        data: {
+            labels: data.labels,
+            datasets: data.datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: titulo
+                }
             },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
+            scales: {
+                x: {
                     title: {
                         display: true,
-                        text: 'Gráfico de Bytes Recebidos e Enviados'
+                        text: 'Registros'
                     }
                 },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: ''
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: ''
-                        }
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Perda de Pacotes (%)'
                     }
                 }
             }
-        });
-
-        const ctx2 = document.getElementById('myChart-Pacotes')
-
-    const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 4
-        }]
-    };
-
-    new Chart(ctx2, {
-        type: 'doughnut',
-        data: data,
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Frequência de Falhas da Semana',
-                    font: {
-                        size: 20
-                    },
-                    color: 'black',
-                    padding: {
-                        top: 10,
-                        bottom: 20
-                    },
-                    align: 'center'
-                }
-            },
-            maintainAspectRatio: false,
-            responsive: true,
         }
-    })
+    });
+}
+// Função para atualizar a data e hora de atualização no HTML
+
+// Função para atualizar a data e hora de atualização no HTML
+function atualizarDataHora() {
+  const elementoAtualizacao = document.querySelector('#data-atualizacao'); // Seleciona o elemento pelo ID
+
+  fetch('/kaue/atualizarhorario', { cache: 'no-store' }) // Endpoint do backend
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error('Erro ao obter a data de atualização');
+          }
+      })
+      .then(json => {
+          const dataHora = json.dataHora; // Formato esperado: "YYYY-MM-DD HH:MM:SS"
+
+          // Verifique se dataHora existe e se é uma string válida
+          if (dataHora && typeof dataHora === 'string' && dataHora.includes(' ')) {
+              const [data, hora] = dataHora.split(' '); // Separa data e hora
+
+              // Substituir o texto no HTML
+              elementoAtualizacao.textContent = `Atualizado em: ${data} - ${hora}`;
+          } else {
+              console.error('Formato de data e hora inválido:', dataHora);
+              elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
+          }
+      })
+      .catch(error => {
+          console.error('Erro ao atualizar a data e hora:', error);
+          elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
+      });
+}
+
+// Chama a função assim que a página for carregada
+window.onload = atualizarDataHora;
+
+
+  
+    
 </script>
