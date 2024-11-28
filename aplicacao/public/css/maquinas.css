@@ -706,9 +706,11 @@ canvas {
     /* background-color: #38A25C; */
     display: none;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: space-around;
     /* gap: 3%; */
+    margin-left: 70px;
+   
 }
 
 .topmaquinas2{
@@ -717,12 +719,13 @@ canvas {
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     font-size: 2.125rem;
     font-family: Montserrat;
     font-weight: 200;
-
+    margin-left: 12%;
 }
+
 .topmaquinas2 h2{
     font-size: 3.125rem;
     font-family: Montserrat;
@@ -731,9 +734,9 @@ canvas {
     
 }
 
-#nomeMaquina h2{
+/* #nomeMaquina h2{
     
-}
+} */
 
 .topGraficoAlerta {
     height: 90%;
@@ -744,37 +747,41 @@ canvas {
     /* align-items: center; */
     justify-content: space-between;
     flex-direction: column;
-
+    align-items: start;
+    margin-left: 10%;
+    margin-bottom: 90%;
 }
 
 .descricaoGrafico {
     display: flex;
-    align-items: center;
-    justify-self: end;
+    align-items: start;
+    /* justify-self: end; */
     height: 45%;
-    width: 45%;
-    color: #ffffff;
+    width: 55%;
+    color: #111;
     flex-direction: column;
     /* margin-right: 50px; */
-    background-color: #F84455;
-    justify-content: end;
+    /* background-color: #F84455; */
     gap: 10%;
     font-family: Prompt;
+    margin-top: 3%;
    
 }
 
 .divProblema{
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    font-size: 20px;
+    /* justify-content: end; */
+    font-size: 25px;
+    align-items: start;
+    
 
 }
 .divDataHora{
     display: flex;
     flex-direction: row;
     justify-content: end;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
@@ -784,11 +791,18 @@ canvas {
     /* background-color: #F84455; */
     display: flex;
     align-items: center;
+    /* margin-left: 70px; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 15px;  
+    margin-bottom: 40px;
+    margin-top: 1%;
 }
 
 #chartContainer {
-    width: 180vh;
+    width: 160vh;
     margin: auto;
+
+  
 }
 
 .infoFimGraficoAlerta {

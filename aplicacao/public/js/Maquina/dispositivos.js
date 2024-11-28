@@ -581,9 +581,6 @@ function visualizarGraficoAlerta(descricao) {
     const GraficoAlerta = document.getElementById('GraficoAlerta');
     GraficoAlerta.style.display = 'flex';
     
-
-
-
     //Mandando o id do log para a função grafico alerta
     graficoAlerta(descricao)
 }
@@ -597,6 +594,46 @@ function graficoAlerta(descricao) {
             return resposta.json()
         })
         .then(function (dados) {
+
+            let GraficoAlerta = document.getElementById('GraficoAlerta')
+
+            GraficoAlerta.innerHTML = `
+            
+            <button onclick="VoltarInfoMaquina()" class="btn-voltar" id="botaoVoltar"><img src="./img/voltar.svg"
+                    alt="">Voltar</button>
+
+            <div class="topmaquinas2" id="topGraficoAlerta">
+                <h2>Histórico do dia da máquina<h2 id="nomeMaquina"></h2>
+                </h2>
+
+            </div>
+            <!-- <div class="descricaoGrafico" id="descricaoGrafico">
+                <div class="divData">Data: <p id="listaData"></p></div>
+            </div> -->
+            <div class="descricaoGrafico" id="descricaoGrafico">
+                <div class="divProblema"><strong>Problema:</strong><p id="descricao"></p>
+                </div>
+                <div class="divDataHora"><strong>Data e Hora do primeiro pico mais alto:</strong><p id="intervalo_inicio"></p>
+                </div>
+
+            </div>
+
+            <div class="medGraficoAlerta" id="medGraficoAlerta">
+
+                <title>Gráfico de Uso de CPU</title>
+                <div id="chartContainer">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+            </div>
+
+            <div class="fimGraficoAlerta" id="fimGraficoAlerta">
+                <!-- <div class="infoFimGraficoAlerta" >
+                    <p id="descricao"><strong>Problema:</strong> </p>
+                    <p id="intervalo_inicio"><strong >Data e Hora:</strong> </p>
+                </div> -->
+            </div>
+    
+            `
             console.log("Dados do alerta clicado: ", dados)
 
             const ctx = document.getElementById('cpuChart').getContext('2d');
@@ -649,6 +686,7 @@ function graficoAlerta(descricao) {
                 },
                 options: {
                     responsive: true,
+                    
                 }
             });
 
@@ -695,21 +733,6 @@ function graficoAlerta(descricao) {
         .catch(function (error) {
             console.log("Deu erro na função graficoAlerta()", error)
         })
-
-
-        // teste para apagar div 
-        const topGraficoAlerta = document.getElementById("topGraficoAlerta");
-        const botaoVoltar = document.getElementById("botaoVoltar");
-
-
-        botaoVoltar.addEventListener("click", () => {
-            if (topGraficoAlerta.classList.contains("hidden")) {
-                topGraficoAlerta.classList.remove("hidden");
-              
-            } else {
-                topGraficoAlerta.classList.add("hidden");
-            }
-          });
 }
 
 // Ram
