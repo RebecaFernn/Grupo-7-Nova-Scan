@@ -797,6 +797,8 @@ function listandologMaquinas() {
 
 
                 if (listarlogMaquinas[i].tipoComponente == "Memória") {
+
+
                     listaRam.push(listarlogMaquinas[i].valor)
                     dataRam.push(listarlogMaquinas[i].dataHoraLog)
 
@@ -837,12 +839,12 @@ function listandologMaquinas() {
                     if(listaRam.length >= 7){
                         listaRam.shift()
                     }
-
-
-
-
-
                 }
+
+
+                //-----------------------------------------------------------------------
+
+    
                 else if (listarlogMaquinas[i].tipoComponente == "Processador") {
                     listaCPU.push(listarlogMaquinas[i].valor)
 
@@ -857,7 +859,6 @@ function listandologMaquinas() {
 
                   
                     if (listaCPU[listaCPU.length - 1] >= minIntervaloCPU && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
-                        // Calcular 10% do intervalo máximo
                         var cuidado = maxIntervaloCPU- (maxIntervaloCPU * 0.30);
                         
                         // Verificar se o valor está 10% próximo do limite superior
@@ -893,25 +894,28 @@ function listandologMaquinas() {
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "Perda de Pacotes") {
                     perdaPacotes.push(listarlogMaquinas[i].valor)
-                    if (perdaPacotes.length >= 7) {
-                        perdaPacotes.shift()
-                    }
-
-                    var ultmimaPerda = perdaPacotes[perdaPacotes.length-1]*0.05;
+                
+                    var pEnviados = pacotesEnviados[pacotesRecebidos.length-1]*0.05;
+                    var pRecebidos = pacotesRecebidos[pacotesRecebidos.length-1]*0.05;
                     var padraoAceitavel = perdaPacotes[perdaPacotes.length-1]*0.01;
 
-                    if(listarlogMaquinas[i].valor <= ultmimaPerda && listarlogMaquinas[i].valor > padraoAceitavel ){
-                        statusREDE.innerHTML = `<p>Status</p>
-                                <img src="./img/cuidado.svg" alt="">`
-                    }
-                    if(listarlogMaquinas[i].valor == 0){
-                        statusREDE.innerHTML = `<p>Status</p>
+                    if(perdaPacotes[perdaPacotes.length-1] <= padraoAceitavel){
+                         statusREDE.innerHTML = `<p>Status</p>
                                 <img src="./img/bom.svg" alt="">`
                     }
-                    if(listarlogMaquinas[i].valor <= padraoAceitavel){
-
-                         statusREDE.innerHTML = `<p>Status</p>
+                    if(perdaPacotes[perdaPacotes.length-1] > padraoAceitavel && perdaPacotes[perdaPacotes.length-1] <= pEnviados || perdaPacotes[perdaPacotes.length-1] > padraoAceitavel && perdaPacotes[perdaPacotes.length-1] <= pRecebidos){
+                           statusREDE.innerHTML = `<p>Status</p>
+                                <img src="./img/cuidado.svg" alt="">`
+                    }
+                    if(perdaPacotes[perdaPacotes.length-1] > pEnviados || perdaPacotes[perdaPacotes.length-1] > pRecebidos ){
+                               statusREDE.innerHTML = `<p>Status</p>
                                 <img src="./img/ruim.svg" alt="">`
+
+                    }
+                  
+
+                    if (perdaPacotes.length >= 7) {
+                        perdaPacotes.shift()
                     }
 
                
@@ -1057,6 +1061,7 @@ function listandologMaquinas() {
 
 
 }
+
 setInterval(() => {
 
     listandologMaquinas();
@@ -1064,4 +1069,35 @@ setInterval(() => {
 
 }, 2000);
 
+
+
+function overview() {
+
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    var nomeComponente = 
+    fetch(`/maquinas/overview/${fkEmpresa}?nomeComponenre=${noneComponente}}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+
+            }
+            console.log("AQUI NA VALIDAÇÂO RYAN")
+        })
+        .then(function (listarlogMaquinas) {
+            console.log(listarlogMaquinas)
+         
+
+
+        })
+        .catch(function (error) {
+            console.log("AQUI NO ERRO RYAN")
+            console.log("Erro!: ", error)
+        })
+
+
+
+}
 
