@@ -103,6 +103,39 @@
 
 <script src="js/href.js"></script>
 <script>
+  function listarmaquinas(){
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+        fetch(`/kaue/listamaquina${fkEmpresa}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                return resposta.json()
+
+            })
+            .then(function (resultado) {
+                console.log("Dados retornado do banco", resultado)
+
+
+                for (maquina in resultado) {
+                    const elementoPaiCard = document.getElementById('filhoPaiUpTime')
+                    let elementoFilhoCard = ""
+
+                    elementoFilhoCard = `
+                    <div class="monitoramentoTempoRealCard">
+                        <h4 class="tituloMaquinaTempoReal">${resultado[maquina].nome}</h4>
+                        <div class="centroCard" >
+                             <h4 class="tempoAtividade">Tempo de Atividade</h4>
+                             <h1 id="tempoMaquina_${resultado[maquina].id}">--:--:--:--</h1>
+                        </div>
+                    </div>
+                    `
+                    elementoPaiCard.innerHTML += elementoFilhoCard
+                  }})
+  }
+
+
   fetch('/kaue/graficopacotes', { cache: 'no-store' })
   .then(response => {
     if (response.ok) {
