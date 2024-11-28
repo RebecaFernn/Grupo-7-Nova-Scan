@@ -16,15 +16,21 @@ function graficoperda(){
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function atualizarhorario(){
-    var instrucaoSql = `SELECT dataHora FROM log ORDER BY dataHora DESC LIMIT 1;
+function listamaquina(fkEm){
+    var instrucaoSql = `
+    SELECT d.id, d.nome, ta.bootTime FROM dispositivo as d JOIN tempoAtividade as ta
+ON d.id = ta.fkDispositivo
+JOIN empresa as e
+ON d.fkEmpresa = e.id
+WHERE e.id = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+
 module.exports = {
     graficopacotes,
     graficoperda,
-    atualizarhorario
+    listamaquina
 };

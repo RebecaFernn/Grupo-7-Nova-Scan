@@ -52,10 +52,25 @@ function grafico2(idEmpresa, tipoDispositivo, day) {
     return database.executar(instrucaoSql);
 }
 
-function KPI1(day, idEmpresa, tipoDispositivo) {
+function KPI1(inicio, fim, idEmpresa, tipoDispositivo) {
     // Monta a instrução SQL usando os parâmetros fornecidos
     var instrucaoSql = ` 
         SELECT 
+            DATE_FORMAT(log.dataHora, '%H:00') AS hora,
+            MAX(log.valor) AS maximo
+        FROM log
+        INNER JOIN componente ON log.fkComponente = componente.id
+        INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
+        WHERE 
+            componente.tipo = '${tipoDispositivo}'
+            AND dispositivo.fkEmpresa = '${idEmpresa}'
+            AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
+        GROUP BY 
+            DATE_FORMAT(log.dataHora, '%H:00')
+        ORDER BY 
+            maximo DESC
+        LIMIT 1;
+
        
     `;
 
@@ -63,10 +78,25 @@ function KPI1(day, idEmpresa, tipoDispositivo) {
     return database.executar(instrucaoSql);
 }
 
-function KPI2(day, idEmpresa, tipoDispositivo) {
+function KPI2(inicio, fim, idEmpresa, tipoDispositivo) {
     // Monta a instrução SQL usando os parâmetros fornecidos
     var instrucaoSql = ` 
         SELECT 
+            DATE_FORMAT(log.dataHora, '%H:00') AS hora,
+            MIN(log.valor) AS minimo
+        FROM log
+        INNER JOIN componente ON log.fkComponente = componente.id
+        INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
+        WHERE 
+            componente.tipo = '${tipoDispositivo}'
+            AND dispositivo.fkEmpresa = '${idEmpresa}'
+            AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
+        GROUP BY 
+            DATE_FORMAT(log.dataHora, '%H:00')
+        ORDER BY 
+            minimo ASC
+LIMIT 1;
+
        
     `;
 
@@ -74,10 +104,19 @@ function KPI2(day, idEmpresa, tipoDispositivo) {
     return database.executar(instrucaoSql);
 }
 
-function KPI3(day, idEmpresa, tipoDispositivo) {
+function KPI3(inicio, fim, idEmpresa, tipoDispositivo) {
     // Monta a instrução SQL usando os parâmetros fornecidos
     var instrucaoSql = ` 
         SELECT 
+            ROUND(AVG(log.valor), 2) AS media_diaria
+        FROM log
+        INNER JOIN componente ON log.fkComponente = componente.id
+        INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
+        WHERE 
+            componente.tipo = '${tipoDispositivo}'
+            AND dispositivo.fkEmpresa = '${idEmpresa}'
+            AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59';
+
        
     `;
 

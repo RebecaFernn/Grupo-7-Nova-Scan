@@ -13,15 +13,15 @@ router.get("/grafico2", function (req, res) {
 });
 
 router.get("/KPI1", function (req, res) {
-    rebecaController.grafico(req, res);
+    rebecaController.KPI1(req, res);
 });
 
 router.get("/KPI2", function (req, res) {
-    rebecaController.grafico(req, res);
+    rebecaController.KPI2(req, res);
 });
 
 router.get("/KPI3", function (req, res) {
-    rebecaController.grafico(req, res);
+    rebecaController.KPI3(req, res);
 });
 
 

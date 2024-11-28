@@ -52,7 +52,7 @@ function mostrar() {
     console.log(`ID da Empresa: ${idEmpresa}`);
     console.log(`Tipo do Dispositivo: ${tipoDispositivo}`);
 
-    if(tipoDispositivo == "Processador"){
+    if(tipoDispositivo == "Uso da CPU'"){
         titulo_comp.innerHTML = "CPU"
     } else if (tipoDispositivo == "Memória") {
         titulo_comp.innerHTML = "RAM"

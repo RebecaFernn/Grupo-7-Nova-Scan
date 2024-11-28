@@ -63,7 +63,7 @@
         </div>
         <div class="main">
             <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
-           <p id="data-atualizacao">Atualizado em: 00/00/0000 - 00:00:00</p>
+
 
         
             <div class="filtro">
@@ -103,75 +103,107 @@
 
 <script src="js/href.js"></script>
 <script>
-    fetch('/kaue/graficopacotes', { cache: 'no-store' })
-    .then(response => {
-      if (response.ok) {
-        response.json().then(json => {
-          // Arrays para os dados do gráfico
-          let bytesRecebidos = [];
-          let bytesEnviados = [];
-          let labels = [];
-  
-          // Separar os dados e criar as labels
-          for (let i = 0; i < json.length; i++) {
-            const { descricao, valor } = json[i];
-  
-            if (descricao === 'BytesRecebidos') {
-              bytesRecebidos.push(valor);
-            } else if (descricao === 'BytesEnviados') {
-              bytesEnviados.push(valor);
-            }
-  
-            // Adiciona rótulos baseados no índice ou outro critério
-            if (!labels.includes(`Dado ${i + 1}`)) {
-              labels.push(`Dado ${i + 1}`);
-            }
+  function listarmaquinas(){
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+
+        fetch(`/kaue/listamaquina${fkEmpresa}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                return resposta.json()
+
+            })
+            .then(function (resultado) {
+                console.log("Dados retornado do banco", resultado)
+
+
+                for (maquina in resultado) {
+                    const elementoPaiCard = document.getElementById('filhoPaiUpTime')
+                    let elementoFilhoCard = ""
+
+                    elementoFilhoCard = `
+                    <div class="monitoramentoTempoRealCard">
+                        <h4 class="tituloMaquinaTempoReal">${resultado[maquina].nome}</h4>
+                        <div class="centroCard" >
+                             <h4 class="tempoAtividade">Tempo de Atividade</h4>
+                             <h1 id="tempoMaquina_${resultado[maquina].id}">--:--:--:--</h1>
+                        </div>
+                    </div>
+                    `
+                    elementoPaiCard.innerHTML += elementoFilhoCard
+                  }})
+  }
+
+
+  fetch('/kaue/graficopacotes', { cache: 'no-store' })
+  .then(response => {
+    if (response.ok) {
+      response.json().then(json => {
+        // Arrays para os dados do gráfico
+        let bytesRecebidos = [];
+        let bytesEnviados = [];
+        let labels = [];
+
+        // Separar os dados e criar as labels
+        for (let i = 0; i < json.length; i++) {
+          const { descricao, valor } = json[i];
+
+          if (descricao === 'BytesRecebidos') {
+            bytesRecebidos.push(valor);
+          } else if (descricao === 'BytesEnviados') {
+            bytesEnviados.push(valor);
           }
-  
-          // Plotar o gráfico
-          plotarGrafico('myChart-Bytes', {
-            labels,
-            datasets: [
-              {
-                label: 'Bytes Recebidos',
-                data: bytesRecebidos,
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2,
-                fill: true
-              },
-              {
-                label: 'Bytes Enviados',
-                data: bytesEnviados,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 2,
-                fill: false
-              }
-            ]
-          }, 'Gráfico de Bytes Recebidos e Enviados');
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-      }
-    })
-    .catch(error => {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-    function plotarGrafico(idCanvas, data, titulo) {
+
+          // Rótulos simplificados: usar apenas índices numéricos
+          labels.push(i + 1);
+        }
+
+        // Plotar o gráfico
+        plotarGrafico('myChart-Bytes', {
+          labels,
+          datasets: [
+            {
+              label: 'Bytes Recebidos',
+              data: bytesRecebidos,
+              backgroundColor: 'rgba(75, 192, 192, 0.5)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 2,
+              fill: false
+            },
+            {
+              label: 'Bytes Enviados',
+              data: bytesEnviados,
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: false
+            }
+          ]
+        }, 'Gráfico de Bytes Recebidos e Enviados');
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+  .catch(error => {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+
+function plotarGrafico(idCanvas, data, titulo) {
   const ctx = document.getElementById(idCanvas).getContext('2d');
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: data.labels,
+      labels: data.labels, // Usar os índices numéricos no eixo X
       datasets: data.datasets
     },
     options: {
       responsive: true,
       plugins: {
         legend: {
-          position: 'top',
+          position: 'top'
         },
         title: {
           display: true,
@@ -183,18 +215,41 @@
           title: {
             display: true,
             text: 'Período'
+          },
+          ticks: {
+            maxRotation: 0, // Rótulos alinhados horizontalmente
+            minRotation: 0,
+            padding: 0 // Remover padding extra dos rótulos
+          },
+          grid: {
+            drawBorder: true, // Desenhar borda para o eixo
+            offset: false // Evitar espaços extras no início e no fim
           }
         },
         y: {
           title: {
             display: true,
             text: 'Bytes'
+          },
+          beginAtZero: true, // Forçar início no zero
+          grid: {
+            drawBorder: true
           }
+        }
+      },
+      layout: {
+        padding: {
+          left: 0, // Remover espaço à esquerda
+          right: 0, // Remover espaço à direita
+          top: 10,
+          bottom: 10
         }
       }
     }
   });
-}  
+}
+
+
 fetch('/kaue/graficoperda', { cache: 'no-store' })
     .then(response => {
         if (response.ok) {
@@ -273,42 +328,7 @@ function plotarGrafico2(idCanvas, data, titulo) {
         }
     });
 }
-// Função para atualizar a data e hora de atualização no HTML
 
-// Função para atualizar a data e hora de atualização no HTML
-function atualizarDataHora() {
-  const elementoAtualizacao = document.querySelector('#data-atualizacao'); // Seleciona o elemento pelo ID
-
-  fetch('/kaue/atualizarhorario', { cache: 'no-store' }) // Endpoint do backend
-      .then(response => {
-          if (response.ok) {
-              return response.json();
-          } else {
-              throw new Error('Erro ao obter a data de atualização');
-          }
-      })
-      .then(json => {
-          const dataHora = json.dataHora; // Formato esperado: "YYYY-MM-DD HH:MM:SS"
-
-          // Verifique se dataHora existe e se é uma string válida
-          if (dataHora && typeof dataHora === 'string' && dataHora.includes(' ')) {
-              const [data, hora] = dataHora.split(' '); // Separa data e hora
-
-              // Substituir o texto no HTML
-              elementoAtualizacao.textContent = `Atualizado em: ${data} - ${hora}`;
-          } else {
-              console.error('Formato de data e hora inválido:', dataHora);
-              elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
-          }
-      })
-      .catch(error => {
-          console.error('Erro ao atualizar a data e hora:', error);
-          elementoAtualizacao.textContent = 'Erro ao obter a data e hora.';
-      });
-}
-
-// Chama a função assim que a página for carregada
-window.onload = atualizarDataHora;
 
 
   
