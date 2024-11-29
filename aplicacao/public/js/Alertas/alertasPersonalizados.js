@@ -100,17 +100,17 @@ function listarTipoAlertaComponente() {
                             <option value="${tipoAlerta[1].id}">${tipoAlerta[1].tipo}</option>
                             `
                     }
-                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Memória"){
+                    else if (listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Memória") {
                         tipo = `
                             <option value="${tipoAlerta[2].id}">${tipoAlerta[2].tipo}</option>
                             `
                     }
-                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Armazenamento"){
+                    else if (listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Armazenamento") {
                         tipo = `
                             <option value="${tipoAlerta[3].id}">${tipoAlerta[3].tipo}</option>
                             `
                     }
-                    else if(listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Placa de Rede"){
+                    else if (listaGlobalComponentes[a].idComponente == idSelecionado && listaGlobalComponentes[a].nomeComponente == "Placa de Rede") {
                         tipo = `
                             <option value="${tipoAlerta[4].id}">${tipoAlerta[4].tipo}</option>
                             <option value="${tipoAlerta[5].id}">${tipoAlerta[5].tipo}</option>
@@ -324,37 +324,47 @@ function editarAlerta() {
     var maxIntervalo = Number(max1.value)
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
 
-    fetch(`/alertas/editarAlerta`, {
-        method: 'PATCH',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            minIntervaloServer: minIntervalo,
-            maxIntervaloServer: maxIntervalo,
-            idUsuarioServer: idUsuario,
-            idAlertaServer: idAlerta
+    if (minIntervalo >= maxIntervalo) {
+        Swal.fire({
+            title: 'o intervalo mínimo deve ser menor que o máximo!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000
         })
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
+    }
+    else {
+        fetch(`/alertas/editarAlerta`, {
+            method: 'PATCH',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                minIntervaloServer: minIntervalo,
+                maxIntervaloServer: maxIntervalo,
+                idUsuarioServer: idUsuario,
+                idAlertaServer: idAlerta
+            })
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json()
+                    Swal.fire({
+                        title: 'Alerta editado com sucesso!',
+                        imageUrl: "img/ok.svg",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    setTimeout(function () {
+                        atualizarPagina();
+                    }, 2000)
+                }
+            })
+            .catch(function (error) {
+                console.log("Erro ao editar o alerta: ", error)
                 Swal.fire({
-                    title: 'Alerta editado com sucesso!',
-                    imageUrl: "img/ok.svg",
+                    title: 'Erro ao editar o alerta!',
+                    icon: 'error',
                     showConfirmButton: false,
                     timer: 2000
                 })
-                setTimeout(function () {
-                    atualizarPagina();
-                }, 2000)
-            }
-        })
-        .catch(function (error) {
-            console.log("Erro ao editar o alerta: ", error)
-            Swal.fire({
-                title: 'Erro ao editar o alerta!',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 2000
             })
-        })
+    }
 }
