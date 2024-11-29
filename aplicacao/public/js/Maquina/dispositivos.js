@@ -352,8 +352,6 @@ function ativarDispositivo() {
 
 function listandoAlertasMaquinas() {
     idUsuario = sessionStorage.getItem('ID_USUARIO')
-    elementoPai = document.getElementById('low-info');
-    elementoPai.innerHTML = "";
     fetch(`/maquinas/listaAlertasMaquina/${idUsuario}?idDispositivo=${idDispositivo}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
@@ -366,11 +364,13 @@ function listandoAlertasMaquinas() {
         .then(function (listaAlertas) {
             console.log("Alertas encontrados:", listaAlertas)
             let alertas = ""
+            elementoPai = document.getElementById('low-info');
+            elementoPai.innerHTML = ""; 
             for (var i = 0; i < listaAlertas.length; i++) {
-                console.log(listaAlertas[i])
+
                 if (listaAlertas[i].tipo == "Processador") {
                     alertas += `
-                    <div class="top-low")">
+                    <div class="top-low">
                         <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                         <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                         <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -379,7 +379,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Mémoria") {
                     alertas += `
-                        <div class="mid-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
+                        <div class="mid-low">
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -388,7 +388,7 @@ function listandoAlertasMaquinas() {
                 }
                 else if (listaAlertas[i].tipo == "Armazenamento") {
                     alertas += `
-                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
+                        <div class="low-low">
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -397,7 +397,7 @@ function listandoAlertasMaquinas() {
                 }
                 else {
                     alertas += `
-                        <div class="low-low" onclick="graficoAlerta(${listaAlertas[i].idLog})>
+                        <div class="low-low">
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
@@ -548,7 +548,7 @@ function visualizarGraficoAlerta(descricao) {
     conteudoMaquinas.style.display = 'none';
     const GraficoAlerta = document.getElementById('GraficoAlerta');
     GraficoAlerta.style.display = 'flex';
-    
+
     //Mandando o id do log para a função grafico alerta
     graficoAlerta(descricao)
 }
@@ -654,7 +654,7 @@ function graficoAlerta(descricao) {
                 },
                 options: {
                     responsive: true,
-                    
+
                 }
             });
 
@@ -759,7 +759,7 @@ function listandologMaquinas() {
 
 
             var statusREDE = document.getElementById('status-rede')
-            
+
 
             for (let i = 0; i < 8; i++) {
 
@@ -770,7 +770,7 @@ function listandologMaquinas() {
                     listaRam.push(listarlogMaquinas[i].valor)
                     dataRam.push(listarlogMaquinas[i].dataHoraLog)
 
-                    
+
                     if (listarlogMaquinas[i].minIntervalo != null) {
                         minIntervaloRAM = listarlogMaquinas[i].minIntervalo
 
@@ -780,17 +780,17 @@ function listandologMaquinas() {
                     }
 
 
-                  
+
                     if (listaRam.length > 0) {
                         var valorAtual = listaRam[listaRam.length - 1]; // Último valor da lista
-                    
+
                         // Verificar se o valor está dentro do intervalo
                         if (valorAtual >= minIntervaloRAM && valorAtual <= maxIntervaloRAM) {
                             var limiteSuperiorCuidado = maxIntervaloRAM - (maxIntervaloRAM * 0.30);
-                    
+
                             // Determinar o status baseado no valor atual
                             var status = valorAtual >= limiteSuperiorCuidado ? "cuidado" : "bom";
-                    
+
                             statusRAM.innerHTML = `
                                 <p>Status</p>
                                 <img src="./img/${status}.svg" alt="">
@@ -804,7 +804,7 @@ function listandologMaquinas() {
                         }
                     }
 
-                    if(listaRam.length >= 7){
+                    if (listaRam.length >= 7) {
                         listaRam.shift()
                     }
                 }
@@ -812,7 +812,7 @@ function listandologMaquinas() {
 
                 //-----------------------------------------------------------------------
 
-    
+
                 else if (listarlogMaquinas[i].tipoComponente == "Processador") {
                     listaCPU.push(listarlogMaquinas[i].valor)
 
@@ -825,10 +825,10 @@ function listandologMaquinas() {
                     }
 
 
-                  
+
                     if (listaCPU[listaCPU.length - 1] >= minIntervaloCPU && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
-                        var cuidado = maxIntervaloCPU- (maxIntervaloCPU * 0.30);
-                        
+                        var cuidado = maxIntervaloCPU - (maxIntervaloCPU * 0.30);
+
                         // Verificar se o valor está 10% próximo do limite superior
                         if (listaCPU[listaCPU.length - 1] >= cuidado && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
                             // Status de cuidado
@@ -840,8 +840,8 @@ function listandologMaquinas() {
                                                     <img src="./img/bom.svg" alt="">`;
                         }
                     }
-                    
-                    if (listaCPU[listaCPU.length-1] <= minIntervaloCPU || listaCPU[listaCPU.length-1] >= maxIntervaloCPU){
+
+                    if (listaCPU[listaCPU.length - 1] <= minIntervaloCPU || listaCPU[listaCPU.length - 1] >= maxIntervaloCPU) {
                         statusCPU.innerHTML = `<p>Status</p>
                                 <img src="./img/ruim.svg" alt="">`
                     }
@@ -849,7 +849,7 @@ function listandologMaquinas() {
                     if (listaCPU.length >= 7) {
                         listaCPU.shift()
                     }
-                    
+
                 }
 
 
@@ -862,37 +862,37 @@ function listandologMaquinas() {
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "Perda de Pacotes") {
                     perdaPacotes.push(listarlogMaquinas[i].valor)
-                
-                    var pEnviados = pacotesEnviados[pacotesRecebidos.length-1]*0.05;
-                    var pRecebidos = pacotesRecebidos[pacotesRecebidos.length-1]*0.05;
-                    var padraoAceitavel = perdaPacotes[perdaPacotes.length-1]*0.01;
 
-                    if(perdaPacotes[perdaPacotes.length-1] <= padraoAceitavel){
-                         statusREDE.innerHTML = `<p>Status</p>
+                    var pEnviados = pacotesEnviados[pacotesRecebidos.length - 1] * 0.05;
+                    var pRecebidos = pacotesRecebidos[pacotesRecebidos.length - 1] * 0.05;
+                    var padraoAceitavel = perdaPacotes[perdaPacotes.length - 1] * 0.01;
+
+                    if (perdaPacotes[perdaPacotes.length - 1] <= padraoAceitavel) {
+                        statusREDE.innerHTML = `<p>Status</p>
                                 <img src="./img/bom.svg" alt="">`
                     }
-                    if(perdaPacotes[perdaPacotes.length-1] > padraoAceitavel && perdaPacotes[perdaPacotes.length-1] <= pEnviados || perdaPacotes[perdaPacotes.length-1] > padraoAceitavel && perdaPacotes[perdaPacotes.length-1] <= pRecebidos){
-                           statusREDE.innerHTML = `<p>Status</p>
+                    if (perdaPacotes[perdaPacotes.length - 1] > padraoAceitavel && perdaPacotes[perdaPacotes.length - 1] <= pEnviados || perdaPacotes[perdaPacotes.length - 1] > padraoAceitavel && perdaPacotes[perdaPacotes.length - 1] <= pRecebidos) {
+                        statusREDE.innerHTML = `<p>Status</p>
                                 <img src="./img/cuidado.svg" alt="">`
                     }
-                    if(perdaPacotes[perdaPacotes.length-1] > pEnviados || perdaPacotes[perdaPacotes.length-1] > pRecebidos ){
-                               statusREDE.innerHTML = `<p>Status</p>
+                    if (perdaPacotes[perdaPacotes.length - 1] > pEnviados || perdaPacotes[perdaPacotes.length - 1] > pRecebidos) {
+                        statusREDE.innerHTML = `<p>Status</p>
                                 <img src="./img/ruim.svg" alt="">`
 
                     }
-                  
+
 
                     if (perdaPacotes.length >= 7) {
                         perdaPacotes.shift()
                     }
 
-               
+
                 }
                 else if (listarlogMaquinas[i].tipoComponente == "Armazenamento") {
                     listaMemoria.push(listarlogMaquinas[i].valor)
-              
 
-                    
+
+
                     if (listarlogMaquinas[i].minIntervalo != null) {
                         minIntervaloMEM = listarlogMaquinas[i].minIntervalo
 
@@ -902,11 +902,11 @@ function listandologMaquinas() {
                     }
 
 
-                  
+
                     if (listaMemoria[listaMemoria.length - 1] >= minIntervaloMEM && listaMemoria[listaMemoria.length - 1] <= maxIntervaloMEM) {
-                    
+
                         var cuidado = maxIntervaloMEM - (maxIntervaloMEM * 0.30);
-                        
+
                         // Verificar se o valor está 10% próximo do limite superior
                         if (listaMemoria[listaMemoria.length - 1] >= cuidado && listaMemoria[listaMemoria.length - 1] <= maxIntervaloMEM) {
                             // Status de cuidado
@@ -918,8 +918,8 @@ function listandologMaquinas() {
                                                     <img src="./img/bom.svg" alt="">`;
                         }
                     }
-                    
-                    if (listaMemoria[listaMemoria.length-1] < minIntervaloMEM || listaMemoria[listaMemoria.length-1] > maxIntervaloMEM){
+
+                    if (listaMemoria[listaMemoria.length - 1] < minIntervaloMEM || listaMemoria[listaMemoria.length - 1] > maxIntervaloMEM) {
 
                         statusMEM.innerHTML = `<p>Status</p>
                                 <img src="./img/ruim.svg" alt="">`
@@ -1038,7 +1038,7 @@ function listandologMaquinas() {
 
 
 function overview(tipoComp) {
-   
+
 
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém a empresa do sessionStorage
     var tipoComponente = tipoComp;
