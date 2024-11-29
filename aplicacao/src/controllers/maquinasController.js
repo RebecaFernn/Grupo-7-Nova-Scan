@@ -223,6 +223,40 @@ function listarLogMaquina(req, res) {
       })
   }
 }
+
+
+
+
+function overview(req, res) {
+  var fkEmpresa = req.params.fkEmpresa; // Vem da rota.
+  var tipoComponente = req.query.tipoComponente; // Passado via query string.
+  
+  console.log(`fkEmpresa: ${fkEmpresa}, Componente: ${tipoComponente}`);
+
+  // Validação de parâmetros
+  if (!fkEmpresa) {  // Verifica se fkEmpresa está presente
+      return res.status(400).send("O fk da empresa está undefined ou vazio.");
+  }
+
+  if (!tipoComponente) {  // Verifica se tipoComponente está presente
+      return res.status(400).send("O tipo do componente está undefined ou vazio.");
+  }
+
+  // Chamada ao Model para buscar os dados
+  maquinasModel.overview(fkEmpresa, tipoComponente)
+      .then(function(resultado) {
+          res.status(200).json(resultado);
+      })
+      .catch(function(erro) {
+          // Log detalhado do erro
+          console.error(`Erro ao buscar alertas: ${erro.message || erro.sqlMessage}`);
+          res.status(500).json({ mensagem: "Houve um erro ao buscar os alertas.", erro: erro.message || erro.sqlMessage });
+      });
+}
+
+
+
+
 module.exports = {
   lista,
   atualizarNome,
@@ -235,4 +269,5 @@ module.exports = {
   listaSelect,
   listarLogMaquina,
   graficoAlerta,
+  overview
 }

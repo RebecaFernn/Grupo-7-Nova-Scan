@@ -49,9 +49,9 @@ router.get("/listarlogMaquina/:dispositivo", function(req,res){
 })
 
 
-router.get("overview/:nomeComponente", function(req, res){
+router.get("/overview/:fkEmpresa", function(req, res) {
     maquinasController.overview(req, res);
-})
+});
 
 
 module.exports = router;

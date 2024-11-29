@@ -77,44 +77,44 @@ function listarMaquinas() {
         })
 }
 
-function contarMaquinas() {
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    fetch(`/maquinas/lista/${fkEmpresa}`, {
-        method: 'GET',
-        headers: { contentType: 'application/json' },
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                return resposta.json()
-            }
-            else {
-                console.log("Houve um problema ao buscar as maquinas")
-            }
-        })
-        .then(function (listaMaquinas) {
-            console.log("Maquinas encontradas: ", listaMaquinas)
+// function contarMaquinas() {
+//     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+//     fetch(`/maquinas/lista/${fkEmpresa}`, {
+//         method: 'GET',
+//         headers: { contentType: 'application/json' },
+//     })
+//         .then(function (resposta) {
+//             if (resposta.ok) {
+//                 return resposta.json()
+//             }
+//             else {
+//                 console.log("Houve um problema ao buscar as maquinas")
+//             }
+//         })
+//         .then(function (listaMaquinas) {
+//             console.log("Maquinas encontradas: ", listaMaquinas)
 
-            var maquinasOk = 0
-            var totalMaquinas = 0
-            var maquinasCriticas = 0
+//             var maquinasOk = 0
+//             var totalMaquinas = 0
+//             var maquinasCriticas = 0
 
-            for (var i = 0; i < listaMaquinas.length; i++) {
+//             for (var i = 0; i < listaMaquinas.length; i++) {
 
-                totalMaquinas++
+//                 totalMaquinas++
 
-                if (listaMaquinas[i].alerta == 0) {
-                    maquinasOk++
-                }
-                else {
-                    maquinasCriticas++
-                }
-            }
-            overviewMaquinas(maquinasOk, maquinasCriticas, totalMaquinas)
-        })
-        .catch(function (error) {
-            console.log("Erro!: ", error)
-        })
-}
+//                 if (listaMaquinas[i].alerta == 0) {
+//                     maquinasOk++
+//                 }
+//                 else {
+//                     maquinasCriticas++
+//                 }
+//             }
+//             overviewMaquinas(maquinasOk, maquinasCriticas, totalMaquinas)
+//         })
+//         .catch(function (error) {
+//             console.log("Erro!: ", error)
+//         })
+// }
 
 function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
     const elementoPai = document.getElementById('lowOverview');
@@ -140,38 +140,6 @@ function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
     console.log(elementoPai);
 }
 
-function overviewSelect() {
-
-    fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    fetch(`/maquinas/lista/${fkEmpresa}`, {
-        method: 'GET',
-        headers: { contentType: 'application/json' },
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                return resposta.json()
-            }
-            else {
-                console.log("Houve um problema ao buscar as maquinas")
-            }
-        })
-        .then(function (listaMaquinas) {
-            console.log("Maquinas encontradas: ", listaMaquinas)
-            let selectMaquinas = ""
-            selectMaquinas = `<option selected value="#">Seleciona a máquina que deseja visualizar</option>`
-            for (var i = 0; i < listaMaquinas.length; i++) {
-                selectMaquinas += `
-                    <option value="${listaMaquinas[i].id}">${listaMaquinas[i].nome}</option>
-                `
-                const elementoPai = document.getElementById('select-maquina');
-                elementoPai.innerHTML += selectMaquinas;
-                console.log(elementoPai);
-            }
-        })
-        .catch(function (error) {
-            console.log("Erro!: ", error)
-        })
-}
 
 //variavel global para armazenar o id do dispositivo quando clicar em um dos cards de dispositivo
 var idDispositivo;
@@ -1036,7 +1004,6 @@ function listandologMaquinas() {
                 velocidade.innerHTML = ` <p>Velocidade</p>
                 <p><strong>${listaVelocidade}Ghz</strong> </p>`
 
-                console.log(`CPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ${listaCPU}`)
 
 
                 meuGrafico.update()
@@ -1062,42 +1029,40 @@ function listandologMaquinas() {
 
 }
 
-setInterval(() => {
+// setInterval(() => {
 
-    listandologMaquinas();
-
-
-}, 2000);
+//     listandologMaquinas();
 
 
+// }, 2000);
 
-function overview() {
 
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-    var nomeComponente = 
-    fetch(`/maquinas/overview/${fkEmpresa}?nomeComponenre=${noneComponente}}`, {
+function overview(tipoComp) {
+   
+
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém a empresa do sessionStorage
+    var tipoComponente = tipoComp;
+
+    alert(`TIPO COMPONENTE: ${tipoComp}`);
+
+    // Remove o '}' extra da URL
+    fetch(`/maquinas/overview/${fkEmpresa}?tipoComponente=${tipoComponente}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
         .then(function (resposta) {
             if (resposta.ok) {
-                return resposta.json()
-
+                return resposta.json(); // Converte para JSON se a resposta for bem-sucedida
+            } else {
+                throw new Error("Erro na resposta da API");
             }
-            console.log("AQUI NA VALIDAÇÂO RYAN")
         })
-        .then(function (listarlogMaquinas) {
-            console.log(listarlogMaquinas)
-         
-
-
+        .then(function (log) {
+            console.log("Dados recebidos:", log);
+            // Aqui você pode processar os dados recebidos
         })
         .catch(function (error) {
-            console.log("AQUI NO ERRO RYAN")
-            console.log("Erro!: ", error)
-        })
-
-
-
+            console.log("Erro ao executar overview");
+            console.log("Detalhes do erro:", error);
+        });
 }
-
