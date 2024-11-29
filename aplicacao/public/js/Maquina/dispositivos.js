@@ -1066,3 +1066,7 @@ function overview(tipoComp) {
             console.log("Detalhes do erro:", error);
         });
 }
+
+function atualizarPagina() {
+    location.reload();
+}
