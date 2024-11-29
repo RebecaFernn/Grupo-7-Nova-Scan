@@ -690,7 +690,7 @@ function graficoAlerta(descricao) {
                 }
             });
 
-            let maquinaNome = document.getElementById('nomeMaquina')
+            var maquinaNome = document.getElementById('nomeMaquina')
             maquinaNome.innerHTML = dados[0].nome
 
             let maquinaDescricao = document.getElementById('descricao')
