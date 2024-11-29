@@ -22,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="contarMaquinas(), overviewSelect()">
+<body>
     <section class="Overview">
-        
+
         <div class="NavBar">
             <div class="topNavBar">
                 NOVASCAN
@@ -34,7 +34,7 @@
                     <img src="./img/overview.svg" alt="">
                     <a href="overview.html">Overview</a>
                 </div>
-                <div class="links" onclick="maquinas()" >
+                <div class="links" onclick="maquinas()">
                     <img src="./img/selfchekout.svg" alt="">
                     <a href="maquinas.html">Self-Checkouts</a>
                 </div>
@@ -69,21 +69,11 @@
                 <h2>Overview</h2>
 
                 <select name="" id="select-maquina" class="select-overview">
-                    <!-- <option value="#">Seleciona a máquina que deseja visualizar</option>
-                    <option value="s1" selected>Self-Checkout 1</option>
-                    <option value="s2">Self-Checkout 2</option>
-                    <option value="s3">Self-Checkout 3</option>
-                    <option value="s4">Self-Checkout 4</option>
-                    <option value="s5">Self-Checkout 5</option>
-                    <option value="s6">Self-Checkout 6</option>
-                    <option value="s7">Self-Checkout 7</option>
-                    <option value="s8">Self-Checkout 8</option>
-                    <option value="s9">Self-Checkout 9</option> -->
+                    <option value="#" selected> Selecione o componente</option>
+                    <option value="Processador">Processador</option>
+                    <option value="Memória">Memória RAM</option>
                 </select>
-            <!-- <div class="boxData" id="boxData">
-                Filtrar data:
-                <input type="date" id="dataInput" class="inputData" value=""> | <input type="date" id="dataInput2" class="inputData" value="">
-            </div> -->
+
 
             </div>
             <div class="midOverview">
@@ -135,86 +125,134 @@
     function metricas() {
         window.location.href = "metricas.html"
     }
-    function index(){
+    function index() {
         window.location.href = "index.html"
     }
-    function picos(){
-         window.location.href = "picos.html"
+    function picos() {
+        window.location.href = "picos.html"
     }
+
+
+
     
-// Seleciona o elemento <select> pelo ID
-// Seleciona o elemento <select> pelo ID
-    const selectElement = document.getElementById('select-maquina');
+  // Variáveis globais para armazenar as frequências
+let l1Size = 0;
+let l2Size = 0;
+let l3Size = 0;
+let l4Size = 0;
+let l5Size = 0;
+let l6Size = 0;
+let l7Size = 0;
+let l8Size = 0;
+let l9Size = 0;
+let l10Size = 0;
 
-// Adiciona um evento para quando o valor mudar
-selectElement.addEventListener('change', (event) => {
-    const selectedValue = event.target.value;
-    var nomeMaquina = '';
+let labelsFreq = [];
+let titulo = `Uso geral da CPU`;
+let usoEm = ``
 
-    // Verifica qual valor foi selecionado e atribui o nome correspondente
-    if (selectedValue === 's1') {
-        nomeMaquina = "Self-Checkout 1";
-    } else if (selectedValue === 's2') {
-        nomeMaquina = "Self-Checkout 2";
-    } else if (selectedValue === 's3') {
-        nomeMaquina = "Self-Checkout 3";
-    } else if (selectedValue === 's4') {
-        nomeMaquina = "Self-Checkout 4";
-    } else if (selectedValue === 's5') {
-        nomeMaquina = "Self-Checkout 5";
-    } else if (selectedValue === 's6') {
-        nomeMaquina = "Self-Checkout 6";
-    } else if (selectedValue === 's7') {
-        nomeMaquina = "Self-Checkout 7";
-    } else if (selectedValue === 's8') {
-        nomeMaquina = "Self-Checkout 8";
-    } else if (selectedValue === 's9') {
-        nomeMaquina = "Self-Checkout 9";
+function overview(tipoComp) {
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém a empresa do sessionStorage
+    var tipoComponente = tipoComp;
+
+    alert(`TIPO COMPONENTE: ${tipoComponente}`);
+
+    // Remove o '}' extra da URL
+    fetch(`/maquinas/overview/${fkEmpresa}?tipoComponente=${tipoComponente}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            return resposta.json(); // Converte para JSON se a resposta for bem-sucedida
+        }
+        alert("Erro ao buscar dados");
+    })
+    .then(function (log) {
+        console.log("Dados recebidos:", log);
+        
+        // Resetar os contadores antes de recalcular
+        l1Size = l2Size = l3Size = l4Size = l5Size = l6Size = l7Size = l8Size = l9Size = l10Size = 0;
+
+        if (tipoComponente == "Processador") {
+            titulo = `Uso geral de CPU`;
+            usoEm = `Uso em (%)`
+
+            labelsFreq = [
+                '0-10', '11-20', '21-30', '31-40', '41-50', '51-60',
+                '61-70', '71-80', '81-90', '91-100'
+            ];
+            
+            // Contar as ocorrências dos valores
+            log.forEach(item => {
+                if (item.valor >= 0 && item.valor < 10) l1Size++;
+                else if (item.valor >= 10 && item.valor < 20) l2Size++;
+                else if (item.valor >= 20 && item.valor < 30) l3Size++;
+                else if (item.valor >= 30 && item.valor < 40) l4Size++;
+                else if (item.valor >= 40 && item.valor < 50) l5Size++;
+                else if (item.valor >= 50 && item.valor < 60) l6Size++;
+                else if (item.valor >= 60 && item.valor < 70) l7Size++;
+                else if (item.valor >= 70 && item.valor < 80) l8Size++;
+                else if (item.valor >= 80 && item.valor < 90) l9Size++;
+                else if (item.valor >= 90 && item.valor <= 100) l10Size++;
+            });
+
+        } else if (tipoComponente == "Memória") {
+            titulo = `Uso de Memória geral`;
+
+            labelsFreq = [
+                '0-4', '5-9', '10-14', '15-19', '20-24', '25-29',
+                '30-34', '35-39', '40-44', '45-50'
+            ];
+
+            usoEm = `Uso em (Gb)`
+
+            // Contar as ocorrências dos valores
+            log.forEach(item => {
+                if (item.valor >= 0 && item.valor < 5) l1Size++;
+                else if (item.valor >= 5 && item.valor < 10) l2Size++;
+                else if (item.valor >= 10 && item.valor < 15) l3Size++;
+                else if (item.valor >= 15 && item.valor < 20) l4Size++;
+                else if (item.valor >= 20 && item.valor < 25) l5Size++;
+                else if (item.valor >= 25 && item.valor < 30) l6Size++;
+                else if (item.valor >= 30 && item.valor < 35) l7Size++;
+                else if (item.valor >= 35 && item.valor < 40) l8Size++;
+                else if (item.valor >= 40 && item.valor < 45) l9Size++;
+                else if (item.valor >= 45 && item.valor <= 50) l10Size++;
+            });
+        }
+
+        // Atualiza o gráfico com os novos dados
+        updateChart(titulo, labelsFreq, usoEm);  
+    })
+    .catch(function (error) {
+        console.log("Erro ao executar overview");
+        console.log("Detalhes do erro:", error);
+    });
+}
+
+/// Função para atualizar o gráfico com os valores de frequência
+// Função para atualizar o gráfico com os valores de frequência
+function updateChart(titulo, labelsFreq, usoEm) {
+    const ctx = document.getElementById('meuHistograma').getContext('2d');
+    
+    // Verifica se o gráfico já existe e se é uma instância válida de Chart.js
+    if (window.meuHistograma instanceof Chart) {
+        console.log("Destruindo gráfico anterior...");
+        window.meuHistograma.destroy(); // Destrói o gráfico atual se ele for uma instância de Chart
+    } else {
+        console.log("Nenhum gráfico anterior para destruir.");
     }
 
-    console.log(nomeMaquina); 
-
-    meuHistograma.options.plugins.title.text = `Uso de CPU: ${nomeMaquina}`;
-    meuHistograma.update();
-});
-
-
-// Cria uma nova data com a data e hora atuais
-const dataAtual = new Date();
-
-// Obtém o dia atual
-const dia = dataAtual.getDate();
-
-// Obtém o mês atual (mês começa do zero, então é necessário somar 1)
-const mes = dataAtual.getMonth() + 1;
-
-// Obtém o ano atual
-const ano = dataAtual.getFullYear();
-
-
-
-
-
-
-    document.getElementById("dataInput").value = `${ano}-${mes}-${dia}`;
-    document.getElementById("dataInput2").value = `${ano}-${mes}-${dia}`; // ano-mês-dia
-
-
-
-
-
-
-    var labelsFreq = ['', '', '', '2.7', '', '', '', '', '', '', '2.8', '', '', '', '', '', '', '2.9', '', '', '', '', '', '', '', '3.0', '', ''];
-
-
-    const histograma = document.getElementById('meuHistograma').getContext('2d');
-    const meuHistograma = new Chart(histograma, {
+    // Cria o novo gráfico
+    console.log("Criando novo gráfico...");
+    window.meuHistograma = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labelsFreq,
             datasets: [{
                 label: 'Frequência',
-                data: [150, 0, 2, 2, 15, 5, 4, 4, 20, 5, 1, 200, 10, 4, 0, 0, 150, 350, 10, 50, 370, 600, 300, 550, 1100, 800, 900, 700],
+                data: [l1Size, l2Size, l3Size, l4Size, l5Size, l6Size, l7Size, l8Size, l9Size, l10Size].slice(0, labelsFreq.length),
                 borderColor: 'black',
                 backgroundColor: 'gray',
                 borderWidth: 1,
@@ -230,7 +268,7 @@ const ano = dataAtual.getFullYear();
                     title: {
                         display: true,
                         text: 'Frequência',
-                        color: 'black',  // Define a cor do título do eixo y
+                        color: 'black',
                         font: {
                             size: 25,
                             weight: 'bold',
@@ -238,7 +276,7 @@ const ano = dataAtual.getFullYear();
                         }
                     },
                     ticks: {
-                        color: 'black',  // Define a cor dos números no eixo y
+                        color: 'black',
                         font: {
                             size: 14,
                             weight: 'bold',
@@ -249,8 +287,8 @@ const ano = dataAtual.getFullYear();
                 x: {
                     title: {
                         display: true,
-                        text: 'Uso em %',
-                        color: 'black',  // Define a cor do título do eixo x
+                        text: usoEm,
+                        color: 'black',
                         font: {
                             size: 25,
                             weight: 'bold',
@@ -258,7 +296,7 @@ const ano = dataAtual.getFullYear();
                         }
                     },
                     ticks: {
-                        color: 'black',  // Define a cor dos números no eixo x
+                        color: 'black',
                         font: {
                             size: 14,
                             weight: 'bold',
@@ -272,8 +310,8 @@ const ano = dataAtual.getFullYear();
             plugins: {
                 title: {
                     display: true,
-                    text: `Uso de CPU: Self-Checkout 1`,
-                    color: 'black',  // Define a cor do título do gráfico
+                    text: titulo, // Aqui o título é atualizado dinamicamente
+                    color: 'black',
                     font: {
                         size: 30,
                         weight: 'bold',
@@ -291,8 +329,17 @@ const ano = dataAtual.getFullYear();
             }
         }
     });
+}
 
+// Atualização do gráfico após selecionar o tipo de componente
+document.getElementById('select-maquina').addEventListener('change', function (event) {
+    event.preventDefault(); // Impede o comportamento padrão (como o recarregamento da página)
 
+    const tipoComp = this.value; // Captura o valor selecionado
+    console.log("Tipo de Componente selecionado:", tipoComp);
+
+    overview(tipoComp);
+});
 
 
 </script>

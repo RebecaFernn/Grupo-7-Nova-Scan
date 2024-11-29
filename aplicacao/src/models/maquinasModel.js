@@ -87,7 +87,7 @@ function listarAlertasComponentesMaquina(idDispositivo) {
   return database.executar(instrucaoSql);
 }
 
-function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa){
+function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa) {
   console.log("Usando a função listarLogMaquina() na model valores a serem usados:", idDispositivo, fkEmpresa, idUsuario);
   var instrucaoSql = `SELECT * FROM graficoTempoReal WHERE idUsuario = ${idUsuario} AND idEmpresa = ${fkEmpresa} AND idDispositivo = ${idDispositivo};`
 
@@ -116,15 +116,40 @@ ORDER BY intervalo_inicio;`
 
 }
 
-module.exports = { 
-  lista, 
-  atualizarNome, 
-  desativarDispositivo, 
-  ativarDispositivo, 
-  componentes, 
-  valoresComponentes, 
-  listaAlertasMaquina, 
-  listarAlertasComponentesMaquina, 
-  listaSelect, 
+
+
+function overview(fkEmpresa, tipoComponente) {
+  console.log("Usando a função overview() na model valores a serem usados:", fkEmpresa, tipoComponente);
+
+  var instrucaoSql = `
+    SELECT l.valor
+    FROM log l
+    INNER JOIN componente c ON l.fkComponente = c.id
+    INNER JOIN dispositivo d ON l.fkDispositivo = d.id
+    INNER JOIN empresa e ON d.fkEmpresa = e.id
+    WHERE e.id = ${fkEmpresa} AND c.tipo = '${tipoComponente}'
+    AND l.dataHora >= CURDATE() - INTERVAL 1 MONTH;
+;
+  `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+  // Usando parâmetros preparados para evitar SQL Injection
+  return database.executar(instrucaoSql, [fkEmpresa, tipoComponente]);
+}
+
+
+module.exports = {
+  lista,
+  atualizarNome,
+  desativarDispositivo,
+  ativarDispositivo,
+  componentes,
+  valoresComponentes,
+  listaAlertasMaquina,
+  listarAlertasComponentesMaquina,
+  listaSelect,
   listarLogMaquina,
-graficoAlerta};
+  graficoAlerta,
+  overview
+};
