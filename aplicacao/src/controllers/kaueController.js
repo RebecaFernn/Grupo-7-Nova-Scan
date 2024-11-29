@@ -30,7 +30,13 @@ function graficoperda(req, res){
         })
 }
 function listamaquina(req, res){
-    kaueModel.listamaquina()
+    var fkEmpresa = req.params.fkEmpresa
+
+    if(fkEmpresa == undefined){
+        res(400).status.send("A fk da empresa esta indefindo")
+    }
+
+    kaueModel.listamaquina(fkEmpresa)
         .then(function(resultado){
             if (resultado.length > 0 ) {
                 res.status(200).json(resultado); 

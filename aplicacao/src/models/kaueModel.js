@@ -16,13 +16,15 @@ function graficoperda(){
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function listamaquina(fkEm){
+function listamaquina(fkEmpresa){
     var instrucaoSql = `
-    SELECT d.id, d.nome, ta.bootTime FROM dispositivo as d JOIN tempoAtividade as ta
-ON d.id = ta.fkDispositivo
+    SELECT d.nome, l.descricao, sum(l.valor) as valor FROM log as l JOIN dispositivo as d
+ON l.fkDispositivo = d.id
 JOIN empresa as e
-ON d.fkEmpresa = e.id
-WHERE e.id = ${fkEmpresa};
+ON d.fkEmpresa = d.id
+WHERE e.id = ${fkEmpresa}
+AND l.descricao IN ( 'BytesEnviados', 'BytesRecebidos')
+GROUP BY d.nome, l.descricao;
     `;
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);
