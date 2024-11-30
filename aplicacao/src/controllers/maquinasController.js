@@ -183,12 +183,16 @@ function listarAlertasComponentesMaquina(req, res) {
 
 function graficoAlerta(req, res) {
   var descricaoLog = req.params.descricao
+  var idMaquina = req.query.idDispositivo
 
   if (descricaoLog == undefined) {
     res.status(400).send("a descrição do alerta está undefined")
   }
+  else if(idMaquina == undefined){
+    res.status(400).send("o id da maquina ta indefinido")
+  }
   else {
-    maquinasModel.graficoAlerta(descricaoLog)
+    maquinasModel.graficoAlerta(descricaoLog, idMaquina)
       .then(function (resultado) {
         res.status(200).json(resultado)
       })

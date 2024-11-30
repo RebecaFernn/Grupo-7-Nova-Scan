@@ -154,6 +154,7 @@ function maquina(id) {
     valoresComponentes();
     listandoAlertasMaquinas();
     listandologMaquinas()
+    listandoAlertasComponenteMaquina()
 }
 
 
@@ -554,7 +555,8 @@ function visualizarGraficoAlerta(descricao) {
 }
 
 function graficoAlerta(descricao) {
-    fetch(`/maquinas/graficoAlerta/${descricao}`, {
+    var idMaquina = idDispositivo
+    fetch(`/maquinas/graficoAlerta/${descricao}?idDispositivo=${idMaquina}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" },
     })
@@ -630,7 +632,6 @@ function graficoAlerta(descricao) {
 
             // horário errado, data correta
             while (a < dados.length) {
-                console.log(dados[a].pico_maximo)
                 listaDados.push(dados[a].pico_maximo)
                 a++
             }
@@ -1024,9 +1025,9 @@ function listandologMaquinas() {
             console.log("Erro!: ", error)
         })
 }
-setInterval(() => {
-    listandologMaquinas();
-}, 2000);
+// setInterval(() => {
+//     listandologMaquinas();
+// }, 2000);
 
 
 

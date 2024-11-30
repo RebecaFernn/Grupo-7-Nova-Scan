@@ -142,8 +142,8 @@ function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa) {
   return database.executar(instrucaoSql);
 }
 
-function graficoAlerta(descricaoLog) {
-  console.log("Usando a função graficoAlerta, valores a ser recebido: ", descricaoLog)
+function graficoAlerta(descricaoLog, idMaquina) {
+  console.log("Usando a função graficoAlerta, valores a ser recebido: ", descricaoLog, idMaquina)
   var instrucaoSql = `SELECT 
     FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(dataHora) / 5) * 5) AS intervalo_inicio, 
     MAX(valor) AS pico_maximo,
@@ -154,6 +154,7 @@ JOIN dispositivo as d
 ON log.fkDispositivo = d.id
 WHERE descricao = '${descricaoLog}' AND
 eAlerta = 1
+AND d.id = ${idMaquina}
 AND DATE(dataHora) = curdate() 
 GROUP BY intervalo_inicio, d.id
 ORDER BY intervalo_inicio;`
