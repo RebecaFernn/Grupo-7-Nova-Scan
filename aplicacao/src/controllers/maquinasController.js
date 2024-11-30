@@ -8,6 +8,13 @@ function lista(req, res) {
   });
 }
 
+function qtdMaquinas(req, res) {
+  var fkEmpresa = req.params.fkEmpresa;
+  maquinasModel.qtdMaquinas(fkEmpresa).then((resultado) => {
+    res.status(200).json(resultado);
+  });
+}
+
 function listaSelect(req, res) {
   var fkEmpresa = req.params.fkEmpresa;
   maquinasModel.listaSelect(fkEmpresa).then((resultado) => {
@@ -269,5 +276,6 @@ module.exports = {
   listaSelect,
   listarLogMaquina,
   graficoAlerta,
-  overview
+  overview,
+  qtdMaquinas
 }

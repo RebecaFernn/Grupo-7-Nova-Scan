@@ -77,44 +77,44 @@ function listarMaquinas() {
         })
 }
 
-// function contarMaquinas() {
-//     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
-//     fetch(`/maquinas/lista/${fkEmpresa}`, {
-//         method: 'GET',
-//         headers: { contentType: 'application/json' },
-//     })
-//         .then(function (resposta) {
-//             if (resposta.ok) {
-//                 return resposta.json()
-//             }
-//             else {
-//                 console.log("Houve um problema ao buscar as maquinas")
-//             }
-//         })
-//         .then(function (listaMaquinas) {
-//             console.log("Maquinas encontradas: ", listaMaquinas)
+function contarMaquinas() {
+    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
+    fetch(`/maquinas/qtdMaquinas/${fkEmpresa}`, {
+        method: 'GET',
+        headers: { contentType: 'application/json' },
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json()
+            }
+            else {
+                console.log("Houve um problema ao buscar as maquinas")
+            }
+        })
+        .then(function (listaMaquinas) {
+            console.log("Maquinas encontradas: ", listaMaquinas)
 
-//             var maquinasOk = 0
-//             var totalMaquinas = 0
-//             var maquinasCriticas = 0
+            var maquinasOk = 0
+            var totalMaquinas = 0
+            var maquinasCriticas = 0
 
-//             for (var i = 0; i < listaMaquinas.length; i++) {
+            for (var i = 0; i < listaMaquinas.length; i++) {
 
-//                 totalMaquinas++
+                totalMaquinas++
 
-//                 if (listaMaquinas[i].alerta == 0) {
-//                     maquinasOk++
-//                 }
-//                 else {
-//                     maquinasCriticas++
-//                 }
-//             }
-//             overviewMaquinas(maquinasOk, maquinasCriticas, totalMaquinas)
-//         })
-//         .catch(function (error) {
-//             console.log("Erro!: ", error)
-//         })
-// }
+                if (listaMaquinas[i].alerta == 0) {
+                    maquinasOk++
+                }
+                else {
+                    maquinasCriticas++
+                }
+            }
+            overviewMaquinas(maquinasOk, maquinasCriticas, totalMaquinas)
+        })
+        .catch(function (error) {
+            console.log("Erro!: ", error)
+        })
+}
 
 function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
     const elementoPai = document.getElementById('lowOverview');
@@ -153,7 +153,7 @@ function maquina(id) {
     componentesDispositivo();
     valoresComponentes();
     listandoAlertasMaquinas();
-    listandoAlertasComponenteMaquina();
+    listandologMaquinas()
 }
 
 
@@ -935,7 +935,6 @@ function listandologMaquinas() {
 
 
 
-
                 }
                 else if (listarlogMaquinas[i].descricaoLog == "BytesEnviados") {
                     pacotesEnviados.push(listarlogMaquinas[i].valor)
@@ -1024,17 +1023,11 @@ function listandologMaquinas() {
             console.log("AQUI NO ERRO RYAN")
             console.log("Erro!: ", error)
         })
-
-
-
 }
+setInterval(() => {
+    listandologMaquinas();
+}, 2000);
 
-// setInterval(() => {
-
-//     listandologMaquinas();
-
-
-// }, 2000);
 
 
 function overview(tipoComp) {

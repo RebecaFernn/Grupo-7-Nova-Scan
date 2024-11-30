@@ -7,6 +7,10 @@ router.get("/lista/:fkEmpresa", function (req, res) {
     maquinasController.lista(req, res);
 });
 
+router.get("/qtdMaquinas/:fkEmpresa", function (req, res) {
+    maquinasController.qtdMaquinas(req, res);
+});
+
 router.get("/listaSelect/:fkEmpresa", function (req, res) {
     maquinasController.listaSelect(req, res);
 });
