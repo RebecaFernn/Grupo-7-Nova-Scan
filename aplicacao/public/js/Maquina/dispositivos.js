@@ -444,8 +444,6 @@ function listandoAlertasComponenteMaquina() {
             var p = 0;
             var a = 0;
 
-
-
             for (var i = 0; i < listaAlertasDisparado.length; i++) {
 
                 const dataHora = listaAlertasDisparado[i].dataHora;
@@ -465,7 +463,7 @@ function listandoAlertasComponenteMaquina() {
 
                 const dataFormatada = data.toLocaleString('pt-BR', opcoes);
 
-                if (listaAlertasDisparado[i].descricao == "Alto uso da CPU!!") {
+                if (listaAlertasDisparado[i].descricao == "Alerta: Alto uso da CPU!!") {
                     c++
                     alertaCPU.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
@@ -474,7 +472,7 @@ function listandoAlertasComponenteMaquina() {
 
 
                 }
-                else if (listaAlertasDisparado[i].descricao == "Alta Frequência do processador") {
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Alta Frequência do processador") {
                     c++
                     alertaCPU.innerHTML += `
                 <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
@@ -483,7 +481,7 @@ function listandoAlertasComponenteMaquina() {
                 `
 
                 }
-                else if (listaAlertasDisparado[i].descricao == "Uso Alto de Memória RAM!!") {
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Uso Alto de Memória RAM!!") {
                     r++
                     alertaRAM.innerHTML += `
             <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
@@ -491,7 +489,7 @@ function listandoAlertasComponenteMaquina() {
             </div>`
                 }
 
-                else if (listaAlertasDisparado[i].descricao == "Alto uso de armazenamento") {
+                else if (listaAlertasDisparado[i].descricao == "Alerta: Alto uso de armazenamento") {
                     a++
                     alertaMemoria.innerHTML += `
                     <div class="alerts" onclick = "visualizarGraficoAlerta('${listaAlertasDisparado[i].descricao}')">
