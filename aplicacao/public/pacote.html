@@ -78,7 +78,7 @@
 
       <div class="dashboard">
         <div class="chart">
-          <h2></h2>
+          <h2>Bytes Recebidos e Enviados</h2>
           <div>
             <canvas id="myChart-Bytes" width="400" height="150">Gráfico-Maquina</canvas>
           </div>
@@ -86,12 +86,13 @@
 
         <div class="chart">
           <h2>Máquinas Cadastradas</h2>
-          <div>
-            <div class="maquinascadastradas" id="nomeMaquina"></div>
+          <div class="box">
+            <h1>Nome da Máquina</h1>
+            <h4><div class="maquinascadastradas" id="nomeMaquina"></div></h4><br>
             <h1 id="enviado"></h1>
-            <div class="valor" id="valorEnv"></div>
+            <h4><div class="valor" id="valorEnv"></div></h4><br>
             <h1 id="recebido"></h1>
-            <div class="valor" id="valorRec"></div>
+            <h4><div class="valor" id="valorRec"></div></h4><br>
           </div>
         </div>
 
@@ -110,6 +111,8 @@
 </html>
 
 <script src="js/href.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 
   function listarmaquinas() {
@@ -184,21 +187,105 @@
 
         console.log('Dados de pacotes:', dadosPacotes);
         console.log('Dados de perda:', dadosPerda);
+        // **Gráfico de Perda de Pacotes**
+        const ctxPerda = document.getElementById('myChart-Pacotes').getContext('2d');
+        const labelsPerda = dadosPerda.map(item => item.timestamp); // Ajuste para o campo 'timestamp'
+        const valoresPerda = dadosPerda.map(item => item.valor); // Ajuste para o campo 'valor'
 
-        // Atualize a interface com os dois conjuntos de dados aqui
+        new Chart(ctxPerda, {
+            type: 'line',
+            data: {
+                labels: labelsPerda,
+                datasets: [
+                    {
+                        label: 'Perda de Pacotes',
+                        data: valoresPerda,
+                        borderColor: 'red',
+                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                        fill: true,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tempo',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Perda (em pacotes)',
+                        },
+                    },
+                },
+            },
+        });
+
+        // **Gráfico de Bytes Enviados e Recebidos**
+        const ctxBytes = document.getElementById('myChart-Bytes').getContext('2d');
+        const labelsBytes = dadosPacotes.map(item => item.timestamp); // Ajuste para o campo 'timestamp'
+        const valoresBytesRecebidos = dadosPacotes.map(item => item.recebidos); // Ajuste para o campo 'recebidos'
+        const valoresBytesEnviados = dadosPacotes.map(item => item.enviados); // Ajuste para o campo 'enviados'
+
+        new Chart(ctxBytes, {
+            type: 'bar', // Gráfico de barras para bytes
+            data: {
+                labels: labelsBytes,
+                datasets: [
+                    {
+                        label: 'Bytes Recebidos',
+                        data: valoresBytesRecebidos,
+                        backgroundColor: 'rgba(0, 0, 255, 0.6)',
+                        borderColor: 'blue',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Bytes Enviados',
+                        data: valoresBytesEnviados,
+                        backgroundColor: 'rgba(0, 255, 0, 0.6)',
+                        borderColor: 'green',
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tempo',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Bytes',
+                        },
+                    },
+                },
+            },
+        });
     })
     .catch((err) => {
         console.error('Erro ao buscar dados:', err);
     });
   }
-  
-
-
-
 
   
-
-
-
 
 </script>
