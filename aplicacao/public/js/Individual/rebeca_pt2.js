@@ -123,7 +123,7 @@ function plotarGrafico2(resposta) {
       ],
       chart: {
           height: '70%',
-          width: 845,
+          width: 880,
           type: 'line',
       },
       colors: ['#4d0000', '#992626'], 
