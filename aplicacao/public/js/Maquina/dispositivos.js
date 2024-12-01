@@ -371,6 +371,7 @@ function listandoAlertasMaquinas() {
                         <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                         <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                         <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
+                        <p><strong>Tipo do Alerta:</strong> ${listaAlertas[i].tipoAlerta}</p>
                     </div>
                 `
                 }
@@ -380,6 +381,7 @@ function listandoAlertasMaquinas() {
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Tipo do Alerta:</strong> ${listaAlertas[i].tipoAlerta}</p>
                         </div>
                     `
                 }
@@ -389,6 +391,7 @@ function listandoAlertasMaquinas() {
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Tipo do Alerta:</strong> ${listaAlertas[i].tipoAlerta}</p>
                         </div>
                     `
                 }
@@ -398,6 +401,7 @@ function listandoAlertasMaquinas() {
                             <p><strong>Máximo do Intervalo:</strong> ${listaAlertas[i].maxIntervalo}</p>
                             <p><strong>Minimo do Intervalo:</strong> ${listaAlertas[i].minIntervalo}</p>
                             <p><strong>Tipo do Componente:</strong> ${listaAlertas[i].tipo}</p>
+                            <p><strong>Tipo do Alerta:</strong> ${listaAlertas[i].tipoAlerta}</p>
                         </div>
                     `
                 }
