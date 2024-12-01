@@ -1,17 +1,21 @@
 var database = require("../database/config")
-function graficopacotes() {
+function graficopacotes(nomeMaquina) {
     var instrucaoSql = `
-        SELECT descricao, valor 
-        FROM log 
-        WHERE descricao IN ('BytesRecebidos', 'BytesEnviados');
+         SELECT descricao, valor 
+        FROM log as l 
+        JOIN dispositivo as d ON l.fkDispositivo = d.id
+        WHERE d.nome = '${nomeMaquina}' 
+        AND descricao IN ('BytesRecebidos', 'BytesEnviados');
     `;
     console.log("Executando a instrução SQL:\n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function graficoperda(){
-    var instrucaoSql = `SELECT valor, descricao 
-    FROM log 
-    WHERE descricao = "Perda de Pacotes";
+function graficoperda(nomeMaquina){
+    var instrucaoSql = `   SELECT descricao, valor 
+        FROM log as l 
+        JOIN dispositivo as d ON l.fkDispositivo = d.id
+        WHERE d.nome = '${nomeMaquina}'
+        AND descricao = 'Perda de Pacotes' ;
     `;
     console.log("Executando a instrução SQL: \n"+ instrucaoSql);
     return database.executar(instrucaoSql);

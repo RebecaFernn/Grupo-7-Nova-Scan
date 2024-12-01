@@ -69,10 +69,11 @@
 
 
       <div class="filtro">
-        <select>
+        <select class="select-maquinas" id="select-maquinas">
           <option>Selecione a máquina</option>
+
         </select>
-        <button>Buscar</button>
+        <button onclick="buscarDados()">Buscar</button>
       </div>
 
       <div class="dashboard">
@@ -136,7 +137,10 @@
         valorEnv.innerHTML = resultado[0].valor
         valorRec.innerHTML = resultado[1].valor
         
-
+        for(i = 0; i < resultado.length; i++ ) {
+          var listMaquina = document.getElementById('select-maquinas')
+          listMaquina.innerHTML += `<option value="${resultado[i].nome}">${resultado[i].nome}</option>` 
+        }   
 
 
       })
@@ -144,201 +148,55 @@
         console.log("nenhum dado foi encontrado", error)
       })
   }
+  function buscarDados(){
+    var selectElement = document.getElementById('select-maquinas');
+    var maquinaSelecionada = selectElement.value;
 
+    if(!maquinaSelecionada || maquinaSelecionada == 'Selecione a máquina'){
+      alert("Por favor, selecione uma máquina válida.");
+      return;
+    }
+    console.log('Valor de maquinaSelecionada:', maquinaSelecionada);
 
-  fetch('/kaue/graficopacotes', { cache: 'no-store' })
-    .then(response => {
-      if (response.ok) {
-        response.json().then(json => {
-          // Arrays para os dados do gráfico
-          let bytesRecebidos = [];
-          let bytesEnviados = [];
-          let labels = [];
-
-          // Separar os dados e criar as labels
-          for (let i = 0; i < json.length; i++) {
-            const { descricao, valor } = json[i];
-
-            if (descricao === 'BytesRecebidos') {
-              bytesRecebidos.push(valor);
-            } else if (descricao === 'BytesEnviados') {
-              bytesEnviados.push(valor);
-            }
-
-            // Rótulos simplificados: usar apenas índices numéricos
-            labels.push(i + 1);
-          }
-
-          // Plotar o gráfico
-          plotarGrafico('myChart-Bytes', {
-            labels,
-            datasets: [
-              {
-                label: 'Bytes Recebidos',
-                data: bytesRecebidos,
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2,
-                fill: false
-              },
-              {
-                label: 'Bytes Enviados',
-                data: bytesEnviados,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 2,
-                fill: false
-              }
-            ]
-          }, 'Gráfico de Bytes Recebidos e Enviados');
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-      }
+    Promise.all([
+    fetch(`/kaue/graficopacotes/${maquinaSelecionada}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    }),
+    fetch(`/kaue/graficoperda/${maquinaSelecionada}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
     })
-    .catch(error => {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-
-  function plotarGrafico(idCanvas, data, titulo) {
-    const ctx = document.getElementById(idCanvas).getContext('2d');
-
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: data.labels, // Usar os índices numéricos no eixo X
-        datasets: data.datasets
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top'
-          },
-          title: {
-            display: true,
-            text: titulo
-          }
-        },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Período'
-            },
-            ticks: {
-              maxRotation: 0, // Rótulos alinhados horizontalmente
-              minRotation: 0,
-              padding: 0 // Remover padding extra dos rótulos
-            },
-            grid: {
-              drawBorder: true, // Desenhar borda para o eixo
-              offset: false // Evitar espaços extras no início e no fim
+])
+    .then((responses) => {
+        // Verifica se ambas as requisições foram bem-sucedidas
+        responses.forEach((res, index) => {
+            if (!res.ok) {
+                throw new Error(`Erro na requisição ${index + 1}: ${res.status}`);
             }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Bytes'
-            },
-            beginAtZero: true, // Forçar início no zero
-            grid: {
-              drawBorder: true
-            }
-          }
-        },
-        layout: {
-          padding: {
-            left: 0, // Remover espaço à esquerda
-            right: 0, // Remover espaço à direita
-            top: 10,
-            bottom: 10
-          }
-        }
-      }
+        });
+        // Converte ambas as respostas para JSON
+        return Promise.all(responses.map((res) => res.json()));
+    })
+    .then((dados) => {
+        const dadosPacotes = dados[0]; // Resultado do primeiro fetch (graficopacotes)
+        const dadosPerda = dados[1]; // Resultado do segundo fetch (graficoperda)
+
+        console.log('Dados de pacotes:', dadosPacotes);
+        console.log('Dados de perda:', dadosPerda);
+
+        // Atualize a interface com os dois conjuntos de dados aqui
+    })
+    .catch((err) => {
+        console.error('Erro ao buscar dados:', err);
     });
   }
+  
 
 
-  fetch('/kaue/graficoperda', { cache: 'no-store' })
-    .then(response => {
-      if (response.ok) {
-        response.json().then(json => {
-          // Arrays para os dados do gráfico
-          let perdasPacotes = [];
-          let labels = [];
 
-          // Separar os dados e criar as labels
-          for (let i = 0; i < json.length; i++) {
-            const { descricao, valor } = json[i];
 
-            if (descricao === 'Perda de Pacotes') {
-              perdasPacotes.push(valor);
-              labels.push(`Registro ${i + 1}`); // Rótulos baseados no índice
-            }
-          }
-
-          // Plotar o gráfico de barras
-          plotarGrafico('myChart-Pacotes', {
-            labels,
-            datasets: [
-              {
-                label: 'Perda de Pacotes (%)',
-                data: perdasPacotes,
-                backgroundColor: 'rgba(255, 206, 86, 0.5)',
-                borderColor: 'rgba(255, 206, 86, 1)',
-                borderWidth: 2
-              }
-            ]
-          }, 'Gráfico de Perda de Pacotes');
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-      }
-    })
-    .catch(error => {
-      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-
-  // Função para plotar o gráfico
-  function plotarGrafico2(idCanvas, data, titulo) {
-    const ctx = document.getElementById(idCanvas).getContext('2d');
-
-    new Chart(ctx, {
-      type: 'bar', // Gráfico de barras
-      data: {
-        labels: data.labels,
-        datasets: data.datasets
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: titulo
-          }
-        },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Registros'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Perda de Pacotes (%)'
-            }
-          }
-        }
-      }
-    });
-  }
-
+  
 
 
 
