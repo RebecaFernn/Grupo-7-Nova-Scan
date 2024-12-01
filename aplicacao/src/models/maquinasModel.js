@@ -73,7 +73,7 @@ function valoresComponentes(fkEmpresa, fkDispositivo) {
 ON l.fkDispositivo = d.id
 JOIN empresa as e
 ON d.fkEmpresa = e.id
-WHERE descricao IN ('Armazenamento Total', 'Memória RAM Total') 
+WHERE descricao IN ('Armazenamento Total', 'Memória RAM Total', 'Núcleos CPU') 
 AND l.fkDispositivo = ${fkDispositivo}
 AND e.id = ${fkEmpresa};`
 

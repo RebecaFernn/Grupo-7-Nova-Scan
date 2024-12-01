@@ -74,14 +74,15 @@
             </div>
         <div class="up">
             <h1>Média de uso do último mês</h1>
+            <p>Selecione a semana e o componente que deseja observar o histórico:</p>
             <div class="caixas">
                 <select name="" id="dataSelect">
                     <option disabled selected value=""> Qual semana deseja visualizar?</option>
                 </select>
                 <select name="" id="componente">
                     <option disabled selected value="">Qual o componente que deseja visualizar?</option>
-                    <option value="Uso da CPU'">CPU</option>
-                    <option value="Memória">RAM</option>
+                    <option value="Uso da CPU">CPU</option>
+                    <option value="Porcentagem Memória Ram">RAM</option>
                 </select>
                 <button onclick="mostrar()"> Buscar</button>
             </div>
@@ -133,7 +134,7 @@
                 <div class="right">
                     <div class="quadro">
                         <h1 id="titulo">Uso Minímo - Máximo de domingo</h1>
-                        <h1>CPU</h1>
+                        <h1 id="slope_text">CPU</h1>
                         <div class="grafico" id="slope"></div>
                     </div>
                 </div>
@@ -144,8 +145,8 @@
 </section>
 </body>
 
-<script src="js/Individual/rebeca.js"></script>
-<script src="js/Individual/teste.js"></script>
+<script src="js/Individual/rebeca_pt1.js"></script>
+<script src="js/Individual/rebeca_pt2.js"></script>
 <script src="js/href.js"></script>
 
 <script>
