@@ -145,17 +145,6 @@ function overviewMaquinas(maquinasOk, maquinasCriticas, maquinasTotais) {
 var idDispositivo;
 
 // Função para abrir o modal de informações da máquina
-function maquina(id) {
-    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
-    fundoInformacoesmaquina.style.display = 'flex';
-
-    idDispositivo = id;
-    componentesDispositivo();
-    valoresComponentes();
-    listandoAlertasMaquinas();
-    listandologMaquinas()
-    listandoAlertasComponenteMaquina()
-}
 
 
 function valoresComponentes() {
@@ -179,6 +168,7 @@ function valoresComponentes() {
 }
 
 var ramTOTAL = 0;
+var nucleosTOTAL = 0;
 
 function componentesDispositivo(listaValores) {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
@@ -217,10 +207,16 @@ function componentesDispositivo(listaValores) {
 
 
             memoriaTOTAL = valores[0].valor
+            nucleosTOTAL = valores[2].valor
 
             const memoria = document.getElementById('total-memoria')
             memoria.innerHTML = ` <p>Total</p>
                                 <p><strong>${valores[0].valor}Gb</strong></p>`
+
+
+            const nucleos = document.getElementById('total-nucleos')
+            nucleos.innerHTML = `<p>Nucleos</p>
+                                <p><strong>${nucleosTOTAL}</strong></p>`
 
         })
         .catch(function (error) {
@@ -719,7 +715,7 @@ var perdaPacotes = []
 var pacotesEnviados = []
 var pacotesRecebidos = []
 
-
+let intervalId;
 function listandologMaquinas() {
     var idUsuario = sessionStorage.getItem('ID_USUARIO')
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
@@ -763,7 +759,7 @@ function listandologMaquinas() {
             for (let i = 0; i < 8; i++) {
 
 
-                if (listarlogMaquinas[i].tipoComponente == "Memória") {
+                if (listarlogMaquinas[i].descricaoLog == "Uso de Memória RAM") {
 
 
                     listaRam.push(listarlogMaquinas[i].valor)
@@ -1010,6 +1006,7 @@ function listandologMaquinas() {
                 meuGrafico4.update()
 
             }
+        
 
 
 
@@ -1023,9 +1020,7 @@ function listandologMaquinas() {
             console.log("Erro!: ", error)
         })
 }
-// setInterval(() => {
-//     listandologMaquinas();
-// }, 2000);
+
 
 
 
@@ -1058,6 +1053,30 @@ function overview(tipoComp) {
             console.log("Detalhes do erro:", error);
         });
 }
+function maquina(id) {
+    const fundoInformacoesmaquina = document.getElementById('fundoInformacoesmaquina');
+    fundoInformacoesmaquina.style.display = 'flex';
+
+    idDispositivo = id;
+    componentesDispositivo();
+    valoresComponentes();
+    listandoAlertasMaquinas();
+    listandologMaquinas(); // Executa imediatamente ao abrir
+    listandoAlertasComponenteMaquina();
+
+    // Cancela qualquer intervalo ativo para evitar duplicações
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+
+    // Configura a execução de listandologMaquinas a cada 2 segundos
+    intervalId = setInterval(() => {
+        listandologMaquinas();
+    }, 2000);
+}
+
+
+
 
 function atualizarPagina() {
     location.reload();
