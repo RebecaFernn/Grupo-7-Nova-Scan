@@ -12,7 +12,7 @@ function grafico(inicio, fim, idEmpresa, tipoDispositivo) {
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
-            AND componente.tipo = '${tipoDispositivo}'
+            AND log.descricao = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = ${idEmpresa}
         GROUP BY 
             DATE_FORMAT(log.dataHora, '%W'),
@@ -38,7 +38,7 @@ function grafico2(idEmpresa, tipoDispositivo, day) {
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
-            componente.tipo = '${tipoDispositivo}'
+            log.descricao = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = '${idEmpresa}'
             AND log.dataHora BETWEEN '${day} 00:00:00' AND '${day} 23:59:59' 
         GROUP BY 
@@ -62,7 +62,7 @@ function KPI1(inicio, fim, idEmpresa, tipoDispositivo) {
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
-            componente.tipo = '${tipoDispositivo}'
+            log.descricao = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = '${idEmpresa}'
             AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
         GROUP BY 
@@ -88,7 +88,7 @@ function KPI2(inicio, fim, idEmpresa, tipoDispositivo) {
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
-            componente.tipo = '${tipoDispositivo}'
+            log.descricao = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = '${idEmpresa}'
             AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
         GROUP BY 
@@ -113,7 +113,7 @@ function KPI3(inicio, fim, idEmpresa, tipoDispositivo) {
         INNER JOIN componente ON log.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
-            componente.tipo = '${tipoDispositivo}'
+            log.descricao = '${tipoDispositivo}'
             AND dispositivo.fkEmpresa = '${idEmpresa}'
             AND log.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59';
 
