@@ -23,7 +23,9 @@ function gerarOpcoesSemanas() {
         // Criar uma nova opção no select
         const option = document.createElement('option');
         option.value = `${inicioFormatado} a ${fimFormatado}`;
-        option.textContent = `${inicioFormatado} a ${fimFormatado}`;
+        var [ano, mes, dia_dom] = inicioFormatado.split("-");
+        var [ano, mes, dia_sab] = fimFormatado.split("-");
+        option.textContent = `${dia_dom}/${mes}/${ano} a ${dia_sab}/${mes}/${ano}`;
 
         if (i === 0) {
             option.selected = true;
@@ -145,6 +147,11 @@ function plotarGrafico1(resposta) {
     console.log('Dados formatados para o gráfico de heatmap:');
     console.log(seriesData);
     console.log('----------------------------------------------');
+    const dataSelecionada = document.getElementById('dataSelect').value; 
+    const [inicio, fim] = dataSelecionada.split(' a ');
+    var [ano, mes, dia_dom] = inicio.split("-");
+    var [ano, mes, dia_sab] = fim.split("-");
+    var dia = `${dia_dom}/${mes}/${ano} --- ${dia_sab}/${mes}/${ano}`
 
   
     var options = {
@@ -204,7 +211,7 @@ function plotarGrafico1(resposta) {
             }
         },
         title: {
-            text: dataSelect.value,
+            text: dia,
             align: 'center',
             style: {
                 color: 'black',
