@@ -115,6 +115,8 @@
 
 <script>
 
+
+  <!-- LISTAR MAQUINAS -->
   function listarmaquinas() {
     var fkEmpresa = sessionStorage.getItem('FK_EMPRESA')
 
@@ -140,8 +142,10 @@
         valorEnv.innerHTML = resultado[0].valor
         valorRec.innerHTML = resultado[1].valor
         
-        for(i = 0; i < resultado.length; i++ ) {
+        
+        for(i = 0; i <= resultado.length; i++ ) {
           var listMaquina = document.getElementById('select-maquinas')
+
           listMaquina.innerHTML += `<option value="${resultado[i].nome}">${resultado[i].nome}</option>` 
         }   
 
@@ -151,6 +155,10 @@
         console.log("nenhum dado foi encontrado", error)
       })
   }
+
+
+
+
   function buscarDados(){
     var selectElement = document.getElementById('select-maquinas');
     var maquinaSelecionada = selectElement.value;
@@ -184,18 +192,27 @@
     .then((dados) => {
         const dadosPacotes = dados[0]; // Resultado do primeiro fetch (graficopacotes)
         const dadosPerda = dados[1]; // Resultado do segundo fetch (graficoperda)
+        const distinctValues = {};
 
         console.log('Dados de pacotes:', dadosPacotes);
         console.log('Dados de perda:', dadosPerda);
+        
+        
+        
+        
         // **Gráfico de Perda de Pacotes**
         const ctxPerda = document.getElementById('myChart-Pacotes').getContext('2d');
-        const labelsPerda = dadosPerda.map(item => item.timestamp); // Ajuste para o campo 'timestamp'
+        const labelsPerda = dadosPerda.map(item => item.timestamp || item.date); // Ajuste para o campo 'timestamp'
         const valoresPerda = dadosPerda.map(item => item.valor); // Ajuste para o campo 'valor'
 
+        
+
+        console.log(labelsPerda)
+        console.log("perda de pacote",valoresPerda)
         new Chart(ctxPerda, {
             type: 'line',
             data: {
-                labels: labelsPerda,
+                labels: "Eixo X",
                 datasets: [
                     {
                         label: 'Perda de Pacotes',
@@ -230,11 +247,29 @@
             },
         });
 
+
+
+
         // **Gráfico de Bytes Enviados e Recebidos**
         const ctxBytes = document.getElementById('myChart-Bytes').getContext('2d');
-        const labelsBytes = dadosPacotes.map(item => item.timestamp); // Ajuste para o campo 'timestamp'
-        const valoresBytesRecebidos = dadosPacotes.map(item => item.recebidos); // Ajuste para o campo 'recebidos'
-        const valoresBytesEnviados = dadosPacotes.map(item => item.enviados); // Ajuste para o campo 'enviados'
+        const labelsBytes = dadosPacotes.map((_, index) => `Ponto ${index + 1}`); // "Ponto 1", "Ponto 2", ...
+        const valoresBytesRecebidos = dadosPacotes.map(item => item.valor); // Campo ajustado para o nome correto
+        const valoresBytesEnviados = dadosPacotes.map(item => item.valor); // Campo ajustado para o nome correto
+        console.log(valoresBytesEnviados)
+        console.log(valoresBytesRecebidos)
+
+        ListaRecebidos = [];
+        ListaEnviados = [];
+
+        for(i = 0; i < dados.length; i++){
+          if(dados[i].descricao == 'byteRecebidos'){
+            ListaRecebidos.push(dados[i].descricao)
+          }else{
+            ListaEnviados.push(dados[i].descricao)
+          }
+        }
+        console.log(ListaRecebidos)
+        console.log(ListaEnviados)
 
         new Chart(ctxBytes, {
             type: 'bar', // Gráfico de barras para bytes

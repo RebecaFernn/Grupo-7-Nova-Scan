@@ -25,7 +25,6 @@ function listamaquina(fkEmpresa){
     SELECT d.nome, l.descricao, sum(l.valor) as valor FROM log as l JOIN dispositivo as d
 ON l.fkDispositivo = d.id
 JOIN empresa as e
-ON d.fkEmpresa = d.id
 WHERE e.id = ${fkEmpresa}
 AND l.descricao IN ( 'BytesEnviados', 'BytesRecebidos')
 GROUP BY d.nome, l.descricao;
