@@ -143,7 +143,7 @@
         valorRec.innerHTML = resultado[1].valor
         
         
-        for(i = 0; i <= resultado.length; i++ ) {
+        for(i = 0; i < resultado.length; i++ ) {
           var listMaquina = document.getElementById('select-maquinas')
 
           listMaquina.innerHTML += `<option value="${resultado[i].nome}">${resultado[i].nome}</option>` 
@@ -159,167 +159,175 @@
 
 
 
-  function buscarDados(){
-    var selectElement = document.getElementById('select-maquinas');
-    var maquinaSelecionada = selectElement.value;
+  let chartBytes; // Variável global para o gráfico de Bytes
+  let chartPacotes; // Variável global para o gráfico de Perda de Pacotes
+  
+  function buscarDados() {
+      const selectElement = document.getElementById('select-maquinas');
+      const maquinaSelecionada = selectElement.value;
+  
+      if (!maquinaSelecionada || maquinaSelecionada === 'Selecione a máquina') {
+          alert("Por favor, selecione uma máquina válida.");
+          return;
+      }
+  
+      console.log('Valor de maquinaSelecionada:', maquinaSelecionada);
+  
+      Promise.all([
+          fetch(`/kaue/graficopacotes/${maquinaSelecionada}`, {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+          }),
+          fetch(`/kaue/graficoperda/${maquinaSelecionada}`, {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+          })
+      ])
+          .then((responses) => {
+              responses.forEach((res, index) => {
+                  if (!res.ok) {
+                      throw new Error(`Erro na requisição ${index + 1}: ${res.status}`);
+                  }
+              });
+              return Promise.all(responses.map((res) => res.json()));
+          })
+          .then((dados) => {
+              const dadosPacotes = dados[0]; // Resultado do primeiro fetch (graficopacotes)
+              const dadosPerda = dados[1]; // Resultado do segundo fetch (graficoperda)
+  
+              console.log('Dados de pacotes:', dadosPacotes);
+              console.log('Dados de perda:', dadosPerda);
+  
+              // Atualizando o gráfico de Perda de Pacotes
+              const labelsPerda = dadosPerda.map(item => item.timestamp || item.date);
+              const valoresPerda = dadosPerda.map(item => item.valor);
+               
+              console.log("testando aqui ", labelsPerda)
+              console.log("Testando aqui 2",valoresPerda)
+              if (chartPacotes) {
+                  // Atualiza os dados do gráfico existente
 
-    if(!maquinaSelecionada || maquinaSelecionada == 'Selecione a máquina'){
-      alert("Por favor, selecione uma máquina válida.");
-      return;
-    }
-    console.log('Valor de maquinaSelecionada:', maquinaSelecionada);
+                  chartPacotes.data.datasets[0].data = valoresPerda;
+                  chartPacotes.update(); // Atualiza o gráfico
+              } else {
+                  // Cria o gráfico caso ainda não exista
+                  const ctxPerda = document.getElementById('myChart-Pacotes').getContext('2d');
+                  chartPacotes = new Chart(ctxPerda, {
+                      type: 'line',
+                      data: {
+                          labels: "teste",
+                          datasets: [
+                              {
+                                  label: 'Perda de Pacotes',
+                                  data: valoresPerda,
+                                  borderColor: 'red',
+                                  backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                                  fill: true,
+                              },
+                          ],
+                      },
+                      options: {
+                          responsive: true,
+                          plugins: {
+                              legend: {
+                                  position: 'top',
+                              },
+                          },
+                          scales: {
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: 'Tempo',
+                                  },
+                              },
+                              y: {
+                                  title: {
+                                      display: true,
+                                      text: 'Perda (em pacotes)',
+                                  },
+                              },
+                          },
+                      },
+                  });
+              }
+  
+              // Atualizando o gráfico de Bytes Enviados e Recebidos
+              const ListaRecebidos = [];
+              const ListaEnviados = [];
+  
+              for (let i = 0; i < dadosPacotes.length; i++) {
+                  if (dadosPacotes[i].descricao === 'BytesRecebidos') {
+                      ListaRecebidos.push(dadosPacotes[i].valor);
+                  } else {
+                      ListaEnviados.push(dadosPacotes[i].valor);
+                  }
+              }
+  
+              const labelsBytes = dadosPacotes.map((_, index) => `Ponto ${index + 1}`);
+              // Determina o limite baseado no comprimento dos dados
+const limite = Math.min(ListaRecebidos.length, ListaEnviados.length);
 
-    Promise.all([
-    fetch(`/kaue/graficopacotes/${maquinaSelecionada}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    }),
-    fetch(`/kaue/graficoperda/${maquinaSelecionada}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    })
-])
-    .then((responses) => {
-        // Verifica se ambas as requisições foram bem-sucedidas
-        responses.forEach((res, index) => {
-            if (!res.ok) {
-                throw new Error(`Erro na requisição ${index + 1}: ${res.status}`);
-            }
-        });
-        // Converte ambas as respostas para JSON
-        return Promise.all(responses.map((res) => res.json()));
-    })
-    .then((dados) => {
-        const dadosPacotes = dados[0]; // Resultado do primeiro fetch (graficopacotes)
-        const dadosPerda = dados[1]; // Resultado do segundo fetch (graficoperda)
-        const distinctValues = {};
+// Filtra os arrays até o limite encontrado
+const labelsFiltrados = labelsBytes.slice(0, limite);
+const dadosRecebidosFiltrados = ListaRecebidos.slice(0, limite);
+const dadosEnviadosFiltrados = ListaEnviados.slice(0, limite);
 
-        console.log('Dados de pacotes:', dadosPacotes);
-        console.log('Dados de perda:', dadosPerda);
-        
-        
-        
-        
-        // **Gráfico de Perda de Pacotes**
-        const ctxPerda = document.getElementById('myChart-Pacotes').getContext('2d');
-        const labelsPerda = dadosPerda.map(item => item.timestamp || item.date); // Ajuste para o campo 'timestamp'
-        const valoresPerda = dadosPerda.map(item => item.valor); // Ajuste para o campo 'valor'
-
-        
-
-        console.log(labelsPerda)
-        console.log("perda de pacote",valoresPerda)
-        new Chart(ctxPerda, {
-            type: 'line',
-            data: {
-                labels: "Eixo X",
-                datasets: [
-                    {
-                        label: 'Perda de Pacotes',
-                        data: valoresPerda,
-                        borderColor: 'red',
-                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                        fill: true,
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Tempo',
-                        },
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Perda (em pacotes)',
-                        },
-                    },
-                },
-            },
-        });
-
-
-
-
-        // **Gráfico de Bytes Enviados e Recebidos**
-        const ctxBytes = document.getElementById('myChart-Bytes').getContext('2d');
-        const labelsBytes = dadosPacotes.map((_, index) => `Ponto ${index + 1}`); // "Ponto 1", "Ponto 2", ...
-        const valoresBytesRecebidos = dadosPacotes.map(item => item.valor); // Campo ajustado para o nome correto
-        const valoresBytesEnviados = dadosPacotes.map(item => item.valor); // Campo ajustado para o nome correto
-        console.log(valoresBytesEnviados)
-        console.log(valoresBytesRecebidos)
-
-        ListaRecebidos = [];
-        ListaEnviados = [];
-
-        for(i = 0; i < dados.length; i++){
-          if(dados[i].descricao == 'byteRecebidos'){
-            ListaRecebidos.push(dados[i].descricao)
-          }else{
-            ListaEnviados.push(dados[i].descricao)
-          }
-        }
-        console.log(ListaRecebidos)
-        console.log(ListaEnviados)
-
-        new Chart(ctxBytes, {
-            type: 'bar', // Gráfico de barras para bytes
-            data: {
-                labels: labelsBytes,
-                datasets: [
-                    {
-                        label: 'Bytes Recebidos',
-                        data: valoresBytesRecebidos,
-                        backgroundColor: 'rgba(0, 0, 255, 0.6)',
-                        borderColor: 'blue',
-                        borderWidth: 1,
-                    },
-                    {
-                        label: 'Bytes Enviados',
-                        data: valoresBytesEnviados,
-                        backgroundColor: 'rgba(0, 255, 0, 0.6)',
-                        borderColor: 'green',
-                        borderWidth: 1,
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Tempo',
-                        },
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Bytes',
-                        },
-                    },
-                },
-            },
-        });
-    })
-    .catch((err) => {
-        console.error('Erro ao buscar dados:', err);
-    });
-  }
+  
+              if (chartBytes) {
+                  // Atualiza os dados do gráfico existente
+                  chartBytes.data.labels = labelsFiltrados;
+                  chartBytes.data.datasets[0].data = dadosRecebidosFiltrados;
+                  chartBytes.data.datasets[1].data = dadosEnviadosFiltrados;
+                  chartBytes.update(); // Atualiza o gráfico
+              } else {
+                  // Cria o gráfico caso ainda não exista
+                  const ctxBytes = document.getElementById('myChart-Bytes').getContext('2d');
+                  chartBytes = new Chart(ctxBytes, {
+                      type: 'bar',
+                      data: {
+                          labels: labelsFiltrados, // Use as labels filtradas
+                          datasets: [
+                              {
+                                  label: 'Bytes Recebidos',
+                                  data: dadosRecebidosFiltrados, // Use os dados filtrados
+                                  backgroundColor: 'rgba(0, 0, 255, 0.6)',
+                                  borderColor: 'blue',
+                                  borderWidth: 1,
+                              },
+                              {
+                                  label: 'Bytes Enviados',
+                                  data: dadosEnviadosFiltrados, // Use os dados filtrados
+                                  backgroundColor: 'rgba(0, 255, 0, 0.6)',
+                                  borderColor: 'green',
+                                  borderWidth: 1,
+                              },
+                          ],
+                      },
+                      options: {
+                          responsive: true,
+                          plugins: {
+                              legend: {
+                                  position: 'top',
+                              },
+                          },
+                          scales: {
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: '',
+                                  },
+                              },
+                              y: {
+                                  title: {
+                                      display: true,
+                                      text: 'Bytes',
+                                  },
+                              },
+                          },
+                      },
+                  });
+                }})}
+  
 
   
 
