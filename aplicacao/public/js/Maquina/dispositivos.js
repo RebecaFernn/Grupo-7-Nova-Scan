@@ -362,7 +362,7 @@ function listandoAlertasMaquinas() {
             console.log("Alertas encontrados:", listaAlertas)
             let alertas = ""
             elementoPai = document.getElementById('low-info');
-            elementoPai.innerHTML = ""; 
+            elementoPai.innerHTML = "";
             for (var i = 0; i < listaAlertas.length; i++) {
 
                 if (listaAlertas[i].tipo == "Processador") {
@@ -759,7 +759,7 @@ function listandologMaquinas() {
 
             var statusREDE = document.getElementById('status-rede')
 
-
+            var velocidade = document.getElementById('velocidade-CPU')
             for (let i = 0; i < 8; i++) {
 
 
@@ -813,7 +813,8 @@ function listandologMaquinas() {
 
 
                 else if (listarlogMaquinas[i].tipoComponente == "Processador") {
-                    listaCPU.push(listarlogMaquinas[i].valor)
+
+
 
                     if (listarlogMaquinas[i].minIntervalo != null) {
                         minIntervaloCPU = listarlogMaquinas[i].minIntervalo
@@ -822,32 +823,47 @@ function listandologMaquinas() {
                     if (listarlogMaquinas[i].maxIntervalo != null) {
                         maxIntervaloCPU = listarlogMaquinas[i].maxIntervalo
                     }
+                    if (listarlogMaquinas[i].unidadeDeMedida == '%') {
+                        listaCPU.push(listarlogMaquinas[i].valor)
 
 
-
-                    if (listaCPU[listaCPU.length - 1] >= minIntervaloCPU && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
-                        var cuidado = maxIntervaloCPU - (maxIntervaloCPU * 0.30);
-
-                        // Verificar se o valor está 10% próximo do limite superior
-                        if (listaCPU[listaCPU.length - 1] >= cuidado && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
-                            // Status de cuidado
-                            statusCPU.innerHTML = `<p>Status</p>
-                                                    <img src="./img/cuidado.svg" alt="">`;
-                        } else {
-                            // Status bom
-                            statusCPU.innerHTML = `<p>Status</p>
-                                                    <img src="./img/bom.svg" alt="">`;
+                        if (listaCPU.length >= 7) {
+                            listaCPU.shift()
                         }
-                    }
 
-                    if (listaCPU[listaCPU.length - 1] <= minIntervaloCPU || listaCPU[listaCPU.length - 1] >= maxIntervaloCPU) {
-                        statusCPU.innerHTML = `<p>Status</p>
+
+                        if (listaCPU[listaCPU.length - 1] >= minIntervaloCPU && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
+                            var cuidado = maxIntervaloCPU - (maxIntervaloCPU * 0.30);
+
+                            // Verificar se o valor está 10% próximo do limite superior
+                            if (listaCPU[listaCPU.length - 1] >= cuidado && listaCPU[listaCPU.length - 1] <= maxIntervaloCPU) {
+                                // Status de cuidado
+                                statusCPU.innerHTML = `<p>Status</p>
+                                                    <img src="./img/cuidado.svg" alt="">`;
+                            } else {
+                                // Status bom
+                                statusCPU.innerHTML = `<p>Status</p>
+                                                    <img src="./img/bom.svg" alt="">`;
+                            }
+
+
+                            if (listaCPU[listaCPU.length - 1] <= minIntervaloCPU || listaCPU[listaCPU.length - 1] >= maxIntervaloCPU) {
+                                statusCPU.innerHTML = `<p>Status</p>
                                 <img src="./img/ruim.svg" alt="">`
+                            }
+                        }
+
+                     
+
+
+                    }
+                    else if (listarlogMaquinas[i].unidadeDeMedida == "Ghz") {
+                        listaVelocidade = listarlogMaquinas[i].valor
+                        velocidade.innerHTML = ` <p>Velocidade</p>
+                        <p><strong>${listaVelocidade}Ghz</strong> </p>`
+
                     }
 
-                    if (listaCPU.length >= 7) {
-                        listaCPU.shift()
-                    }
 
                 }
 
@@ -855,10 +871,8 @@ function listandologMaquinas() {
 
 
 
-                else if (listarlogMaquinas[i].unidadeDeMedida == "Ghz") {
-                    listaVelocidade = listarlogMaquinas[i].valor
 
-                }
+
                 else if (listarlogMaquinas[i].descricaoLog == "Perda de Pacotes") {
                     perdaPacotes.push(listarlogMaquinas[i].valor)
 
@@ -998,9 +1012,7 @@ function listandologMaquinas() {
                 usoCPU.innerHTML = ` <p>CPU</p>
                                 <p><strong>${usoAtualCPU}%</strong> </p>`
 
-                const velocidade = document.getElementById('velocidade-CPU')
-                velocidade.innerHTML = ` <p>Velocidade</p>
-                <p><strong>${listaVelocidade}Ghz</strong> </p>`
+
 
 
 
@@ -1010,7 +1022,7 @@ function listandologMaquinas() {
                 meuGrafico4.update()
 
             }
-        
+
 
 
 
