@@ -2,7 +2,7 @@ var database = require("../database/config")
 function graficopacotes(nomeMaquina) {
     var instrucaoSql = `
          SELECT descricao, valor 
-        FROM log as l 
+        FROM baseLK as l 
         JOIN dispositivo as d ON l.fkDispositivo = d.id
         WHERE d.nome = '${nomeMaquina}' 
         AND descricao IN ('BytesRecebidos', 'BytesEnviados');
@@ -12,7 +12,7 @@ function graficopacotes(nomeMaquina) {
 }
 function graficoperda(nomeMaquina){
     var instrucaoSql = `   SELECT descricao, valor 
-        FROM log as l 
+        FROM baseLK as l 
         JOIN dispositivo as d ON l.fkDispositivo = d.id
         WHERE d.nome = '${nomeMaquina}'
         AND descricao = 'Perda de Pacotes' ;
@@ -22,7 +22,7 @@ function graficoperda(nomeMaquina){
 }
 function listamaquina(fkEmpresa){
     var instrucaoSql = `
-    SELECT d.nome, l.descricao, sum(l.valor) as valor FROM log as l JOIN dispositivo as d
+    SELECT d.nome, l.descricao, sum(l.valor) as valor FROM baseLK as l JOIN dispositivo as d
 ON l.fkDispositivo = d.id
 JOIN empresa as e
 WHERE e.id = ${fkEmpresa}
