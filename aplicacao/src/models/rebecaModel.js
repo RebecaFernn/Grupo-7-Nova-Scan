@@ -8,7 +8,7 @@ function grafico(inicio, fim, idEmpresa, tipoDispositivo) {
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora, 
             DATE_FORMAT(baseR.dataHora, '%Y-%m-%d') AS data,
             AVG(baseR.valor) AS media_valor
-        FROM log
+        FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE baseR.dataHora BETWEEN '${inicio} 00:00:00' AND '${fim} 23:59:59'
@@ -34,7 +34,7 @@ function grafico2(idEmpresa, tipoDispositivo, day) {
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora, 
             MIN(baseR.valor) AS minimo,
             MAX(baseR.valor) AS maximo
-        FROM log
+        FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
@@ -58,7 +58,7 @@ function KPI1(inicio, fim, idEmpresa, tipoDispositivo) {
         SELECT 
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora,
             MAX(baseR.valor) AS maximo
-        FROM log
+        FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
@@ -84,7 +84,7 @@ function KPI2(inicio, fim, idEmpresa, tipoDispositivo) {
         SELECT 
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora,
             MIN(baseR.valor) AS minimo
-        FROM log
+        FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
@@ -109,7 +109,7 @@ function KPI3(inicio, fim, idEmpresa, tipoDispositivo) {
     var instrucaoSql = ` 
         SELECT 
             ROUND(AVG(baseR.valor), 2) AS media_diaria
-        FROM log
+        FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
         WHERE 
