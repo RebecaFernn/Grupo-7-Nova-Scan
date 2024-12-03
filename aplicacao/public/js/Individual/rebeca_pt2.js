@@ -1,5 +1,7 @@
 // Dias da semana individual
 
+let chart2 = null;
+
 function fundo(dia) {
     const blur = document.getElementById('blur');
     const titulo = document.getElementById('titulo');
@@ -49,6 +51,11 @@ function fundo(dia) {
     var day
     var idEmpresa = sessionStorage.getItem('FK_EMPRESA'); 
     const tipoDispositivo = document.getElementById('componente').value;
+
+    if (chart2) {
+        chart2.destroy();
+        chart2 = null; // Liberar a referência
+    }
 
     obterDadosGrafico2(idEmpresa, tipoDispositivo, day);
     obterDados1(day, idEmpresa, tipoDispositivo);
@@ -174,8 +181,8 @@ function plotarGrafico2(resposta) {
       },
   };
 
-  var chart = new ApexCharts(document.querySelector("#slope"), options);
-  chart.render();
+    chart2 = new ApexCharts(document.querySelector("#slope"), options);
+    chart2.render();
 }
 
 function obterDados1(day, idEmpresa, tipoDispositivo) {

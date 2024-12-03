@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', gerarOpcoesSemanas);
 
 // Gráfico :
 
+let chart = null;
+
 function mostrar() {
 
     const idEmpresa = sessionStorage.getItem('FK_EMPRESA'); 
@@ -60,6 +62,11 @@ function mostrar() {
     } else if (tipoDispositivo == "Porcentagem Memória Ram") {
         titulo_comp.innerHTML = "RAM"
         slope_text.innerHTML = "RAM"
+    }
+
+    if (chart) {
+        chart.destroy();
+        chart = null; // Liberar a referência
     }
 
 
@@ -154,7 +161,6 @@ function plotarGrafico1(resposta) {
     var dia = `${dia_dom}/${mes}/${ano} --- ${dia_sab}/${mes}/${ano}`
 
     
-    chart.destroy()
     
     var options = {
         chart: {
@@ -233,8 +239,10 @@ function plotarGrafico1(resposta) {
     };
 
     // Renderizando o gráfico
-    var chart = new ApexCharts(document.querySelector("#heatmap"), options);
+    chart = new ApexCharts(document.querySelector("#heatmap"), options);
     chart.render();
+
+    
 
 }
 
