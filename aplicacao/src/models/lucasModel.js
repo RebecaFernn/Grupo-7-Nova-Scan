@@ -17,9 +17,9 @@ WHERE e.id = ${fkEmpresa};
 function dadosGraficoRosquinha(fkEmpresa) {
     console.log("Executando a função dadosGraficoRosquinha()")
     var instrucaoSql = `
-    SELECT descricao AS Descrição_Alerta, COUNT(*) AS Quantidade_Alertas FROM log 
+    SELECT descricao AS Descrição_Alerta, COUNT(*) AS Quantidade_Alertas FROM baseLK 
 JOIN dispositivo as d
-ON log.fkDispositivo = d.id 
+ON baseLK.fkDispositivo = d.id 
 JOIN empresa as e
 ON d.fkEmpresa = e.id
 WHERE 
@@ -39,7 +39,7 @@ ORDER BY
 function dadosKpiAlerta(fkEmpresa) {
     console.log("Executando a função dadosGraficoRosquinha()")
     var instrucaoSql = `
-    SELECT count(*) as alertasGerados FROM log as l
+    SELECT count(*) as alertasGerados FROM baseLK as l
 JOIN dispositivo as d
 ON l.fkDispositivo = d.id
 JOIN empresa as e
@@ -66,7 +66,7 @@ WHERE fkEmpresa = ${fkEmpresa};
 function qtdAlertasPorMaquina(fkEmpresa) {
     console.log("Executando a função qtdAlertasPorMaquina()")
     var instrucaoSql = `
-    SELECT count(l.eAlerta) as quantidade_alerta FROM log as l JOIN dispositivo as d
+    SELECT count(l.eAlerta) as quantidade_alerta FROM baseLK as l JOIN dispositivo as d
 ON l.fkDispositivo = d.id
 JOIN empresa as e 
 ON d.fkEmpresa = e.id
