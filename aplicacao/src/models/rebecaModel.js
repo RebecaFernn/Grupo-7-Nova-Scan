@@ -32,8 +32,8 @@ function grafico2(idEmpresa, tipoDispositivo, day) {
     var instrucaoSql = ` 
         SELECT 
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora, 
-            MIN(baseR.valor) AS minimo,
-            MAX(baseR.valor) AS maximo
+            ROUND(MIN(baseR.valor),2) AS minimo,
+            ROUND(MAX(baseR.valor),2) AS maximo
         FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
@@ -57,7 +57,7 @@ function KPI1(inicio, fim, idEmpresa, tipoDispositivo) {
     var instrucaoSql = ` 
         SELECT 
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora,
-            MAX(baseR.valor) AS maximo
+            ROUND(MAX(baseR.valor),2) AS maximo
         FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
@@ -83,7 +83,7 @@ function KPI2(inicio, fim, idEmpresa, tipoDispositivo) {
     var instrucaoSql = ` 
         SELECT 
             DATE_FORMAT(baseR.dataHora, '%H:00') AS hora,
-            MIN(baseR.valor) AS minimo
+            ROUND(MIN(baseR.valor),2) AS minimo
         FROM baseR
         INNER JOIN componente ON baseR.fkComponente = componente.id
         INNER JOIN dispositivo ON componente.fkDispositivo = dispositivo.id
@@ -95,7 +95,7 @@ function KPI2(inicio, fim, idEmpresa, tipoDispositivo) {
             DATE_FORMAT(baseR.dataHora, '%H:00')
         ORDER BY 
             minimo ASC
-LIMIT 1;
+        LIMIT 1;
 
        
     `;
