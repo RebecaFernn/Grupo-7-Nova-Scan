@@ -237,8 +237,8 @@ function obterDados2(day, idEmpresa, tipoDispositivo) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-  
+                    console.log(`Dados recebidos: ${resposta}`);
+                    
                     KPI2(resposta);
                 });
             } else {

@@ -153,7 +153,9 @@ function plotarGrafico1(resposta) {
     var [ano, mes, dia_sab] = fim.split("-");
     var dia = `${dia_dom}/${mes}/${ano} --- ${dia_sab}/${mes}/${ano}`
 
-  
+    
+    chart.destroy()
+    
     var options = {
         chart: {
             type: 'heatmap',
@@ -233,6 +235,7 @@ function plotarGrafico1(resposta) {
     // Renderizando o gráfico
     var chart = new ApexCharts(document.querySelector("#heatmap"), options);
     chart.render();
+
 }
 
 
