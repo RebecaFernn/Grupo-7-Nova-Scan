@@ -102,6 +102,32 @@ CREATE TABLE log (
     FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
 );
 
+CREATE TABLE baseLK (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    valor DOUBLE,
+    unidadeDeMedida VARCHAR(5),
+    dataHora DATETIME,
+    descricao VARCHAR(255),
+    eAlerta TINYINT,
+    fkComponente INT,
+    fkDispositivo INT,
+    FOREIGN KEY (fkComponente) REFERENCES componente(id),
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+);
+
+CREATE TABLE baseR (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    valor DOUBLE,
+    unidadeDeMedida VARCHAR(5),
+    dataHora DATETIME,
+    descricao VARCHAR(255),
+    eAlerta TINYINT,
+    fkComponente INT,
+    fkDispositivo INT,
+    FOREIGN KEY (fkComponente) REFERENCES componente(id),
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
+);
+
 
 INSERT INTO statusUsuario (situacao) VALUES 
 ('Ativo'),
