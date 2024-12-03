@@ -94,8 +94,8 @@
                     <img src="./img/maquinasEstaveis.svg" alt="">
                     <h3>Máquinas estaveis</h3>
                     <h1>4</h1> -->
-                </div>
             </div>
+        </div>
         </div>
 
 
@@ -134,212 +134,222 @@
 
 
 
-    
-  // Variáveis globais para armazenar as frequências
-let l1Size = 0;
-let l2Size = 0;
-let l3Size = 0;
-let l4Size = 0;
-let l5Size = 0;
-let l6Size = 0;
-let l7Size = 0;
-let l8Size = 0;
-let l9Size = 0;
-let l10Size = 0;
 
-let labelsFreq = [];
-let titulo = `Uso geral da CPU`;
-let usoEm = ``
+    // Variáveis globais para armazenar as frequências
+    let l1Size = 0;
+    let l2Size = 0;
+    let l3Size = 0;
+    let l4Size = 0;
+    let l5Size = 0;
+    let l6Size = 0;
+    let l7Size = 0;
+    let l8Size = 0;
+    let l9Size = 0;
+    let l10Size = 0;
 
-function overview(tipoComp) {
-    var fkEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém a empresa do sessionStorage
-    var tipoComponente = tipoComp;
+    let labelsFreq = [];
+    let titulo = `Uso geral da CPU`;
+    let usoEm = ``
 
-    alert(`TIPO COMPONENTE: ${tipoComponente}`);
+    function overview(tipoComp) {
+        var fkEmpresa = sessionStorage.getItem('FK_EMPRESA'); // Obtém a empresa do sessionStorage
+        var tipoComponente = tipoComp;
 
-    // Remove o '}' extra da URL
-    fetch(`/maquinas/overview/${fkEmpresa}?tipoComponente=${tipoComponente}`, {
-        method: 'GET',
-        headers: { "Content-Type": "application/json" },
-    })
-    .then(function (resposta) {
-        if (resposta.ok) {
-            return resposta.json(); // Converte para JSON se a resposta for bem-sucedida
-        }
-        alert("Erro ao buscar dados");
-    })
-    .then(function (log) {
-        console.log("Dados recebidos:", log);
-        
-        // Resetar os contadores antes de recalcular
-        l1Size = l2Size = l3Size = l4Size = l5Size = l6Size = l7Size = l8Size = l9Size = l10Size = 0;
+        alert(`TIPO COMPONENTE: ${tipoComponente}`);
 
-        if (tipoComponente == "Processador") {
-            titulo = `Uso geral de CPU`;
-            usoEm = `Uso em (%)`
+        // Remove o '}' extra da URL
+        fetch(`/maquinas/overview/${fkEmpresa}?tipoComponente=${tipoComponente}`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    return resposta.json(); // Converte para JSON se a resposta for bem-sucedida
+                }
+                alert("Erro ao buscar dados");
+            })
+            .then(function (log) {
+                console.log("Dados recebidos:", log);
 
-            labelsFreq = [
-                '0-10', '11-20', '21-30', '31-40', '41-50', '51-60',
-                '61-70', '71-80', '81-90', '91-100'
-            ];
-            
-            // Contar as ocorrências dos valores
-            log.forEach(item => {
-                if (item.valor >= 0 && item.valor < 10) l1Size++;
-                else if (item.valor >= 10 && item.valor < 20) l2Size++;
-                else if (item.valor >= 20 && item.valor < 30) l3Size++;
-                else if (item.valor >= 30 && item.valor < 40) l4Size++;
-                else if (item.valor >= 40 && item.valor < 50) l5Size++;
-                else if (item.valor >= 50 && item.valor < 60) l6Size++;
-                else if (item.valor >= 60 && item.valor < 70) l7Size++;
-                else if (item.valor >= 70 && item.valor < 80) l8Size++;
-                else if (item.valor >= 80 && item.valor < 90) l9Size++;
-                else if (item.valor >= 90 && item.valor <= 100) l10Size++;
+                // Resetar os contadores antes de recalcular
+                l1Size = l2Size = l3Size = l4Size = l5Size = l6Size = l7Size = l8Size = l9Size = l10Size = 0;
+
+                if (tipoComponente == "Processador") {
+                    titulo = `Uso geral de CPU`;
+                    usoEm = `Uso em (%)`
+
+                    labelsFreq = [
+                        '0-10', '11-20', '21-30', '31-40', '41-50', '51-60',
+                        '61-70', '71-80', '81-90', '91-100'
+                    ];
+
+                    // Contar as ocorrências dos valores
+                    log.forEach(item => {
+                        if (item.valor >= 0 && item.valor < 10) l1Size++;
+                        else if (item.valor >= 10 && item.valor < 20) l2Size++;
+                        else if (item.valor >= 20 && item.valor < 30) l3Size++;
+                        else if (item.valor >= 30 && item.valor < 40) l4Size++;
+                        else if (item.valor >= 40 && item.valor < 50) l5Size++;
+                        else if (item.valor >= 50 && item.valor < 60) l6Size++;
+                        else if (item.valor >= 60 && item.valor < 70) l7Size++;
+                        else if (item.valor >= 70 && item.valor < 80) l8Size++;
+                        else if (item.valor >= 80 && item.valor < 90) l9Size++;
+                        else if (item.valor >= 90 && item.valor <= 100) l10Size++;
+                    });
+
+                } else if (tipoComponente == "Memória") {
+                    titulo = `Uso de Memória geral`;
+
+                    labelsFreq = [
+                        '0-3',  // Corresponde a 0 ≤ valor < 3
+                        '3-6',  // Corresponde a 3 ≤ valor < 6
+                        '6-9',  // Corresponde a 6 ≤ valor < 9
+                        '9-12', // Corresponde a 9 ≤ valor < 12
+                        '12-15', // Corresponde a 12 ≤ valor < 15
+                        '15-18', // Corresponde a 15 ≤ valor < 18
+                        '18-21', // Corresponde a 18 ≤ valor < 21
+                        '21-24', // Corresponde a 21 ≤ valor < 24
+                        '24-27', // Corresponde a 24 ≤ valor < 27
+                        '27-32'  // Corresponde a 27 ≤ valor ≤ 32
+                    ];
+
+
+                    usoEm = `Uso em (Gb)`
+
+                    // Contar as ocorrências dos valores
+                    log.forEach(item => {
+                        if (item.valor >= 0 && item.valor < 3) l1Size++;
+                        else if (item.valor >= 3 && item.valor < 6) l2Size++;
+                        else if (item.valor >= 6 && item.valor < 9) l3Size++;
+                        else if (item.valor >= 9 && item.valor < 12) l4Size++;
+                        else if (item.valor >= 12 && item.valor < 15) l5Size++;
+                        else if (item.valor >= 15 && item.valor < 18) l6Size++;
+                        else if (item.valor >= 18 && item.valor < 21) l7Size++;
+                        else if (item.valor >= 21 && item.valor < 24) l8Size++;
+                        else if (item.valor >= 24 && item.valor < 27) l9Size++;
+                        else if (item.valor >= 27 && item.valor <= 32) l10Size++;
+
+                    });
+                }
+
+                // Atualiza o gráfico com os novos dados
+                updateChart(titulo, labelsFreq, usoEm);
+            })
+            .catch(function (error) {
+                console.log("Erro ao executar overview");
+                console.log("Detalhes do erro:", error);
             });
-
-        } else if (tipoComponente == "Memória") {
-            titulo = `Uso de Memória geral`;
-
-            labelsFreq = [
-                '0-4', '5-9', '10-14', '15-19', '20-24', '25-29',
-                '30-34', '35-39', '40-44', '45-50'
-            ];
-
-            usoEm = `Uso em (Gb)`
-
-            // Contar as ocorrências dos valores
-            log.forEach(item => {
-                if (item.valor >= 0 && item.valor < 5) l1Size++;
-                else if (item.valor >= 5 && item.valor < 10) l2Size++;
-                else if (item.valor >= 10 && item.valor < 15) l3Size++;
-                else if (item.valor >= 15 && item.valor < 20) l4Size++;
-                else if (item.valor >= 20 && item.valor < 25) l5Size++;
-                else if (item.valor >= 25 && item.valor < 30) l6Size++;
-                else if (item.valor >= 30 && item.valor < 35) l7Size++;
-                else if (item.valor >= 35 && item.valor < 40) l8Size++;
-                else if (item.valor >= 40 && item.valor < 45) l9Size++;
-                else if (item.valor >= 45 && item.valor <= 50) l10Size++;
-            });
-        }
-
-        // Atualiza o gráfico com os novos dados
-        updateChart(titulo, labelsFreq, usoEm);  
-    })
-    .catch(function (error) {
-        console.log("Erro ao executar overview");
-        console.log("Detalhes do erro:", error);
-    });
-}
-
-/// Função para atualizar o gráfico com os valores de frequência
-// Função para atualizar o gráfico com os valores de frequência
-function updateChart(titulo, labelsFreq, usoEm) {
-    const ctx = document.getElementById('meuHistograma').getContext('2d');
-    
-    // Verifica se o gráfico já existe e se é uma instância válida de Chart.js
-    if (window.meuHistograma instanceof Chart) {
-        console.log("Destruindo gráfico anterior...");
-        window.meuHistograma.destroy(); // Destrói o gráfico atual se ele for uma instância de Chart
-    } else {
-        console.log("Nenhum gráfico anterior para destruir.");
     }
 
-    // Cria o novo gráfico
-    console.log("Criando novo gráfico...");
-    window.meuHistograma = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labelsFreq,
-            datasets: [{
-                label: 'Frequência',
-                data: [l1Size, l2Size, l3Size, l4Size, l5Size, l6Size, l7Size, l8Size, l9Size, l10Size].slice(0, labelsFreq.length),
-                borderColor: 'black',
-                backgroundColor: 'gray',
-                borderWidth: 1,
-                barThickness: 'flex',
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Frequência',
-                        color: 'black',
-                        font: {
-                            size: 25,
-                            weight: 'bold',
-                            family: 'Montserrat',
+    /// Função para atualizar o gráfico com os valores de frequência
+    // Função para atualizar o gráfico com os valores de frequência
+    function updateChart(titulo, labelsFreq, usoEm) {
+        const ctx = document.getElementById('meuHistograma').getContext('2d');
+
+        // Verifica se o gráfico já existe e se é uma instância válida de Chart.js
+        if (window.meuHistograma instanceof Chart) {
+            console.log("Destruindo gráfico anterior...");
+            window.meuHistograma.destroy(); // Destrói o gráfico atual se ele for uma instância de Chart
+        } else {
+            console.log("Nenhum gráfico anterior para destruir.");
+        }
+
+        // Cria o novo gráfico
+        console.log("Criando novo gráfico...");
+        window.meuHistograma = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labelsFreq,
+                datasets: [{
+                    label: 'Frequência',
+                    data: [l1Size, l2Size, l3Size, l4Size, l5Size, l6Size, l7Size, l8Size, l9Size, l10Size].slice(0, labelsFreq.length),
+                    borderColor: 'black',
+                    backgroundColor: 'gray',
+                    borderWidth: 1,
+                    barThickness: 'flex',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Frequência',
+                            color: 'black',
+                            font: {
+                                size: 25,
+                                weight: 'bold',
+                                family: 'Montserrat',
+                            }
+                        },
+                        ticks: {
+                            color: 'black',
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
                         }
                     },
-                    ticks: {
-                        color: 'black',
-                        font: {
-                            size: 14,
-                            weight: 'bold',
-                            family: 'Montserrat'
-                        }
+                    x: {
+                        title: {
+                            display: true,
+                            text: usoEm,
+                            color: 'black',
+                            font: {
+                                size: 25,
+                                weight: 'bold',
+                                family: 'Montserrat',
+                            }
+                        },
+                        ticks: {
+                            color: 'black',
+                            font: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Montserrat'
+                            }
+                        },
+                        categoryPercentage: 1.0,
+                        barPercentage: 1.0,
                     }
                 },
-                x: {
+                plugins: {
                     title: {
                         display: true,
-                        text: usoEm,
+                        text: titulo, // Aqui o título é atualizado dinamicamente
                         color: 'black',
                         font: {
-                            size: 25,
+                            size: 30,
                             weight: 'bold',
                             family: 'Montserrat',
-                        }
+                        },
+                        padding: {
+                            top: 20,
+                            bottom: 30
+                        },
+                        align: 'center'
                     },
-                    ticks: {
-                        color: 'black',
-                        font: {
-                            size: 14,
-                            weight: 'bold',
-                            family: 'Montserrat'
-                        }
-                    },
-                    categoryPercentage: 1.0,
-                    barPercentage: 1.0,
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: titulo, // Aqui o título é atualizado dinamicamente
-                    color: 'black',
-                    font: {
-                        size: 30,
-                        weight: 'bold',
-                        family: 'Montserrat',
-                    },
-                    padding: {
-                        top: 20,
-                        bottom: 30
-                    },
-                    align: 'center'
-                },
-                legend: {
-                    display: false,
+                    legend: {
+                        display: false,
+                    }
                 }
             }
-        }
+        });
+    }
+
+    // Atualização do gráfico após selecionar o tipo de componente
+    document.getElementById('select-maquina').addEventListener('change', function (event) {
+        event.preventDefault(); // Impede o comportamento padrão (como o recarregamento da página)
+
+        const tipoComp = this.value; // Captura o valor selecionado
+        console.log("Tipo de Componente selecionado:", tipoComp);
+
+        overview(tipoComp);
     });
-}
-
-// Atualização do gráfico após selecionar o tipo de componente
-document.getElementById('select-maquina').addEventListener('change', function (event) {
-    event.preventDefault(); // Impede o comportamento padrão (como o recarregamento da página)
-
-    const tipoComp = this.value; // Captura o valor selecionado
-    console.log("Tipo de Componente selecionado:", tipoComp);
-
-    overview(tipoComp);
-});
 
 
 </script>
