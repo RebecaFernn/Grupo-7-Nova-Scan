@@ -1,17 +1,4 @@
-INSERT INTO empresa (razaoSocial, cnpj) VALUES 
-("supermercado Sonda", '12345678901234');
 
-INSERT INTO usuario (nome, email, senha, fkAdmin, fkEmpresa, fkTipoUsuario, fkStatusUsuario) VALUES
-('Gisele Francisca', 'gisele.francisca@sonda.market', 'novascan', null, 1, 2, 1);
-
-INSERT INTO dispositivo (nome, fkEmpresa) VALUES
-('Dispositivo 1', 1);
-
-INSERT INTO componente (nome, tipo, fkDispositivo) VALUES
-('AMD', 'Processador', 1),
-('RAYZEN', 'Memória', 1);
- 
--- select * from dispositivo;
 
 INSERT INTO baseR (valor, unidadeDeMedida, dataHora, descricao, eAlerta, fkComponente, fkDispositivo) VALUES
 (05.5, '%', '2024-11-10 07:00:00', 'Uso da CPU', 1, 1, 1),
