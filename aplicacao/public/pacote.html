@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="main">
-      <h1>Horários de Perda de pacotes - semanal 11/11 - 15/11</h1>
+      <h1>Monitoramento de Perda de pacotes</h1>
 
 
 
@@ -85,7 +85,7 @@
         </div>
 
         <div class="chart">
-          <h2>Máquinas Cadastradas</h2>
+          <h2>Máquina Selecionada</h2>
           <div class="box">
             <h1>Nome da Máquina</h1>
             <h4><div class="maquinascadastradas" id="nomeMaquina"></div></h4><br>
@@ -135,18 +135,45 @@
         var valorEnv = document.getElementById('valorEnv')
         var valorRec = document.getElementById('valorRec')
         
+
+        
         nomeMaquina.innerHTML = resultado[0].nome
         bytesEnviados.innerHTML = resultado[0].descricao
         bytesRecebidos.innerHTML = resultado[1].descricao
         valorEnv.innerHTML = resultado[0].valor
         valorRec.innerHTML = resultado[1].valor
-        
-        
-        for(i = 0; i < resultado.length; i++ ) {
-          var listMaquina = document.getElementById('select-maquinas')
 
-          listMaquina.innerHTML += `<option value="${resultado[i].nome}">${resultado[i].nome}</option>` 
-        }   
+        
+
+
+        
+        var listMaquina = document.getElementById('select-maquinas');
+        var maquinasUnicas = [...new Set(resultado.map(item => item.nome))]; // Remove duplicados
+        maquinasUnicas.forEach(maquina => {
+            listMaquina.innerHTML += `<option value="${maquina}">${maquina}</option>`;
+        }); 
+
+        listMaquina.addEventListener('change', function() {
+          var maquinaSelecionada = listMaquina.value;
+          var dadosMaquina = resultado.filter(item => item.nome === maquinaSelecionada);
+      
+          if (dadosMaquina.length > 0) {
+              var nomeMaquina = document.getElementById('nomeMaquina');
+              var bytesEnviados = document.getElementById('enviado');
+              var bytesRecebidos = document.getElementById('recebido');
+              var valorEnv = document.getElementById('valorEnv');
+              var valorRec = document.getElementById('valorRec');
+      
+              // Atualiza os elementos na tela
+              nomeMaquina.innerHTML = dadosMaquina[0].nome;
+              var enviado = dadosMaquina.find(item => item.descricao === 'BytesEnviados');
+              var recebido = dadosMaquina.find(item => item.descricao === 'BytesRecebidos');
+      
+              bytesEnviados.innerHTML = enviado ? enviado.descricao : 'N/A';
+              bytesRecebidos.innerHTML = recebido ? recebido.descricao : 'N/A';
+              valorEnv.innerHTML = enviado ? enviado.valor : 'N/A';
+              valorRec.innerHTML = recebido ? recebido.valor : 'N/A';
+          }})
 
 
       })
