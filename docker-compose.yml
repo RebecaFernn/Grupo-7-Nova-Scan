@@ -19,7 +19,7 @@ services:
       
 
     app:
-      image: becafernn/nodejs-novascan:versao5
+      image: becafernn/nodejs-novascan:versao6
       working_dir: /aplicacao
       ports:
         - "8080:8080"
