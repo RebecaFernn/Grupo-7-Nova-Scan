@@ -732,7 +732,6 @@ function listandologMaquinas() {
         .then(function (resposta) {
             if (resposta.ok) {
                 return resposta.json()
-
             }
             console.log("AQUI NA VALIDAÇÂO RYAN")
         })
@@ -760,7 +759,7 @@ function listandologMaquinas() {
             var statusREDE = document.getElementById('status-rede')
 
             var velocidade = document.getElementById('velocidade-CPU')
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < listarlogMaquinas.length -1; i++) {
 
 
                 if (listarlogMaquinas[i].descricaoLog == "Uso de Memória RAM") {
@@ -1088,7 +1087,7 @@ function maquina(id) {
     // Configura a execução de listandologMaquinas a cada 2 segundos
     intervalId = setInterval(() => {
         listandologMaquinas();
-    }, 5000);
+    }, 2000);
 }
 
 
