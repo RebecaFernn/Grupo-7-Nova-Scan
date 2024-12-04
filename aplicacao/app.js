@@ -1,7 +1,7 @@
-//var ambiente_processo = 'producao';
+var ambiente_processo = 'producao';
 
 
-var ambiente_processo = 'desenvolvimento';
+//var ambiente_processo = 'desenvolvimento';
 
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';

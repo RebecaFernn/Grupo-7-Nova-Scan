@@ -1088,7 +1088,7 @@ function maquina(id) {
     // Configura a execução de listandologMaquinas a cada 2 segundos
     intervalId = setInterval(() => {
         listandologMaquinas();
-    }, 2000);
+    }, 5000);
 }
 
 
