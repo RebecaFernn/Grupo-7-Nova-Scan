@@ -136,7 +136,7 @@ function listarLogMaquina(idUsuario, idDispositivo, fkEmpresa) {
 	WHERE d.id = ${idDispositivo} AND e.id = ${fkEmpresa} AND u.id = ${idUsuario}
     ORDER BY 
         l.dataHora DESC
-    LIMIT 10;`
+    LIMIT 20;`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
