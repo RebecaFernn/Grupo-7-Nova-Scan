@@ -1,0 +1,128 @@
+---
+title: "Relatório Semanal"
+author: "Novascan - Equipe de Análise do Monitoramento de Self-Checkouts"
+date: "25/11/2024"
+output: html_document
+---
+
+```{=html}
+<style>
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+```
+# **Introdução**
+
+Este relatório apresenta uma análise detalhada do monitoramento de hardware de máquinas de self-checkout, com o objetivo de garantir o desempenho, a disponibilidade e a confiabilidade desses dispositivos essenciais em ambientes de autoatendimento. As máquinas de self-checkout desempenham um papel crítico na melhoria da experiência do cliente e na eficiência operacional, sendo, portanto, indispensável manter seus componentes em pleno funcionamento.
+
+# **Análise do uso de CPU de todas as self-checkouts durante 1 semana**
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Através de uma mostra gerada durante 1 semana, que foi retirada do banco de dados, fornecemos abaixo diversos insights do uso geral dos componentes das máquinas de self-checkout
+
+```{r}
+DadosFkDispositivo1 <- read.csv("C:/Users/lucas/Downloads/DadosFkDispositivo1.csv")
+copiaBase <- DadosFkDispositivo1
+
+usoCpuFiltrado <- subset(copiaBase, tipo == "Processador", 
+                         select = c(valor, tipo, dataHora))
+```
+
+```{r usoCpuFiltrado, echo=FALSE}
+hist(usoCpuFiltrado$valor,
+     breaks = 30,
+     main = "Histograma do Uso da CPU",
+     xlab = "Uso da CPU (%)",
+     ylab = "Frequência",
+     col = "blue",
+     border = "black")
+```
+
+Insights encontrados:
+
+**Alta frequência em baixos níveis de uso**:
+
+-   A maior parte do uso da CPU está concentrada em valores próximos a 0%, indicando que o sistema opera predominantemente em níveis muito baixos de consumo.
+
+-   Isso sugere que a CPU passa a maior parte do tempo em repouso ou executando tarefas de baixa intensidade.
+
+**Distribuição assimetrica**:
+
+-   O histograma formado é conhecido como distorcido a direita por causa de alto valores sendo concentrados em baixa frequência, no qual os picos maiores tem uma decorrência menor
+
+**Considerações finais sobre uso de cpu:**\
+Tendo em vista os insights oferecidos, podemos concluir que os dados capturados dentro de 1 semana estão dentro dos padrões operacionais de uma self-checkout, onde é necessario apenas rodar o sistema interno da rede de supermercado
+
+# **Análise do uso de memória ram de todas as self-checkouts durante 1 semana**
+
+```{r usoMemoriaRamFiltrado, echo=FALSE}
+usoMemoriaRamFiltrado <- subset(copiaBase, tipo == "Memória",
+                                select = c(valor, tipo, dataHora))
+hist(usoMemoriaRamFiltrado$valor,
+     breaks = 10,
+     main = "Histograma do uso da memória ram",
+     xlab = "Uso Memória Ram (MB)",
+     ylab = "Frequência",
+     col = "blue",
+     border = "black")
+```
+
+Insights encontrados:
+
+**Alta frequência bimodal**:
+
+-   A maior parte do uso da memória está concentrada em valores próximos a 6.4 GB, indicando que o sistema esta com um consumo mais elevado que o normal, tendo percepção de que um sistema de supermercado não exigirá tanto.
+
+-   Outros picos são possiveis serem encontrados ao decorrer do eixo X, tendo um pico máximo de 7.4 de uso de memória ram, mostrando que alguma aplicação a mais possa estar rodando dentro das self-checkout
+
+**Considerações finais sobre :**\
+Tendo em vista os insights oferecidos, podemos concluir que os dados capturados dentro de 1 semana estão fora do padrão opercional por exigir alguma consumo a mais que pode estar ou não dentro do sistema das self-checkout, indicando possiveis processos rodando em segundo plano.
+
+# **Análise do uso de memória ram de todas as self-checkouts durante 1 semana**
+
+```{r usoBytesRecebidoseEnviados, echo=FALSE}
+# Filtrando os dados
+usoBytesRecebidoseEnviandos <- subset(copiaBase, 
+                                      descricao %in% c("BytesEnviados", "BytesRecebidos"),
+                                      select = c(valor, descricao, dataHora))
+
+# Calculando os totais
+qtdBytesEnviados <- sum(usoBytesRecebidoseEnviandos$valor[usoBytesRecebidoseEnviandos$descricao == "BytesEnviados"])
+qtdBytesRecebidos <- sum(usoBytesRecebidoseEnviandos$valor[usoBytesRecebidoseEnviandos$descricao == "BytesRecebidos"])
+
+# Criando os dados para o gráfico
+dados <- c(qtdBytesEnviados, qtdBytesRecebidos)
+nomes <- c("Bytes Enviados", "Bytes Recebidos")
+
+# Plotando o gráfico de barras
+bar_positions <- barplot(dados,
+                         names.arg = nomes,
+                         col = c("blue", "red"),
+                         main = "Comparação de Bytes Enviados e Recebidos",
+                         xlab = "Tipo",
+                         ylab = "Quantidade de Bytes",
+                         ylim = c(0, max(dados) * 1.1)) # Ajusta o limite do eixo Y para deixar espaço
+
+# Adicionando os valores em cima de cada barra
+text(x = bar_positions, 
+     y = dados, 
+     labels = dados, 
+     pos = 3, # Posição acima da barra
+     cex = 1.2, # Tamanho do texto
+     col = "black") # Cor do texto
+```
+
+Insights encontrados:
+
+**Disparidade entre bytes enviados e bytes recebidos:**
+
+-   Existe uma grande diferença entre a quantidade de bytes enviados e recebidos, mas no contexto em que se encontramos de terem varias self-checkouts operando em conjunto buscando apenas atualizações, onde elas apenas recebem respostas do servidor e normalmente não enviados tantas respostas ao servidor de volta
+
+**Considerações finais sobre :**\
+Tendo em vista os insights oferecidos, podemos concluir que os dados capturados dentro de 1 semana estão totalmente dentro do padrão sem nenhumas preocupações em relação a conectivadade da rede tendo em vista que as máquinas de self-checkout apenas recebem informações do servidor, por isso gerando grande quantidade de recebimentos de pacotes de dados do servidor em vez de enviar grande pacotes de dados para os servidores

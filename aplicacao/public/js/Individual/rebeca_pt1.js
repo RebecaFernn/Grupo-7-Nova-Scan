@@ -173,11 +173,11 @@ function plotarGrafico1(resposta) {
                 shadeIntensity: 0,
                 colorScale: {
                     ranges: [
-                        { from: 0, to: 20, color: '#cc7a7a', name: 'Uso baixo (0-20%)' },
-                        { from: 21, to: 40, color: '#b24c4c', name: 'Uso moderado (21-40%)' },
-                        { from: 41, to: 60, color: '#992626', name: 'Uso alto (41-60%)' },
-                        { from: 61, to: 80, color: '#731212', name: 'Uso muito alto (61-80%)' },
-                        { from: 81, to: 100, color: '#4d0000', name: 'Uso crítico (81-100%)' }
+                        { from: 0, to: 20, color: '#cc7a7a', name: 'Uso a baixo de (20%)' },
+                        { from: 21, to: 40, color: '#b24c4c', name: 'Uso entre (21-40%)' },
+                        { from: 41, to: 60, color: '#992626', name: 'Uso entre (41-60%)' },
+                        { from: 61, to: 80, color: '#731212', name: 'Uso entre (61-80%)' },
+                        { from: 81, to: 100, color: '#4d0000', name: 'Uso acima de (81%)' }
                     ]
                 }
             }

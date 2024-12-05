@@ -1,0 +1,1606 @@
+valor,unidadeDeMedida,dataHora,descricao,tipo
+13,MB,"2024-11-24 20:52:33",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:52:33",BytesRecebidos,"Placa de Rede"
+475,GB,"2024-11-24 20:52:33","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 20:52:33","Memória RAM Total",Memória
+461,GB,"2024-11-24 20:52:34","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:52:34","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:52:34","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:52:34","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:52:34","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:52:36","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:52:36","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:52:36","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:52:36","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:52:36","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:52:38",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:52:38",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:52:38","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:52:38","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:52:38","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:52:38","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:52:38","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:52:40","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:52:40","Uso de Memória RAM",Memória
+4,%,"2024-11-24 20:52:40","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:52:40","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:52:40","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:53:15",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:53:15",BytesRecebidos,"Placa de Rede"
+475,GB,"2024-11-24 20:53:15","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 20:53:16","Memória RAM Total",Memória
+461,GB,"2024-11-24 20:53:16","Uso de Armazenamento",Armazenamento
+7,GB,"2024-11-24 20:53:16","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:53:16","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:16","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:16","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:53:18","Uso de Armazenamento",Armazenamento
+7,GB,"2024-11-24 20:53:18","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:53:18","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:18","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:18","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:53:20","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:53:20","Uso de Memória RAM",Memória
+7.7,%,"2024-11-24 20:53:20","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:20","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:20","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:53:22","Uso de Armazenamento",Armazenamento
+7,GB,"2024-11-24 20:53:22","Uso de Memória RAM",Memória
+2.7,%,"2024-11-24 20:53:22","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:22","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:22","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:53:55",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:53:55",BytesRecebidos,"Placa de Rede"
+475,GB,"2024-11-24 20:53:55","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 20:53:55","Memória RAM Total",Memória
+461,GB,"2024-11-24 20:53:55","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:53:55","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:53:55","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:55","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:55","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:53:57","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:53:57","Uso de Memória RAM",Memória
+7.1,%,"2024-11-24 20:53:57","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:53:57","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:53:57","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:54:00","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:54:00","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:54:00","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:54:00","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:54:00","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:54:53",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:54:53",BytesRecebidos,"Placa de Rede"
+475,GB,"2024-11-24 20:54:54","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 20:54:54","Memória RAM Total",Memória
+461,GB,"2024-11-24 20:54:54","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:54:54","Uso de Memória RAM",Memória
+2.7,%,"2024-11-24 20:54:54","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:54:54","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:54:54","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:54:57","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:54:57","Uso de Memória RAM",Memória
+9.5,%,"2024-11-24 20:54:57","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:54:57","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:54:57","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:54:59","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:54:59","Uso de Memória RAM",Memória
+8.2,%,"2024-11-24 20:54:59","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:54:59","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:54:59","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:55:37",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:55:37",BytesRecebidos,"Placa de Rede"
+475,GB,"2024-11-24 20:55:39","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 20:55:39","Memória RAM Total",Memória
+461,GB,"2024-11-24 20:55:39","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:39","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:55:39","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:39","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:39","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:55:41","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:41","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:55:41","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:41","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:41","Perda de Pacotes","Placa de Rede"
+13,MB,"2024-11-24 20:55:42",BytesEnviados,"Placa de Rede"
+179,MB,"2024-11-24 20:55:42",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:55:43","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:43","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:55:43","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:43","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:43","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:55:45","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:45","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:55:45","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:46","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:46","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:55:47",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:55:47",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:55:48","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:48","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:55:48","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:48","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:48","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:55:50","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:50","Uso de Memória RAM",Memória
+2.6,%,"2024-11-24 20:55:50","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:50","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:50","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:55:52",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:55:52",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:55:52","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:52","Uso de Memória RAM",Memória
+7.9,%,"2024-11-24 20:55:52","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:52","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:52","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:55:54","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:55:54","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:55:54","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:54","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:54","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:55:57","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:55:57","Uso de Memória RAM",Memória
+9.7,%,"2024-11-24 20:55:57","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:57","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:57","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:55:57",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:55:57",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:55:59","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:55:59","Uso de Memória RAM",Memória
+1.3,%,"2024-11-24 20:55:59","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:55:59","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:55:59","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:01","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:56:01","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:01","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:01","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:01","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:02",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:02",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:03","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:56:03","Uso de Memória RAM",Memória
+5.2,%,"2024-11-24 20:56:03","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:03","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:03","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:05","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:56:05","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:05","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:05","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:06","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:07",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:07",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:08","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:08","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:08","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:08","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:08","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:10","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:10","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:10","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:12",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:12",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:12","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 20:56:12","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 20:56:12","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:12","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:12","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:14","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:14","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:56:14","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:14","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:14","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:17","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:17","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:17","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:17","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:17","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:18",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:18",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:19","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:19","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:19","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:19","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:19","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:21","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:21","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:21","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:21","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:21","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:23",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:23",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:23","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:23","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:23","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:23","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:23","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:25","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 20:56:25","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:25","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:25","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:25","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:28",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:28",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:28","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:28","Uso de Memória RAM",Memória
+4.1,%,"2024-11-24 20:56:28","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:28","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:28","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:30","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:56:30","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:30","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:30","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:30","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:32","Uso de Armazenamento",Armazenamento
+14,MB,"2024-11-24 20:56:33",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:33",BytesRecebidos,"Placa de Rede"
+6.3,GB,"2024-11-24 20:56:32","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:32","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:32","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:32","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:34","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:34","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:34","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:34","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:34","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:36","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:56:36","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 20:56:37","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:37","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:37","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:38",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:38",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:39","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:39","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:39","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:39","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:39","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:41","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:41","Uso de Memória RAM",Memória
+31.5,%,"2024-11-24 20:56:41","Uso da CPU",Processador
+3,Ghz,"2024-11-24 20:56:41","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:41","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:43",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:43",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:43","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:43","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:43","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:43","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:43","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:45","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:45","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:56:45","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:45","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:45","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:48",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:48",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:48","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:56:48","Uso de Memória RAM",Memória
+1.3,%,"2024-11-24 20:56:48","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:48","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:48","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:50","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:50","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:50","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:50","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:50","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:52","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:52","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:56:52","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:52","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:52","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:53",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:53",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:54","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:54","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:54","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:54","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:54","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:56:56","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:56","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:56:56","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:56","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:56","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:56:58",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:56:58",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:56:59","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:56:59","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:56:59","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:56:59","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:56:59","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:01","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:01","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:01","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:01","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:01","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:03",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:03",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:03","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:03","Uso de Memória RAM",Memória
+8.9,%,"2024-11-24 20:57:03","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:03","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:03","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:05","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:05","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:05","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:05","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:05","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:08",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:08",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:07","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:07","Uso de Memória RAM",Memória
+1.3,%,"2024-11-24 20:57:07","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:07","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:08","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:10","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:10","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:57:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:10","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:12","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:12","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:12","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:12","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:12","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:13",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:13",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:14","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:14","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:14","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:14","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:14","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:16","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:16","Uso de Memória RAM",Memória
+2.6,%,"2024-11-24 20:57:16","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:16","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:16","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:18",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:18",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:19","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:19","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:19","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:19","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:19","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:21","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:21","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:57:21","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:21","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:21","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:23",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:23",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:23","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:23","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:57:23","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:23","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:23","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:25","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 20:57:25","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:25","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:25","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:25","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:28",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:28",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:27","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:27","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:27","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:27","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:27","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:30","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:30","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:30","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:30","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:30","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:32","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:32","Uso de Memória RAM",Memória
+4.9,%,"2024-11-24 20:57:32","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:32","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:32","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:33",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:33",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:34","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:34","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:34","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:34","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:34","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:36","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:36","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:57:36","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:36","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:36","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:38",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:38",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:38","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:39","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:39","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:39","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:39","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:41","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:41","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:57:41","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:41","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:41","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:43",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:43",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:43","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:43","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 20:57:43","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:43","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:43","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:45","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:45","Uso de Memória RAM",Memória
+5.1,%,"2024-11-24 20:57:45","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:45","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:45","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:47","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:47","Uso de Memória RAM",Memória
+14,MB,"2024-11-24 20:57:48",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:48",BytesRecebidos,"Placa de Rede"
+0,%,"2024-11-24 20:57:47","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:47","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:47","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:50","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:50","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:50","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:50","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:50","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:52","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:52","Uso de Memória RAM",Memória
+7.6,%,"2024-11-24 20:57:52","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:52","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:52","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:53",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:53",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:54","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:54","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:54","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:54","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:54","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:57:56","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:56","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:57:56","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:56","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:56","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:57:58",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:57:58",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:57:58","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:57:58","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:57:58","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:57:58","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:57:58","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:01","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:58:01","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:01","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:01","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:01","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:03",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:03",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:03","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:58:03","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:03","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:03","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:03","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:05","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:58:05","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:05","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:05","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:05","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:07","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:58:07","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:07","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:07","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:07","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:08",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:08",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:09","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:58:09","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:58:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:10","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:12","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:58:12","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:58:12","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:12","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:12","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:13",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:13",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:14","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:58:14","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 20:58:14","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:14","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:14","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:16","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:16","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:16","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:16","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:16","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:18",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:18",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:18","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 20:58:18","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:18","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:18","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:18","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:21","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:21","Uso de Memória RAM",Memória
+6.4,%,"2024-11-24 20:58:21","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:21","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:21","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:23",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:23",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:23","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 20:58:23","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 20:58:23","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:23","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:23","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:25","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:25","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:25","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:25","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:25","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:27","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:27","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:27","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:27","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:27","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:28",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:28",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:29","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:29","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 20:58:29","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:29","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:29","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:32","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:32","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:32","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:32","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:32","Perda de Pacotes","Placa de Rede"
+14,MB,"2024-11-24 20:58:33",BytesEnviados,"Placa de Rede"
+180,MB,"2024-11-24 20:58:33",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 20:58:34","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 20:58:34","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:34","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:34","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:34","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 20:58:36","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 20:58:36","Uso de Memória RAM",Memória
+0,%,"2024-11-24 20:58:36","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 20:58:36","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 20:58:36","Perda de Pacotes","Placa de Rede"
+475,GB,"2024-11-24 21:01:06","Armazenamento Total",Armazenamento
+7.4,GB,"2024-11-24 21:01:06","Memória RAM Total",Memória
+461,GB,"2024-11-24 21:01:06","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:06","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:06","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:06","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:06","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:08","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:08","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:08","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:08","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:08","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:10","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:10","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:10","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:13","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:13","Uso de Memória RAM",Memória
+5.6,%,"2024-11-24 21:01:13","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:13","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:13","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:15","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:15","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:15","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:15","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:15","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:17","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:01:17","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:17","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:17","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:17","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:19","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:19","Uso de Memória RAM",Memória
+2.5,%,"2024-11-24 21:01:19","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:19","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:19","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:21","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:22","Uso de Memória RAM",Memória
+2.6,%,"2024-11-24 21:01:22","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:22","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:22","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:24","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:24","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:24","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:24","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:24","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:26","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:01:26","Uso de Memória RAM",Memória
+4.2,%,"2024-11-24 21:01:26","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:26","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:26","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:28","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 21:01:28","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 21:01:28","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:28","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:28","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:30","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:01:30","Uso de Memória RAM",Memória
+8,%,"2024-11-24 21:01:30","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:30","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:30","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:33","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:33","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:33","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:33","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:33","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:35","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:35","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:35","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:35","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:35","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:37","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:37","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:37","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:37","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:37","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:39","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:39","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:39","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:39","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:39","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:42","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:42","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:42","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:42","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:42","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:44","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 21:01:44","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:44","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:44","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:44","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:46","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 21:01:46","Uso de Memória RAM",Memória
+1.4,%,"2024-11-24 21:01:46","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:46","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:46","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:48","Uso de Armazenamento",Armazenamento
+6.3,GB,"2024-11-24 21:01:48","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:48","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:48","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:48","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:50","Uso de Armazenamento",Armazenamento
+6.4,GB,"2024-11-24 21:01:50","Uso de Memória RAM",Memória
+8.4,%,"2024-11-24 21:01:50","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:50","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:50","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:53","Uso de Armazenamento",Armazenamento
+6.5,GB,"2024-11-24 21:01:53","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:01:53","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:53","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:53","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:55","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:01:55","Uso de Memória RAM",Memória
+4,%,"2024-11-24 21:01:55","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:55","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:55","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:57","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:01:57","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:01:57","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:57","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:57","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:01:59","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:01:59","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:01:59","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:01:59","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:01:59","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:02","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:02","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:02","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:02","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:02","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:04","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:04","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:04","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:04","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:04","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:06","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:06","Uso de Memória RAM",Memória
+2.7,%,"2024-11-24 21:02:06","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:06","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:06","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:08","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:08","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:08","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:08","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:08","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:10","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:10","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:02:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:10","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:13","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:13","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:13","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:13","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:13","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:15","Uso de Armazenamento",Armazenamento
+6.6,GB,"2024-11-24 21:02:15","Uso de Memória RAM",Memória
+2.7,%,"2024-11-24 21:02:15","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:15","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:15","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:17","Uso de Armazenamento",Armazenamento
+6.7,GB,"2024-11-24 21:02:17","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:02:17","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:17","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:17","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:19","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:19","Uso de Memória RAM",Memória
+9.7,%,"2024-11-24 21:02:19","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:19","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:19","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:22","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:22","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:02:22","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:22","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:22","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:24",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:24",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:24","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:24","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:24","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:24","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:24","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:26","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:26","Uso de Memória RAM",Memória
+1.3,%,"2024-11-24 21:02:26","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:26","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:26","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:28","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:28","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:02:28","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:28","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:28","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:29",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:29",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:30","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:30","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:30","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:30","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:30","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:33","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:33","Uso de Memória RAM",Memória
+3.6,%,"2024-11-24 21:02:33","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:33","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:33","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:34",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:34",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:35","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:35","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:35","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:35","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:35","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:37","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:37","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:37","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:37","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:37","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:39",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:39",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:39","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:39","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:39","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:39","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:39","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:41","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:41","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:41","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:42","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:42","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:44",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:44",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:44","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:44","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:44","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:44","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:44","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:46","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:46","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:02:46","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:46","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:46","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:48","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:48","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:48","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:48","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:48","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:49",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:49",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:50","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:50","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:50","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:50","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:50","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:53","Uso de Armazenamento",Armazenamento
+6.8,GB,"2024-11-24 21:02:53","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:53","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:53","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:53","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:54",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:54",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:55","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:55","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:02:55","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:55","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:55","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:02:57","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:57","Uso de Memória RAM",Memória
+2.7,%,"2024-11-24 21:02:57","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:57","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:57","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:02:59",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:02:59",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:02:59","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:02:59","Uso de Memória RAM",Memória
+2.5,%,"2024-11-24 21:02:59","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:02:59","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:02:59","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:01","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:01","Uso de Memória RAM",Memória
+2.5,%,"2024-11-24 21:03:01","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:01","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:01","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:04",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:04",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:03:04","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:04","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 21:03:04","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:04","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:04","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:06","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:06","Uso de Memória RAM",Memória
+2.4,%,"2024-11-24 21:03:06","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:06","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:06","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:08","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:08","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:03:08","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:08","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:08","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:09",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:09",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:03:10","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:10","Uso de Memória RAM",Memória
+4.9,%,"2024-11-24 21:03:10","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:10","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:10","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:13","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:13","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:03:13","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:13","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:13","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:14",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:14",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:03:15","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:15","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:03:15","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:15","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:15","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:17","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:17","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:03:17","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:17","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:17","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:19",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:19",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:03:19","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:19","Uso de Memória RAM",Memória
+1.2,%,"2024-11-24 21:03:19","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:19","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:19","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:21","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:21","Uso de Memória RAM",Memória
+5.5,%,"2024-11-24 21:03:21","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:21","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:21","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:24",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:24",BytesRecebidos,"Placa de Rede"
+461,GB,"2024-11-24 21:03:24","Uso de Armazenamento",Armazenamento
+6.9,GB,"2024-11-24 21:03:24","Uso de Memória RAM",Memória
+2.8,%,"2024-11-24 21:03:24","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:24","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:24","Perda de Pacotes","Placa de Rede"
+461,GB,"2024-11-24 21:03:26","Uso de Armazenamento",Armazenamento
+7,GB,"2024-11-24 21:03:26","Uso de Memória RAM",Memória
+0,%,"2024-11-24 21:03:26","Alerta: Alto uso da CPU!!",Processador
+3,Ghz,"2024-11-24 21:03:26","Alerta: Alta Frequencia do processador",Processador
+0,MB,"2024-11-24 21:03:26","Perda de Pacotes","Placa de Rede"
+15,MB,"2024-11-24 21:03:29",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:29",BytesRecebidos,"Placa de Rede"
+15,MB,"2024-11-24 21:03:34",BytesEnviados,"Placa de Rede"
+188,MB,"2024-11-24 21:03:34",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:03:39",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:03:39",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:03:44",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:03:44",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:03:49",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:03:49",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:03:54",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:03:54",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:03:59",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:03:59",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:04",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:04",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:09",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:09",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:14",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:14",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:19",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:19",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:24",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:24",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:29",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:29",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:34",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:34",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:39",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:39",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:44",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:44",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:49",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:49",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:54",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:54",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:04:59",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:04:59",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:04",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:04",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:09",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:09",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:15",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:15",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:20",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:20",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:25",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:25",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:30",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:30",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:35",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:35",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:40",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:40",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:45",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:45",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:50",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:50",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:05:55",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:05:55",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:00",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:00",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:05",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:05",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:10",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:10",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:15",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:15",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:20",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:20",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:25",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:25",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:30",BytesEnviados,"Placa de Rede"
+195,MB,"2024-11-24 21:06:30",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:35",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:06:35",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:40",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:06:40",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:45",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:06:45",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:50",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:06:50",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:06:55",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:06:55",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:00",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:00",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:05",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:05",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:10",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:10",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:15",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:15",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:20",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:20",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:25",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:25",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:30",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:30",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:35",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:35",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:40",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:40",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:45",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:45",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:50",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:50",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:07:55",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:07:55",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:00",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:00",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:05",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:05",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:10",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:10",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:15",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:15",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:20",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:20",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:25",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:25",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:30",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:30",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:35",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:35",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:40",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:40",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:45",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:45",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:50",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:50",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:08:55",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:08:55",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:00",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:00",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:06",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:06",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:11",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:11",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:16",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:16",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:21",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:21",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:26",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:26",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:31",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:31",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:36",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:36",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:41",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:41",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:46",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:46",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:51",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:51",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:09:56",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:09:56",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:01",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:01",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:06",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:06",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:11",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:11",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:16",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:16",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:21",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:21",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:26",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:26",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:31",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:31",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:36",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:36",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:41",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:41",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:46",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:46",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:51",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:51",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:10:56",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:10:56",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:11:01",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:01",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:11:06",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:06",BytesRecebidos,"Placa de Rede"
+16,MB,"2024-11-24 21:11:11",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:11",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:16",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:16",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:21",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:21",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:26",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:26",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:31",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:31",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:36",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:36",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:41",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:41",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:46",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:46",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:51",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:51",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:11:56",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:11:56",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:01",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:01",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:06",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:06",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:11",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:11",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:16",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:16",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:21",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:21",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:26",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:26",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:31",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:31",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:36",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:36",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:41",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:41",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:46",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:46",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:51",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:51",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:12:56",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:12:56",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:02",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:13:02",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:07",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:13:07",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:12",BytesEnviados,"Placa de Rede"
+196,MB,"2024-11-24 21:13:12",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:17",BytesEnviados,"Placa de Rede"
+197,MB,"2024-11-24 21:13:17",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:22",BytesEnviados,"Placa de Rede"
+197,MB,"2024-11-24 21:13:22",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:27",BytesEnviados,"Placa de Rede"
+197,MB,"2024-11-24 21:13:27",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:32",BytesEnviados,"Placa de Rede"
+197,MB,"2024-11-24 21:13:32",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:37",BytesEnviados,"Placa de Rede"
+197,MB,"2024-11-24 21:13:37",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:42",BytesEnviados,"Placa de Rede"
+205,MB,"2024-11-24 21:13:42",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:47",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:13:47",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:52",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:13:52",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:13:57",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:13:57",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:02",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:02",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:07",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:07",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:12",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:12",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:17",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:17",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:22",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:22",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:27",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:27",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:32",BytesEnviados,"Placa de Rede"
+230,MB,"2024-11-24 21:14:32",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:37",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:14:37",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:42",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:14:42",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:47",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:14:47",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:52",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:14:52",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:14:57",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:14:57",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:15:02",BytesEnviados,"Placa de Rede"
+231,MB,"2024-11-24 21:15:02",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:15:07",BytesEnviados,"Placa de Rede"
+232,MB,"2024-11-24 21:15:07",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:15:12",BytesEnviados,"Placa de Rede"
+232,MB,"2024-11-24 21:15:12",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:15:17",BytesEnviados,"Placa de Rede"
+232,MB,"2024-11-24 21:15:17",BytesRecebidos,"Placa de Rede"
+17,MB,"2024-11-24 21:15:22",BytesEnviados,"Placa de Rede"
+232,MB,"2024-11-24 21:15:22",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:27",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:27",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:32",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:32",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:37",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:37",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:42",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:42",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:47",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:47",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:52",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:52",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:15:57",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:15:57",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:02",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:02",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:07",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:07",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:12",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:12",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:17",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:17",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:22",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:22",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:27",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:27",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:32",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:32",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:37",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:37",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:42",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:42",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:47",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:47",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:52",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:52",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:16:57",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:16:57",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:02",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:02",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:08",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:08",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:13",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:13",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:18",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:18",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:23",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:23",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:28",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:28",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:33",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:33",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:38",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:38",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:43",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:43",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:48",BytesEnviados,"Placa de Rede"
+233,MB,"2024-11-24 21:17:48",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:53",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:17:53",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:17:58",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:17:58",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:03",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:18:03",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:08",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:18:08",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:13",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:18:13",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:18",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:18:18",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:23",BytesEnviados,"Placa de Rede"
+234,MB,"2024-11-24 21:18:23",BytesRecebidos,"Placa de Rede"
+18,MB,"2024-11-24 21:18:28",BytesEnviados,"Placa de Rede"
+237,MB,"2024-11-24 21:18:28",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:33",BytesEnviados,"Placa de Rede"
+239,MB,"2024-11-24 21:18:33",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:38",BytesEnviados,"Placa de Rede"
+239,MB,"2024-11-24 21:18:38",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:43",BytesEnviados,"Placa de Rede"
+239,MB,"2024-11-24 21:18:43",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:48",BytesEnviados,"Placa de Rede"
+239,MB,"2024-11-24 21:18:48",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:53",BytesEnviados,"Placa de Rede"
+239,MB,"2024-11-24 21:18:53",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:18:58",BytesEnviados,"Placa de Rede"
+241,MB,"2024-11-24 21:18:58",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:03",BytesEnviados,"Placa de Rede"
+246,MB,"2024-11-24 21:19:03",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:08",BytesEnviados,"Placa de Rede"
+246,MB,"2024-11-24 21:19:08",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:13",BytesEnviados,"Placa de Rede"
+246,MB,"2024-11-24 21:19:13",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:18",BytesEnviados,"Placa de Rede"
+246,MB,"2024-11-24 21:19:18",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:23",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:23",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:28",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:28",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:33",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:33",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:38",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:38",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:43",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:43",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:48",BytesEnviados,"Placa de Rede"
+247,MB,"2024-11-24 21:19:48",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:53",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:19:53",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:19:58",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:19:58",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:20:03",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:03",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:20:08",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:08",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:20:13",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:13",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:20:18",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:18",BytesRecebidos,"Placa de Rede"
+19,MB,"2024-11-24 21:20:23",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:23",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:28",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:28",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:33",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:33",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:38",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:38",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:43",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:43",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:48",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:48",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:53",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:53",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:20:58",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:20:58",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:03",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:03",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:08",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:09",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:14",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:14",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:19",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:19",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:24",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:24",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:29",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:29",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:34",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:34",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:39",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:39",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:44",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:44",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:49",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:49",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:54",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:54",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:21:59",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:21:59",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:04",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:04",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:09",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:09",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:14",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:14",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:19",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:19",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:24",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:24",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:29",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:29",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:34",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:34",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:39",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:39",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:44",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:44",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:49",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:49",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:54",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:54",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:22:59",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:22:59",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:04",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:23:04",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:09",BytesEnviados,"Placa de Rede"
+248,MB,"2024-11-24 21:23:09",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:14",BytesEnviados,"Placa de Rede"
+249,MB,"2024-11-24 21:23:14",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:19",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:19",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:24",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:24",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:29",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:29",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:34",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:34",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:39",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:39",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:44",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:44",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:49",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:49",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:54",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:54",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:23:59",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:23:59",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:04",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:04",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:09",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:09",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:14",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:14",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:19",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:19",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:24",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:24",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:29",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:29",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:34",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:34",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:39",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:39",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:44",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:44",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:49",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:49",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:54",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:54",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:24:59",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:24:59",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:05",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:05",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:10",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:10",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:15",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:15",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:20",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:20",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:25",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:25",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:30",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:30",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:35",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:35",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:40",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:40",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:45",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:45",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:50",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:50",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:25:55",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:25:55",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:00",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:26:00",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:05",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:26:05",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:10",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:26:10",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:15",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:26:15",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:20",BytesEnviados,"Placa de Rede"
+250,MB,"2024-11-24 21:26:20",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:25",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:25",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:30",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:30",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:35",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:35",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:40",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:40",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:45",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:45",BytesRecebidos,"Placa de Rede"
+20,MB,"2024-11-24 21:26:50",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:50",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:26:55",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:26:55",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:00",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:00",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:05",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:05",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:10",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:10",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:15",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:15",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:20",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:20",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:25",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:25",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:30",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:30",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:35",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:35",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:40",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:40",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:45",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:45",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:50",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:50",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:27:55",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:27:55",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:00",BytesEnviados,"Placa de Rede"
+251,MB,"2024-11-24 21:28:00",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:05",BytesEnviados,"Placa de Rede"
+258,MB,"2024-11-24 21:28:05",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:10",BytesEnviados,"Placa de Rede"
+258,MB,"2024-11-24 21:28:10",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:15",BytesEnviados,"Placa de Rede"
+260,MB,"2024-11-24 21:28:15",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:20",BytesEnviados,"Placa de Rede"
+267,MB,"2024-11-24 21:28:20",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:25",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:25",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:30",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:30",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:35",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:35",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:40",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:40",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:45",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:45",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:50",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:50",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:28:55",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:28:55",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:01",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:01",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:06",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:06",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:11",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:11",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:16",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:16",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:21",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:21",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:26",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:26",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:31",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:31",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:36",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:36",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:41",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:41",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:46",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:46",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:51",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:51",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:29:56",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:29:56",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:30:01",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:01",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:30:06",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:06",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:30:11",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:11",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:30:16",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:16",BytesRecebidos,"Placa de Rede"
+21,MB,"2024-11-24 21:30:21",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:21",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:26",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:26",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:31",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:31",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:36",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:36",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:41",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:41",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:46",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:46",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:51",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:51",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:30:56",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:30:56",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:01",BytesEnviados,"Placa de Rede"
+270,MB,"2024-11-24 21:31:01",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:06",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:06",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:11",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:11",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:16",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:16",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:21",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:21",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:26",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:26",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:31",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:31",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:36",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:36",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:41",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:41",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:46",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:46",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:51",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:51",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:31:56",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:31:56",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:32:01",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:32:01",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:32:06",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:32:06",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:32:11",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:32:11",BytesRecebidos,"Placa de Rede"
+22,MB,"2024-11-24 21:32:16",BytesEnviados,"Placa de Rede"
+271,MB,"2024-11-24 21:32:16",BytesRecebidos,"Placa de Rede"
